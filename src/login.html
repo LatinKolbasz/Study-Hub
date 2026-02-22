@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Hub - Bejelentkezés</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Login oldal specifikus stílusok */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            overflow: hidden;
+        }
+
+        /* Animált háttér */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ec4899, #f43f5e);
+            border-radius: 30%;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #14b8a6, #06b6d4);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(-5deg);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(3deg);
+            }
+        }
+
+        /* Login container */
+        .login-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo és cím */
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Tabs */
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            background: white;
+            color: #6366f1;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+        }
+
+        .auth-tab:hover:not(.active) {
+            color: #374151;
+        }
+
+        /* Form */
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 1.2rem;
+            padding: 4px;
+        }
+
+        .password-toggle-btn:hover {
+            color: #374151;
+        }
+
+        /* Submit gomb */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Decorative line */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        /* Alert/Notification */
+        .alert {
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* Info text */
+        .info-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        .info-text a {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Biztonsági tippek */
+        .security-tips {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .security-tips h4 {
+            margin-bottom: 8px;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .security-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .security-tips li {
+            margin-bottom: 4px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .security-tips li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        /* Error icon */
+        .input-error {
+            border-color: #ef4444 !important;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+
+            .login-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">📚</div>
+                <h1 class="login-title">Study Hub</h1>
+                <p class="login-subtitle">Tanulj hatékonyan, szervezd meg a jegyeket!</p>
+            </div>
+
+            <!-- Alert -->
+            <div id="alert" class="alert alert-error"></div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Bejelentkezés</button>
+                <button class="auth-tab" data-tab="register">Regisztráció</button>
+            </div>
+
+            <!-- Bejelentkező form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label class="form-label">Felhasználónév</label>
+                    <input type="text" id="loginUsername" class="form-input" placeholder="Írd be a felhasználóneved" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jelszó</label>
+                    <div class="password-toggle">
+                        <input type="password" id="loginPassword" class="form-input" placeholder="Írd be a jelszavad" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword('loginPassword')">👁️</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="loginBtn">
+                    🚀 Bejelentkezés
+                </button>
+
+                <p class="info-text">
+                    Nincs még fiókod? <a href="#" onclick="switchTab('register')">Regisztrálj!</a>
+                </p>
+            </form>
+
+            <!-- Regisztrációs form -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Felhasználónév *</label>
+                    <input type="text" id="regUsername" class="form-input" placeholder="Legalább 3 karakter" required minlength="3">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email (opcionális)</label>
+                    <input type="email" id="regEmail" class="form-input" placeholder="email@pelda.hu">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jelszó *</label>
+                    <div class="password-toggle">
+                        <input type="password" id="regPassword" class="form-input" placeholder="Legalább 4 karakter" required minlength="4">
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword('regPassword')">👁️</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Jelszó megerősítése *</label>
+                    <div class="password-toggle">
+                        <input type="password" id="regPassword2" class="form-input" placeholder="Írd be újra a jelszót" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword('regPassword2')">👁️</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="registerBtn">
+                    ✨ Fiók létrehozása
+                </button>
+
+                <p class="info-text">
+                    Már van fiókod? <a href="#" onclick="switchTab('login')">Jelentkezz be!</a>
+                </p>
+
+                <div class="security-tips">
+                    <h4>🔒 Biztonsági tippek</h4>
+                    <ul>
+                        <li>Erős jelszót használj (min. 8 karakter, betű + szám)</li>
+                        <li>Ne oszd meg a jelszavad másokkal</li>
+                        <li>A jelszavad titkosítva van tárolva</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../utils/auth.js"></script>
+    <script>
+        // ==================== UI FUNKCIÓK ====================
+
+        // Tab váltás
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                switchTab(tabName);
+            });
+        });
+
+        function switchTab(tabName) {
+            // Tab button-ok
+            document.querySelectorAll('.auth-tab').forEach(t => {
+                t.classList.toggle('active', t.dataset.tab === tabName);
+            });
+
+            // Form-ok
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.toggle('active', form.id === tabName + 'Form');
+            });
+
+            // Alert hide
+            hideAlert();
+        }
+
+        // Jelszó toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const btn = input.parentElement.querySelector('.password-toggle-btn');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                btn.textContent = '👁️';
+            }
+        }
+
+        // Alert functions
+        function showAlert(message, type = 'error') {
+            const alert = document.getElementById('alert');
+            alert.className = `alert alert-${type} show`;
+            alert.textContent = message;
+        }
+
+        function hideAlert() {
+            const alert = document.getElementById('alert');
+            alert.className = 'alert';
+        }
+
+        // Loading state
+        function setLoading(btnId, loading, text) {
+            const btn = document.getElementById(btnId);
+            if (loading) {
+                btn.disabled = true;
+                btn.innerHTML = `<span class="spinner"></span> ${text}...`;
+            } else {
+                btn.disabled = false;
+                btn.innerHTML = text;
+            }
+        }
+
+        // ==================== LOGIN ====================
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideAlert();
+
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!username || !password) {
+                showAlert('❌ Kérlek, töltsd ki az összes mezőt!');
+                return;
+            }
+
+            setLoading('loginBtn', true, 'Bejelentkezés');
+
+            try {
+                const result = await window.authManager.login(username, password);
+
+                if (result.success) {
+                    showAlert('✅ Sikeres bejelentkezés!', 'success');
+                    
+                    // Átirányítás az index.html-re
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(result.message);
+                }
+            } catch (error) {
+                showAlert('❌ Hiba történt: ' + error.message);
+                window.authManager.logError(error, 'login');
+            } finally {
+                setLoading('loginBtn', false, '🚀 Bejelentkezés');
+            }
+        });
+
+        // ==================== REGISTER ====================
+
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideAlert();
+
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const password2 = document.getElementById('regPassword2').value;
+
+            // Validáció
+            if (!username || !password || !password2) {
+                showAlert('❌ A csillaggal jelölt mezők kitöltése kötelező!');
+                return;
+            }
+
+            if (password !== password2) {
+                showAlert('❌ A két jelszó nem egyezik!');
+                return;
+            }
+
+            if (password.length < 4) {
+                showAlert('❌ A jelszónak legalább 4 karakter hosszúnak kell lennie!');
+                return;
+            }
+
+            if (username.length < 3) {
+                showAlert('❌ A felhasználónévnek legalább 3 karakter hosszúnak kell lennie!');
+                return;
+            }
+
+            setLoading('registerBtn', true, 'Regisztráció');
+
+            try {
+                const result = await window.authManager.register(username, password, email);
+
+                if (result.success) {
+                    showAlert('✅ Fiók létrehozva! Átirányítás...', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    showAlert(result.message);
+                }
+            } catch (error) {
+                showAlert('❌ Hiba történt: ' + error.message);
+                window.authManager.logError(error, 'register');
+            } finally {
+                setLoading('registerBtn', false, '✨ Fiók létrehozása');
+            }
+        });
+
+        // ==================== CHECK LOGGED IN ====================
+
+        // Ha már be van jelentkezve, irányítsuk át
+        if (window.authManager && window.authManager.isLoggedIn()) {
+            window.location.href = 'index.html';
+        }
+
+        console.log('🔐 Login oldal betöltve');
+    </script>
+</body>
+</html>
+

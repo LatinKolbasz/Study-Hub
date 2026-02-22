@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1771107370676,
+    "name": "Pénzügy beadandó",
+    "description": "",
+    "dueDate": "2026-02-20",
+    "priority": "medium",
+    "completed": false,
+    "createdAt": "2026-02-14T22:16:10.676Z"
+  },
+  {
+    "id": 1771107402600,
+    "name": "Matek Gyakorlás",
+    "description": "",
+    "dueDate": "2026-02-16",
+    "priority": "low",
+    "completed": false,
+    "createdAt": "2026-02-14T22:16:42.600Z"
+  }
+]

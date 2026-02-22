@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Analytics - Study Hub</title>
+    <link rel="stylesheet" href="grade-tracker.css">
+    <link rel="stylesheet" href="analytics.css">
+    <style>
+        .dev-notice {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html" class="back-link">←</a>
+                    <span class="logo-icon">📊</span>
+                    <span class="logo-text">Study Analytics</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="analytics-main">
+        <!-- Fejlesztés alatt figyelmeztetés -->
+        <div class="dev-notice">
+            🚧 FEJLESZTÉS ALATT - Az oldal hamarosan elérhető lesz! 🚧
+        </div>
+
+        <!-- Összesítő kártyák -->
+        <section class="summary-cards">
+            <div class="summary-card study-time">
+                <div class="summary-icon">⏱️</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="totalStudyTime">0</span>
+                    <span class="summary-label">Összes tanulási idő (perc)</span>
+                </div>
+            </div>
+            
+            <div class="summary-card sessions">
+                <div class="summary-icon">🍅</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="totalSessions">0</span>
+                    <span class="summary-label">Pomodoro Sessions</span>
+                </div>
+            </div>
+            
+            <div class="summary-card xp">
+                <div class="summary-icon">⚡</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="totalXp">0</span>
+                    <span class="summary-label">Összes XP</span>
+                </div>
+            </div>
+            
+            <div class="summary-card level">
+                <div class="summary-icon">🏆</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="currentLevel">1</span>
+                    <span class="summary-label">Szint</span>
+                </div>
+            </div>
+            
+            <div class="summary-card streak">
+                <div class="summary-icon">🔥</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="currentStreak">0</span>
+                    <span class="summary-label">Streak nap</span>
+                </div>
+            </div>
+            
+            <div class="summary-card grades">
+                <div class="summary-icon">📝</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="avgGrade">0</span>
+                    <span class="summary-label">Átlag jegy</span>
+                </div>
+            </div>
+            
+            <div class="summary-card quizzes">
+                <div class="summary-icon">❓</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="totalQuizzes">0</span>
+                    <span class="summary-label">Kvízek száma</span>
+                </div>
+            </div>
+            
+            <div class="summary-card quiz-avg">
+                <div class="summary-icon">🎯</div>
+                <div class="summary-content">
+                    <span class="summary-value" id="quizAvg">0%</span>
+                    <span class="summary-label">Kvíz átlag</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon üzenet -->
+        <div style="text-align: center; padding: 4rem 2rem; background: rgba(255,255,255,0.1); border-radius: 16px; margin: 2rem 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">📈 Analytics</h2>
+            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
+                Részletes statisztikák a tanulásodról<br>
+                Diagramok, heatmap-ek és még sok más!
+            </p>
+            <div style="font-size: 4rem;">🚧</div>
+            <p style="margin-top: 1rem; opacity: 0.6;">Hamarosan...</p>
+            <a href="../index.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                ← Vissza a főoldalra
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Auth script -->
+    <script src="../utils/auth.js"></script>
+    <script src="../utils/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (!window.authManager || !window.authManager.isLoggedIn()) {
+                    window.location.href = '../login.html';
+                    return;
+                }
+                
+                // Felhasználó prefix
+                const username = window.authManager.currentUser.username;
+                let hash = 0;
+                for (let i = 0; i < username.length; i++) {
+                    hash = ((hash << 5) - hash) + username.charCodeAt(i);
+                    hash = hash & hash;
+                }
+                const prefix = 'studyhub_' + Math.abs(hash).toString(36) + '_';
+                
+                // Grade data
+                const gradeData = JSON.parse(localStorage.getItem(prefix + 'gradeTracker') || '{"totalXp":0,"level":1}');
+                document.getElementById('totalXp').textContent = gradeData.totalXp || 0;
+                document.getElementById('currentLevel').textContent = gradeData.level || 1;
+                
+                // Timer data
+                const timerData = JSON.parse(localStorage.getItem(prefix + 'stats') || '{"totalMinutes":0,"completedSessions":0,"streak":0}');
+                document.getElementById('totalStudyTime').textContent = timerData.totalMinutes ? `${Math.floor(timerData.totalMinutes/60)}ó ${timerData.totalMinutes%60}p` : '0 perc';
+                document.getElementById('totalSessions').textContent = timerData.completedSessions || 0;
+                document.getElementById('currentStreak').textContent = timerData.streak || 0;
+                
+                console.log('✅ Analytics összesítő betöltve');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
+

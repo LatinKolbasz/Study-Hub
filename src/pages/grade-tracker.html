@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jegy Tracker - Study Hub</title>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="grade-tracker.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="../index.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="grade-main">
+        <section class="grade-hero">
+            <h1 class="page-title">🏆 Jegy Tracker</h1>
+            <p class="page-subtitle">Kövesd a jegyeidet és fejlődj mint egy videójátékban!</p>
+        </section>
+
+        <div class="grade-container">
+            <!-- Player Stats Card -->
+            <div class="player-card">
+                <div class="player-avatar" id="playerAvatar">
+                    <span class="avatar-icon">🎮</span>
+                    <div class="level-badge" id="levelBadge">1</div>
+                </div>
+                <div class="player-info">
+                    <h2 class="player-name" id="playerName">Tanuló</h2>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xpFill" style="width: 0%"></div>
+                        <span class="xp-text"><span id="currentXp">0</span> / <span id="requiredXp">100</span> XP</span>
+                    </div>
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-icon">📊</span>
+                            <span class="stat-label">Átlag</span>
+                            <span class="stat-value" id="avgGrade">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">🎯</span>
+                            <span class="stat-label">Összes jegy</span>
+                            <span class="stat-value" id="totalGrades">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">⭐</span>
+                            <span class="stat-label">Top jegy</span>
+                            <span class="stat-value" id="bestGrade">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Stats -->
+            <div class="achievements-row">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🔥</div>
+                    <div class="achievement-info">
+                        <span class="achievement-value" id="streakDays">0</span>
+                        <span class="achievement-label">Nap streak</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">💪</div>
+                    <div class="achievement-info">
+                        <span class="achievement-value" id="totalXp">0</span>
+                        <span class="achievement-label">Összes XP</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <div class="achievement-info">
+                        <span class="achievement-value" id="subjectCount">0</span>
+                        <span class="achievement-label">Tantárgy</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏅</div>
+                    <div class="achievement-info">
+                        <span class="achievement-value" id="achievementCount">0</span>
+                        <span class="achievement-label">Achievement</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Grade Section -->
+            <div class="add-grade-section">
+                <h2>➕ Új jegy hozzáadása</h2>
+                <div class="grade-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subjectName">Tantárgy *</label>
+                            <input type="text" id="subjectName" placeholder="pl: Matematika" list="subjectsList">
+                            <datalist id="subjectsList"></datalist>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeValue">Jegy (1-5) *</label>
+                            <select id="gradeValue">
+                                <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                                <option value="4">⭐⭐⭐⭐ (4)</option>
+                                <option value="3">⭐⭐⭐ (3)</option>
+                                <option value="2">⭐⭐ (2)</option>
+                                <option value="1">⭐ (1)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gradeType">Típus</label>
+                            <select id="gradeType">
+                                <option value="dolgozat">Dolgozat</option>
+                                <option value="zh">ZH</option>
+                                <option value="nzh">Nyelvhelyességi</option>
+                                <option value="felelés">Felelés</option>
+                                <option value="projekt">Projekt</option>
+                                <option value="egyéb">Egyéb</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeWeight">Súly (%)</label>
+                            <input type="number" id="gradeWeight" value="100" min="1" max="100">
+                        </div>
+                    </div>
+                    <button class="btn-add-grade" onclick="gradeTracker.addGrade()">
+                        <span>➕</span> Jegy hozzáadása
+                    </button>
+                </div>
+            </div>
+
+            <!-- Subjects & Grades -->
+            <div class="subjects-section">
+                <h2>📚 Tantárgyak</h2>
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Subjects will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div class="analytics-section">
+                <h2>📈 Elemzés</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Jegy eloszlás</h3>
+                        <div class="grade-distribution" id="gradeDistribution">
+                            <!-- Will be rendered here -->
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Legjobb tantárgyak</h3>
+                        <div class="best-subjects" id="bestSubjects">
+                            <!-- Will be rendered here -->
+                        </div>
+                    </div>
+                    <div class="analytics-card warning">
+                        <h3>⚠️ Javításra szorul</h3>
+                        <div class="needs-improvement" id="needsImprovement">
+                            <!-- Will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Grades -->
+            <div class="recent-section">
+                <h2>📋 Legutóbbi jegyek</h2>
+                <div class="recent-grades" id="recentGrades">
+                    <!-- Will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Subject Detail Modal -->
+            <div class="subject-modal" id="subjectModal" style="display: none;">
+                <div class="subject-modal-content">
+                    <div class="subject-modal-header">
+                        <h2 id="modalSubjectName">Tantárgy</h2>
+                        <button class="btn-close-modal" onclick="gradeTracker.closeSubjectModal()">×</button>
+                    </div>
+                    <div class="subject-modal-stats">
+                        <div class="modal-stat">
+                            <span class="modal-stat-value" id="modalSubjectAvg">0</span>
+                            <span class="modal-stat-label">Átlag</span>
+                        </div>
+                        <div class="modal-stat">
+                            <span class="modal-stat-value" id="modalSubjectCount">0</span>
+                            <span class="modal-stat-label">Jegyek</span>
+                        </div>
+                    </div>
+                    <div class="subject-grades-list" id="subjectGradesList">
+                        <!-- Grades list will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements-section">
+                <h2>🏅 Achievement-ek</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="reset-section">
+                <button class="btn-reset" onclick="gradeTracker.resetAll()">
+                    🔄 Összes adat törlése
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Auth és Grade Tracker script -->
+    <script src="../utils/auth.js"></script>
+    <script src="../utils/theme.js"></script>
+    <script src="grade-tracker.js"></script>
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.authManager || !window.authManager.isLoggedIn()) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            // Felhasználó név beállítása
+            const user = window.authManager.getUser();
+            if (user) {
+                const playerName = document.getElementById('playerName');
+                if (playerName) {
+                    playerName.textContent = user.username;
+                }
+                
+                const playerAvatar = document.getElementById('playerAvatar');
+                if (playerAvatar) {
+                    const avatarIcon = playerAvatar.querySelector('.avatar-icon');
+                    if (avatarIcon) {
+                        avatarIcon.textContent = user.username.charAt(0).toUpperCase();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

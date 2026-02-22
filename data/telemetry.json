@@ -1,0 +1,4567 @@
+[
+  {
+    "type": "error",
+    "data": {
+      "error": "TypeError: can't access property \"importKey\", crypto.subtle is undefined",
+      "context": "register"
+    },
+    "timestamp": "2026-02-15T18:20:50.972Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:20:51.105Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Test",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T18:27:03.534Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:27:03.555Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "TypeError: can't access property \"importKey\", crypto.subtle is undefined",
+      "context": "register"
+    },
+    "timestamp": "2026-02-15T18:27:13.023Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:27:13.038Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Test",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T18:35:01.282Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:01.297Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:35:03.100Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:03.252Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-15T18:35:12.378Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:12.442Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-15T18:35:12.379Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:12.445Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T18:35:17.376Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:17.395Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:35:27.669Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:27.723Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "efre",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T18:35:39.816Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:39.853Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Test",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T18:35:46.722Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:46.733Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:35:48.054Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:35:48.388Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T18:36:30.274Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:36:30.321Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:36:32.037Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:36:32.116Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:40:00.003Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:40:00.267Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:42:33.818Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:42:34.353Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:46:30.513Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:46:30.588Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T18:46:32.498Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:46:32.509Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:49:54.597Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:49:54.828Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T18:49:56.390Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:49:56.404Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T18:51:26.380Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T18:51:26.425Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T19:03:48.973Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:03:49.071Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-15T19:14:59.814Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:14:59.948Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-15T19:14:59.815Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:14:59.955Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T19:15:04.194Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:15:04.299Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T19:28:04.358Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:28:05.121Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T19:28:09.220Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:28:09.329Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T19:59:29.771Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:59:29.887Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T19:59:31.406Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:59:31.549Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-15T19:59:43.832Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:59:43.885Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-15T19:59:43.833Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T19:59:43.888Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:00:24.388Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:00:24.515Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:00:26.218Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:00:26.267Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:00:37.493Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:00:37.582Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:07:01.494Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:07:01.561Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:07:04.762Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:07:04.832Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:07:20.234Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:07:20.363Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:07:23.709Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:07:23.821Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:08:48.619Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:08:49.117Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:11:51.472Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:11:51.622Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T20:11:56.790Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:11:56.807Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:11:58.432Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:11:58.557Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:12:00.210Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:12:00.390Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:14:49.540Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:14:50.076Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:14:52.214Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:14:52.647Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:13.328Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:14.070Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:15:18.641Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:19.153Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:30.727Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:30.900Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Test",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T20:15:36.025Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:36.038Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:37.701Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:37.964Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:15:39.744Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:39.888Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:43.664Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:43.836Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T20:15:49.872Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:49.896Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:51.377Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:51.566Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-15T20:15:53.276Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:53.438Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T20:15:55.744Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T20:15:56.098Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:39.954Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:34.755Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:47.657Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:43.059Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:48.814Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:43.585Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:48.978Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:43.753Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:49.143Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:43.912Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:49.311Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:44.081Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:49.495Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:44.268Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:49.663Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:44.437Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:50.547Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.409Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:50.694Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.465Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:50.796Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.567Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:50.862Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.633Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:50.963Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.736Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:51.027Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.797Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:51.194Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:45.970Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:51.300Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:46.072Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:51.381Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:46.151Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-15T21:36:52.213Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/147.4 Mobile/15E148 Safari/604.1",
+    "receivedAt": "2026-02-15T21:36:46.985Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-15T21:40:04.182Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T21:40:04.214Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T21:40:05.759Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T21:40:06.000Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-15T21:41:12.905Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-15T21:41:13.106Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T18:40:30.150Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:30.288Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:42.338Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:42.341Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:44.524Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:44.527Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:45.079Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:45.082Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:45.902Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:45.903Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:46.042Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:46.045Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:46.452Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:46.455Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:46.578Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:46.581Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:46.958Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:46.961Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:47.100Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:47.103Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:47.556Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:47.559Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:47.709Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:47.711Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:48.258Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:48.260Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:48.413Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:48.416Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:48.866Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:48.868Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:40:49.012Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:40:49.015Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:41:15.433Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:41:15.436Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:41:15.604Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:41:15.608Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:41:15.751Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:41:15.754Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:41:16.050Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:41:16.052Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T18:41:16.184Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T18:41:16.187Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T19:49:26.110Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:49:26.286Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:49:32.455Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:49:32.458Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:49:32.586Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:49:32.589Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:49:33.265Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:49:33.268Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:49:33.392Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:49:33.399Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:50:08.616Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:50:08.625Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:50:08.738Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:50:08.740Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:50:09.600Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:50:09.604Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: showSection is not defined",
+      "context": "http://studyhub.local:3000/settings.html"
+    },
+    "timestamp": "2026-02-16T19:50:09.731Z",
+    "url": "http://studyhub.local:3000/settings.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:50:09.735Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T19:52:42.421Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:52:42.438Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T19:53:18.491Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T19:53:18.518Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:06:25.455Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:25.470Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-16T20:06:30.006Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:30.011Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:06:31.084Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:31.117Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:06:42.588Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:42.605Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-16T20:06:47.117Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:47.120Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:06:48.189Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:06:48.235Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:08:43.618Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:08:43.630Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-16T20:08:46.281Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:08:46.300Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-16T20:08:48.734Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-16T20:08:48.756Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T15:59:10.242Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T15:59:10.371Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "fgfsgf",
+      "success": false,
+      "reason": "user_not_found"
+    },
+    "timestamp": "2026-02-19T16:04:47.337Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:04:47.387Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-19T16:05:00.189Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:00.193Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:05:01.281Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:01.309Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T16:05:05.701Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:05.736Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T16:05:05.701Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:05.737Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:05:14.811Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:14.824Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-19T16:05:16.397Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:16.416Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:05:21.764Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:21.785Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T16:05:26.844Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:26.860Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T16:05:26.844Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:26.861Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:05:32.494Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:32.531Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T16:05:34.605Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:05:34.611Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:06:07.325Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:06:07.336Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T16:06:09.141Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:06:09.155Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T16:06:09.142Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:06:09.156Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:06:43.034Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:06:43.052Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:07:22.643Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:07:22.662Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:49:10.397Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:10.805Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-19T16:49:21.380Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:21.395Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:49:22.504Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:22.581Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T16:49:25.227Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:25.251Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T16:49:25.228Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:25.254Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:49:28.730Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:28.793Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-19T16:49:38.005Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:38.301Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:49:52.970Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:53.013Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T16:49:56.537Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:56.632Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T16:49:56.538Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:49:56.634Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:50:03.709Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:50:03.883Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T16:50:05.689Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:50:05.700Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:50:48.601Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:50:48.758Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T16:50:50.260Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:50:50.268Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T16:50:50.261Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:50:50.270Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:51:13.657Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:51:13.733Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T16:57:56.009Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T16:57:56.149Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:23:56.629Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:23:56.786Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-19T18:24:07.454Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:07.470Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:24:15.857Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:15.870Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T18:24:19.486Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:19.499Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T18:24:19.486Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:19.500Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:24:44.202Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:44.216Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T18:24:50.963Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:50.980Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T18:24:50.963Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:24:50.981Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:25:00.076Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:25:00.094Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:01.090Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:01.115Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:01.090Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:01.116Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:18.609Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:18.614Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:18.610Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:18.615Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:22.090Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:22.122Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-19T18:26:22.090Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:22.123Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:26:59.326Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:26:59.337Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T18:27:01.971Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:27:01.975Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T18:27:03.532Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:27:03.538Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:28:41.391Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:28:41.405Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:29:22.865Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:29:22.880Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:29:22.866Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:29:22.881Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:33:58.253Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:33:58.269Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:35:04.951Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:35:04.965Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:16.639Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:16.645Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:16.639Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:16.646Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:50.428Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:50.447Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:50.429Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:50.448Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:52.572Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:52.593Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:36:52.573Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:36:52.594Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:37:01.774Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:37:01.795Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:37:01.775Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:37:01.796Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T18:37:09.741Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:37:09.757Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:37:11.429Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:37:11.448Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T18:37:11.430Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T18:37:11.449Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:01:25.129Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:01:25.163Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T22:01:27.368Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:01:27.390Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-19T22:01:27.369Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:01:27.392Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T22:01:29.454Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:01:29.461Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T22:03:12.360Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:03:12.383Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:03:13.547Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:03:13.574Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:04:02.300Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:04:02.328Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:04:25.750Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:04:25.801Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:04:59.348Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:04:59.425Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:05:35.798Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:05:35.847Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:06:18.889Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:06:18.903Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:06:25.433Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:06:25.448Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T22:06:26.690Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:06:26.709Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T22:06:26.690Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:06:26.711Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:06:28.062Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:06:28.088Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:07:25.760Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:07:25.816Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:12:58.549Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:12:58.615Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:13:19.102Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:13:19.203Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T22:13:20.260Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:13:20.292Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-19T22:13:20.261Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:13:20.293Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T22:13:21.946Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T22:13:21.954Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T23:16:58.144Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:16:58.379Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T23:19:32.819Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:19:32.872Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T23:19:34.898Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:19:35.004Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-19T23:19:34.899Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:19:35.009Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T23:22:26.181Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:22:26.585Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-19T23:28:33.834Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:28:33.867Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T23:31:46.115Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:31:46.569Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-19T23:41:28.567Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-19T23:41:28.643Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:15:43.610Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:15:43.664Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T00:15:45.385Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:15:45.446Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:16:03.966Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:16:04.035Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T00:16:09.555Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:16:09.626Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:16:16.310Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:16:16.445Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-20T00:16:18.663Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:16:18.734Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-20T00:16:18.664Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:16:18.737Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:20:39.979Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:20:40.429Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:24:08.548Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:24:08.642Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T00:24:10.691Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:24:10.756Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T00:24:10.692Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:24:10.759Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T00:26:09.176Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T00:26:09.263Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T17:12:54.566Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:12:54.595Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T17:15:43.386Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:15:43.426Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T17:15:49.327Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:15:49.385Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T17:15:51.480Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:15:51.515Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T17:20:42.159Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:20:42.198Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T17:20:45.285Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:20:45.326Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T17:21:58.252Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:21:58.268Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T17:22:00.001Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:22:00.026Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T17:22:00.001Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T17:22:00.027Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:09:53.227Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:09:53.240Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:09:53.227Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:09:53.241Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:04.049Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:04.062Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:04.049Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:04.063Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:04.929Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:04.950Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:04.930Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:04.951Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:17:05.914Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:05.948Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:17:08.766Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:08.777Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:22.440Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:22.459Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:17:22.440Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:22.460Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-20T18:17:25.281Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:25.333Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-20T18:17:25.282Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:25.333Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T18:17:27.381Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:27.387Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:17:29.565Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:29.569Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:17:29.566Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:29.570Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:17:36.653Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:36.672Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-20T18:17:40.532Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:40.548Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "study-timer"
+    },
+    "timestamp": "2026-02-20T18:17:40.532Z",
+    "url": "http://studyhub.local:3000/pages/study-timer.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:40.550Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:17:54.963Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:17:55.015Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:18:08.936Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:18:08.947Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:18:08.936Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:18:08.948Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:19:04.327Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:04.350Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:19:15.813Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:15.830Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:19:17.097Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:17.117Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:19:18.638Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:18.656Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:19:20.542Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:20.575Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-20T18:19:20.543Z",
+    "url": "http://studyhub.local:3000/pages/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:20.576Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:19:25.153Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:19:25.171Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:25:38.172Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:25:38.194Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:28:19.075Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:28:19.149Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:28:22.003Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:28:22.077Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:28:36.828Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:28:36.862Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:28:38.239Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:28:38.289Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: redeclaration of let SectorPageManager",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T18:33:43.366Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:43.445Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "TypeError: can't access property \"innerHTML\", list is null",
+      "context": "http://studyhub.local:3000/index.js"
+    },
+    "timestamp": "2026-02-20T18:33:43.367Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:43.446Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:33:47.193Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:47.222Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:33:50.503Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:50.516Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:33:52.468Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:52.472Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:33:52.568Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:52.572Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "Error: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'studyTimeChart' can be reused.",
+      "context": "unhandled_promise"
+    },
+    "timestamp": "2026-02-20T18:33:52.572Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:33:52.578Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:27.407Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:27.440Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:28.531Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:28.550Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:29.387Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:29.398Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:30.753Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:30.790Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:32.094Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:32.112Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:33.000Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:33.009Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:34.559Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:34.610Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:35.637Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:35.644Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:36.910Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:36.921Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:37.759Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:37.769Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:38.617Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:38.641Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:39.471Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:39.483Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:40.695Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:40.729Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:42.110Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:42.120Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:43.039Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:43.050Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:44.273Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:44.290Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:45.896Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:45.919Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:47.757Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:47.772Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:48.672Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:48.681Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:49.534Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:49.558Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:50.951Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:50.957Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:52.143Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:52.170Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:34:52.211Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:34:52.246Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:36:08.562Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:08.578Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:36:08.610Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:08.644Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:36:11.792Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:11.845Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:36:13.897Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:13.917Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: redeclaration of let SectorPageManager",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T18:36:14.841Z",
+    "url": "http://studyhub.local:3000/pages/sector/webdev.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:14.860Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "TypeError: can't access property \"innerHTML\", list is null",
+      "context": "http://studyhub.local:3000/index.js"
+    },
+    "timestamp": "2026-02-20T18:36:14.841Z",
+    "url": "http://studyhub.local:3000/pages/sector/webdev.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:14.861Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T18:36:16.350Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:16.371Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:36:17.870Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:17.924Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T18:36:21.015Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:21.022Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T18:36:30.487Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:30.525Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:36:32.771Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:32.773Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:36:32.802Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:36:32.814Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:57:52.918Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:57:52.924Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T18:57:52.969Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T18:57:53.020Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:00:46.205Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:00:46.323Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T19:00:50.334Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:00:50.351Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: redeclaration of let SectorPageManager",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T19:00:51.073Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:00:51.096Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "TypeError: can't access property \"innerHTML\", list is null",
+      "context": "http://studyhub.local:3000/index.js"
+    },
+    "timestamp": "2026-02-20T19:00:51.073Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:00:51.098Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T19:00:52.381Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:00:52.399Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:01:02.367Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:01:02.414Z"
+  },
+  {
+    "type": "auth_attempt",
+    "data": {
+      "username": "Latin Kolbasz",
+      "success": true,
+      "reason": "success"
+    },
+    "timestamp": "2026-02-20T19:01:06.608Z",
+    "url": "http://studyhub.local:3000/login.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:01:06.617Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:01:07.785Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:01:07.855Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-20T19:01:11.363Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:01:11.406Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "quiz-creator"
+    },
+    "timestamp": "2026-02-20T19:01:11.363Z",
+    "url": "http://studyhub.local:3000/pages/quiz-creator.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:01:11.407Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:06:36.920Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:36.955Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:39.273Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:39.276Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:39.309Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:39.312Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:45.122Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:45.130Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:45.167Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:45.195Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:47.445Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:47.451Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:06:47.485Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:06:47.489Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:08:25.664Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:08:25.679Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:08:25.722Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:08:25.738Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:17:58.849Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:17:58.853Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:17:58.886Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:17:58.890Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:18:20.990Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:21.032Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:18:23.765Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:23.768Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:18:23.798Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:23.800Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:18:24.717Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:24.735Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:18:33.675Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:33.700Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:18:36.197Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:36.204Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:18:36.231Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:18:36.233Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:02.710Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:02.713Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:02.743Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:02.745Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:07.007Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:07.018Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:07.042Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:07.045Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:09.256Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:09.261Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:19:09.291Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:19:09.297Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:30:13.312Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:30:13.316Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:30:13.353Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:30:13.357Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:30:17.661Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:30:17.670Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:30:17.705Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:30:17.777Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:35:26.327Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:26.342Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:35:26.370Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:26.418Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:35:35.156Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:35.231Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:35:42.717Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:42.780Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:35:48.102Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:48.109Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:35:48.135Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:35:48.139Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:56:05.889Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:56:05.898Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:56:05.890Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:56:05.899Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:56:56.141Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:56:56.266Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:56:56.142Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:56:56.267Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:56:58.146Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:56:58.187Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:57:02.639Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:57:02.645Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "analytics"
+    },
+    "timestamp": "2026-02-20T19:57:02.639Z",
+    "url": "http://studyhub.local:3000/pages/analytics.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:57:02.646Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T19:57:03.411Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:57:03.427Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T19:57:05.510Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T19:57:05.558Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:10:25.056Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:10:25.078Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:10:36.209Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:10:36.222Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:10:44.949Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:10:44.984Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:20:59.677Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:20:59.698Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T20:21:01.644Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:21:01.663Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: require is not defined",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T20:21:03.148Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:21:03.163Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: can't access lexical declaration 'SectorPageManager' before initialization",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:21:03.471Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:21:03.475Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:29:22.663Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:22.694Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:29:33.196Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:33.221Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T20:29:38.185Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:38.209Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: require is not defined",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T20:29:41.164Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:41.191Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: can't access lexical declaration 'SectorPageManager' before initialization",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:29:41.469Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:41.520Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: '' string literal contains an unescaped line break",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:29:55.075Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:55.079Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: '' string literal contains an unescaped line break",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:29:56.356Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:56.359Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: '' string literal contains an unescaped line break",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:29:58.284Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:58.286Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "SyntaxError: '' string literal contains an unescaped line break",
+      "context": "http://studyhub.local:3000/pages/sector/ccna.html"
+    },
+    "timestamp": "2026-02-20T20:29:59.676Z",
+    "url": "http://studyhub.local:3000/pages/sector/ccna.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:29:59.681Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: require is not defined",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T20:30:01.837Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:01.840Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: can't access lexical declaration 'SectorPageManager' before initialization",
+      "context": "http://studyhub.local:3000/pages/sector/python.html"
+    },
+    "timestamp": "2026-02-20T20:30:02.145Z",
+    "url": "http://studyhub.local:3000/pages/sector/python.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:02.256Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: require is not defined",
+      "context": "http://studyhub.local:3000/pages/sector/sector-page.js"
+    },
+    "timestamp": "2026-02-20T20:30:07.367Z",
+    "url": "http://studyhub.local:3000/pages/sector/webdev.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:07.369Z"
+  },
+  {
+    "type": "error",
+    "data": {
+      "error": "ReferenceError: can't access lexical declaration 'SectorPageManager' before initialization",
+      "context": "http://studyhub.local:3000/pages/sector/webdev.html"
+    },
+    "timestamp": "2026-02-20T20:30:07.674Z",
+    "url": "http://studyhub.local:3000/pages/sector/webdev.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:07.678Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T20:30:34.509Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:34.524Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:30:39.960Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:39.974Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:30:52.258Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:52.284Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:30:59.731Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:30:59.747Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T20:31:08.720Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:31:08.730Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-20T20:36:24.538Z",
+    "url": "http://studyhub.local:3000/pages/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:36:24.593Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:36:26.559Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:36:26.615Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:51:08.696Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:51:08.756Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:51:20.378Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:51:20.387Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T20:51:29.588Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:51:29.594Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T20:56:58.506Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:56:59.046Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T20:57:00.947Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T20:57:01.011Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:09:31.627Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:31.731Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:09:34.900Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:34.949Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T21:09:39.750Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:39.769Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-20T21:09:43.633Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:43.646Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:09:47.780Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:48.099Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:09:49.978Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:09:50.079Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:19:31.191Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:19:31.557Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:20:16.378Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:20:16.423Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:21:08.249Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:21:08.378Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:22:39.538Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:22:39.644Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:22:49.252Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:22:49.364Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:23:49.175Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:23:49.592Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:24:10.883Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:24:11.176Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:25:22.918Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:25:23.666Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:26:10.857Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:26:11.616Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:26:29.931Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:26:30.185Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:27:13.509Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:27:14.361Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:27:22.148Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:27:22.233Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:27:48.042Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:27:48.083Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:28:23.395Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:28:23.853Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:30:36.193Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:30:36.294Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:32:32.199Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:32:32.496Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:33:01.278Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:33:01.355Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:33:38.413Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:33:38.512Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:36:16.929Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:36:17.185Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:36:30.660Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:36:31.163Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:54:15.392Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:54:15.442Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:57:26.402Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:57:27.168Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:57:39.152Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:57:39.197Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:57:49.352Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:57:49.434Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-20T21:58:36.824Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-20T21:58:37.171Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T21:13:29.204Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T21:13:29.508Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T21:38:29.775Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T21:38:30.073Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T21:59:58.445Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T21:59:59.175Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:13.634Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:13.654Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:16.304Z",
+    "url": "http://studyhub.local:3000/#",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:16.324Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:17.420Z",
+    "url": "http://studyhub.local:3000/#",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:17.441Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:17.934Z",
+    "url": "http://studyhub.local:3000/#",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:17.974Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:33.997Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:34.022Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T22:40:37.492Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:37.515Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-21T22:40:38.882Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:40:38.887Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-21T22:42:23.118Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:42:23.170Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-21T22:52:44.575Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T22:52:44.691Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "grade-tracker"
+    },
+    "timestamp": "2026-02-21T23:00:11.706Z",
+    "url": "http://studyhub.local:3000/pages/grade-tracker.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T23:00:12.012Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-21T23:00:22.544Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-21T23:00:22.616Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-22T21:11:48.835Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-22T21:11:48.917Z"
+  }
+]

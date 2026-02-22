@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer - Study Hub</title>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="study-timer.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="../index.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="timer-main">
+        <section class="timer-hero">
+            <h1 class="page-title">⏱️ Study Timer</h1>
+            <p class="page-subtitle">Használd a Pomodoro technikát a hatékonyabb tanuláshoz</p>
+        </section>
+
+        <div class="timer-container">
+            <!-- Timer Display -->
+            <div class="timer-display-wrapper">
+                <div class="timer-circle">
+                    <svg class="timer-svg" viewBox="0 0 200 200">
+                        <circle class="timer-bg-circle" cx="100" cy="100" r="90" />
+                        <circle class="timer-progress-circle" cx="100" cy="100" r="90" id="progressCircle" />
+                    </svg>
+                    <div class="timer-content">
+                        <div class="timer-mode" id="timerMode">🍅 Munkaszünet</div>
+                        <div class="timer-time" id="timerDisplay">25:00</div>
+                        <div class="timer-sessions" id="sessionCounter">1/4</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timer Controls -->
+            <div class="timer-controls">
+                <button class="timer-btn primary" id="startBtn" onclick="timerManager.startTimer()">
+                    <span class="btn-icon">▶️</span> Indítás
+                </button>
+                <button class="timer-btn secondary" id="pauseBtn" onclick="timerManager.pauseTimer()" style="display: none;">
+                    <span class="btn-icon">⏸️</span> Szünet
+                </button>
+                <button class="timer-btn reset" id="resetBtn" onclick="timerManager.resetTimer()">
+                    <span class="btn-icon">🔄</span> Újra
+                </button>
+                <button class="timer-btn skip" id="skipBtn" onclick="timerManager.skipPhase()">
+                    <span class="btn-icon">⏭️</span> Következő
+                </button>
+            </div>
+
+            <!-- Timer Settings -->
+            <div class="timer-settings">
+                <h2>⚙️ Beállítások</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label for="workTime">Munka (perc)</label>
+                        <input type="number" id="workTime" value="25" min="1" max="60" onchange="timerManager.updateSettings()">
+                    </div>
+                    <div class="setting-item">
+                        <label for="breakTime">Rövid szünet (perc)</label>
+                        <input type="number" id="breakTime" value="5" min="1" max="30" onchange="timerManager.updateSettings()">
+                    </div>
+                    <div class="setting-item">
+                        <label for="longBreakTime">Hosszú szünet (perc)</label>
+                        <input type="number" id="longBreakTime" value="15" min="1" max="60" onchange="timerManager.updateSettings()">
+                    </div>
+                    <div class="setting-item">
+                        <label for="sessionsBeforeLong">Munkák hosszú szünet előtt</label>
+                        <input type="number" id="sessionsBeforeLong" value="4" min="2" max="8" onchange="timerManager.updateSettings()">
+                    </div>
+                </div>
+                <label class="sound-toggle">
+                    <input type="checkbox" id="soundEnabled" checked onchange="timerManager.toggleSound()">
+                    <span class="toggle-label">🔔 Hangjelzés</span>
+                </label>
+            </div>
+
+            <!-- Statistics -->
+            <div class="timer-stats">
+                <h2>📊 Mai Statisztikák</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value" id="completedSessions">0</div>
+                        <div class="stat-label">Befejezett munkák</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-value" id="totalMinutes">0</div>
+                        <div class="stat-label">Perc tanulás</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Egymás utáni napok</div>
+                    </div>
+                </div>
+                <button class="clear-stats-btn" onclick="timerManager.clearStats()">📉 Statisztikák törlése</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Auth és Timer script -->
+    <script src="../utils/auth.js"></script>
+    <script src="../utils/theme.js"></script>
+    <script src="study-timer.js"></script>
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.authManager || !window.authManager.isLoggedIn()) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            // Telemetria
+            if (window.authManager && window.authManager.logPageView) {
+                window.authManager.logPageView('study-timer');
+            }
+        });
+    </script>
+</body>
+</html>
+

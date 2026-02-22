@@ -1,0 +1,712 @@
+{
+  "gradeTracker": {
+    "grades": [
+      {
+        "id": 1771111158014,
+        "subject": "Matematika",
+        "grade": 2,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:19:18.014Z"
+      },
+      {
+        "id": 1771111168091,
+        "subject": "Matematika",
+        "grade": 1,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:19:28.091Z"
+      },
+      {
+        "id": 1771111181364,
+        "subject": "Matematika",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:19:41.364Z"
+      },
+      {
+        "id": 1771111190868,
+        "subject": "Matematika",
+        "grade": 3,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:19:50.868Z"
+      },
+      {
+        "id": 1771111198645,
+        "subject": "Matematika",
+        "grade": 2,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:19:58.645Z"
+      },
+      {
+        "id": 1771111209617,
+        "subject": "Matematika",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:20:09.617Z"
+      },
+      {
+        "id": 1771111224437,
+        "subject": "Matematika",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:20:24.437Z"
+      },
+      {
+        "id": 1771111352078,
+        "subject": "Matematika",
+        "grade": 2,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:22:32.078Z"
+      },
+      {
+        "id": 1771111382119,
+        "subject": "Irodalom",
+        "grade": 2,
+        "type": "nzh",
+        "weight": 100,
+        "date": "2026-02-14T23:23:02.119Z"
+      },
+      {
+        "id": 1771111387774,
+        "subject": "Irodalom",
+        "grade": 3,
+        "type": "nzh",
+        "weight": 100,
+        "date": "2026-02-14T23:23:07.774Z"
+      },
+      {
+        "id": 1771111399320,
+        "subject": "Irodalom",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:23:19.320Z"
+      },
+      {
+        "id": 1771111427687,
+        "subject": "Irodalom",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 100,
+        "date": "2026-02-14T23:23:47.687Z"
+      },
+      {
+        "id": 1771111434388,
+        "subject": "Irodalom",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:23:54.388Z"
+      },
+      {
+        "id": 1771111446964,
+        "subject": "Irodalom",
+        "grade": 1,
+        "type": "felelés",
+        "weight": 100,
+        "date": "2026-02-14T23:24:06.964Z"
+      },
+      {
+        "id": 1771111464993,
+        "subject": "Irodalom",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:24:24.993Z"
+      },
+      {
+        "id": 1771111473162,
+        "subject": "Irodalom",
+        "grade": 5,
+        "type": "projekt",
+        "weight": 100,
+        "date": "2026-02-14T23:24:33.162Z"
+      },
+      {
+        "id": 1771111504790,
+        "subject": "Irodalom",
+        "grade": 4,
+        "type": "projekt",
+        "weight": 200,
+        "date": "2026-02-14T23:25:04.790Z"
+      },
+      {
+        "id": 1771111593858,
+        "subject": "Magyar Nyelv",
+        "grade": 3,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:26:33.858Z"
+      },
+      {
+        "id": 1771111606726,
+        "subject": "Magyar Nyelv",
+        "grade": 1,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:26:46.726Z"
+      },
+      {
+        "id": 1771111611696,
+        "subject": "Magyar Nyelv",
+        "grade": 3,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:26:51.696Z"
+      },
+      {
+        "id": 1771111619256,
+        "subject": "Magyar Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:26:59.256Z"
+      },
+      {
+        "id": 1771111624344,
+        "subject": "Magyar Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:27:04.344Z"
+      },
+      {
+        "id": 1771111670883,
+        "subject": "Történelem",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:27:50.883Z"
+      },
+      {
+        "id": 1771111674352,
+        "subject": "Történelem",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:27:54.352Z"
+      },
+      {
+        "id": 1771111680324,
+        "subject": "Történelem",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 200,
+        "date": "2026-02-14T23:28:00.324Z"
+      },
+      {
+        "id": 1771111691624,
+        "subject": "Történelem",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 200,
+        "date": "2026-02-14T23:28:11.624Z"
+      },
+      {
+        "id": 1771111720374,
+        "subject": "Történelem",
+        "grade": 5,
+        "type": "projekt",
+        "weight": 100,
+        "date": "2026-02-14T23:28:40.374Z"
+      },
+      {
+        "id": 1771111735895,
+        "subject": "Történelem",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:28:55.895Z"
+      },
+      {
+        "id": 1771111744793,
+        "subject": "Történelem",
+        "grade": 2,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:29:04.793Z"
+      },
+      {
+        "id": 1771111768766,
+        "subject": "Fizika",
+        "grade": 3,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:29:28.766Z"
+      },
+      {
+        "id": 1771111776951,
+        "subject": "Fizika",
+        "grade": 1,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:29:36.951Z"
+      },
+      {
+        "id": 1771111793709,
+        "subject": "Fizika",
+        "grade": 2,
+        "type": "felelés",
+        "weight": 100,
+        "date": "2026-02-14T23:29:53.709Z"
+      },
+      {
+        "id": 1771111800268,
+        "subject": "Fizika",
+        "grade": 5,
+        "type": "felelés",
+        "weight": 100,
+        "date": "2026-02-14T23:30:00.268Z"
+      },
+      {
+        "id": 1771111803730,
+        "subject": "Fizika",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:30:03.730Z"
+      },
+      {
+        "id": 1771111811572,
+        "subject": "Fizika",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:30:11.572Z"
+      },
+      {
+        "id": 1771112110606,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 100,
+        "date": "2026-02-14T23:35:10.606Z"
+      },
+      {
+        "id": 1771112120914,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:35:20.914Z"
+      },
+      {
+        "id": 1771112132185,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:35:32.185Z"
+      },
+      {
+        "id": 1771112143560,
+        "subject": "Angol Nyelv",
+        "grade": 2,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:35:43.560Z"
+      },
+      {
+        "id": 1771112158829,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:35:58.829Z"
+      },
+      {
+        "id": 1771112167421,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:36:07.421Z"
+      },
+      {
+        "id": 1771112174564,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:36:14.564Z"
+      },
+      {
+        "id": 1771112186056,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "egyéb",
+        "weight": 100,
+        "date": "2026-02-14T23:36:26.056Z"
+      },
+      {
+        "id": 1771112195415,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:36:35.415Z"
+      },
+      {
+        "id": 1771112200198,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 200,
+        "date": "2026-02-14T23:36:40.198Z"
+      },
+      {
+        "id": 1771112210927,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:36:50.927Z"
+      },
+      {
+        "id": 1771112218145,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:36:58.145Z"
+      },
+      {
+        "id": 1771112221486,
+        "subject": "Angol Nyelv",
+        "grade": 3,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:37:01.486Z"
+      },
+      {
+        "id": 1771112234172,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 100,
+        "date": "2026-02-14T23:37:14.172Z"
+      },
+      {
+        "id": 1771112241173,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:37:21.173Z"
+      },
+      {
+        "id": 1771112259808,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:37:39.808Z"
+      },
+      {
+        "id": 1771112270817,
+        "subject": "Angol Nyelv",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:37:50.817Z"
+      },
+      {
+        "id": 1771112280529,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:38:00.529Z"
+      },
+      {
+        "id": 1771112286120,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:38:06.120Z"
+      },
+      {
+        "id": 1771112294140,
+        "subject": "Angol Nyelv",
+        "grade": 3,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:38:14.140Z"
+      },
+      {
+        "id": 1771112304629,
+        "subject": "Angol Nyelv",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:38:24.629Z"
+      },
+      {
+        "id": 1771112324572,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:38:44.572Z"
+      },
+      {
+        "id": 1771112329819,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:38:49.819Z"
+      },
+      {
+        "id": 1771112334859,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:38:54.859Z"
+      },
+      {
+        "id": 1771112353396,
+        "subject": "Angol Nyelv",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:39:13.396Z"
+      },
+      {
+        "id": 1771113215156,
+        "subject": "Testnevelés",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:53:35.156Z"
+      },
+      {
+        "id": 1771113218955,
+        "subject": "Testnevelés",
+        "grade": 2,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:53:38.955Z"
+      },
+      {
+        "id": 1771113225824,
+        "subject": "Testnevelés",
+        "grade": 5,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:53:45.824Z"
+      },
+      {
+        "id": 1771113239073,
+        "subject": "Testnevelés",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:53:59.073Z"
+      },
+      {
+        "id": 1771113287067,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:54:47.067Z"
+      },
+      {
+        "id": 1771113302165,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:55:02.165Z"
+      },
+      {
+        "id": 1771113311292,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:55:11.292Z"
+      },
+      {
+        "id": 1771113312695,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:55:12.695Z"
+      },
+      {
+        "id": 1771113319626,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:55:19.626Z"
+      },
+      {
+        "id": 1771113322357,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:55:22.357Z"
+      },
+      {
+        "id": 1771113329285,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:55:29.285Z"
+      },
+      {
+        "id": 1771113331020,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:55:31.020Z"
+      },
+      {
+        "id": 1771113338364,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 1,
+        "type": "egyéb",
+        "weight": 50,
+        "date": "2026-02-14T23:55:38.364Z"
+      },
+      {
+        "id": 1771113346362,
+        "subject": "Informatika és Távközlési Alapok 2.",
+        "grade": 5,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:55:46.362Z"
+      },
+      {
+        "id": 1771113377656,
+        "subject": "Python Programozás",
+        "grade": 3,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:56:17.656Z"
+      },
+      {
+        "id": 1771113383790,
+        "subject": "Python Programozás",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:56:23.790Z"
+      },
+      {
+        "id": 1771113387170,
+        "subject": "Python Programozás",
+        "grade": 3,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:56:27.170Z"
+      },
+      {
+        "id": 1771113423175,
+        "subject": "Webprogramozás Alapjai",
+        "grade": 5,
+        "type": "dolgozat",
+        "weight": 50,
+        "date": "2026-02-14T23:57:03.175Z"
+      },
+      {
+        "id": 1771113430252,
+        "subject": "Webprogramozás Alapjai",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:57:10.252Z"
+      },
+      {
+        "id": 1771113437411,
+        "subject": "Webprogramozás Alapjai",
+        "grade": 5,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:57:17.411Z"
+      },
+      {
+        "id": 1771113471368,
+        "subject": "Pénzügy és Vállalkozói Ismeretek",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:57:51.368Z"
+      },
+      {
+        "id": 1771113477749,
+        "subject": "Pénzügy és Vállalkozói Ismeretek",
+        "grade": 4,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:57:57.749Z"
+      },
+      {
+        "id": 1771113509687,
+        "subject": "Pénzügy és Vállalkozói Ismeretek",
+        "grade": 4,
+        "type": "dolgozat",
+        "weight": 100,
+        "date": "2026-02-14T23:58:29.687Z"
+      },
+      {
+        "id": 1771113516215,
+        "subject": "Pénzügy és Vállalkozói Ismeretek",
+        "grade": 2,
+        "type": "zh",
+        "weight": 200,
+        "date": "2026-02-14T23:58:36.215Z"
+      }
+    ],
+    "subjects": [
+      "Matematika",
+      "Irodalom",
+      "Magyar Nyelv",
+      "Történelem",
+      "Fizika",
+      "Angol Nyelv",
+      "Testnevelés",
+      "Informatika és Távközlési Alapok 2.",
+      "Python Programozás",
+      "Webprogramozás Alapjai",
+      "Pénzügy és Vállalkozói Ismeretek"
+    ],
+    "totalXp": 5335,
+    "level": 15,
+    "streakDays": 92,
+    "lastActive": "Sun Feb 15 2026",
+    "achievements": [
+      "first_grade",
+      "study_streak",
+      "perfect_streak",
+      "five_grades",
+      "subject_Matematika",
+      "perfect_score",
+      "ten_grades",
+      "subject_Irodalom",
+      "subject_Magyar Nyelv",
+      "subject_Történelem",
+      "subject_veteran",
+      "subject_Fizika",
+      "subject_Angol Nyelv",
+      "hard_worker",
+      "subject_Informatika és Távközlési Alapok 2."
+    ]
+  }
+}

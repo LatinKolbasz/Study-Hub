@@ -1,0 +1,24 @@
+{
+  "topics": [
+    {
+      "name": "NetAcad CCNA",
+      "description": "Cisco Networking Academy's CCNA course materials.",
+      "resources": []
+    },
+    {
+      "name": "Python",
+      "description": "Study materials and resources for learning Python programming.",
+      "resources": []
+    },
+    {
+      "name": "Web Development",
+      "description": "Resources for learning HTML, CSS, JavaScript, and modern web development practices.",
+      "resources": []
+    },
+    {
+      "name": "Cisco Packet Tracer",
+      "description": "Materials and guides for using Cisco Packet Tracer for network simulation.",
+      "resources": []
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ágazati Képzések - Study Hub</title>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="sector.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="../index.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="sector-main">
+        <section class="sector-hero">
+            <h1 class="page-title">Ágazati Képzések</h1>
+            <p class="page-subtitle">Válassz egy területet és kezdj el tanulni az anyagokból</p>
+        </section>
+
+        <div class="sector-container">
+            <!-- CCNA CARD -->
+            <a href="sector/ccna.html" class="sector-card-link">
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <div class="sector-icon">🌐</div>
+                        <h2>CCNA</h2>
+                    </div>
+                    <p class="sector-description">Cisco Certified Network Associate - Hálózati alapismeretek</p>
+                    <div class="card-cta">Megnyitás →</div>
+                </div>
+            </a>
+
+            <!-- PYTHON CARD -->
+            <a href="sector/python.html" class="sector-card-link">
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <div class="sector-icon">🐍</div>
+                        <h2>Python</h2>
+                    </div>
+                    <p class="sector-description">Python programozás - Alapoktól haladóig</p>
+                    <div class="card-cta">Megnyitás →</div>
+                </div>
+            </a>
+
+            <!-- WEBFEJLESZTÉS CARD -->
+            <a href="sector/webdev.html" class="sector-card-link">
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <div class="sector-icon">💻</div>
+                        <h2>Webfejlesztés</h2>
+                    </div>
+                    <p class="sector-description">HTML, CSS, JavaScript - Teljes webalkalmazás fejlesztés</p>
+                    <div class="card-cta">Megnyitás →</div>
+                </div>
+            </a>
+
+            <!-- CISCO PACKET TRACER CARD -->
+            <a href="sector/cisco.html" class="sector-card-link">
+                <div class="sector-card">
+                    <div class="sector-header">
+                        <div class="sector-icon">⚙️</div>
+                        <h2>Cisco Packet Tracer</h2>
+                    </div>
+                    <p class="sector-description">Hálózatszimulációs szoftver - Gyakorlat</p>
+                    <div class="card-cta">Megnyitás →</div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Auth script -->
+    <script src="../utils/auth.js"></script>
+    <script src="../utils/theme.js"></script>
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.authManager || !window.authManager.isLoggedIn()) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            // Telemetria
+            if (window.authManager && window.authManager.logPageView) {
+                window.authManager.logPageView('sector');
+            }
+        });
+    </script>
+</body>
+</html>

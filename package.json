@@ -1,0 +1,31 @@
+{
+  "name": "study-hub-app",
+  "version": "1.0.0",
+  "description": "A web application for managing assignments and study materials.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build script not defined'",
+    "test": "echo 'Test script not defined'"
+  },
+  "keywords": [
+    "assignments",
+    "study",
+    "education",
+    "web development"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "live-server": "^1.2.1"
+  },
+  "homepage": "https://yourhomepage.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/study-hub-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/study-hub-app/issues"
+  }
+}

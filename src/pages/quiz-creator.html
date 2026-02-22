@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Study Hub</title>
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="quiz-creator.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="../index.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="quiz-main">
+        <section class="quiz-hero">
+            <h1 class="page-title">📝 Quiz & Dolgozat</h1>
+            <p class="page-subtitle">Készíts és oldj meg kvízeket a tanuláshoz</p>
+        </section>
+
+        <div class="quiz-container">
+            <!-- Quiz List Section -->
+            <section class="quiz-list-section" id="quizListSection">
+                <div class="section-header">
+                    <h2>📋 Elmentett Kvízek</h2>
+                    <button class="btn-create" onclick="quizManager.showCreateSection()">
+                        <span>➕</span> Új Kvíz
+                    </button>
+                </div>
+                <div id="quizList" class="quiz-list">
+                    <div class="empty-message">
+                        <p>📭 Még nincs kvízed. Készíts egy újat!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Create Quiz Section -->
+            <section class="create-section" id="createSection" style="display: none;">
+                <div class="create-header">
+                    <h2>🆕 Új Kvíz Létrehozása</h2>
+                    <button class="btn-back" onclick="quizManager.showListSection()">← Vissza</button>
+                </div>
+
+                <div class="quiz-settings">
+                    <div class="form-group">
+                        <label for="quizTitle">Kvíz neve *</label>
+                        <input type="text" id="quizTitle" placeholder="pl: Python Alapok 1." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quizDescription">Leírás (opcionális)</label>
+                        <input type="text" id="quizDescription" placeholder="pl: Az első fejezet anyaga">
+                    </div>
+                </div>
+
+                <div class="questions-container" id="questionsContainer">
+                    <!-- Questions will be added here -->
+                </div>
+
+                <div class="add-question-section">
+                    <button class="btn-add-question" onclick="quizManager.addQuestion()">
+                        <span>➕</span> kérdés hozzáadása
+                    </button>
+                </div>
+
+                <div class="save-quiz-section">
+                    <button class="btn-save-quiz" onclick="quizManager.saveQuiz()">
+                        <span>💾</span> Kvíz Mentése
+                    </button>
+                </div>
+            </section>
+
+            <!-- Take Quiz Section -->
+            <section class="take-section" id="takeSection" style="display: none;">
+                <div class="take-header">
+                    <button class="btn-back" onclick="quizManager.showListSection()">← Vissza</button>
+                    <div class="quiz-info">
+                        <h2 id="takeQuizTitle">Kvíz</h2>
+                        <div class="quiz-progress">
+                            <span id="questionNumber">1</span> / <span id="totalQuestions">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-card" id="questionCard">
+                    <div class="question-number">Kérdés <span id="currentQuestionNum">1</span></div>
+                    <div class="question-text" id="questionText">Kérdés szövege</div>
+                    <div class="answers-container" id="answersContainer">
+                        <!-- Answers will be added here -->
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn-nav prev" id="prevBtn" onclick="quizManager.prevQuestion()" style="display: none;">
+                        ← Előző
+                    </button>
+                    <button class="btn-nav next" id="nextBtn" onclick="quizManager.nextQuestion()">
+                        Következő →
+                    </button>
+                    <button class="btn-nav finish" id="finishBtn" onclick="quizManager.finishQuiz()" style="display: none;">
+                        ✅ Befejezés
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>📊 Eredmények</h2>
+                    <button class="btn-back" onclick="quizManager.showListSection()">← Új kvíz</button>
+                </div>
+
+                <div class="results-summary">
+                    <div class="result-score">
+                        <div class="score-circle" id="scoreCircle">
+                            <span id="scorePercent">0%</span>
+                        </div>
+                        <div class="score-details">
+                            <p>Helyes: <span id="correctCount" class="correct">0</span> / <span id="totalCount">0</span></p>
+                            <p>Hibás: <span id="wrongCount" class="wrong">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-breakdown" id="resultsBreakdown">
+                    <!-- Question results will be shown here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Auth és Quiz script -->
+    <script src="../utils/auth.js"></script>
+    <script src="../utils/theme.js"></script>
+    <script src="quiz-creator.js"></script>
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.authManager || !window.authManager.isLoggedIn()) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            // Telemetria
+            if (window.authManager && window.authManager.logPageView) {
+                window.authManager.logPageView('quiz-creator');
+            }
+        });
+    </script>
+</body>
+</html>
+

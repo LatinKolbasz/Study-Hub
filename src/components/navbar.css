@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #45a049;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}

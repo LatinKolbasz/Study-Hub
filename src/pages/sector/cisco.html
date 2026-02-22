@@ -1,0 +1,109 @@
+0000<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cisco Packet Tracer - Study Hub</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="sector-page.css">
+    <style>
+        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .topic-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .topic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .topic-card h3 { margin-bottom: 0.5rem; }
+        .topic-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
+        .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo"><span class="logo-icon">📚</span><span class="logo-text">Study Hub</span></div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;">🎨</button>
+                    <a href="../sector.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="sector-page-main">
+        <section class="sector-page-hero">
+            <h1 class="page-title">⚙️ Cisco Packet Tracer</h1>
+            <p class="page-subtitle">Hálózatszimuláció és gyakorlás</p>
+        </section>
+
+        <div class="sector-page-content">
+            <section class="topics-section">
+                <h2 class="section-title">📚 Témakörök</h2>
+                <div class="topics-grid" id="topicsGrid"></div>
+            </section>
+
+            <section class="upload-section">
+                <h2>📤 Saját Anyag Feltöltése</h2>
+                <div class="file-upload">
+                    <input type="file" id="file-input" class="file-input" accept=".pdf,.doc,.docx,.txt,.zip,.pkt">
+                    <label for="file-input" class="upload-label">
+                        <span class="upload-icon">📎</span>
+                        <span class="upload-text">Kattints vagy húzd ide a fájlt</span>
+                        <span class="upload-hint">PDF, DOC, DOCX, TXT, ZIP, PKT (max 10MB)</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="materials-section">
+                <h2>📁 Feltöltött Anyagok</h2>
+                <div id="material-list" class="materials-list">
+                    <div class="empty-message"><p>📭 Még nincs feltöltött anyag</p></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer><p>&copy; 2026 Study Hub</p></footer>
+
+    <div id="preview-modal" class="preview-modal" style="display: none;">
+        <div class="preview-content">
+            <div class="preview-header"><h3 id="preview-title">Fájl Előnézete</h3><button class="close-btn" onclick="closePreview()">×</button></div>
+            <div class="preview-body" id="preview-body"></div>
+        </div>
+    </div>
+
+    <script src="../../utils/auth.js"></script>
+    <script src="../../utils/theme.js"></script>
+    <script src="sector-page.js"></script>
+    <script>
+        const ciscoTopics = [
+            { id: 1, name: "Interface-ek", desc: "Router, Switch, PC konfigurálás" },
+            { id: 2, name: "IP Konfiguráció", desc: "IP címek, subnet mask, gateway" },
+            { id: 3, name: "VLAN", desc: "Virtuális LAN-ok, trunk-ek" },
+            { id: 4, name: "Routing", desc: "Statikus, dinamikus (RIP, OSPF)" },
+            { id: 5, name: "Switching", desc: "MAC tábla, VLAN routing" },
+            { id: 6, name: "ACL", desc: "Access Control Lists" },
+            { id: 7, name: "NAT", desc: "Network Address Translation" },
+            { id: 8, name: "DHCP", desc: "Dynamic Host Configuration Protocol" },
+            { id: 9, name: "DNS/HTTP", desc: "Alapvető hálózati szolgáltatások" },
+            { id: 10, name: "Gyakorlás", desc: "Mintafeladatok, vizsgakérdések" }
+        ];
+
+        function renderTopics() {
+            const grid = document.getElementById('topicsGrid');
+            grid.innerHTML = ciscoTopics.map(t => `<div class="topic-card" onclick="alert('📖 ${t.name}: ${t.desc}\n\nHamarosan!')"><h3>${t.name}</h3><p>${t.desc}</p></div>`).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (window.authManager && window.authManager.isLoggedIn()) {
+                    renderTopics();
+                    window.sectorPage = new SectorPageManager('cisco');
+                } else {
+                    window.location.href = '../../login.html';
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
+
