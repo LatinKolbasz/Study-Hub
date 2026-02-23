@@ -2,10 +2,10 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../../favico.ico">
+    <link rel="icon" href="../favico.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ágazati Képzések - Study Hub</title>
-    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="sector.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
                     <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
                         🎨
                     </button>
-                    <a href="../../index.html" class="back-btn">← Vissza</a>
+                    <a href="../index.html" class="back-btn">← Vissza</a>
                 </div>
             </div>
         </nav>
@@ -34,7 +34,7 @@
 
         <div class="sector-container">
             <!-- CCNA CARD -->
-            <a href="sector/ccna.html" class="sector-card-link">
+<a href="ccna.html" class="sector-card-link">
                 <div class="sector-card">
                     <div class="sector-header">
                         <div class="sector-icon">🌐</div>
@@ -46,7 +46,7 @@
             </a>
 
             <!-- PYTHON CARD -->
-            <a href="sector/python.html" class="sector-card-link">
+<a href="python.html" class="sector-card-link">
                 <div class="sector-card">
                     <div class="sector-header">
                         <div class="sector-icon">🐍</div>
@@ -58,7 +58,7 @@
             </a>
 
             <!-- WEBFEJLESZTÉS CARD -->
-            <a href="sector/webdev.html" class="sector-card-link">
+<a href="webdev.html" class="sector-card-link">
                 <div class="sector-card">
                     <div class="sector-header">
                         <div class="sector-icon">💻</div>
@@ -70,7 +70,7 @@
             </a>
 
             <!-- CISCO PACKET TRACER CARD -->
-            <a href="sector/cisco.html" class="sector-card-link">
+<a href="cisco.html" class="sector-card-link">
                 <div class="sector-card">
                     <div class="sector-header">
                         <div class="sector-icon">⚙️</div>
@@ -87,9 +87,9 @@
         <div class="footer-content">
             <div class="footer-brand">📚 Study Hub</div>
             <div class="footer-links">
-                <a href="../../index.html">Főoldal</a>
-                <a href="../../settings.html">Beállítások</a>
-                <a href="../../data-manager.html">Adatkezelés</a>
+                <a href="../index.html">Főoldal</a>
+                <a href="../settings.html">Beállítások</a>
+                <a href="../data-manager.html">Adatkezelés</a>
             </div>
             <div class="footer-social">
                 <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
@@ -100,13 +100,13 @@
     </footer>
 
     <!-- Auth script -->
-    <script src="../../utils/auth.js"></script>
-    <script src="../../utils/theme.js"></script>
+<script src="utils/auth.js"></script>
+<script src="utils/theme.js"></script>
     <script>
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
             if (!window.authManager || !window.authManager.isLoggedIn()) {
-                window.location.href = '../../login.html';
+                window.location.href = '../login.html';
                 return;
             }
 

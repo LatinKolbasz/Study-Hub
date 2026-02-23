@@ -25,11 +25,8 @@ const HOSTNAME = 'studyhub';
 // Middleware
 app.use(express.json({ limit: '50mb' }));
 
-// Serve root directory files first (index.html, login.html, etc.)
+// Serve root directory files (index.html, login.html, pages, utils, etc.)
 app.use(express.static(__dirname));
-
-// Then serve src directory for assets (CSS, JS, pages, etc.)
-app.use(express.static(path.join(__dirname, 'src')));
 
 // API - Telemetria (hibák és használati adatok)
 app.post('/api/telemetry', (req, res) => {
