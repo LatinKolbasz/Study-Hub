@@ -755,12 +755,9 @@
 
         // ==================== CHECK LOGGED IN ====================
 
-        // Ha már be van jelentkezve, irányítsuk át
-        setTimeout(() => {
-            if (window.authManager && window.authManager.isLoggedIn()) {
-                window.location.href = 'index.html';
-            }
-        }, 1000);
+        // Ha már be van jelentkezve, NE irányítsuk át automatikusan!
+        // Az index.html oldalon történik a bejelentkezés ellenőrzése és redirect.
+        // Ez a kód eltávolítva, hogy ne okozzon végtelen ciklust.
 
         console.log('🔐 Login oldal betöltve');
     </script>
