@@ -2,6 +2,24 @@
  * AuthManager - Bejelentkezes es Regisztracio Firebase-el
  */
 
+// Wait for Firebase to be available before creating AuthManager
+function waitForFirebase(callback) {
+    let retries = 0;
+    const maxRetries = 50; // 50 * 100ms = 5 seconds max wait
+    
+    const check = setInterval(() => {
+        if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+            clearInterval(check);
+            callback();
+        } else if (retries >= maxRetries) {
+            clearInterval(check);
+            console.error('❌ Firebase not available after waiting');
+            callback(); // Call anyway to at least try
+        }
+        retries++;
+    }, 100);
+}
+
 class AuthManager {
     constructor() {
         this.currentUser = null;
@@ -12,19 +30,10 @@ class AuthManager {
         this.authStateReady = false;
         this.pendingCheck = null;
         
-        // Várunk a Firebase init-re, majd inicializáljuk
-        if (typeof firebase !== 'undefined') {
+        // Wait for Firebase to be ready before initializing
+        waitForFirebase(() => {
             this.initFirebaseAuth();
-        } else {
-            // Firebase még nem töltődött be, várunk
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    if (typeof firebase !== 'undefined') {
-                        this.initFirebaseAuth();
-                    }
-                }, 1000);
-            });
-        }
+        });
     }
 
     initFirebaseAuth() {
