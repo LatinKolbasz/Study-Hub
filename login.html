@@ -6,23 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Hub - Bejelentkezés</title>
     <link rel="stylesheet" href="index.css">
-    
-    <!-- Firebase SDK - moved to head for proper loading order -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-    <script>
-        // Firebase konfiguráció
-        const firebaseConfig = {
-            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
-            authDomain: "study-hub-4debf.firebaseapp.com",
-            projectId: "study-hub-4debf",
-            storageBucket: "study-hub-4debf.firebasestorage.app",
-            messagingSenderId: "681045719671",
-            appId: "1:681045719671:web:8d9c665212610578f96472",
-            measurementId: "G-PGVQL7C70N"
-        };
-        firebase.initializeApp(firebaseConfig);
-    </script>
     <style>
         /* Login oldal specifikus stílusok */
         * {
@@ -545,7 +528,22 @@
     </div>
 
 
-    <!-- auth.js - Firebase is loaded in head -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase konfiguráció
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="utils/auth.js"></script>
     <script>
         // ==================== UI FUNKCIÓK ====================
