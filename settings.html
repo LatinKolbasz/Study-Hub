@@ -425,7 +425,12 @@
         function handleLogout() {
             if (confirm('Biztosan ki szeretnél jelentkezni?')) {
                 window.authManager.logout().then(() => {
-                    window.location.href = 'login.html';
+                    // Várjuk meg, hogy az auth state tényleg kijelentkezett legyen
+                    window.authManager.whenAuthReady(() => {
+                        if (!window.authManager.isLoggedIn()) {
+                            window.location.href = 'login.html';
+                        }
+                    });
                 });
             }
         }

@@ -231,15 +231,6 @@ class AuthManager {
                 emailVerified: user.emailVerified
             };
         }
-        // Globális auth ellenőrzés oldal betöltéskor
-        checkAuthAndRedirect(loginUrl = 'login.html') {
-            // Várjuk meg az auth state-et
-            this.whenAuthReady(() => {
-                if (!this.isLoggedIn()) {
-                    window.location.href = loginUrl;
-                }
-            });
-        }
         
         // Backup a localStorage-ból
         if (this.currentUser) {
@@ -256,6 +247,16 @@ class AuthManager {
         }
         
         return null;
+    }
+
+    // Globális auth ellenőrzés oldal betöltéskor
+    checkAuthAndRedirect(loginUrl = 'login.html') {
+        // Várjuk meg az auth state-et
+        this.whenAuthReady(() => {
+            if (!this.isLoggedIn()) {
+                window.location.href = loginUrl;
+            }
+        });
     }
 
     // Error message fordítás
@@ -423,3 +424,16 @@ window.addEventListener('unhandledrejection', function(event) {
 });
 
 console.log('🔐 AuthManager (Firebase) betoltve');
+
+function handleLogout() {
+    if (confirm('Biztosan ki szeretnél jelentkezni?')) {
+        window.authManager.logout().then(() => {
+            // Várjuk meg, hogy az auth state tényleg kijelentkezett legyen
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) {
+                    window.location.href = 'login.html';
+                }
+            });
+        });
+    }
+}
