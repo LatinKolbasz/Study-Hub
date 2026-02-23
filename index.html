@@ -201,16 +201,15 @@
     <script>
         // ==================== AUTH CHECK ====================
         document.addEventListener('DOMContentLoaded', () => {
-            window.authManager.checkAuthAndRedirect('login.html');
-
             window.authManager.whenAuthReady(() => {
-                if (!window.authManager.isLoggedIn()) return;
-
+                if (!window.authManager.isLoggedIn()) {
+                    // Nem vagy bejelentkezve, de nem irányítunk át automatikusan
+                    return;
+                }
                 const user = window.authManager.getUser();
                 if (user) {
                     renderUserNav(user);
                 }
-
                 if (window.authManager.logPageView) {
                     window.authManager.logPageView('index');
                 }
