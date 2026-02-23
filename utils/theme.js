@@ -561,6 +561,131 @@ setTheme(themeName, primaryColor = null) {
                 width: 100%;
             }
             
+            /* Mobile Hamburger Menu */
+            .mobile-menu-btn {
+                display: none;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 28px;
+                height: 22px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1001;
+            }
+            
+            .mobile-menu-btn span {
+                width: 100%;
+                height: 2.5px;
+                background-color: white;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+                transform-origin: left;
+            }
+            
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg);
+            }
+            
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+                transform: translateX(8px);
+            }
+            
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+            
+            /* Mobile Nav Overlay */
+            .nav-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.6);
+                z-index: 999;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+            
+            /* Mobile Navigation */
+            @media (max-width: 768px) {
+                .mobile-menu-btn {
+                    display: flex;
+                }
+                
+                .nav-user {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+                
+                .user-info {
+                    padding: 0.4rem 0.75rem;
+                }
+                
+                .user-name {
+                    display: none;
+                }
+                
+                .user-role {
+                    display: none;
+                }
+                
+                .logout-btn span {
+                    display: none;
+                }
+                
+                .logout-btn {
+                    padding: 0.4rem 0.75rem;
+                }
+                
+                .theme-toggle-btn {
+                    width: 32px;
+                    height: 32px;
+                    font-size: 1rem;
+                }
+            }
+            
+            /* Touch optimization */
+            button, a, input, select, textarea {
+                touch-action: manipulation;
+            }
+            
+            /* Prevent horizontal scroll on mobile */
+            body {
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Larger touch targets for mobile */
+            @media (max-width: 768px) {
+                .btn {
+                    min-height: 44px;
+                    padding: 0.75rem 1.25rem;
+                }
+                
+                input, select, textarea {
+                    min-height: 44px;
+                    font-size: 16px; /* Prevents iOS zoom on focus */
+                }
+                
+                .checkbox-custom,
+                input[type="checkbox"],
+                input[type="radio"] {
+                    min-width: 24px;
+                    min-height: 24px;
+                }
+            }
+            
             /* Emoji elements visibility in dark themes - ensure emojis are always visible */
             [data-theme="default"] .logo-icon,
             [data-theme="ocean"] .logo-icon,

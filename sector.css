@@ -399,19 +399,61 @@ h1 {
 
     .sector-container {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
+        padding: 0 1rem 2rem;
     }
 
     .sector-card {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .material-item {
         flex-direction: column;
         text-align: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
     }
 
     .material-btn {
         width: 100%;
+    }
+    
+    .sector-hero {
+        padding: 2rem 1rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .upload-label {
+        padding: 1rem;
+    }
+    
+    .sector-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .sector-icon {
+        font-size: 2rem;
+    }
+    
+    .sector-card h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
+    .sector-card {
+        padding: 1rem;
+    }
+    
+    .materials-list {
+        gap: 0.75rem;
     }
 }

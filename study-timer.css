@@ -463,6 +463,14 @@
     .page-title {
         font-size: 2rem;
     }
+    
+    .timer-hero {
+        padding: 2rem 1rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
 
     .timer-circle {
         width: 250px;
@@ -472,42 +480,87 @@
     .timer-time {
         font-size: 3rem;
     }
+    
+    .timer-mode {
+        font-size: 1rem;
+    }
+    
+    .timer-sessions {
+        font-size: 0.9rem;
+    }
 
     .timer-controls {
         width: 100%;
+        flex-direction: column;
     }
 
     .timer-btn {
-        flex: 1;
+        width: 100%;
         justify-content: center;
-        min-width: 120px;
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .timer-settings,
+    .timer-stats {
+        padding: 1.5rem;
+    }
+    
+    .timer-settings h2,
+    .timer-stats h2 {
+        font-size: 1.1rem;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
     }
 
     .settings-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .timer-container {
-        padding: 0 1rem;
+        padding: 0 0.75rem;
     }
 
     .timer-circle {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
     }
 
     .timer-time {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
-
+    
+    .timer-btn {
+        font-size: 0.9rem;
+    }
+    
     .settings-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 0.875rem;
+    }
+    
+    .stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.25rem;
     }
 }
 

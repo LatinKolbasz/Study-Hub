@@ -420,15 +420,31 @@
     .page-title {
         font-size: 1.75rem;
     }
+    
+    .assignments-hero {
+        padding: 2rem 1rem;
+    }
+    
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
 
     .assignments-container {
         gap: 1.5rem;
     }
-
+    
+    .form-section {
+        padding: 1.25rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1rem;
+    }
+    
     .form-row {
         grid-template-columns: 1fr;
     }
-
+    
     .assignment-item {
         padding: 1rem;
     }
@@ -448,6 +464,37 @@
 
     .task-meta {
         font-size: 0.75rem;
+    }
+    
+    .task-actions {
+        flex-wrap: wrap;
+    }
+    
+    .filter-buttons {
+        gap: 0.4rem;
+    }
+    
+    .filter-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .assignments-container {
+        padding: 0 0.75rem 1.5rem;
+    }
+    
+    .form-section {
+        padding: 1rem;
+    }
+    
+    .btn-submit {
+        padding: 0.65rem;
     }
 }
 /* Theme-aware styles */

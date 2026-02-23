@@ -1050,21 +1050,55 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .page-title { font-size: 2rem; }
+    .page-title { 
+        font-size: 2rem; 
+    }
     
-    .grade-container { padding: 0 1rem; }
+    .grade-container { 
+        padding: 0 1rem; 
+    }
     
     .player-card {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .player-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .avatar-icon {
+        font-size: 2.5rem;
+    }
+    
+    .level-badge {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .player-name {
+        font-size: 1.4rem;
     }
     
     .player-stats {
         justify-content: center;
     }
     
+    .player-stats .stat {
+        min-width: 70px;
+        padding: 0.5rem 0.75rem;
+    }
+    
     .achievements-row {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .achievement-card {
+        padding: 1rem;
     }
     
     .form-row {
@@ -1074,15 +1108,65 @@
     .analytics-grid {
         grid-template-columns: 1fr;
     }
+    
+    .grade-hero {
+        padding: 2rem 1rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .add-grade-section {
+        padding: 1.5rem;
+    }
+    
+    .subject-modal-content {
+        max-height: 90vh;
+        margin: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .page-title {
+        font-size: 1.75rem;
+    }
+    
     .achievements-row {
         grid-template-columns: 1fr;
     }
     
     .subjects-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .player-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .player-stats .stat {
+        width: 100%;
+        max-width: 150px;
+    }
+    
+    .recent-grade {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    
+    .recent-grade-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .analytics-card {
+        padding: 1rem;
     }
 }
 

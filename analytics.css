@@ -412,6 +412,7 @@ footer:hover {
     
     .summary-cards {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
     
     .summary-card {
@@ -428,6 +429,77 @@ footer:hover {
     
     .summary-value {
         font-size: 1.5rem;
+    }
+    
+    .summary-label {
+        font-size: 0.75rem;
+    }
+    
+    .chart-card {
+        padding: 1rem;
+    }
+    
+    .chart-header h3 {
+        font-size: 1rem;
+    }
+    
+    .chart-container {
+        height: 200px;
+    }
+    
+    .chart-container.small {
+        height: 150px;
+    }
+    
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .insight-card {
+        padding: 1rem;
+    }
+    
+    .heatmap-container {
+        gap: 2px;
+        padding: 0.5rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-card {
+        flex-direction: row;
+        text-align: left;
+        justify-content: flex-start;
+    }
+    
+    .summary-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .summary-value {
+        font-size: 1.25rem;
+    }
+    
+    .charts-row {
+        gap: 1rem;
     }
 }
 
