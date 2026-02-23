@@ -405,15 +405,13 @@
     <script>
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
-            // Várunk egy kicsit, hogy az authManager inicializálódjon
-            setTimeout(() => {
-                if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = 'login.html';
-                    return;
-                }
+            window.authManager.checkAuthAndRedirect('login.html');
+
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
                 console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.getUser()?.username);
                 loadSettings();
-            }, 500);
+            });
         });
 
         // Legacy - getUser a régi struktúrához

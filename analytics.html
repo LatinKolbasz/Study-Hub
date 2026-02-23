@@ -135,8 +135,8 @@
             <div class="footer-brand">📚 Study Hub</div>
             <div class="footer-links">
                 <a href="index.html">Főoldal</a>
-                <a href="../settings.html">Beállítások</a>
-                <a href="../data-manager.html">Adatkezelés</a>
+                <a href="settings.html">Beállítások</a>
+                <a href="data-manager.html">Adatkezelés</a>
             </div>
             <div class="footer-social">
                 <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
@@ -165,16 +165,14 @@
     <script src="utils/theme.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = '../login.html';
-                    return;
-                }
-                
-                // Felhasználó prefix
+            window.authManager.checkAuthAndRedirect('login.html');
+
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
+
                 const user = window.authManager.getUser();
                 if (!user) return;
-                
+
                 const username = user.username || user.email.split('@')[0];
                 let hash = 0;
                 for (let i = 0; i < username.length; i++) {
@@ -182,20 +180,18 @@
                     hash = hash & hash;
                 }
                 const prefix = 'studyhub_' + Math.abs(hash).toString(36) + '_';
-                
-                // Grade data
+
                 const gradeData = JSON.parse(localStorage.getItem(prefix + 'gradeTracker') || '{"totalXp":0,"level":1}');
                 document.getElementById('totalXp').textContent = gradeData.totalXp || 0;
                 document.getElementById('currentLevel').textContent = gradeData.level || 1;
-                
-                // Timer data
+
                 const timerData = JSON.parse(localStorage.getItem(prefix + 'stats') || '{"totalMinutes":0,"completedSessions":0,"streak":0}');
                 document.getElementById('totalStudyTime').textContent = timerData.totalMinutes ? `${Math.floor(timerData.totalMinutes/60)}ó ${timerData.totalMinutes%60}p` : '0 perc';
                 document.getElementById('totalSessions').textContent = timerData.completedSessions || 0;
                 document.getElementById('currentStreak').textContent = timerData.streak || 0;
-                
+
                 console.log('✅ Analytics összesítő betöltve');
-            }, 500);
+            });
         });
     </script>
 </body>

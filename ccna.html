@@ -43,7 +43,7 @@
                     <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;">
                         🎨
                     </button>
-                    <a href="../sector.html" class="back-btn">← Vissza</a>
+                    <a href="sector.html" class="back-btn">← Vissza</a>
                 </div>
             </div>
         </nav>
@@ -137,14 +137,13 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                if (window.authManager && window.authManager.isLoggedIn()) {
-                    renderTopics();
-                    window.sectorPage = new SectorPageManager('ccna');
-                } else {
-                    window.location.href = '../login.html';
-                }
-            }, 500);
+            window.authManager.checkAuthAndRedirect('login.html');
+
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
+                renderTopics();
+                window.sectorPage = new SectorPageManager('ccna');
+            });
         });
     </script>
 </body>

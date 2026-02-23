@@ -201,28 +201,20 @@
     <script>
         // ==================== AUTH CHECK ====================
         document.addEventListener('DOMContentLoaded', () => {
-            // Várjunk kicsit a Firebase inicializálásra
-            setTimeout(() => {
-                // Bejelentkezés ellenőrzése
-                if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    // Átirányítás login oldalra
-                    window.location.href = 'login.html';
-                    return;
-                }
+            window.authManager.checkAuthAndRedirect('login.html');
 
-                // Bejelentkezett felhasználó adatai
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
+
                 const user = window.authManager.getUser();
                 if (user) {
                     renderUserNav(user);
                 }
 
-                // Theme beállítások automatikusan betöltődnek a theme.js által
-
-                // Telemetria - oldal betöltés
-                if (window.authManager && window.authManager.logPageView) {
+                if (window.authManager.logPageView) {
                     window.authManager.logPageView('index');
                 }
-            }, 500);
+            });
         });
 
         // Beállítások betöltése és alkalmazása

@@ -38,9 +38,14 @@ class AuthManager {
         if (this.authInitialized) return;
         
         const self = this;
+        const auth = firebase.auth();
+
+        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch((error) => {
+            console.warn('⚠️ Auth persistence beállítás sikertelen:', error?.message || error);
+        });
         
         // Firebase Auth state listener
-        firebase.auth().onAuthStateChanged(function(user) {
+        auth.onAuthStateChanged(function(user) {
             console.log('🔄 Auth state changed:', user ? user.email : 'none');
             
             if (user) {
@@ -251,10 +256,17 @@ class AuthManager {
 
     // Globális auth ellenőrzés oldal betöltéskor
     checkAuthAndRedirect(loginUrl = 'login.html') {
+        if (window.location.pathname.endsWith('/login.html')) {
+            return;
+        }
+
         // Várjuk meg az auth state-et
         this.whenAuthReady(() => {
             if (!this.isLoggedIn()) {
-                window.location.href = loginUrl;
+                const targetUrl = new URL(loginUrl, window.location.href).href;
+                if (window.location.href !== targetUrl) {
+                    window.location.replace(targetUrl);
+                }
             }
         });
     }

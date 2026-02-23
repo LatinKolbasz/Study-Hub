@@ -121,8 +121,8 @@
             <div class="footer-brand">📚 Study Hub</div>
             <div class="footer-links">
                 <a href="index.html">Főoldal</a>
-                <a href="../settings.html">Beállítások</a>
-                <a href="../data-manager.html">Adatkezelés</a>
+                <a href="settings.html">Beállítások</a>
+                <a href="data-manager.html">Adatkezelés</a>
             </div>
             <div class="footer-social">
                 <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
@@ -153,17 +153,15 @@
     <script>
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = '../login.html';
-                    return;
-                }
+            window.authManager.checkAuthAndRedirect('login.html');
 
-                // Telemetria
-                if (window.authManager && window.authManager.logPageView) {
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
+
+                if (window.authManager.logPageView) {
                     window.authManager.logPageView('study-timer');
                 }
-            }, 500);
+            });
         });
     </script>
 </body>
