@@ -458,8 +458,8 @@
             <!-- Bejelentkező form -->
             <form id="loginForm" class="auth-form active">
                 <div class="form-group">
-                    <label class="form-label">Felhasználónév</label>
-                    <input type="text" id="loginUsername" class="form-input" placeholder="Írd be a felhasználóneved" required>
+                    <label class="form-label">Email cím</label>
+                    <input type="email" id="loginUsername" class="form-input" placeholder="email@pelda.hu" required>
                 </div>
 
                 <div class="form-group">
@@ -474,6 +474,11 @@
                     🚀 Bejelentkezés
                 </button>
 
+                <!-- Google Bejelentkezés gomb -->
+                <button type="button" class="submit-btn google-btn" onclick="loginWithGoogle()" style="margin-top: 10px; background: #4285f4;">
+                    🔵 Google-val bejelentkezés
+                </button>
+
                 <p class="info-text">
                     Nincs még fiókod? <a href="#" onclick="switchTab('register')">Regisztrálj!</a>
                 </p>
@@ -482,19 +487,14 @@
             <!-- Regisztrációs form -->
             <form id="registerForm" class="auth-form">
                 <div class="form-group">
-                    <label class="form-label">Felhasználónév *</label>
-                    <input type="text" id="regUsername" class="form-input" placeholder="Legalább 3 karakter" required minlength="3">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Email (opcionális)</label>
-                    <input type="email" id="regEmail" class="form-input" placeholder="email@pelda.hu">
+                    <label class="form-label">Email cím *</label>
+                    <input type="email" id="regUsername" class="form-input" placeholder="email@pelda.hu" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Jelszó *</label>
                     <div class="password-toggle">
-                        <input type="password" id="regPassword" class="form-input" placeholder="Legalább 4 karakter" required minlength="4">
+                        <input type="password" id="regPassword" class="form-input" placeholder="Legalább 6 karakter" required minlength="6">
                         <button type="button" class="password-toggle-btn" onclick="togglePassword('regPassword')">👁️</button>
                     </div>
                 </div>
@@ -518,9 +518,9 @@
                 <div class="security-tips">
                     <h4>🔒 Biztonsági tippek</h4>
                     <ul>
-                        <li>Erős jelszót használj (min. 8 karakter, betű + szám)</li>
+                        <li>Erős jelszót használj (min. 6 karakter)</li>
                         <li>Ne oszd meg a jelszavad másokkal</li>
-                        <li>A jelszavad titkosítva van tárolva</li>
+                        <li>Email megerősítés szükséges</li>
                     </ul>
                 </div>
             </form>
@@ -528,6 +528,22 @@
     </div>
 
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase konfiguráció
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="utils/auth.js"></script>
     <script>
         // ==================== UI FUNKCIÓK ====================
@@ -595,22 +611,48 @@
 
         // ==================== LOGIN ====================
 
+        // Várjunk a Firebase és AuthManager inicializálására
+        function waitForAuthManager() {
+            return new Promise((resolve) => {
+                const check = setInterval(() => {
+                    if (window.authManager && window.authManager.authInitialized) {
+                        clearInterval(check);
+                        resolve();
+                    }
+                }, 100);
+                // Timeout után is resolve
+                setTimeout(() => {
+                    clearInterval(check);
+                    resolve();
+                }, 2000);
+            });
+        }
+
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             hideAlert();
 
-            const username = document.getElementById('loginUsername').value.trim();
+            const email = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value;
 
-            if (!username || !password) {
+            // Email validáció
+            if (!email || !password) {
                 showAlert('❌ Kérlek, töltsd ki az összes mezőt!');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                showAlert('❌ Kérlek, adj meg érvényes email címet!');
                 return;
             }
 
             setLoading('loginBtn', true, 'Bejelentkezés');
 
             try {
-                const result = await window.authManager.login(username, password);
+                // Várjunk az authManager-re
+                await waitForAuthManager();
+                
+                const result = await window.authManager.login(email, password);
 
                 if (result.success) {
                     showAlert('✅ Sikeres bejelentkezés!', 'success');
@@ -630,20 +672,49 @@
             }
         });
 
+        // Google Bejelentkezés
+        async function loginWithGoogle() {
+            hideAlert();
+            setLoading('loginBtn', true, 'Google bejelentkezés');
+            
+            try {
+                await waitForAuthManager();
+                const result = await window.authManager.loginWithGoogle();
+                
+                if (result.success) {
+                    showAlert('✅ Sikeres bejelentkezés!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(result.message);
+                }
+            } catch (error) {
+                showAlert('❌ Hiba történt: ' + error.message);
+            } finally {
+                setLoading('loginBtn', false, '🚀 Bejelentkezés');
+            }
+        }
+
         // ==================== REGISTER ====================
 
         document.getElementById('registerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             hideAlert();
 
-            const username = document.getElementById('regUsername').value.trim();
-            const email = document.getElementById('regEmail').value.trim();
+            const email = document.getElementById('regUsername').value.trim(); // Most email lesz
+            const username = email.split('@')[0]; // Username az email első fele
             const password = document.getElementById('regPassword').value;
             const password2 = document.getElementById('regPassword2').value;
 
             // Validáció
-            if (!username || !password || !password2) {
+            if (!email || !password || !password2) {
                 showAlert('❌ A csillaggal jelölt mezők kitöltése kötelező!');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                showAlert('❌ Kérlek, adj meg érvényes email címet!');
                 return;
             }
 
@@ -652,27 +723,25 @@
                 return;
             }
 
-            if (password.length < 4) {
-                showAlert('❌ A jelszónak legalább 4 karakter hosszúnak kell lennie!');
-                return;
-            }
-
-            if (username.length < 3) {
-                showAlert('❌ A felhasználónévnek legalább 3 karakter hosszúnak kell lennie!');
+            if (password.length < 6) {
+                showAlert('❌ A jelszónak legalább 6 karakter hosszúnak kell lennie!');
                 return;
             }
 
             setLoading('registerBtn', true, 'Regisztráció');
 
             try {
-                const result = await window.authManager.register(username, password, email);
+                await waitForAuthManager();
+                const result = await window.authManager.register(email, password, username);
 
                 if (result.success) {
-                    showAlert('✅ Fiók létrehozva! Átirányítás...', 'success');
+                    showAlert('✅ Fiók létrehozva! Ellenőrizd az emailt!', 'success');
                     
                     setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 1500);
+                        // Váltás login tab-ra
+                        switchTab('login');
+                        document.getElementById('loginUsername').value = email;
+                    }, 2000);
                 } else {
                     showAlert(result.message);
                 }
@@ -687,9 +756,11 @@
         // ==================== CHECK LOGGED IN ====================
 
         // Ha már be van jelentkezve, irányítsuk át
-        if (window.authManager && window.authManager.isLoggedIn()) {
-            window.location.href = 'index.html';
-        }
+        setTimeout(() => {
+            if (window.authManager && window.authManager.isLoggedIn()) {
+                window.location.href = 'index.html';
+            }
+        }, 1000);
 
         console.log('🔐 Login oldal betöltve');
     </script>

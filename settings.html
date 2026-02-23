@@ -386,6 +386,20 @@
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
     <script>
@@ -394,14 +408,27 @@
             // Várunk egy kicsit, hogy az authManager inicializálódjon
             setTimeout(() => {
                 if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    // Login átirányítás kikapcsolva
-                    // window.location.href = 'login.html';
+                    window.location.href = 'login.html';
                     return;
                 }
-                console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.currentUser?.username);
+                console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.getUser()?.username);
                 loadSettings();
-            }, 100);
+            }, 500);
         });
+
+        // Legacy - getUser a régi struktúrához
+        function getCurrentUser() {
+            return window.authManager?.getUser();
+        }
+
+        // Logout function that works with Firebase
+        function handleLogout() {
+            if (confirm('Biztosan ki szeretnél jelentkezni?')) {
+                window.authManager.logout().then(() => {
+                    window.location.href = 'login.html';
+                });
+            }
+        }
 
         function showSection(id, btn) {
             document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
@@ -417,8 +444,9 @@
 
         // Konzisztens prefix generálás - ugyanaz mint grade-tracker.js és auth.js
         function getUserPrefix() {
-            if (window.authManager && window.authManager.currentUser) {
-                const username = window.authManager.currentUser.username;
+            const user = window.authManager?.getUser();
+            if (user) {
+                const username = user.username || user.email.split('@')[0];
                 const hash = simpleHash(username);
                 // Ugyanaz a formátum mint grade-tracker.js: studyhub_hash_gradeTracker
                 return 'studyhub_' + hash + '_';
@@ -453,12 +481,13 @@
             const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
             console.log('⚙️ Betöltött beállítások:', settings);
             
-            // Profil
-            if (window.authManager && window.authManager.currentUser) {
-                document.getElementById('username').value = window.authManager.currentUser.username;
-                document.getElementById('email').value = window.authManager.currentUser.email || '';
-                document.getElementById('profileAvatar').textContent = window.authManager.currentUser.username.charAt(0).toUpperCase();
-                document.getElementById('profileName').textContent = window.authManager.currentUser.username;
+            // Profil - Firebase user adatok
+            const user = window.authManager?.getUser();
+            if (user) {
+                document.getElementById('username').value = user.username || user.email.split('@')[0];
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('profileAvatar').textContent = (user.username || user.email.split('@')[0]).charAt(0).toUpperCase();
+                document.getElementById('profileName').textContent = user.username || user.email.split('@')[0];
                 
                 // Bio betöltése
                 if (settings.bio) {

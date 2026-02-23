@@ -239,34 +239,49 @@
     </footer>
 
     <!-- Auth és Grade Tracker script -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
     <script src="grade-tracker.js"></script>
     <script>
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
-            if (!window.authManager || !window.authManager.isLoggedIn()) {
-                // Login átirányítás kikapcsolva
-                // window.location.href = '../login.html';
-                return;
-            }
-
-            // Felhasználó név beállítása
-            const user = window.authManager.getUser();
-            if (user) {
-                const playerName = document.getElementById('playerName');
-                if (playerName) {
-                    playerName.textContent = user.username;
+            setTimeout(() => {
+                if (!window.authManager || !window.authManager.isLoggedIn()) {
+                    window.location.href = '../login.html';
+                    return;
                 }
-                
-                const playerAvatar = document.getElementById('playerAvatar');
-                if (playerAvatar) {
-                    const avatarIcon = playerAvatar.querySelector('.avatar-icon');
-                    if (avatarIcon) {
-                        avatarIcon.textContent = user.username.charAt(0).toUpperCase();
+
+                // Felhasználó név beállítása
+                const user = window.authManager.getUser();
+                if (user) {
+                    const playerName = document.getElementById('playerName');
+                    if (playerName) {
+                        playerName.textContent = user.username;
+                    }
+                    
+                    const playerAvatar = document.getElementById('playerAvatar');
+                    if (playerAvatar) {
+                        const avatarIcon = playerAvatar.querySelector('.avatar-icon');
+                        if (avatarIcon) {
+                            avatarIcon.textContent = user.username.charAt(0).toUpperCase();
+                        }
                     }
                 }
-            }
+            }, 500);
         });
     </script>
 </body>

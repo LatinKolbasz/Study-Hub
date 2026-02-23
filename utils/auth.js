@@ -1,7 +1,5 @@
-
 /**
- * AuthManager - Bejelentkezes es Regisztracio
- * Egyszeru hasheles (mukodik HTTP-n is)
+ * AuthManager - Bejelentkezes es Regisztracio Firebase-el
  */
 
 class AuthManager {
@@ -10,134 +8,252 @@ class AuthManager {
         this.tokenKey = 'studyhub_token';
         this.userKey = 'studyhub_user';
         this.usersKey = 'studyhub_users';
-        this.init();
+        this.authInitialized = false;
+        
+        // Várunk a Firebase init-re, majd inicializáljuk
+        if (typeof firebase !== 'undefined') {
+            this.initFirebaseAuth();
+        } else {
+            // Firebase még nem töltődött be, várunk
+            window.addEventListener('load', () => {
+                setTimeout(() => this.initFirebaseAuth(), 500);
+            });
+        }
     }
 
-    init() {
-        const token = localStorage.getItem(this.tokenKey);
-        const userData = localStorage.getItem(this.userKey);
+    initFirebaseAuth() {
+        if (this.authInitialized) return;
         
-        if (token && userData) {
-            try {
-                // Handle empty string case
-                if (!userData || userData.trim() === '') {
-                    this.logout();
-                    return;
+        const self = this;
+        
+        // Firebase Auth state listener
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // Felhasználó bejelentkezve
+                self.currentUser = {
+                    id: user.uid,
+                    username: user.displayName || user.email.split('@')[0],
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    emailVerified: user.emailVerified
+                };
+                
+                // Mentés localStorage-ba is
+                localStorage.setItem(self.tokenKey, user.uid);
+                localStorage.setItem(self.userKey, JSON.stringify(self.currentUser));
+                
+                console.log('✅ Firebase felhasznalo bejelentkezve:', user.email);
+                
+                // Oldal újratöltés az UI frissítéséhez
+                if (window.location.pathname.includes('login.html')) {
+                    // Login oldalon vagyunk, ne irányítsuk át
+                } else if (!window.location.pathname.includes('index.html') || self.justLoggedOut) {
+                    // Ellenőrizzük, hogy index.html-n vagyunk-e
                 }
-                const user = JSON.parse(userData);
-                if (this.validateToken(token, user.username)) {
-                    this.currentUser = user;
-                    this.setupUserData(user.username);
-                    console.log('✅ Felhasznalo bejelentkezve:', user.username);
-                } else {
-                    this.logout();
+                
+                self.justLoggedOut = false;
+                
+            } else {
+                // Nincs bejelentkezve
+                self.currentUser = null;
+                localStorage.removeItem(self.tokenKey);
+                localStorage.removeItem(self.userKey);
+                
+                console.log('❌ Nincs bejelentkezve');
+                
+                // Ha nem vagyunk login oldalon, irányítsuk oda
+                const currentPage = window.location.pathname;
+                if (!currentPage.includes('login.html') && !currentPage.includes('/index.html')) {
+                    // Még nem történt redirect, ellenőrizzük
+                    self.checkAuthAndRedirect();
                 }
-            } catch (e) {
-                console.error('❌ Auth init hiba:', e);
-                this.logout();
+            }
+            
+            self.authInitialized = true;
+        });
+    }
+
+    checkAuthAndRedirect() {
+        // Ellenőrzi, hogy be vagy-e jelentkezve, ha nem, átirányít loginra
+        const currentPage = window.location.pathname;
+        
+        // Login és index oldalon ne redirecteljen
+        if (currentPage.includes('login.html')) return;
+        
+        if (!this.isLoggedIn()) {
+            // Ellenőrizzük, hogy a Firebase már inicializálva van-e
+            if (this.authInitialized) {
+                window.location.href = 'login.html';
             }
         }
     }
 
-    async register(username, password, email = '') {
-        if (!username || username.length < 3) {
-            return { success: false, message: '❌ A felhasznalonevnek legalabb 3 karakter kell!' };
-        }
-        
-        if (!password || password.length < 4) {
-            return { success: false, message: '❌ A jelszonak legalabb 4 karakter kell!' };
-        }
+    async register(email, password, displayName = '') {
+        try {
+            // Ellenőrzés
+            if (!email || !password) {
+                return { success: false, message: '❌ Email és jelszó szükséges!' };
+            }
+            
+            if (password.length < 6) {
+                return { success: false, message: '❌ A jelszónak legalább 6 karakter kell!' };
+            }
 
-        const users = this.getUsers();
-        
-        if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
-            return { success: false, message: '❌ Ez a felhasznalonev mar foglalt!' };
+            // Firebase regisztráció
+            const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+            
+            // Display name beállítása ha van
+            if (displayName) {
+                await userCredential.user.updateProfile({
+                    displayName: displayName
+                });
+            }
+            
+            // Email verification
+            await userCredential.user.sendEmailVerification();
+            
+            console.log('✅ Regisztráció sikeres:', userCredential.user.email);
+            
+            return { 
+                success: true, 
+                message: '✅ Fiók létrehozva! Email megerősítés elküldve.',
+                user: {
+                    id: userCredential.user.uid,
+                    email: userCredential.user.email,
+                    displayName: displayName || email.split('@')[0]
+                }
+            };
+            
+        } catch (error) {
+            console.error('❌ Regisztráció hiba:', error);
+            return { 
+                success: false, 
+                message: this.getErrorMessage(error.code)
+            };
         }
-        
-        const salt = this.generateSalt();
-        const hash = this.hashPassword(password, salt);
-        
-        const newUser = {
-            id: Date.now(),
-            username: username.trim(),
-            email: email.trim(),
-            passwordHash: hash,
-            salt: salt,
-            createdAt: new Date().toISOString(),
-            lastLogin: new Date().toISOString(),
-            role: 'user',
-            settings: { theme: 'default', notifications: true }
-        };
-        
-        users.push(newUser);
-        this.saveUsers(users);
-        this.createUserDataFolder(username);
-        
-        return this.login(username, password);
     }
 
-    async login(username, password) {
-        const users = this.getUsers();
-        const user = users.find(u => u.username.toLowerCase() === username.toLowerCase());
-        
-        if (!user) {
-            this.logAuthAttempt(username, false, 'user_not_found');
-            return { success: false, message: '❌ Hibas felhasznalonev vagy jelszo!' };
+    async login(email, password) {
+        try {
+            if (!email || !password) {
+                return { success: false, message: '❌ Email és jelszó szükséges!' };
+            }
+
+            // Firebase bejelentkezés
+            const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+            
+            console.log('✅ Bejelentkezés sikeres:', userCredential.user.email);
+            
+            return { 
+                success: true, 
+                message: '✅ Sikeres bejelentkezés!',
+                user: {
+                    id: userCredential.user.uid,
+                    email: userCredential.user.email,
+                    displayName: userCredential.user.displayName || email.split('@')[0]
+                }
+            };
+            
+        } catch (error) {
+            console.error('❌ Bejelentkezés hiba:', error);
+            return { 
+                success: false, 
+                message: this.getErrorMessage(error.code)
+            };
         }
-        
-        const hash = this.hashPassword(password, user.salt);
-        
-        if (hash !== user.passwordHash) {
-            this.logAuthAttempt(username, false, 'wrong_password');
-            return { success: false, message: '❌ Hibas felhasznalonev vagy jelszo!' };
-        }
-        
-        user.lastLogin = new Date().toISOString();
-        this.saveUsers(users);
-        
-        const token = this.generateToken(username);
-        
-        localStorage.setItem(this.tokenKey, token);
-        localStorage.setItem(this.userKey, JSON.stringify({
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            role: user.role,
-            loginTime: new Date().toISOString()
-        }));
-        
-        this.currentUser = user;
-        this.setupUserData(username);
-        
-        this.logAuthAttempt(username, true, 'success');
-        console.log('✅ Bejelentkezes sikeres:', username);
-        
-        return { 
-            success: true, 
-            message: '✅ Sikeres bejelentkezes!',
-            user: { id: user.id, username: user.username, email: user.email, role: user.role }
-        };
     }
 
-    logout() {
-        localStorage.removeItem(this.tokenKey);
-        localStorage.removeItem(this.userKey);
-        localStorage.removeItem('studyhub_userdata_prefix');
-        this.currentUser = null;
-        // Login eltávolítva - ne irányítson át
-        // window.location.href = 'login.html';
+    async loginWithGoogle() {
+        try {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            const result = await firebase.auth().signInWithPopup(provider);
+            
+            console.log('✅ Google bejelentkezés sikeres:', result.user.email);
+            
+            return { 
+                success: true, 
+                message: '✅ Sikeres bejelentkezés!',
+                user: {
+                    id: result.user.uid,
+                    email: result.user.email,
+                    displayName: result.user.displayName
+                }
+            };
+            
+        } catch (error) {
+            console.error('❌ Google bejelentkezés hiba:', error);
+            return { 
+                success: false, 
+                message: this.getErrorMessage(error.code)
+            };
+        }
+    }
+
+    async logout() {
+        try {
+            this.justLoggedOut = true;
+            await firebase.auth().signOut();
+            
+            // Tisztítás
+            localStorage.removeItem(this.tokenKey);
+            localStorage.removeItem(this.userKey);
+            localStorage.removeItem('studyhub_userdata_prefix');
+            
+            console.log('✅ Kijelentkezés sikeres');
+            
+            return { success: true, message: '✅ Kijelentkezés sikeres!' };
+        } catch (error) {
+            console.error('❌ Kijelentkezés hiba:', error);
+            return { success: false, message: '❌ Hiba történt kijelentkezéskor!' };
+        }
     }
 
     isLoggedIn() {
-        // Mindig bejelentkezve (login rendszer kikapcsolva)
-        return true;
+        // Ellenőrizzük a Firebase auth állapotot
+        if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+            return true;
+        }
+        
+        // Ellenőrizzük a localStorage-t is (backup)
+        const token = localStorage.getItem(this.tokenKey);
+        const userData = localStorage.getItem(this.userKey);
+        
+        return !!(token && userData);
     }
 
     getUser() {
-        return this.currentUser;
+        // Próbáljuk meg a Firebase user-t
+        if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+            const user = firebase.auth().currentUser;
+            return {
+                id: user.uid,
+                username: user.displayName || user.email.split('@')[0],
+                email: user.email,
+                photoURL: user.photoURL,
+                emailVerified: user.emailVerified
+            };
+        }
+        
+        // Backup a localStorage-ból
+        if (this.currentUser) {
+            return this.currentUser;
+        }
+        
+        const userData = localStorage.getItem(this.userKey);
+        if (userData) {
+            try {
+                return JSON.parse(userData);
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        return null;
     }
 
     getUsersList() {
+        // Firebase nem tárolja a user listát publikusan
+        // LocalStorage backup használata
         const users = this.getUsers();
         return users.map(u => ({
             id: u.id,
@@ -149,7 +265,28 @@ class AuthManager {
         }));
     }
 
-    // Hash metodusok
+    // Error message fordítás
+    getErrorMessage(errorCode) {
+        const messages = {
+            'auth/email-already-in-use': '❌ Ez az email már regisztrálva van!',
+            'auth/invalid-email': '❌ Érvénytelen email cím!',
+            'auth/operation-not-allowed': '❌ Ez a művelet nem engedélyezett!',
+            'auth/weak-password': '❌ Túl gyenge jelszó!',
+            'auth/user-disabled': '❌ Ez a fiók le van tiltva!',
+            'auth/user-not-found': '❌ Nincs ilyen felhasználó!',
+            'auth/wrong-password': '❌ Hibás jelszó!',
+            'auth/invalid-credential': '❌ Hibás email vagy jelszó!',
+            'auth/invalid-api-key': '❌ Érvénytelen API kulcs!',
+            'auth/network-request-failed': '❌ Hálózati hiba!',
+            'auth/too-many-requests': '❌ Túl sok próbálkozás!',
+            'auth/popup-closed-by-user': '❌ A popup bezárult!',
+            'auth/cancelled-popup-request': '❌ A popup megszakadt!'
+        };
+        
+        return messages[errorCode] || '❌ Hiba történt: ' + errorCode;
+    }
+
+    // Legacy methods - backward compatibility
     generateSalt() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let salt = '';
@@ -203,7 +340,7 @@ class AuthManager {
         }
     }
 
-    // Storage metodusok
+    // Storage metodusok - legacy
     getUsers() {
         const users = localStorage.getItem(this.usersKey);
         return users ? JSON.parse(users) : [];
@@ -214,7 +351,6 @@ class AuthManager {
     }
 
     setupUserData(username) {
-        // Ugyanazt a hash-t használjuk mint a grade-tracker.js (toString(36))
         let hash = 0;
         for (let i = 0; i < username.length; i++) {
             const char = username.charCodeAt(i);
@@ -260,7 +396,6 @@ class AuthManager {
         });
         if (logs.length > 100) logs.splice(0, logs.length - 100);
         localStorage.setItem('studyhub_auth_logs', JSON.stringify(logs));
-        this.sendTelemetry({ type: 'auth_attempt', data: { username, success, reason } });
     }
 
     async sendTelemetry(data) {
@@ -288,7 +423,6 @@ class AuthManager {
         });
         if (logs.length > 50) logs.splice(0, logs.length - 50);
         localStorage.setItem('studyhub_error_logs', JSON.stringify(logs));
-        this.sendTelemetry({ type: 'error', data: { error: error.toString(), context } });
     }
 
     logPageView(page) {
@@ -323,9 +457,11 @@ class UserStorage {
     }
 }
 
+// AuthManager és UserStorage létrehozása
 window.authManager = new AuthManager();
 window.userStorage = new UserStorage(window.authManager);
 
+// Error handling
 window.addEventListener('error', function(event) {
     if (window.authManager && window.authManager.isLoggedIn()) {
         window.authManager.logError(event.error || event.message, event.filename);
@@ -338,5 +474,5 @@ window.addEventListener('unhandledrejection', function(event) {
     }
 });
 
-console.log('🔐 AuthManager betoltve');
+console.log('🔐 AuthManager (Firebase) betoltve');
 
