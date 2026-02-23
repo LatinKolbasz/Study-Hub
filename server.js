@@ -25,7 +25,7 @@ const HOSTNAME = 'studyhub';
 // Middleware
 app.use(express.json({ limit: '50mb' }));
 
-// Serve root directory files (index.html, login.html, pages, utils, etc.)
+// Serve root directory files (index.html, pages, utils, etc.)
 app.use(express.static(__dirname));
 
 // API - Telemetria (hibák és használati adatok)
@@ -206,9 +206,6 @@ app.listen(PORT, '0.0.0.0', () => {
 ║     http://${LOCAL_IP}:${PORT}            ║
 ║  🌐 Bárhonnan (mDNS - AJÁNLOTT!):         ║
 ║     http://${HOSTNAME}.local:${PORT}      ║
-╠═══════════════════════════════════════════╣
-║  ✨ Bejelentkezés: /login.html            ║
-║  🔐 Auth: Kliens oldali (Web Crypto API)  ║
 ╚═══════════════════════════════════════════╝
     `);
 });

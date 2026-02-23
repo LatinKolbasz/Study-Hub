@@ -12,8 +12,6 @@ class AssignmentManager {
         console.log('📥 Beadandók betöltése...');
         
         // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            window.location.href = '../login.html';
             return;
         }
 

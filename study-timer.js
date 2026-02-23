@@ -51,8 +51,6 @@ class StudyTimerManager {
         console.log('⏱️ StudyTimerManager inicializálása...');
         
         // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            window.location.href = '../login.html';
             return;
         }
 
