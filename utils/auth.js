@@ -231,6 +231,15 @@ class AuthManager {
                 emailVerified: user.emailVerified
             };
         }
+        // Globális auth ellenőrzés oldal betöltéskor
+        checkAuthAndRedirect(loginUrl = 'login.html') {
+            // Várjuk meg az auth state-et
+            this.whenAuthReady(() => {
+                if (!this.isLoggedIn()) {
+                    window.location.href = loginUrl;
+                }
+            });
+        }
         
         // Backup a localStorage-ból
         if (this.currentUser) {
