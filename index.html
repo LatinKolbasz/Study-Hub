@@ -312,13 +312,7 @@
         // Kijelentkezés kezelése
         function handleLogout() {
             if (confirm('Biztosan ki szeretnél jelentkezni?')) {
-                window.authManager.logout().then(() => {
-                    window.authManager.whenAuthReady(() => {
-                        if (!window.authManager.isLoggedIn()) {
-                            window.location.href = 'login.html';
-                        }
-                    });
-                });
+                window.authManager.logout();
             }
         }
 
