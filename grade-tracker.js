@@ -70,8 +70,6 @@ class GradeTracker {
         console.log('🏆 GradeTracker inicializálása...');
         
         // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            window.location.href = '../login.html';
             return;
         }
 

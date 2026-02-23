@@ -4563,5 +4563,55 @@
     "url": "http://studyhub.local:3000/",
     "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
     "receivedAt": "2026-02-22T21:11:48.917Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-23T17:39:17.546Z",
+    "url": "http://studyhub.local:3000/",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-23T17:39:17.615Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-23T17:39:19.448Z",
+    "url": "http://studyhub.local:3000/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-23T17:39:19.462Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "assignments"
+    },
+    "timestamp": "2026-02-23T17:39:19.448Z",
+    "url": "http://studyhub.local:3000/assignments.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-23T17:39:19.465Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "index"
+    },
+    "timestamp": "2026-02-23T17:39:24.663Z",
+    "url": "http://studyhub.local:3000/index.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-23T17:39:24.691Z"
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "page": "sector"
+    },
+    "timestamp": "2026-02-23T17:39:26.442Z",
+    "url": "http://studyhub.local:3000/sector.html",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+    "receivedAt": "2026-02-23T17:39:26.474Z"
   }
 ]

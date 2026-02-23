@@ -17,11 +17,7 @@ class UserDataManager {
      * Inicializálás
      */
     init() {
-        if (!this.auth || !this.auth.isLoggedIn()) {
-            console.warn('⚠️ Nincs bejelentkezve, az adatok nem lesznek elkülönítve!');
-            return;
-        }
-
+        // Mindig működik, bejelentkezés nélkül is
         this.setupUserStorage();
         this.isReady = true;
         console.log('✅ UserDataManager inicializálva');

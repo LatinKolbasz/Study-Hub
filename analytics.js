@@ -47,8 +47,6 @@ class StudyAnalytics {
         console.log('📊 Study Analytics inicializálása...');
         
         // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            window.location.href = '../login.html';
             return;
         }
 

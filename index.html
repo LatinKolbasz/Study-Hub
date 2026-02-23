@@ -182,28 +182,10 @@
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
     <script>
-        // ==================== AUTH CHECK ====================
+        // ==================== INIT ====================
         document.addEventListener('DOMContentLoaded', () => {
-            // Bejelentkezés ellenőrzése
-            if (!window.authManager || !window.authManager.isLoggedIn()) {
-                // Nincs bejelentkezve, átirányítás a login oldalra
-                window.location.href = 'login.html';
-                return;
-            }
-
-            // Bejelentkezett felhasználó adatai
-            const user = window.authManager.getUser();
-            if (user) {
-                renderUserNav(user);
-            }
-
             // Theme beállítások automatikusan betöltődnek a theme.js által
             // További kód nem szükséges - theme.js kezeli!
-
-            // Telemetria - oldal betöltés
-            if (window.authManager && window.authManager.logPageView) {
-                window.authManager.logPageView('index');
-            }
         });
 
         // Beállítások betöltése és alkalmazása
@@ -263,59 +245,7 @@
 
         // Felhasználó prefix beállítása
         function getUserPrefix() {
-            if (window.authManager && window.authManager.currentUser) {
-                const username = window.authManager.currentUser.username;
-                let hash = 0;
-                for (let i = 0; i < username.length; i++) {
-                    const char = username.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + char;
-                    hash = hash & hash;
-                }
-                return 'studyhub_' + Math.abs(hash).toString(36) + '_';
-            }
             return '';
-        }
-
-        // Felhasználó navbar renderelés
-        function renderUserNav(user) {
-            const navUser = document.getElementById('navUser');
-            if (!navUser) return;
-
-            // Avatar első betű
-            const initial = user.username.charAt(0).toUpperCase();
-
-            // Role megjelenítés
-            const roleText = user.role === 'admin' ? 'Admin' : 'Felhasználó';
-
-            navUser.innerHTML = `
-                <div class="user-info" onclick="window.location.href='settings.html'" style="cursor: pointer;" title="Beállítások">
-                    <div class="user-avatar">${initial}</div>
-                    <span class="user-name">${escapeHtml(user.username)}</span>
-                    <span class="user-role">${roleText}</span>
-                </div>
-                <button class="logout-btn" onclick="handleLogout()" title="Kijelentkezés">
-                    🚪 Kijelentkezés
-                </button>
-            `;
-        }
-
-        // Kijelentkezés kezelése
-        function handleLogout() {
-            if (confirm('Biztosan ki szeretnél jelentkezni?')) {
-                window.authManager.logout();
-            }
-        }
-
-        // XSS védelem
-        function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '<',
-                '>': '>',
-                '"': '"',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, m => map[m]);
         }
 
         // QR gomb a navbarban

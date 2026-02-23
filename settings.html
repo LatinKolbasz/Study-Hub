@@ -389,17 +389,11 @@
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
     <script>
-        // Bejelentkezés ellenőrzése
+        // Bejelentkezés ellenőrzése - ELTÁVOLÍTVA
         document.addEventListener('DOMContentLoaded', () => {
-            // Várunk egy kicsit, hogy az authManager inicializálódjon
-            setTimeout(() => {
-                if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = 'login.html';
-                    return;
-                }
-                console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.currentUser?.username);
-                loadSettings();
-            }, 100);
+            // Mindig betöltjük a beállításokat
+            console.log('⚙️ Beállítások betöltése...');
+            loadSettings();
         });
 
         function showSection(id, btn) {
@@ -750,17 +744,15 @@
         }
 
         function deleteAccount() {
-            if (!confirm('🚨 Véglegesen törlöd a fiókodat? Ez nem vonható vissza!')) return;
+            if (!confirm('🚨 Biztosan törlöd az összes adatot? Ez nem vonható vissza!')) return;
             if (!confirm('⚠️ Biztos? Minden adatod elvész!')) return;
             const prefix = getUserPrefix();
             for (let i = localStorage.length - 1; i >= 0; i--) {
                 const key = localStorage.key(i);
                 if (key && key.startsWith(prefix)) localStorage.removeItem(key);
             }
-            localStorage.removeItem('studyhub_token');
-            localStorage.removeItem('studyhub_user');
-            alert('✅ Fiók törölve. Viszontlátásra!');
-            window.location.href = 'login.html';
+            alert('✅ Adatok törölve! Viszontlátásra!');
+            setTimeout(() => window.location.href = 'index.html', 1000);
         }
 
         function resetSettings() {
