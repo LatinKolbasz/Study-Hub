@@ -200,22 +200,8 @@
     <script src="utils/theme.js"></script>
     <script>
         // ==================== AUTH CHECK ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            window.authManager.whenAuthReady(() => {
-                if (!window.authManager.isLoggedIn()) {
-                    // Nem vagy bejelentkezve, irányítsuk át a login.html-re
-                    window.location.href = 'login.html';
-                    return;
-                }
-                const user = window.authManager.getUser();
-                if (user) {
-                    renderUserNav(user);
-                }
-                if (window.authManager.logPageView) {
-                    window.authManager.logPageView('index');
-                }
-            });
-        });
+        // A tényleges auth ellenőrzés a lap alján lévő firebase.auth().onAuthStateChanged-ben történik
+        // Az mindig megbízhatóan fut, nincs race condition
 
         // Beállítások betöltése és alkalmazása
         function loadAndApplySettings() {
@@ -359,10 +345,21 @@
                     userInfo.textContent = user.displayName || user.email;
                     loginBtn.style.display = 'none';
                     logoutBtn.style.display = '';
+
+                    // Bejelentkezett felhasználó - nav renderelés
+                    if (window.authManager) {
+                        const userData = window.authManager.getUser();
+                        if (userData && typeof renderUserNav === 'function') {
+                            renderUserNav(userData);
+                        }
+                        if (window.authManager.logPageView) {
+                            window.authManager.logPageView('index');
+                        }
+                    }
                 } else {
-                    userInfo.textContent = '';
-                    loginBtn.style.display = '';
-                    logoutBtn.style.display = 'none';
+                    // NEM vagy bejelentkezve -> AZONNAL átirányítás login.html-re
+                    window.location.replace('login.html');
+                    return;
                 }
             });
 
