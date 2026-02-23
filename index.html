@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="src/favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Hub - Tanulási Platform</title>
+    <link rel="stylesheet" href="src/index.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div class="nav-user" id="navUser">
+                    <!-- Theme toggle gomb -->
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma">
+                        🎨
+                    </button>
+                    <!-- Bejelentkezés után töltődik be -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Study Hub</h1>
+                <p class="hero-subtitle">Szervezd meg a tanulmányaidat és tanuld meg az új technológiákat</p>
+            </div>
+            <div class="animated-background">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </section>
+
+        <section class="options-container">
+            <div class="option-card assignments-card">
+                <div class="card-header">
+                    <span class="card-icon">✅</span>
+                </div>
+                <h2>Beadandók</h2>
+                <p>Kezelj házit, feladatokat és határidőket egy helyen</p>
+                <div class="card-features">
+                    <span class="feature">📝 Szerkesztés</span>
+                    <span class="feature">📅 Dátumok</span>
+                    <span class="feature">☑️ Követés</span>
+                </div>
+                <a href="src/pages/assignments.html" class="btn btn-primary">Megnyitás</a>
+            </div>
+
+            <div class="option-card sector-card">
+                <div class="card-header">
+                    <span class="card-icon">🎓</span>
+                </div>
+                <h2>Ágazati Képzések</h2>
+                <p>Tanulj CCNA-t, Pythont, webfejlesztést és Cisco Packet Tracert</p>
+                <div class="card-features">
+                    <span class="feature">📚 Anyagok</span>
+                    <span class="feature">💻 Interaktív</span>
+                    <span class="feature">🎯 Célzott</span>
+                </div>
+                <a href="src/pages/sector.html" class="btn btn-secondary"
+                    style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">Megnyitás</a>
+            </div>
+
+            <div class="option-card timer-card">
+                <div class="card-header">
+                    <span class="card-icon">⏱️</span>
+                </div>
+                <h2>Study Timer</h2>
+                <p>Pomodoro technika hatékony tanuláshoz és időbeosztáshoz</p>
+                <div class="card-features">
+                    <span class="feature">🍅 Pomodoro</span>
+                    <span class="feature">📊 Statisztika</span>
+                    <span class="feature">🔔 Értesítések</span>
+                </div>
+                <a href="src/pages/study-timer.html" class="btn btn-tertiary"
+                    style="background: linear-gradient(135deg, #f59e0b, #d97706);">Megnyitás</a>
+            </div>
+
+            <div class="option-card quiz-card">
+                <div class="card-header">
+                    <span class="card-icon">📝</span>
+                </div>
+                <h2>Quiz & Dolgozat</h2>
+                <p>Készíts és oldj meg kvízeket a tanuláshoz</p>
+                <div class="card-features">
+                    <span class="feature">✏️ Készítés</span>
+                    <span class="feature">✅ Megoldás</span>
+                    <span class="feature">📊 Eredmény</span>
+                </div>
+                <a href="src/pages/quiz-creator.html" class="btn btn-quaternary">Megnyitás</a>
+            </div>
+
+            <div class="option-card grades-card">
+                <div class="card-header">
+                    <span class="card-icon">🏆</span>
+                </div>
+                <h2>Jegy Tracker</h2>
+                <p>Kövesd a jegyeidet videójáték stílusban!</p>
+                <div class="card-features">
+                    <span class="feature">🎮 XP & Szint</span>
+                    <span class="feature">🏅 Achievement</span>
+                    <span class="feature">📈 Elemzés</span>
+                </div>
+                <a href="src/pages/grade-tracker.html" class="btn btn-quinary">Megnyitás</a>
+            </div>
+
+            <div class="option-card analytics-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                </div>
+                <h2>Analytics</h2>
+                <p>Részletes statisztikák és diagramok a tanulásról</p>
+                <div class="card-features">
+                    <span class="feature">📈 Diagramok</span>
+                    <span class="feature">🔥 Streak</span>
+                    <span class="feature">💡 Megállapítások</span>
+                </div>
+                <a href="src/pages/analytics.html" class="btn btn-analytics">Megnyitás</a>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-card">
+                <h3>💾 Automatikus Mentés</h3>
+                <p>Az összes munkád automatikusan mentésre kerül</p>
+            </div>
+            <div class="info-card">
+                <h3>⚡ Modern Interface</h3>
+                <p>Gyors, intuitív és szép felhasználói felület</p>
+            </div>
+            <div class="info-card">
+                <h3>🎨 Animációk</h3>
+                <p>Zökkenőmentes és élvezetes felhasználói élmény</p>
+            </div>
+            <div class="info-card">
+                <h3>📦 Adatkezelés</h3>
+                <p><a href="data-manager.html" style="color: #6366f1;">Export/Import adatok</a></p>
+            </div>
+        </section>
+
+        <section class="qr-section" id="qr-section" style="display: none;">
+            <div class="qr-container">
+                <h3>📱 Telefonon elérni?</h3>
+                <p>Scanneld be a kódot vagy másold be a linket:</p>
+                <div id="qr-code"></div>
+                <code id="qr-url"
+                    style="display: block; margin: 1rem 0; font-size: 0.9rem;">http://studyhub.local:3000</code>
+                <button onclick="document.getElementById('qr-section').style.display = 'none'"
+                    style="padding: 0.5rem 1rem; background: #ec4899; color: white; border: none; border-radius: 6px; cursor: pointer;">Bezárás</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="index.html">Főoldal</a>
+                <a href="settings.html">Beállítások</a>
+                <a href="data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Script a footer előtt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="src/utils/auth.js"></script>
+    <script src="src/utils/theme.js"></script>
+    <script>
+        // ==================== AUTH CHECK ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Bejelentkezés ellenőrzése
+            if (!window.authManager || !window.authManager.isLoggedIn()) {
+                // Nincs bejelentkezve, átirányítás a login oldalra
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Bejelentkezett felhasználó adatai
+            const user = window.authManager.getUser();
+            if (user) {
+                renderUserNav(user);
+            }
+
+            // Theme beállítások automatikusan betöltődnek a theme.js által
+            // További kód nem szükséges - theme.js kezeli!
+
+            // Telemetria - oldal betöltés
+            if (window.authManager && window.authManager.logPageView) {
+                window.authManager.logPageView('index');
+            }
+        });
+
+        // Beállítások betöltése és alkalmazása
+        function loadAndApplySettings() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+
+            console.log('⚙️ Beállítások betöltése:', settings);
+
+            // Téma alkalmazása
+            if (settings.theme || settings.primaryColor) {
+                applyTheme(settings.theme || 'default', settings.primaryColor || '#6366f1');
+            }
+
+            // Animációk
+            if (settings.enableAnimations === false) {
+                document.body.classList.add('no-animations');
+            }
+
+            // Háttér effektek
+            if (settings.enableBgEffects === false) {
+                document.querySelectorAll('.floating-shape, .animated-background').forEach(el => {
+                    el.style.display = 'none';
+                });
+            }
+        }
+
+        // Téma alkalmazása
+        function applyTheme(theme, primaryColor) {
+            console.log('🎨 Téma alkalmazása:', theme, primaryColor);
+
+            // Téma háttér beállítása
+            const themes = {
+                'default': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                'ocean': 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)',
+                'sunset': 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%)',
+                'forest': 'linear-gradient(135deg, #052e16 0%, #14532d 100%)',
+                'candy': 'linear-gradient(135deg, #831843 0%, #be185d 100%)',
+                'cyberpunk': 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)',
+                'pastel': 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
+                'dark': '#000000'
+            };
+
+            if (themes[theme]) {
+                document.body.style.background = themes[theme];
+            }
+
+            // Elsődleges szín alkalmazása
+            if (primaryColor) {
+                document.documentElement.style.setProperty('--primary-color', primaryColor);
+                // Gombok színének frissítése
+                document.querySelectorAll('.btn-primary').forEach(btn => {
+                    btn.style.background = primaryColor;
+                });
+            }
+        }
+
+        // Felhasználó prefix beállítása
+        function getUserPrefix() {
+            if (window.authManager && window.authManager.currentUser) {
+                const username = window.authManager.currentUser.username;
+                let hash = 0;
+                for (let i = 0; i < username.length; i++) {
+                    const char = username.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                return 'studyhub_' + Math.abs(hash).toString(36) + '_';
+            }
+            return '';
+        }
+
+        // Felhasználó navbar renderelés
+        function renderUserNav(user) {
+            const navUser = document.getElementById('navUser');
+            if (!navUser) return;
+
+            // Avatar első betű
+            const initial = user.username.charAt(0).toUpperCase();
+
+            // Role megjelenítés
+            const roleText = user.role === 'admin' ? 'Admin' : 'Felhasználó';
+
+            navUser.innerHTML = `
+                <div class="user-info" onclick="window.location.href='settings.html'" style="cursor: pointer;" title="Beállítások">
+                    <div class="user-avatar">${initial}</div>
+                    <span class="user-name">${escapeHtml(user.username)}</span>
+                    <span class="user-role">${roleText}</span>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()" title="Kijelentkezés">
+                    🚪 Kijelentkezés
+                </button>
+            `;
+        }
+
+        // Kijelentkezés kezelése
+        function handleLogout() {
+            if (confirm('Biztosan ki szeretnél jelentkezni?')) {
+                window.authManager.logout();
+            }
+        }
+
+        // XSS védelem
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '<',
+                '>': '>',
+                '"': '"',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // QR gomb a navbarban
+        function showQR() {
+            const qrSection = document.getElementById('qr-section');
+            qrSection.style.display = 'block';
+
+            // QR kód generálás
+            const qrContainer = document.getElementById('qr-code');
+            qrContainer.innerHTML = '';
+
+            new QRCode(qrContainer, {
+                text: 'http://studyhub.local:3000',
+                width: 200,
+                height: 200,
+                colorDark: '#6366f1',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+    <!---  <script src="index.js"></script>-->
+</body>
+
+</html>
+

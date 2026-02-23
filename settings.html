@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="src/favico.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beállítások - Study Hub</title>
+    <link rel="stylesheet" href="src/index.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .settings-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .settings-header { text-align: center; margin-bottom: 2rem; }
+        .settings-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .settings-grid { display: grid; grid-template-columns: 280px 1fr; gap: 2rem; }
+        .settings-sidebar { background: rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; height: fit-content; position: sticky; top: 2rem; }
+        .settings-sidebar h3 { margin-bottom: 1rem; color: #6366f1; }
+        .settings-nav { list-style: none; padding: 0; margin: 0; }
+        .settings-nav li { margin-bottom: 0.5rem; }
+        .settings-nav button { width: 100%; padding: 0.75rem 1rem; background: transparent; border: none; color: white; text-align: left; cursor: pointer; border-radius: 8px; transition: all 0.3s; font-size: 1rem; }
+        .settings-nav button:hover { background: rgba(99, 102, 241, 0.2); }
+        .settings-nav button.active { background: #6366f1; }
+        .settings-content { background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; }
+        .settings-section { display: none; }
+        .settings-section.active { display: block; }
+        .settings-section h2 { color: #6366f1; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(0,0,0,0.3); color: white; font-size: 1rem; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #6366f1; }
+        .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .toggle-group { display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; margin-bottom: 0.75rem; }
+        .toggle-label { display: flex; flex-direction: column; }
+        .toggle-label span:first-child { font-weight: 500; }
+        .toggle-label span:last-child { font-size: 0.85rem; opacity: 0.7; }
+        .toggle-switch { position: relative; width: 56px; height: 28px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #4b5563; transition: 0.4s; border-radius: 28px; }
+        .toggle-slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: 0.4s; border-radius: 50%; }
+        .toggle-switch input:checked + .toggle-slider { background-color: #6366f1; }
+        .toggle-switch input:checked + .toggle-slider:before { transform: translateX(28px); }
+        .color-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .color-option { width: 40px; height: 40px; border-radius: 8px; cursor: pointer; border: 3px solid transparent; transition: all 0.3s; }
+        .color-option:hover, .color-option.selected { transform: scale(1.1); border-color: white; }
+        .range-group { margin-bottom: 1.5rem; }
+        .range-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .range-value { color: #6366f1; font-weight: bold; }
+        input[type="range"] { width: 100%; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.2); appearance: none; }
+        input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #6366f1; cursor: pointer; }
+        .btn { padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .btn-primary { background: #6366f1; color: white; }
+        .btn-primary:hover { background: #5558e3; }
+        .btn-success { background: #10b981; color: white; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-warning { background: #f59e0b; color: white; }
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+        .profile-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .profile-avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: bold; }
+        .profile-info h3 { margin: 0 0 0.5rem 0; }
+        .profile-info p { margin: 0; opacity: 0.7; }
+        .settings-card { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .settings-card h4 { margin: 0 0 1rem 0; color: #6366f1; }
+        .danger-zone { border: 2px solid #ef4444; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+        .danger-zone h3 { color: #ef4444; margin-top: 0; }
+        .theme-preview { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+        .theme-option { background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1rem; cursor: pointer; border: 3px solid transparent; transition: all 0.3s; text-align: center; }
+        .theme-option:hover, .theme-option.selected { border-color: #6366f1; transform: scale(1.02); }
+        .theme-option .preview { height: 60px; border-radius: 4px; margin-bottom: 0.5rem; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .settings-section.active { animation: fadeIn 0.3s ease; }
+        .back-link { display: inline-block; color: white; text-decoration: none; margin-bottom: 1rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; }
+        .back-link:hover { background: rgba(255,255,255,0.2); }
+        @media (max-width: 768px) { .settings-grid { grid-template-columns: 1fr; } .settings-sidebar { position: static; } }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <a href="index.html" class="back-link">← Vissza a főoldalra</a>
+            <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;">
+                🎨
+            </button>
+        </div>
+        <div class="settings-header">
+            <h1>⚙️ Beállítások</h1>
+            <p>Szabd személyre a Study Hub-ot!</p>
+        </div>
+        <div class="settings-grid">
+            <div class="settings-sidebar">
+                <h3>📋 Kategóriák</h3>
+                <ul class="settings-nav">
+                    <li><button class="active" onclick="showSection('profile', this)">👤 Profil</button></li>
+                    <li><button onclick="showSection('appearance', this)">🎨 Megjelenés</button></li>
+                    <li><button onclick="showSection('notifications', this)">🔔 Értesítések</button></li>
+                    <li><button onclick="showSection('privacy', this)">🔒 Adatvédelem</button></li>
+                    <li><button onclick="showSection('timer', this)">⏱️ Timer</button></li>
+                    <li><button onclick="showSection('grades', this)">🏆 Jegyek</button></li>
+                    <li><button onclick="showSection('data', this)">💾 Adatkezelés</button></li>
+                    <li><button onclick="showSection('developer', this)">👨‍💻 Fejlesztő</button></li>
+                    <li><button onclick="showSection('danger', this)">⚠️ Veszélyzóna</button></li>
+                </ul>
+            </div>
+            <div class="settings-content">
+                <!-- PROFIL -->
+                <div id="profile" class="settings-section active">
+                    <h2>👤 Profil Beállítások</h2>
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profileAvatar">L</div>
+                        <div class="profile-info">
+                            <h3 id="profileName">Latin Kolbasz</h3>
+                            <p>Felhasználó</p>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📝 Személyes adatok</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Felhasználónév</label>
+                                <input type="text" id="username" value="Latin Kolbasz">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" value="latin@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Bio</label>
+                            <textarea id="bio" rows="3" placeholder="Rólad..."></textarea>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🔑 Jelszó</h4>
+                        <div class="form-group"><label>Jelenlegi jelszó</label><input type="password" id="currentPassword" placeholder="********"></div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Új jelszó</label><input type="password" id="newPassword" placeholder="********"></div>
+                            <div class="form-group"><label>Jelszó újra</label><input type="password" id="confirmPassword" placeholder="********"></div>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🎭 Avatar</h4>
+                        <div class="form-group">
+                            <label>Avatar szín</label>
+                            <div class="color-options" id="avatarColors">
+                                <div class="color-option selected" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);" data-color="gradient1"></div>
+                                <div class="color-option" style="background: linear-gradient(135deg, #ec4899, #f43f5e);" data-color="gradient2"></div>
+                                <div class="color-option" style="background: linear-gradient(135deg, #10b981, #14b8a6);" data-color="gradient3"></div>
+                                <div class="color-option" style="background: linear-gradient(135deg, #f59e0b, #ef4444);" data-color="gradient4"></div>
+                                <div class="color-option" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);" data-color="gradient5"></div>
+                                <div class="color-option" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);" data-color="gradient6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="saveProfile()">💾 Mentés</button>
+                    </div>
+                </div>
+
+                <!-- MEGJELENÉS -->
+                <div id="appearance" class="settings-section">
+                    <h2>🎨 Megjelenés</h2>
+                    <div class="settings-card">
+                        <h4>🌈 Téma</h4>
+                        <div class="theme-preview" id="themePreview">
+                            <div class="theme-option selected" data-theme="default"><div class="preview" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"></div><span>Alapértelmezett</span></div>
+                            <div class="theme-option" data-theme="ocean"><div class="preview" style="background: linear-gradient(135deg, #0f172a, #1e3a5f);"></div><span>Óceán</span></div>
+                            <div class="theme-option" data-theme="sunset"><div class="preview" style="background: linear-gradient(135deg, #1e1b4b, #4c1d95);"></div><span>Naplemente</span></div>
+                            <div class="theme-option" data-theme="forest"><div class="preview" style="background: linear-gradient(135deg, #052e16, #14532d);"></div><span>Erdő</span></div>
+                            <div class="theme-option" data-theme="candy"><div class="preview" style="background: linear-gradient(135deg, #831843, #be185d);"></div><span>Cukorka</span></div>
+                            <div class="theme-option" data-theme="cyberpunk"><div class="preview" style="background: linear-gradient(135deg, #0a0a0a, #1a1a2e);"></div><span>Cyberpunk</span></div>
+                            <div class="theme-option" data-theme="pastel"><div class="preview" style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);"></div><span>Pasztell</span></div>
+                            <div class="theme-option" data-theme="dark"><div class="preview" style="background: #000000;"></div><span>Sötét</span></div>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🎨 Szín</h4>
+                        <div class="form-group">
+                            <label>Elsődleges szín</label>
+                            <div class="color-options" id="primaryColors">
+                                <div class="color-option selected" style="background: #6366f1;" data-color="#6366f1"></div>
+                                <div class="color-option" style="background: #ec4899;" data-color="#ec4899"></div>
+                                <div class="color-option" style="background: #10b981;" data-color="#10b981"></div>
+                                <div class="color-option" style="background: #f59e0b;" data-color="#f59e0b"></div>
+                                <div class="color-option" style="background: #3b82f6;" data-color="#3b82f6"></div>
+                                <div class="color-option" style="background: #8b5cf6;" data-color="#8b5cf6"></div>
+                                <div class="color-option" style="background: #ef4444;" data-color="#ef4444"></div>
+                                <div class="color-option" style="background: #14b8a6;" data-color="#14b8a6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>✨ Effektek</h4>
+                        <div class="toggle-group">
+                            <div class="toggle-label"><span>Animációk</span><span>Animált átmenetek</span></div>
+                            <label class="toggle-switch"><input type="checkbox" id="enableAnimations" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-group">
+                            <div class="toggle-label"><span>Háttér effektek</span><span>Lebegő alakzatok</span></div>
+                            <label class="toggle-switch"><input type="checkbox" id="enableBgEffects" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="toggle-group">
+                            <div class="toggle-label"><span>Hang effektek</span><span>Interakciós hangok</span></div>
+                            <label class="toggle-switch"><input type="checkbox" id="enableSound"><span class="toggle-slider"></span></label>
+                        </div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" onclick="saveAppearance()">💾 Mentés</button></div>
+                </div>
+
+                <!-- ÉRTESÍTÉSEK -->
+                <div id="notifications" class="settings-section">
+                    <h2>🔔 Értesítések</h2>
+                    <div class="settings-card">
+                        <h4>🔔 Push</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Összes</span><span>Minden értesítés</span></div><label class="toggle-switch"><input type="checkbox" id="enableNotifications" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Beadandó</span><span>1 nappal előtte</span></div><label class="toggle-switch"><input type="checkbox" id="notifyAssignment" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Streak</span><span>Ha kihagytál napot</span></div><label class="toggle-switch"><input type="checkbox" id="notifyStreak" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Achievement</span><span>Új achievement</span></div><label class="toggle-switch"><input type="checkbox" id="notifyAchievement" checked><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📧 Email</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Heti összefoglaló</span><span>Emailben</span></div><label class="toggle-switch"><input type="checkbox" id="enableEmail"><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🔇 Csendes órák</h4>
+                        <div class="form-row">
+                            <div class="form-group"><label>Kezdés</label><input type="time" id="quietStart" value="22:00"></div>
+                            <div class="form-group"><label>Vége</label><input type="time" id="quietEnd" value="07:00"></div>
+                        </div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" onclick="saveNotifications()">💾 Mentés</button></div>
+                </div>
+
+                <!-- ADATVÉDELEM -->
+                <div id="privacy" class="settings-section">
+                    <h2>🔒 Adatvédelem</h2>
+                    <div class="settings-card">
+                        <h4>👁️ Láthatóság</h4>
+                        <div class="form-group">
+                            <label>Ki láthatja?</label>
+                            <select id="profileVisibility">
+                                <option value="public">Mindenki</option>
+                                <option value="friends">Barátok</option>
+                                <option value="private" selected>Csak én</option>
+                            </select>
+                        </div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Statisztikák publikus</span><span>Mások láthatják</span></div><label class="toggle-switch"><input type="checkbox" id="publicStats"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Ranglista</span><span>Toplistán</span></div><label class="toggle-switch"><input type="checkbox" id="showOnLeaderboard"><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🍪 Sütik</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Analitika</span><span>Anonim statisztikák</span></div><label class="toggle-switch"><input type="checkbox" id="cookieAnalytics"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Marketing</span><span>Személyre szabott</span></div><label class="toggle-switch"><input type="checkbox" id="cookieMarketing"><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📊 Adatgyűjtés</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Használati adatok</span><span>Fejlesztéshez</span></div><label class="toggle-switch"><input type="checkbox" id="telemetryEnabled" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Hibajelentés</span><span>Automatikus</span></div><label class="toggle-switch"><input type="checkbox" id="errorReporting" checked><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="savePrivacy()">💾 Mentés</button>
+                        <button class="btn btn-warning" onclick="requestData()">📄 Adataim</button>
+                    </div>
+                </div>
+
+                <!-- TIMER -->
+                <div id="timer" class="settings-section">
+                    <h2>⏱️ Study Timer</h2>
+                    <div class="settings-card">
+                        <h4>⏱️ Időbeállítások</h4>
+                        <div class="range-group">
+                            <div class="range-header"><span>Tanulás (perc)</span><span class="range-value" id="workTimeValue">25</span></div>
+                            <input type="range" id="workTime" min="5" max="90" value="25" oninput="updateRangeValue('workTime')">
+                        </div>
+                        <div class="range-group">
+                            <div class="range-header"><span>Rövid szünet</span><span class="range-value" id="breakTimeValue">5</span></div>
+                            <input type="range" id="breakTime" min="1" max="30" value="5" oninput="updateRangeValue('breakTime')">
+                        </div>
+                        <div class="range-group">
+                            <div class="range-header"><span>Hosszú szünet</span><span class="range-value" id="longBreakTimeValue">15</span></div>
+                            <input type="range" id="longBreakTime" min="5" max="60" value="15" oninput="updateRangeValue('longBreakTime')">
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🔔 Hang</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Hangok</span><span>Timer hangjelzése</span></div><label class="toggle-switch"><input type="checkbox" id="timerSound" checked><span class="toggle-slider"></span></label></div>
+                        <div class="form-group"><label>Hang típusa</label><select id="soundType"><option value="bell">Harang</option><option value="chime">Csengő</option><option value="beep">Sípolás</option><option value="none">Néma</option></select></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📺 Automatika</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Auto szünet</span><span>Automatikus</span></div><label class="toggle-switch"><input type="checkbox" id="autoStartBreak"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Auto munka</span><span>Automatikus</span></div><label class="toggle-switch"><input type="checkbox" id="autoStartWork"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Desktop értesítés</span><span>Asztali</span></div><label class="toggle-switch"><input type="checkbox" id="desktopNotification" checked><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" onclick="saveTimer()">💾 Mentés</button></div>
+                </div>
+
+                <!-- JEGYEK -->
+                <div id="grades" class="settings-section">
+                    <h2>🏆 Jegy Tracker</h2>
+                    <div class="settings-card">
+                        <h4>📊 XP beállítások</h4>
+                        <div class="range-group">
+                            <div class="range-header"><span>1-es jegy XP</span><span class="range-value" id="xp1Value">10</span></div>
+                            <input type="range" id="xp1" min="0" max="50" value="10" oninput="updateRangeValue('xp1')">
+                        </div>
+                        <div class="range-group">
+                            <div class="range-header"><span>2-es jegy XP</span><span class="range-value" id="xp2Value">20</span></div>
+                            <input type="range" id="xp2" min="5" max="100" value="20" oninput="updateRangeValue('xp2')">
+                        </div>
+                        <div class="range-group">
+                            <div class="range-header"><span>5-ös jegy XP</span><span class="range-value" id="xp5Value">100</span></div>
+                            <input type="range" id="xp5" min="50" max="200" value="100" oninput="updateRangeValue('xp5')">
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🏅 Achievement-ek</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Achievement hangok</span><span>Új achievementkor</span></div><label class="toggle-switch"><input type="checkbox" id="achievementSound" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Animációk</span><span>Feloldáskor</span></div><label class="toggle-switch"><input type="checkbox" id="achievementAnim" checked><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" onclick="saveGrades()">💾 Mentés</button></div>
+                </div>
+
+                <!-- ADATKEZELÉS -->
+                <div id="data" class="settings-section">
+                    <h2>💾 Adatkezelés</h2>
+                    <div class="settings-card">
+                        <h4>📥 Import</h4>
+                        <p>Importáld a korábban exportált adataidat</p>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem;">📁 Fájlból:</label>
+                            <input type="file" id="importFileSettings" accept=".json" style="color: white;">
+                            <button class="btn btn-success" onclick="importFromSettings()" style="margin-top: 0.5rem;">📂 Importálás</button>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📤 Export</h4>
+                        <p>Töltsd le az összes adatodat</p>
+                        <button class="btn btn-primary" onclick="exportFromSettings()">📥 Letöltés</button>
+                    </div>
+                    <div class="settings-card">
+                        <h4>🗑️ Törlés</h4>
+                        <p>Törölj minden helyi adatot</p>
+                        <button class="btn btn-danger" onclick="clearAllDataSettings()">🔄 Adatok törlése</button>
+                    </div>
+                </div>
+
+                <!-- FEJLESZTŐ -->
+                <div id="developer" class="settings-section">
+                    <h2>👨‍💻 Fejlesztő</h2>
+                    <div class="settings-card">
+                        <h4>🔧 Fejlesztői opciók</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Console logok</span><span>Részletes naplózás</span></div><label class="toggle-switch"><input type="checkbox" id="devConsole"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Debug mód</span><span>Fejlesztői információk</span></div><label class="toggle-switch"><input type="checkbox" id="devDebug"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>API tesztelés</span><span>Teszt endpointok</span></div><label class="toggle-switch"><input type="checkbox" id="devApi"><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="settings-card">
+                        <h4>📊 Telemetria</h4>
+                        <div class="toggle-group"><div class="toggle-label"><span>Használati adatok küldése</span><span>Anonim statisztikák</span></div><label class="toggle-switch"><input type="checkbox" id="telemetryData" checked><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Teljesítmény adatok</span><span>Sebesség mérés</span></div><label class="toggle-switch"><input type="checkbox" id="perfData"><span class="toggle-slider"></span></label></div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" onclick="saveDeveloper()">💾 Mentés</button></div>
+                </div>
+
+                <!-- VESZÉLYZÓNA -->
+                <div id="danger" class="settings-section">
+                    <h2>⚠️ Veszélyzóna</h2>
+                    <div class="danger-zone">
+                        <h3>🚨 Végleges törlés</h3>
+                        <p>Ha törölöd a fiókodat, minden adatted véglegesen elveszik!</p>
+                        <div class="btn-group">
+                            <button class="btn btn-danger" onclick="deleteAccount()">🗑️ Fiók törlése</button>
+                        </div>
+                    </div>
+                    <div class="danger-zone" style="border-color: #f59e0b;">
+                        <h3>🔄 Adatok visszaállítása</h3>
+                        <p>Visszaállítás az alapértékekre (adataid törlése nélkül)</p>
+                        <div class="btn-group">
+                            <button class="btn btn-warning" onclick="resetSettings()">🔄 Beállítások visszaállítása</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/utils/auth.js"></script>
+    <script src="src/utils/theme.js"></script>
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            // Várunk egy kicsit, hogy az authManager inicializálódjon
+            setTimeout(() => {
+                if (!window.authManager || !window.authManager.isLoggedIn()) {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.currentUser?.username);
+                loadSettings();
+            }, 100);
+        });
+
+        function showSection(id, btn) {
+            document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.settings-nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        function updateRangeValue(id) {
+            const val = document.getElementById(id).value;
+            document.getElementById(id + 'Value').textContent = val;
+        }
+
+        // Konzisztens prefix generálás - ugyanaz mint grade-tracker.js és auth.js
+        function getUserPrefix() {
+            if (window.authManager && window.authManager.currentUser) {
+                const username = window.authManager.currentUser.username;
+                const hash = simpleHash(username);
+                // Ugyanaz a formátum mint grade-tracker.js: studyhub_hash_gradeTracker
+                return 'studyhub_' + hash + '_';
+            }
+            return '';
+        }
+
+        // Egyszerű hash függvény - konzisztens az összes fájlban
+        function simpleHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return Math.abs(hash).toString(36);
+        }
+
+        function loadSettings() {
+            const prefix = getUserPrefix();
+            console.log('📁 Betöltés prefix:', prefix);
+            
+            // Debug: list all keys in localStorage
+            console.log('🔍 LocalStorage keys:');
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.includes('studyhub')) {
+                    console.log('  -', key);
+                }
+            }
+            
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            console.log('⚙️ Betöltött beállítások:', settings);
+            
+            // Profil
+            if (window.authManager && window.authManager.currentUser) {
+                document.getElementById('username').value = window.authManager.currentUser.username;
+                document.getElementById('email').value = window.authManager.currentUser.email || '';
+                document.getElementById('profileAvatar').textContent = window.authManager.currentUser.username.charAt(0).toUpperCase();
+                document.getElementById('profileName').textContent = window.authManager.currentUser.username;
+                
+                // Bio betöltése
+                if (settings.bio) {
+                    document.getElementById('bio').value = settings.bio;
+                }
+            }
+            
+            // Téma kiválasztása a betöltött érték alapján
+            if (settings.theme) {
+                document.querySelectorAll('.theme-option').forEach(opt => {
+                    opt.classList.toggle('selected', opt.dataset.theme === settings.theme);
+                });
+            }
+            
+            // Szín kiválasztása
+            if (settings.primaryColor) {
+                document.querySelectorAll('#primaryColors .color-option').forEach(opt => {
+                    opt.classList.toggle('selected', opt.dataset.color === settings.primaryColor);
+                });
+            }
+            
+            // Avatar szín
+            if (settings.avatarColor) {
+                document.querySelectorAll('#avatarColors .color-option').forEach(opt => {
+                    opt.classList.toggle('selected', opt.dataset.color === settings.avatarColor);
+                });
+            }
+            
+            // Toggles - load all settings
+            const toggles = ['enableAnimations','enableBgEffects','enableSound','enableNotifications','notifyAssignment','notifyStreak','notifyAchievement','enableEmail','publicStats','showOnLeaderboard','cookieAnalytics','cookieMarketing','telemetryEnabled','errorReporting','timerSound','autoStartBreak','autoStartWork','desktopNotification','achievementSound','achievementAnim','devConsole','devDebug','devApi','telemetryData','perfData'];
+            toggles.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && settings[id] !== undefined) el.checked = settings[id];
+            });
+            
+            // Range values
+            if (settings.workTime) { document.getElementById('workTime').value = settings.workTime; document.getElementById('workTimeValue').textContent = settings.workTime; }
+            if (settings.breakTime) { document.getElementById('breakTime').value = settings.breakTime; document.getElementById('breakTimeValue').textContent = settings.breakTime; }
+            if (settings.longBreakTime) { document.getElementById('longBreakTime').value = settings.longBreakTime; document.getElementById('longBreakTimeValue').textContent = settings.longBreakTime; }
+            if (settings.xp1) { document.getElementById('xp1').value = settings.xp1; document.getElementById('xp1Value').textContent = settings.xp1; }
+            if (settings.xp2) { document.getElementById('xp2').value = settings.xp2; document.getElementById('xp2Value').textContent = settings.xp2; }
+            if (settings.xp5) { document.getElementById('xp5').value = settings.xp5; document.getElementById('xp5Value').textContent = settings.xp5; }
+            
+            // Téma alkalmazása a betöltéskor
+            if (settings.theme || settings.primaryColor) {
+                applyTheme(settings.theme || 'default', settings.primaryColor || '#6366f1');
+            }
+            
+            console.log('✅ Beállítások betöltve');
+        }
+
+        function saveProfile() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.bio = document.getElementById('bio').value;
+            
+            // Avatar szín mentése
+            const avatarColor = document.querySelector('#avatarColors .color-option.selected')?.dataset.color;
+            if (avatarColor) {
+                settings.avatarColor = avatarColor;
+            }
+            
+            // Profil adatok mentése az authManager-be is
+            if (window.authManager && window.authManager.currentUser) {
+                window.authManager.currentUser.bio = settings.bio;
+                window.authManager.currentUser.avatarColor = settings.avatarColor;
+            }
+            
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            console.log('💾 Profil mentve:', settings);
+            alert('✅ Profil mentve! Oldal frissítése...');
+            
+            // Oldal újratöltése a változások alkalmazásához
+            setTimeout(() => location.reload(), 1000);
+        }
+
+        function saveAppearance() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.theme = document.querySelector('.theme-option.selected')?.dataset.theme || 'default';
+            settings.primaryColor = document.querySelector('#primaryColors .color-option.selected')?.dataset.color || '#6366f1';
+            settings.enableAnimations = document.getElementById('enableAnimations').checked;
+            settings.enableBgEffects = document.getElementById('enableBgEffects').checked;
+            settings.enableSound = document.getElementById('enableSound').checked;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            console.log('💾 Megjelenés mentve:', settings);
+            
+            // Téma azonnali alkalmazása
+            applyTheme(settings.theme, settings.primaryColor);
+            
+            alert('✅ Megjelenés mentve és alkalmazva!');
+        }
+
+        // Téma alkalmazása
+        function applyTheme(theme, primaryColor) {
+            console.log('🎨 Téma alkalmazása:', theme, primaryColor);
+            
+            // CSS változók beállítása
+            const root = document.documentElement;
+            
+            // Téma háttér beállítása
+            const themes = {
+                'default': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                'ocean': 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)',
+                'sunset': 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%)',
+                'forest': 'linear-gradient(135deg, #052e16 0%, #14532d 100%)',
+                'candy': 'linear-gradient(135deg, #831843 0%, #be185d 100%)',
+                'cyberpunk': 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)',
+                'pastel': 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
+                'dark': '#000000'
+            };
+            
+            if (themes[theme]) {
+                document.body.style.background = themes[theme];
+            }
+            
+            // Elsődleges szín alkalmazása
+            if (primaryColor) {
+                root.style.setProperty('--primary-color', primaryColor);
+                // Gombok színének frissítése
+                document.querySelectorAll('.btn-primary').forEach(btn => {
+                    btn.style.background = primaryColor;
+                });
+            }
+            
+            // Animációk be/ki kapcsolása
+            if (document.getElementById('enableAnimations')) {
+                const animationsEnabled = document.getElementById('enableAnimations').checked;
+                document.body.style.setProperty('--animations-enabled', animationsEnabled ? '1' : '0');
+            }
+            
+            // Háttér effektek
+            if (document.getElementById('enableBgEffects')) {
+                const bgEffectsEnabled = document.getElementById('enableBgEffects').checked;
+                document.querySelectorAll('.floating-shape').forEach(shape => {
+                    shape.style.display = bgEffectsEnabled ? 'block' : 'none';
+                });
+            }
+        }
+
+        function saveNotifications() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.enableNotifications = document.getElementById('enableNotifications').checked;
+            settings.notifyAssignment = document.getElementById('notifyAssignment').checked;
+            settings.notifyStreak = document.getElementById('notifyStreak').checked;
+            settings.notifyAchievement = document.getElementById('notifyAchievement').checked;
+            settings.enableEmail = document.getElementById('enableEmail').checked;
+            settings.quietStart = document.getElementById('quietStart').value;
+            settings.quietEnd = document.getElementById('quietEnd').value;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            console.log('💾 Értesítések mentve:', settings);
+            alert('✅ Értesítések mentve!');
+        }
+
+        function savePrivacy() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.profileVisibility = document.getElementById('profileVisibility').value;
+            settings.publicStats = document.getElementById('publicStats').checked;
+            settings.showOnLeaderboard = document.getElementById('showOnLeaderboard').checked;
+            settings.cookieAnalytics = document.getElementById('cookieAnalytics').checked;
+            settings.cookieMarketing = document.getElementById('cookieMarketing').checked;
+            settings.telemetryEnabled = document.getElementById('telemetryEnabled').checked;
+            settings.errorReporting = document.getElementById('errorReporting').checked;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            console.log('💾 Adatvédelem mentve:', settings);
+            alert('✅ Adatvédelem mentve!');
+        }
+
+        function saveTimer() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.workTime = parseInt(document.getElementById('workTime').value);
+            settings.breakTime = parseInt(document.getElementById('breakTime').value);
+            settings.longBreakTime = parseInt(document.getElementById('longBreakTime').value);
+            settings.timerSound = document.getElementById('timerSound').checked;
+            settings.soundType = document.getElementById('soundType').value;
+            settings.autoStartBreak = document.getElementById('autoStartBreak').checked;
+            settings.autoStartWork = document.getElementById('autoStartWork').checked;
+            settings.desktopNotification = document.getElementById('desktopNotification').checked;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            
+            // Timer beállítások mentése a timerManager-nek is
+            if (window.timerManager) {
+                window.timerManager.settings.workTime = settings.workTime;
+                window.timerManager.settings.breakTime = settings.breakTime;
+                window.timerManager.settings.longBreakTime = settings.longBreakTime;
+                window.timerManager.settings.soundEnabled = settings.timerSound;
+                window.timerManager.saveSettings();
+            }
+            
+            console.log('💾 Timer beállítások mentve:', settings);
+            alert('✅ Timer beállítások mentve! A timer oldalon érvényesülnek.');
+        }
+
+        function saveGrades() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.xp1 = parseInt(document.getElementById('xp1').value);
+            settings.xp2 = parseInt(document.getElementById('xp2').value);
+            settings.xp5 = parseInt(document.getElementById('xp5').value);
+            settings.achievementSound = document.getElementById('achievementSound').checked;
+            settings.achievementAnim = document.getElementById('achievementAnim').checked;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            console.log('💾 Jegy beállítások mentve:', settings);
+            alert('✅ Jegy beállítások mentve!');
+        }
+
+        function saveDeveloper() {
+            const prefix = getUserPrefix();
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            settings.devConsole = document.getElementById('devConsole').checked;
+            settings.devDebug = document.getElementById('devDebug').checked;
+            settings.devApi = document.getElementById('devApi').checked;
+            settings.telemetryData = document.getElementById('telemetryData').checked;
+            settings.perfData = document.getElementById('perfData').checked;
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            
+            // Fejlesztői beállítások alkalmazása
+            if (settings.devConsole) {
+                console.log('🔧 Fejlesztői mód: Console naplózás bekapcsolva');
+            }
+            if (settings.devDebug) {
+                console.log('🔧 Fejlesztői mód: Debug információk');
+            }
+            
+            console.log('💾 Fejlesztői beállítások mentve:', settings);
+            alert('✅ Fejlesztői beállítások mentve!');
+        }
+
+        function importFromSettings() {
+            const fileInput = document.getElementById('importFileSettings');
+            const file = fileInput.files[0];
+            if (!file) { alert('❌ Válassz fájlt!'); return; }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    const prefix = getUserPrefix();
+                    if (data.gradeTracker) localStorage.setItem(prefix + 'gradeTracker', JSON.stringify(data.gradeTracker));
+                    if (data.assignments) localStorage.setItem(prefix + 'assignments', JSON.stringify(data.assignments));
+                    if (data.quizzes) localStorage.setItem(prefix + 'quizzes', JSON.stringify(data.quizzes));
+                    if (data.settings) localStorage.setItem(prefix + 'settings', JSON.stringify(data.settings));
+                    alert('✅ Importálva! Töltsd újra az oldalt.');
+                } catch(err) { alert('❌ Hiba: ' + err.message); }
+            };
+            reader.readAsText(file);
+        }
+
+        function exportFromSettings() {
+            const prefix = getUserPrefix();
+            const data = { exportDate: new Date().toISOString(), version: '1.0' };
+            const keys = ['gradeTracker', 'assignments', 'quizzes', 'timerSettings', 'timerStats', 'settings'];
+            keys.forEach(key => {
+                const val = localStorage.getItem(prefix + key);
+                if (val) data[key] = JSON.parse(val);
+            });
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'studyhub_backup_' + new Date().toISOString().split('T')[0] + '.json';
+            a.click();
+            alert('✅ Exportálva!');
+        }
+
+        function clearAllDataSettings() {
+            if (!confirm('⚠️ Biztosan törlöd az összes adatot?')) return;
+            const prefix = getUserPrefix();
+            const keys = ['gradeTracker', 'assignments', 'quizzes', 'timerSettings', 'timerStats', 'settings'];
+            keys.forEach(key => localStorage.removeItem(prefix + key));
+            alert('✅ Adatok törölve! Töltsd újra az oldalt.');
+        }
+
+        function requestData() {
+            const prefix = getUserPrefix();
+            const allData = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith(prefix)) {
+                    allData[key] = localStorage.getItem(key);
+                }
+            }
+            const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'my_data.json';
+            a.click();
+            alert('✅ Adataid elküldve!');
+        }
+
+        function deleteAccount() {
+            if (!confirm('🚨 Véglegesen törlöd a fiókodat? Ez nem vonható vissza!')) return;
+            if (!confirm('⚠️ Biztos? Minden adatod elvész!')) return;
+            const prefix = getUserPrefix();
+            for (let i = localStorage.length - 1; i >= 0; i--) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith(prefix)) localStorage.removeItem(key);
+            }
+            localStorage.removeItem('studyhub_token');
+            localStorage.removeItem('studyhub_user');
+            alert('✅ Fiók törölve. Viszontlátásra!');
+            window.location.href = 'login.html';
+        }
+
+        function resetSettings() {
+            if (!confirm('🔄 Visszaállítod a beállításokat?')) return;
+            const prefix = getUserPrefix();
+            localStorage.removeItem(prefix + 'settings');
+            alert('✅ Beállítások visszaállítva!');
+            loadSettings();
+        }
+
+        // Theme click handlers
+        document.querySelectorAll('.theme-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+        });
+
+        // Color click handlers - primary colors
+        document.querySelectorAll('#primaryColors .color-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('#primaryColors .color-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+        });
+
+        // Color click handlers - avatar colors
+        document.querySelectorAll('#avatarColors .color-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('#avatarColors .color-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+                
+                // Avatar szín alkalmazása az oldalon
+                const color = opt.dataset.color;
+                if (window.themeManager) {
+                    window.themeManager.setAvatarColor(color);
+                }
+            });
+        });
+
+        console.log('⚙️ Settings betöltve');
+    </script>
+</body>
+</html>
+

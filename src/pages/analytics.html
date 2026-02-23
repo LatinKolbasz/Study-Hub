@@ -2,10 +2,10 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../favico.ico">
+    <link rel="icon" href="../../favico.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Analytics - Study Hub</title>
-    <link rel="stylesheet" href="grade-tracker.css">
+    <link rel="stylesheet" href="../grade-tracker.css">
     <link rel="stylesheet" href="analytics.css">
     <style>
         .dev-notice {
@@ -29,7 +29,7 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <a href="../index.html" class="back-link">←</a>
+                    <a href="../../index.html" class="back-link">←</a>
                     <span class="logo-icon">📊</span>
                     <span class="logo-text">Study Analytics</span>
                 </div>
@@ -124,7 +124,7 @@
             </p>
             <div style="font-size: 4rem;">🚧</div>
             <p style="margin-top: 1rem; opacity: 0.6;">Hamarosan...</p>
-            <a href="../index.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
+            <a href="../../index.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
                 ← Vissza a főoldalra
             </a>
         </div>
@@ -134,9 +134,9 @@
         <div class="footer-content">
             <div class="footer-brand">📚 Study Hub</div>
             <div class="footer-links">
-                <a href="../index.html">Főoldal</a>
-                <a href="../settings.html">Beállítások</a>
-                <a href="../data-manager.html">Adatkezelés</a>
+                <a href="../../index.html">Főoldal</a>
+                <a href="../../settings.html">Beállítások</a>
+                <a href="../../data-manager.html">Adatkezelés</a>
             </div>
             <div class="footer-social">
                 <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
@@ -147,13 +147,13 @@
     </footer>
 
     <!-- Auth script -->
-    <script src="../utils/auth.js"></script>
-    <script src="../utils/theme.js"></script>
+    <script src="../../utils/auth.js"></script>
+    <script src="../../utils/theme.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = '../login.html';
+                    window.location.href = '../../login.html';
                     return;
                 }
                 

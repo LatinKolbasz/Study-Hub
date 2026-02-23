@@ -24,6 +24,11 @@ const HOSTNAME = 'studyhub';
 
 // Middleware
 app.use(express.json({ limit: '50mb' }));
+
+// Serve root directory files first (index.html, login.html, etc.)
+app.use(express.static(__dirname));
+
+// Then serve src directory for assets (CSS, JS, pages, etc.)
 app.use(express.static(path.join(__dirname, 'src')));
 
 // API - Telemetria (hibák és használati adatok)
@@ -187,9 +192,9 @@ app.get('/api/get-quizzes', (req, res) => {
     }
 });
 
-// SPA fallback
+// SPA fallback - serve root index.html
 app.use((req, res) => {
-    res.sendFile(path.join(__dirname, 'src', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Server indítás
