@@ -72,7 +72,7 @@
     </div>
 
 <script src="utils/auth.js"></script>
-    <script src="../utils/theme.js"></script>
+    <script src="utils/theme.js"></script>
     <script src="sector-page.js"></script>
     <script>
         const pythonTopics = [
@@ -99,7 +99,8 @@
                     renderTopics();
                     window.sectorPage = new SectorPageManager('python');
                 } else {
-                    window.location.href = '../login.html';
+                    // Login átirányítás kikapcsolva
+                    // window.location.href = '../login.html';
                 }
             }, 300);
         });

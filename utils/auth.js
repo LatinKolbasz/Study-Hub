@@ -124,11 +124,13 @@ class AuthManager {
         localStorage.removeItem(this.userKey);
         localStorage.removeItem('studyhub_userdata_prefix');
         this.currentUser = null;
-        window.location.href = 'login.html';
+        // Login eltávolítva - ne irányítson át
+        // window.location.href = 'login.html';
     }
 
     isLoggedIn() {
-        return this.currentUser !== null;
+        // Mindig bejelentkezve (login rendszer kikapcsolva)
+        return true;
     }
 
     getUser() {

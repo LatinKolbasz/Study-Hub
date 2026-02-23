@@ -394,7 +394,8 @@
             // Várunk egy kicsit, hogy az authManager inicializálódjon
             setTimeout(() => {
                 if (!window.authManager || !window.authManager.isLoggedIn()) {
-                    window.location.href = 'login.html';
+                    // Login átirányítás kikapcsolva
+                    // window.location.href = 'login.html';
                     return;
                 }
                 console.log('⚙️ Bejelentkezett felhasználó:', window.authManager.currentUser?.username);
@@ -760,7 +761,7 @@
             localStorage.removeItem('studyhub_token');
             localStorage.removeItem('studyhub_user');
             alert('✅ Fiók törölve. Viszontlátásra!');
-            window.location.href = 'login.html';
+            // window.location.href = 'login.html';
         }
 
         function resetSettings() {

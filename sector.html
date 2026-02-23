@@ -20,7 +20,7 @@
                     <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
                         🎨
                     </button>
-                    <a href="../index.html" class="back-btn">← Vissza</a>
+                    <a href="index.html" class="back-btn">← Vissza</a>
                 </div>
             </div>
         </nav>
@@ -87,7 +87,7 @@
         <div class="footer-content">
             <div class="footer-brand">📚 Study Hub</div>
             <div class="footer-links">
-                <a href="../index.html">Főoldal</a>
+                <a href="index.html">Főoldal</a>
                 <a href="../settings.html">Beállítások</a>
                 <a href="../data-manager.html">Adatkezelés</a>
             </div>
@@ -106,7 +106,8 @@
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
             if (!window.authManager || !window.authManager.isLoggedIn()) {
-                window.location.href = '../login.html';
+                // Login átirányítás kikapcsolva
+                // window.location.href = '../login.html';
                 return;
             }
 

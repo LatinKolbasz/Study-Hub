@@ -52,7 +52,8 @@ class StudyTimerManager {
         
         // Bejelentkezés ellenőrzése
         if (!window.authManager || !window.authManager.isLoggedIn()) {
-            window.location.href = '../login.html';
+            // Login átirányítás kikapcsolva
+            // window.location.href = '../login.html';
             return;
         }
 

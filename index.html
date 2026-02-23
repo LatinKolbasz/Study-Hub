@@ -186,8 +186,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Bejelentkezés ellenőrzése
             if (!window.authManager || !window.authManager.isLoggedIn()) {
-                // Nincs bejelentkezve, átirányítás a login oldalra
-                window.location.href = 'login.html';
+                // Login átirányítás kikapcsolva
+                // window.location.href = 'login.html';
                 return;
             }
 
