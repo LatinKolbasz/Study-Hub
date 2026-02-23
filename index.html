@@ -203,7 +203,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) {
-                    // Nem vagy bejelentkezve, de nem irányítunk át automatikusan
+                    // Nem vagy bejelentkezve, irányítsuk át a login.html-re
+                    window.location.href = 'login.html';
                     return;
                 }
                 const user = window.authManager.getUser();
