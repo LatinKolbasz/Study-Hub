@@ -1,0 +1,426 @@
+/**
+ * ============================================
+ * Schedule - Órarend Kezelő
+ * ============================================
+ * Interaktív órarend kezelés hétfő-péntek
+ * Minden órához tárgy és hozzászólások
+ */
+
+class ScheduleManager {
+    constructor() {
+        this.days = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
+        this.hours = [1, 2, 3, 4, 5, 6, 7];
+        this.hourLabels = [
+            '1. óra\n(7:30-8:15)',
+            '2. óra\n(8:20-9:05)',
+            '3. óra\n(9:10-9:55)',
+            '4. óra\n(10:10-10:55)',
+            '5. óra\n(11:00-11:45)',
+            '6. óra\n(11:50-12:35)',
+            '7. óra\n(12:40-13:25)'
+        ];
+        
+        this.data = {
+            schedule: {}
+        };
+        
+        this.userPrefix = 'schedule';
+        this.currentEditCell = null;
+        
+        // Alapértelmezett színek tantárgyakhoz
+        this.subjectColors = {};
+        
+        this.init();
+    }
+
+    init() {
+        console.log('📅 Schedule Manager inicializálása...');
+        
+        // Bejelentkezés ellenőrzése
+        if (!window.authManager || !window.authManager.isLoggedIn()) {
+            return;
+        }
+
+        this.setUserPrefix();
+        this.loadData();
+        this.renderSchedule();
+        
+        // Telemetria
+        if (window.authManager && window.authManager.logPageView) {
+            window.authManager.logPageView('schedule');
+        }
+    }
+
+    setUserPrefix() {
+        if (window.authManager && window.authManager.currentUser) {
+            const username = window.authManager.currentUser.username;
+            const hash = this.simpleHash(username);
+            this.userPrefix = `studyhub_${hash}_schedule`;
+            console.log('📁 Felhasználói prefix:', this.userPrefix);
+        }
+    }
+
+    simpleHash(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        return Math.abs(hash).toString(36);
+    }
+
+    loadData() {
+        const saved = localStorage.getItem(this.userPrefix);
+        if (saved) {
+            this.data = JSON.parse(saved);
+            console.log('✅ Órarend betöltve');
+        } else {
+            console.log('📭 Nincs mentett órarend');
+        }
+    }
+
+    saveData() {
+        localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
+    }
+
+    getCellKey(day, hour) {
+        return `${day}_${hour}`;
+    }
+
+    getCellData(day, hour) {
+        const key = this.getCellKey(day, hour);
+        return this.data.schedule[key] || { subject: '', comments: [] };
+    }
+
+    setCellData(day, hour, data) {
+        const key = this.getCellKey(day, hour);
+        this.data.schedule[key] = data;
+        this.saveData();
+    }
+
+    getSubjectColor(subject) {
+        if (!subject) return '';
+        
+        if (!this.subjectColors[subject]) {
+            const colorIndex = Object.keys(this.subjectColors).length % 10 + 1;
+            this.subjectColors[subject] = colorIndex;
+        }
+        
+        return `subject-color-${this.subjectColors[subject]}`;
+    }
+
+    renderSchedule() {
+        const grid = document.getElementById('scheduleGrid');
+        if (!grid) return;
+
+        // Header sort rendel
+        let html = '<div class="schedule-header time-header">Idő</div>';
+        this.days.forEach(day => {
+            html += `<div class="schedule-header">${day}</div>`;
+        });
+
+        // Órák sorai
+        this.hours.forEach(hour => {
+            // Időpont cella
+            html += `<div class="schedule-cell time-cell">
+                <span class="time-label">${hour}. óra</span>
+            </div>`;
+            
+            // Nap cellák
+            this.days.forEach(day => {
+                const cellData = this.getCellData(day, hour);
+                const hasSubject = cellData.subject && cellData.subject.trim() !== '';
+                const commentCount = cellData.comments ? cellData.comments.length : 0;
+                const colorClass = hasSubject ? this.getSubjectColor(cellData.subject) : '';
+                
+                html += `
+                    <div class="schedule-cell ${hasSubject ? 'has-subject ' + colorClass : 'empty-cell'}" 
+                        onclick="scheduleManager.openCellModal('${day}', ${hour})">
+                        ${hasSubject ? `
+                            <span class="subject-name">${this.escapeHtml(cellData.subject)}</span>
+                            ${commentCount > 0 ? `<span class="comment-badge">💬 ${commentCount}</span>` : ''}
+                        ` : ''}
+                    </div>
+                `;
+            });
+        });
+
+        grid.innerHTML = html;
+    }
+
+    openCellModal(day, hour) {
+        this.currentEditCell = { day, hour };
+        const cellData = this.getCellData(day, hour);
+        
+        // Modal címe
+        document.getElementById('scheduleModalTitle').textContent = 
+            `${day} - ${hour}. óra`;
+        
+        // Űrlap mezők
+        document.getElementById('subjectInput').value = cellData.subject || '';
+        
+        // Meglévő tantárgyak listája
+        this.populateSubjectDatalist();
+        
+        // Hozzászólások
+        this.renderComments(cellData.comments || []);
+        
+        // Modal megjelenítése
+        document.getElementById('scheduleModal').classList.add('active');
+    }
+
+    closeModal() {
+        document.getElementById('scheduleModal').classList.remove('active');
+        this.currentEditCell = null;
+    }
+
+    populateSubjectDatalist() {
+        // Összes tantárgy összegyűjtése
+        const subjects = new Set();
+        Object.values(this.data.schedule).forEach(cell => {
+            if (cell.subject && cell.subject.trim()) {
+                subjects.add(cell.subject);
+            }
+        });
+        
+        const datalist = document.getElementById('subjectsList');
+        datalist.innerHTML = Array.from(subjects).map(s => 
+            `<option value="${this.escapeHtml(s)}">`
+        ).join('');
+    }
+
+    saveCell() {
+        if (!this.currentEditCell) return;
+        
+        const subject = document.getElementById('subjectInput').value.trim();
+        const cellData = this.getCellData(this.currentEditCell.day, this.currentEditCell.hour);
+        
+        // Megtartjuk a meglévő hozzászólásokat
+        this.setCellData(
+            this.currentEditCell.day, 
+            this.currentEditCell.hour,
+            {
+                subject: subject,
+                comments: cellData.comments || []
+            }
+        );
+        
+        this.renderSchedule();
+        this.closeModal();
+        
+        this.showNotification(subject ? `✅ ${subject} mentve` : '🗑️ Óra törölve');
+    }
+
+    deleteCell() {
+        if (!this.currentEditCell) return;
+        
+        if (confirm('Biztosan törlöd ezt az órát?')) {
+            const key = this.getCellKey(this.currentEditCell.day, this.currentEditCell.hour);
+            delete this.data.schedule[key];
+            this.saveData();
+            this.renderSchedule();
+            this.closeModal();
+            this.showNotification('🗑️ Óra törölve');
+        }
+    }
+
+    // ==================== COMMENT SYSTEM ====================
+
+    renderComments(comments) {
+        const container = document.getElementById('commentsList');
+        
+        if (!comments || comments.length === 0) {
+            container.innerHTML = '<p class="no-comments">Még nincs hozzászólás</p>';
+            return;
+        }
+
+        container.innerHTML = comments.map((comment, index) => `
+            <div class="comment-item">
+                <div class="comment-text">${this.escapeHtml(comment.text)}</div>
+                <div class="comment-date">${this.formatDate(comment.date)}</div>
+                <button class="comment-delete" onclick="scheduleManager.deleteComment(${index})" title="Törlés">🗑️</button>
+            </div>
+        `).join('');
+    }
+
+    addComment() {
+        if (!this.currentEditCell) return;
+        
+        const input = document.getElementById('commentInput');
+        const text = input.value.trim();
+        
+        if (!text) {
+            this.showNotification('❌ Írj valamit a hozzászólásba!');
+            return;
+        }
+
+        const cellData = this.getCellData(this.currentEditCell.day, this.currentEditCell.hour);
+        const comments = cellData.comments || [];
+        
+        comments.push({
+            text: text,
+            date: new Date().toISOString()
+        });
+
+        this.setCellData(
+            this.currentEditCell.day,
+            this.currentEditCell.hour,
+            {
+                subject: cellData.subject,
+                comments: comments
+            }
+        );
+
+        input.value = '';
+        this.renderComments(comments);
+        this.renderSchedule(); // Frissítjük a comment badge-et
+        
+        this.showNotification('💬 Hozzászólás hozzáadva');
+    }
+
+    deleteComment(index) {
+        if (!this.currentEditCell) return;
+        
+        const cellData = this.getCellData(this.currentEditCell.day, this.currentEditCell.hour);
+        const comments = cellData.comments || [];
+        
+        comments.splice(index, 1);
+        
+        this.setCellData(
+            this.currentEditCell.day,
+            this.currentEditCell.hour,
+            {
+                subject: cellData.subject,
+                comments: comments
+            }
+        );
+
+        this.renderComments(comments);
+        this.renderSchedule();
+        
+        this.showNotification('🗑️ Hozzászólás törölve');
+    }
+
+    // ==================== IMPORT/EXPORT ====================
+
+    openImportExportModal() {
+        document.getElementById('importExportModal').classList.add('active');
+        
+        // Export adatok megjelenítése
+        const exportArea = document.getElementById('exportData');
+        exportArea.value = JSON.stringify(this.data.schedule, null, 2);
+    }
+
+    closeImportExportModal() {
+        document.getElementById('importExportModal').classList.remove('active');
+    }
+
+    importData() {
+        const importArea = document.getElementById('importData');
+        const jsonStr = importArea.value.trim();
+        
+        if (!jsonStr) {
+            this.showNotification('❌ Nincs mit importálni!');
+            return;
+        }
+        
+        try {
+            const importedData = JSON.parse(jsonStr);
+            
+            if (confirm(`Biztosan importálod az adatokat? Ez felülírja a meglévő órarendet.`)) {
+                this.data.schedule = importedData;
+                this.saveData();
+                this.renderSchedule();
+                this.closeImportExportModal();
+                this.showNotification('✅ Órarend importálva!');
+            }
+        } catch (e) {
+            this.showNotification('❌ Érvénytelen JSON formátum!');
+        }
+    }
+
+    exportData() {
+        const exportArea = document.getElementById('exportData');
+        exportArea.select();
+        document.execCommand('copy');
+        this.showNotification('📋 Másolva a vágólapra!');
+    }
+
+    // ==================== RESET ====================
+
+    resetAll() {
+        if (confirm('Biztosan törlöd az egész órarendet? Ez nem vonható vissza!')) {
+            this.data.schedule = {};
+            this.saveData();
+            this.renderSchedule();
+            this.showNotification('🔄 Órarend törölve');
+        }
+    }
+
+    // ==================== FILE UPLOAD ====================
+
+    handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (confirm('Biztosan betöltöd ezt a fájlt? Ez felülírja a meglévő órarendet.')) {
+                    this.data.schedule = data;
+                    this.saveData();
+                    this.renderSchedule();
+                    this.showNotification('✅ Órarend betöltve!');
+                }
+            } catch (err) {
+                this.showNotification('❌ Érvénytelen fájl formátum!');
+            }
+        };
+        reader.readAsText(file);
+        event.target.value = ''; // Reset input
+    }
+
+    // ==================== HELPERS ====================
+
+    escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '<',
+            '>': '>',
+            '"': '"',
+            "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    formatDate(isoString) {
+        const date = new Date(isoString);
+        return date.toLocaleDateString('hu-HU', { 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    showNotification(message) {
+        const existing = document.querySelector('.schedule-notification');
+        if (existing) existing.remove();
+        
+        const notif = document.createElement('div');
+        notif.className = 'schedule-notification';
+        notif.textContent = message;
+        document.body.appendChild(notif);
+        
+        setTimeout(() => notif.remove(), 3000);
+    }
+}
+
+// Inicializáció
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('📅 Schedule Manager betöltése...');
+    window.scheduleManager = new ScheduleManager();
+});
+

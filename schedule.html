@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend - Study Hub</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="schedule.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="index.html" class="back-btn">← Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="schedule-main">
+        <section class="schedule-hero">
+            <h1 class="page-title">📅 Órarend</h1>
+            <p class="page-subtitle">Személyre szabott órarend hétfőtől péntekig</p>
+        </section>
+
+        <div class="schedule-container">
+            <!-- Toolbar -->
+            <div class="schedule-toolbar">
+                <div class="schedule-actions">
+                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.openImportExportModal()">
+                        📥 Import/Export
+                    </button>
+                    <button class="schedule-btn schedule-btn-secondary" onclick="document.getElementById('fileInput').click()">
+                        📁 JSON Betöltés
+                    </button>
+                    <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="scheduleManager.handleFileUpload(event)">
+                </div>
+                <div class="schedule-actions">
+                    <button class="schedule-btn schedule-btn-danger" onclick="scheduleManager.resetAll()">
+                        🔄 Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Schedule Grid -->
+            <div class="schedule-grid" id="scheduleGrid">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+            <!-- Legend -->
+            <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <h4 style="color: white; margin-bottom: 0.75rem;">📖 Használati útmutató</h4>
+                <ul style="color: rgba(255,255,255,0.7); margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+                    <li>Kattints egy órára a szerkesztéshez</li>
+                    <li>Add meg a tantárgy nevét</li>
+                    <li>Adj hozzá jegyzeteket/hászszólásokat</li>
+                    <li>Mentés után megjelenik az órarendben</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Cell Modal -->
+    <div class="schedule-modal" id="scheduleModal">
+        <div class="schedule-modal-content">
+            <div class="schedule-modal-header">
+                <h2 id="scheduleModalTitle">Óra szerkesztése</h2>
+                <button class="schedule-modal-close" onclick="scheduleManager.closeModal()">×</button>
+            </div>
+            <div class="schedule-modal-body">
+                <div class="schedule-form-group">
+                    <label for="subjectInput">Tantárgy</label>
+                    <input type="text" id="subjectInput" class="schedule-form-input" placeholder="pl: Matematika" list="subjectsList">
+                    <datalist id="subjectsList"></datalist>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h3>💬 Jegyzetek / Hozzászólások</h3>
+                    <div class="comments-list" id="commentsList">
+                        <!-- Rendered by JavaScript -->
+                    </div>
+                    <div class="comment-form">
+                        <input type="text" id="commentInput" placeholder="Új jegyzet..." maxlength="200">
+                        <button onclick="scheduleManager.addComment()">➕</button>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule-modal-footer">
+                <button class="schedule-btn schedule-btn-danger" onclick="scheduleManager.deleteCell()">
+                    🗑️ Törlés
+                </button>
+                <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.closeModal()">
+                    Mégse
+                </button>
+                <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.saveCell()">
+                    💾 Mentés
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import/Export Modal -->
+    <div class="schedule-modal" id="importExportModal">
+        <div class="schedule-modal-content">
+            <div class="schedule-modal-header">
+                <h2>📥 Import / Export</h2>
+                <button class="schedule-modal-close" onclick="scheduleManager.closeImportExportModal()">×</button>
+            </div>
+            <div class="schedule-modal-body">
+                <div class="schedule-form-group">
+                    <label>Export (másolás)</label>
+                    <div class="import-export-area">
+                        <textarea id="exportData" readonly placeholder="Itt jelenik meg az órarend JSON formátumban..."></textarea>
+                    </div>
+                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.exportData()" style="margin-top: 0.5rem; width: 100%;">
+                        📋 Másolás
+                    </button>
+                </div>
+
+                <div class="schedule-form-group" style="margin-top: 1.5rem;">
+                    <label>Import (beillesztés)</label>
+                    <div class="import-export-area">
+                        <textarea id="importData" placeholder="Illeszd be a JSON adatokat..."></textarea>
+                    </div>
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.importData()" style="margin-top: 0.5rem; width: 100%;">
+                        📥 Importálás
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">📚 Study Hub</div>
+            <div class="footer-links">
+                <a href="index.html">Főoldal</a>
+                <a href="settings.html">Beállítások</a>
+                <a href="data-manager.html">Adatkezelés</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/LatinKolbasz" title="GitHub">🐙</a>
+                <a href="mailto:pap.bence@liveedu.mathiasz.hu" title="Email">📧</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="utils/auth.js"></script>
+    <script src="utils/theme.js"></script>
+    <script src="schedule.js"></script>
+
+    <script>
+        // Bejelentkezés ellenőrzése
+        document.addEventListener('DOMContentLoaded', () => {
+            window.authManager.checkAuthAndRedirect('login.html');
+
+            window.authManager.whenAuthReady(() => {
+                if (!window.authManager.isLoggedIn()) return;
+
+                const user = window.authManager.getUser();
+                if (user) {
+                    console.log('✅ Bejelentkezett:', user.username);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
