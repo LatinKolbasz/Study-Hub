@@ -1836,7 +1836,7 @@ button:focus {
 
 @keyframes shootingStar {
     0% {
-        transform: translateX(0) translateY(0) rotate(-45deg);
+        transform: translateX(0) translateY(0) rotate(45deg);
         opacity: 1;
     }
 
@@ -1845,7 +1845,7 @@ button:focus {
     }
 
     100% {
-        transform: translateX(300px) translateY(300px) rotate(-45deg);
+        transform: translateX(300px) translateY(300px) rotate(45deg);
         opacity: 0;
     }
 }
