@@ -368,18 +368,129 @@ class ScheduleManager {
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                if (confirm('Biztosan betöltöd ezt a fájlt? Ez felülírja a meglévő órarendet.')) {
-                    this.data.schedule = data;
-                    this.saveData();
-                    this.renderSchedule();
-                    this.showNotification('✅ Órarend betöltve!');
+                if (data && typeof data === 'object') {
+                    if (confirm('Biztosan betöltöd ezt a fájlt? Ez felülírja a meglévő órarendet.')) {
+                        this.data.schedule = data;
+                        this.saveData();
+                        this.renderSchedule();
+                        this.showNotification('✅ Órarend betöltve!');
+                    }
+                } else {
+                    this.showNotification('❌ Érvénytelen fájl formátum!');
                 }
             } catch (err) {
-                this.showNotification('❌ Érvénytelen fájl formátum!');
+                console.error('JSON parse error:', err);
+                this.showNotification('❌ Érvénytelen JSON formátum!');
             }
+        };
+        reader.onerror = () => {
+            this.showNotification('❌ Hiba a fájl olvasásakor!');
         };
         reader.readAsText(file);
         event.target.value = ''; // Reset input
+    }
+
+    // ==================== TEMPLATES ====================
+
+    loadTemplate(templateType) {
+        const templates = {
+            'empty': {},
+            
+            'gimnazium': {
+                'Hétfő_1': { subject: 'Matematika', comments: [] },
+                'Hétfő_2': { subject: 'Matematika', comments: [] },
+                'Hétfő_3': { subject: 'Irodalom', comments: [] },
+                'Hétfő_4': { subject: 'Irodalom', comments: [] },
+                'Hétfő_5': { subject: 'Történelem', comments: [] },
+                'Hétfő_6': { subject: 'Idegen nyelv', comments: [] },
+                'Hétfő_7': { subject: 'Testnevelés', comments: [] },
+                'Kedd_1': { subject: 'Fizika', comments: [] },
+                'Kedd_2': { subject: 'Fizika', comments: [] },
+                'Kedd_3': { subject: 'Matematika', comments: [] },
+                'Kedd_4': { subject: 'Matematika', comments: [] },
+                'Kedd_5': { subject: 'Irodalom', comments: [] },
+                'Kedd_6': { subject: 'Biosz', comments: [] },
+                'Kedd_7': { subject: 'Művészet', comments: [] },
+                'Szerda_1': { subject: 'Kémia', comments: [] },
+                'Szerda_2': { subject: 'Kémia', comments: [] },
+                'Szerda_3': { subject: 'Matematika', comments: [] },
+                'Szerda_4': { subject: 'Történelem', comments: [] },
+                'Szerda_5': { subject: 'Idegen nyelv', comments: [] },
+                'Szerda_6': { subject: 'Informatika', comments: [] },
+                'Szerda_7': { subject: 'Testnevelés', comments: [] },
+                'Csütörtök_1': { subject: 'Matematika', comments: [] },
+                'Csütörtök_2': { subject: 'Fizika', comments: [] },
+                'Csütörtök_3': { subject: 'Irodalom', comments: [] },
+                'Csütörtök_4': { subject: 'Biosz', comments: [] },
+                'Csütörtök_5': { subject: 'Földrajz', comments: [] },
+                'Csütörtök_6': { subject: 'Idegen nyelv', comments: [] },
+                'Csütörtök_7': { subject: 'Osztályfőnöki', comments: [] },
+                'Péntek_1': { subject: 'Irodalom', comments: [] },
+                'Péntek_2': { subject: 'Matematika', comments: [] },
+                'Péntek_3': { subject: 'Történelem', comments: [] },
+                'Péntek_4': { subject: 'Fizika', comments: [] },
+                'Péntek_5': { subject: 'Testnevelés', comments: [] },
+                'Péntek_6': { subject: '', comments: [] },
+                'Péntek_7': { subject: '', comments: [] }
+            },
+            
+            'szakgimnazium': {
+                'Hétfő_1': { subject: 'Szakmai tárgy', comments: [] },
+                'Hétfő_2': { subject: 'Szakmai tárgy', comments: [] },
+                'Hétfő_3': { subject: 'Matematika', comments: [] },
+                'Hétfő_4': { subject: 'Irodalom', comments: [] },
+                'Hétfő_5': { subject: 'Történelem', comments: [] },
+                'Hétfő_6': { subject: 'Idegen nyelv', comments: [] },
+                'Hétfő_7': { subject: 'Testnevelés', comments: [] },
+                'Kedd_1': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Kedd_2': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Kedd_3': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Kedd_4': { subject: 'Matematika', comments: [] },
+                'Kedd_5': { subject: 'Irodalom', comments: [] },
+                'Kedd_6': { subject: 'Fizika', comments: [] },
+                'Kedd_7': { subject: '', comments: [] },
+                'Szerda_1': { subject: 'Szakmai tárgy', comments: [] },
+                'Szerda_2': { subject: 'Szakmai tárgy', comments: [] },
+                'Szerda_3': { subject: 'Matematika', comments: [] },
+                'Szerda_4': { subject: 'Történelem', comments: [] },
+                'Szerda_5': { subject: 'Idegen nyelv', comments: [] },
+                'Szerda_6': { subject: 'Informatika', comments: [] },
+                'Szerda_7': { subject: '', comments: [] },
+                'Csütörtök_1': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Csütörtök_2': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Csütörtök_3': { subject: 'Szakmai gyakorlat', comments: [] },
+                'Csütörtök_4': { subject: 'Matematika', comments: [] },
+                'Csütörtök_5': { subject: 'Irodalom', comments: [] },
+                'Csütörtök_6': { subject: '', comments: [] },
+                'Csütörtök_7': { subject: '', comments: [] },
+                'Péntek_1': { subject: 'Szakmai tárgy', comments: [] },
+                'Péntek_2': { subject: 'Szakmai tárgy', comments: [] },
+                'Péntek_3': { subject: 'Matematika', comments: [] },
+                'Péntek_4': { subject: 'Történelem', comments: [] },
+                'Péntek_5': { subject: 'Testnevelés', comments: [] },
+                'Péntek_6': { subject: '', comments: [] },
+                'Péntek_7': { subject: '', comments: [] }
+            }
+        };
+
+        const template = templates[templateType];
+        if (!template) {
+            this.showNotification('❌ Ismeretlen sablon!');
+            return;
+        }
+
+        const templateNames = {
+            'empty': 'Üres órarend',
+            'gimnazium': 'Gimnázium',
+            'szakgimnazium': 'Szakgimnázium'
+        };
+
+        if (confirm(`Biztosan betöltöd a "${templateNames[templateType]}" sablont? Ez felülírja a meglévő órarendet.`)) {
+            this.data.schedule = template;
+            this.saveData();
+            this.renderSchedule();
+            this.showNotification(`✅ ${templateNames[templateType]} sablon betöltve!`);
+        }
     }
 
     // ==================== HELPERS ====================

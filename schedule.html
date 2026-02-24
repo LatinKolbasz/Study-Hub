@@ -36,7 +36,10 @@
             <!-- Toolbar -->
             <div class="schedule-toolbar">
                 <div class="schedule-actions">
-                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.openImportExportModal()">
+                    <button class="schedule-btn schedule-btn-primary" onclick="document.getElementById('templateModal').classList.add('active')">
+                        📋 Sablon betöltése
+                    </button>
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.openImportExportModal()">
                         📥 Import/Export
                     </button>
                     <button class="schedule-btn schedule-btn-secondary" onclick="document.getElementById('fileInput').click()">
@@ -136,6 +139,41 @@
                         📥 Importálás
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Modal -->
+    <div class="schedule-modal" id="templateModal">
+        <div class="schedule-modal-content">
+            <div class="schedule-modal-header">
+                <h2>📋 Sablon betöltése</h2>
+                <button class="schedule-modal-close" onclick="document.getElementById('templateModal').classList.remove('active')">×</button>
+            </div>
+            <div class="schedule-modal-body">
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">Válassz egy sablont az órarendhez:</p>
+                
+                <div class="schedule-form-group">
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.loadTemplate('empty')" style="width: 100%; justify-content: center; padding: 1rem;">
+                        📄 Üres órarend
+                    </button>
+                </div>
+                
+                <div class="schedule-form-group">
+                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.loadTemplate('gimnazium')" style="width: 100%; justify-content: center; padding: 1rem;">
+                        🎓 Gimnázium
+                    </button>
+                </div>
+                
+                <div class="schedule-form-group">
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.loadTemplate('szakgimnazium')" style="width: 100%; justify-content: center; padding: 1rem; background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        💼 Szakgimnázium
+                    </button>
+                </div>
+                
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">
+                    💡 A sablon betöltése után szerkesztheted a tantárgyakat!
+                </p>
             </div>
         </div>
     </div>
