@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico">
@@ -8,21 +9,119 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sector-page.css">
     <style>
-        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .topic-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
-        .topic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .topic-card h3 { margin-bottom: 0.5rem; }
-        .topic-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
-        .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .module-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .module-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .module-item.active {
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .module-number {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .module-item.active .module-number {
+            background: var(--primary, #6c5ce7);
+        }
+
+        .module-title {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .module-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .module-item.active .module-arrow {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .module-item.active .module-content {
+            max-height: 2000px;
+        }
+
+        .module-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.2rem;
+            margin-top: 0;
+        }
+
+        .module-content-inner p {
+            margin-bottom: 0.8rem;
+        }
+
+        .module-content-inner .placeholder {
+            opacity: 0.5;
+            font-style: italic;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo"><span class="logo-icon">📚</span><span class="logo-text">Study Hub</span></div>
                 <div style="display: flex; gap: 1rem; align-items: center;">
-                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;">🎨</button>
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="Téma"
+                        style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer;">🎨</button>
                     <a href="sector.html" class="back-btn">← Vissza</a>
                 </div>
             </div>
@@ -37,52 +136,292 @@
 
         <div class="sector-page-content">
             <section class="topics-section">
-                <h2 class="section-title">📚 Témakörök</h2>
-                <div class="topics-grid" id="topicsGrid"></div>
+                <h2 class="section-title">📚 Modulok</h2>
+                <div class="modules-list" id="modulesList">
+
+                    <div class="module-item" id="module-1">
+                        <div class="module-header" onclick="toggleModule(1)">
+                            <div class="module-number">1</div>
+                            <div class="module-title">Alapok</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">Tananyag hamarosan...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-2">
+                        <div class="module-header" onclick="toggleModule(2)">
+                            <div class="module-number">2</div>
+                            <div class="module-title">Def (Függvények)</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">1. Függvény létrehozása
+                                    def koszones(nev):
+                                    print(f"Szia, {nev}!")
+
+                                    koszones("Bence") # Szia, Bence!
+
+                                    def → a függvény definícióját jelzi
+
+                                    koszones → a függvény neve
+
+                                    (nev) → paraméter
+
+                                    print() → a függvény belseje, ami végrehajtódik
+
+                                    2. Visszatérési érték (return)
+                                    def osszeadas(a, b):
+                                    return a + b
+
+                                    eredmeny = osszeadas(5, 3)
+                                    print(eredmeny) # 8
+
+                                    return → visszaad egy értéket a függvényből
+
+                                    Nélküle a függvény csak csinál valamit, de nem ad vissza semmit
+
+                                    3. Alapértelmezett paraméter
+                                    def koszones2(nev="Ismeretlen"):
+                                    print(f"Szia, {nev}!")
+
+                                    koszones2() # Szia, Ismeretlen!
+                                    koszones2("Anna") # Szia, Anna!
+                                    4. Függvény + if / for / while kombináció
+                                    def szamok_megkutatasa(n):
+                                    for i in range(1, n+1):
+                                    if i % 2 == 0:
+                                    print(i, "páros")
+                                    else:
+                                    print(i, "páratlan")
+
+                                    szamok_megkutatasa(5)
+                                    # 1 páratlan
+                                    # 2 páros
+                                    # 3 páratlan
+                                    # 4 páros
+                                    # 5 páratlan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-3">
+                        <div class="module-header" onclick="toggleModule(3)">
+                            <div class="module-number">3</div>
+                            <div class="module-title">Class (Osztályok)</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">1. Class létrehozása
+
+                                    A class egy objektumtervet (blueprint) ad, amiből példányokat (objektumokat) tudsz
+                                    csinálni.
+
+                                    class Auto:
+                                    def __init__(self, marka, szin):
+                                    self.marka = marka
+                                    self.szin = szin
+
+                                    def inditas(self):
+                                    print(f"A {self.marka} autó elindult!")
+
+                                    # Példányosítás
+                                    auto1 = Auto("Toyota", "piros")
+                                    auto2 = Auto("BMW", "kék")
+
+                                    # Metódus hívása
+                                    auto1.inditas() # A Toyota autó elindult!
+                                    auto2.inditas() # A BMW autó elindult!
+
+                                    __init__ → konstruktor, amikor létrejön az objektum
+
+                                    self → az aktuális objektumra utal
+
+                                    self.marka és self.szin → objektum változói (attribútumok)
+
+                                    inditas() → metódus (függvény a class-on belül)
+
+                                    2. Attribútumok módosítása
+                                    print(auto1.szin) # piros
+
+                                    auto1.szin = "fekete" # módosítás
+                                    print(auto1.szin) # fekete
+                                    3. Több metódus
+                                    class Auto:
+                                    def __init__(self, marka, szin):
+                                    self.marka = marka
+                                    self.szin = szin
+
+                                    def inditas(self):
+                                    print(f"A {self.marka} autó elindult!")
+
+                                    def festes(self, uj_szin):
+                                    self.szin = uj_szin
+                                    print(f"A {self.marka} autót újrafestették {uj_szin}-re")
+
+                                    auto = Auto("Honda", "fehér")
+                                    auto.inditas() # A Honda autó elindult!
+                                    auto.festes("fekete") # A Honda autót újrafestették fekete-re
+                                    4. Összefoglalva
+
+                                    Class → tervrajz
+
+                                    Objektum → class példánya
+
+                                    Attribútum → objektumhoz tartozó adat
+
+                                    Metódus → objektumhoz tartozó függvény
+
+                                    __init__ → konstruktor, a létrehozáskor fut le
+
+                                    self → mindig az adott objektumra utal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-4">
+                        <div class="module-header" onclick="toggleModule(4)">
+                            <div class="module-number">4</div>
+                            <div class="module-title">Loopok (Ciklusok)</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">1. if feltétel
+                                    x = 7
+
+                                    if x > 5:
+                                    print("x nagyobb, mint 5")
+                                    elif x == 5:
+                                    print("x pont 5")
+                                    else:
+                                    print("x kisebb, mint 5")
+
+                                    if → igaz feltétel esetén lefut
+
+                                    elif → másik feltétel, ha az if nem teljesült
+
+                                    else → minden más eset
+
+                                    2. while ciklus
+                                    count = 0
+
+                                    while count < 5: print("Szám:", count) count +=1 # mindig növelni kell, különben
+                                        végtelen Addig fut, amíg a feltétel igaz. 3. for i in range ciklus for i in
+                                        range(5): print("i=", i)
+
+range(5) → 0, 1, 2, 3, 4
+
+range(start, stop, step) → például range(2, 10, 2) eredménye: 2,4,6,8
+
+If + for kombináció
+for i in range(1, 6):
+    if i % 2 == 0:
+        print(i, " páros") else: print(i, "páratlan" )</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-5">
+                        <div class="module-header" onclick="toggleModule(5)">
+                            <div class="module-number">5</div>
+                            <div class="module-title">Tételek</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">max/min:
+                                    #atlagszámitás tétele
+osszeg = 0
+for i in range(7):
+    osszeg += arfolyam[i]
+osszeg = osszeg / 7
+print("Az árfolyam átlaga:", osszeg)
+
+#megszámlálás tétele
+folott = 0
+for i in range(7):
+    if arfolyam[i] > 400:
+        folott += 1
+print(folott, "nap volt amikor az árfolyam 400 fölött volt")
+
+#minimum számlásás tétele
+nap = 1
+min = 0
+for i in range(len(arfolyam)):
+    if arfolyam[i] < arfolyam[min]:
+        min = i
+        nap += 1
+print(arfolyam[min], nap)
+#maximum számlásás tétele
+nap = 1
+max = 0
+for i in range(len(arfolyam)):
+    if arfolyam[i] > arfolyam[max]:
+        max = i
+        nap += 1
+print(arfolyam[max], nap)
+
+i = 0
+while i < 7 and not arfolyam[i] < 385:
+    i += 1
+if i < 7:
+    print("találtam egy napot amikor az árfolyam 385 alatt vol a(z)", i+1, "napon")
+else:
+    print("Nem volt olyan nap amikor ar árfolyam 385 alá ment")
+
+#lineáris keresés szomszédos elemekkel
+i = 0
+while i<6 and not arfolyam[i]-10 > arfolyam[i+1]:
+    i += 1
+if i<6:
+    print("A(z)", i+2, "napon csökkent több, mint 10ft-ot az árfolyam")
+else:
+    print("Nem volt olyan nap amikor az árfolyam 10ft-ot csökkent")
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
-
-
         </div>
     </main>
 
-    <footer><p>&copy; 2026 Study Hub</p></footer>
+    <footer>
+        <p>&copy; 2026 Study Hub</p>
+    </footer>
 
 
 
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
-        authDomain: "study-hub-4debf.firebaseapp.com",
-        projectId: "study-hub-4debf",
-        storageBucket: "study-hub-4debf.firebasestorage.app",
-        messagingSenderId: "681045719671",
-        appId: "1:681045719671:web:8d9c665212610578f96472",
-        measurementId: "G-PGVQL7C70N"
-    };
-    firebase.initializeApp(firebaseConfig);
-</script>
-<script src="utils/auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
     <script src="sector-page.js"></script>
     <script>
-        const pythonTopics = [
-            { id: 1, name: "Alapok", desc: "Változók, adattípusok, operatorok" },
-            { id: 2, name: "Feltételek", desc: "if/else, logikai operátorok" },
-            { id: 3, name: "Ciklusok", desc: "for, while, break, continue" },
-            { id: 4, name: "Függvények", desc: "def, paraméterek, visszatérési érték" },
-            { id: 5, name: "Listák", desc: "List, tuple, indexelés, slicing" },
-            { id: 6, name: "Szótárak", desc: "Dict, key-value párok" },
-            { id: 7, name: "OOP", desc: "Osztályok, objektumok, öröklés" },
-            { id: 8, name: "Fájlkezelés", desc: "Olvasás, írás, with" },
-            { id: 9, name: "Modulok", desc: "import, pip, package-ek" },
-            { id: 10, name: "Haladó", desc: "Decorators, generators, lambda" }
-        ];
-
-        function renderTopics() {
-            const grid = document.getElementById('topicsGrid');
-            grid.innerHTML = pythonTopics.map(t => `<div class="topic-card" onclick="alert('📖 ${t.name}: ${t.desc}\n\nHamarosan!')"><h3>${t.name}</h3><p>${t.desc}</p></div>`).join('');
+        function toggleModule(id) {
+            const item = document.getElementById('module-' + id);
+            item.classList.toggle('active');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -90,11 +429,10 @@
 
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) return;
-                renderTopics();
                 window.sectorPage = new SectorPageManager('python');
             });
         });
     </script>
 </body>
-</html>
 
+</html>

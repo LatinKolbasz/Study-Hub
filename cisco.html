@@ -8,12 +8,105 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sector-page.css">
     <style>
-        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .topic-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
-        .topic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .topic-card h3 { margin-bottom: 0.5rem; }
-        .topic-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
         .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .module-item {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .module-item:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .module-item.active {
+            border-color: rgba(255,255,255,0.25);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .module-number {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .module-item.active .module-number {
+            background: var(--primary, #6c5ce7);
+        }
+
+        .module-title {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .module-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .module-item.active .module-arrow {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .module-item.active .module-content {
+            max-height: 2000px;
+        }
+
+        .module-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.2rem;
+            margin-top: 0;
+        }
+
+        .module-content-inner p {
+            margin-bottom: 0.8rem;
+        }
+
+        .module-content-inner .placeholder {
+            opacity: 0.5;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -37,11 +130,198 @@
 
         <div class="sector-page-content">
             <section class="topics-section">
-                <h2 class="section-title">📚 Témakörök</h2>
-                <div class="topics-grid" id="topicsGrid"></div>
+                <h2 class="section-title">📚 Modulok</h2>
+                <div class="modules-list" id="modulesList">
+
+                    <div class="module-item" id="module-1">
+                        <div class="module-header" onclick="toggleModule(1)">
+                            <div class="module-number">1</div>
+                            <div class="module-title">Alap</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">Alapvető parancsok
+- Belépés konfigurációs módba: enable → configure terminal
+- Kilépés konfigurációs módból: end vagy Ctrl+Z
+- Konfiguráció mentése: write memory vagy copy running-config startup-config
+
+Interfészek beállítása
+1. Válaszd ki az interfészt: interface GigabitEthernet0/0
+2. Adj IP-címet: ip address <IP-cím> <maszk>
+   Példa: ip address 192.168.1.1 255.255.255.0
+3. Kapcsold be az interfészt: no shutdown
+DHCP konfiguráció
+1. DHCP pool létrehozása: ip dhcp pool <név>
+2. Hálózat megadása: network <hálózat> <maszk>
+   Példa: network 192.168.1.0 255.255.255.0
+3. Átjáró megadása: default-router <IP>
+4. DNS szerver megadása: dns-server <IP>
+5. Kiosztott címek megtekintése: show ip dhcp binding
+Statikus routing
+Statikus útvonal beállítása:
+ip route <hálózat> <maszk> <next-hop IP>
+
+Példa: ip route 192.168.2.0 255.255.255.0 10.0.0.2
+</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-2">
+                        <div class="module-header" onclick="toggleModule(2)">
+                            <div class="module-number">2</div>
+                            <div class="module-title">Biztonság</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">Belépés konfigurációs módba:
+
+enable
+configure terminal
+
+Konzol jelszó beállítása:
+
+line console 0
+password cisco        # konzol jelszó
+login
+exit
+
+VTY jelszó beállítása (Telnethez):
+
+line vty 0 4
+password cisco        # Telnet jelszó
+login
+exit
+
+Jelszótitkosítás:
+
+service password-encryption
+
+Ez titkosítja a sima szöveges jelszavakat a konfigurációban.
+
+2. Hostnév és MOTD Banner
+hostname R1
+banner motd #Illetéktelen belépés tilos!#
+3. Ellenőrzés
+
+Futó konfiguráció megtekintése:
+
+show running-config
+
+Aktív VTY kapcsolatok ellenőrzése:
+
+show users</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-3">
+                        <div class="module-header" onclick="toggleModule(3)">
+                            <div class="module-number">3</div>
+                            <div class="module-title">OSPF</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">Belépés OSPF konfigurációs módba:
+
+enable
+configure terminal
+router ospf <process-ID>
+
+A <process-ID> egy lokális azonosító a routeren belül, például 1.
+
+Hálózatok hozzáadása OSPF-hez:
+
+network <hálózat> <wildcard-maszk> area <area-ID>
+
+<hálózat>: az OSPF által kezelni kívánt hálózat címe
+
+<wildcard-maszk>: fordított alhálózati maszk (pl. 255.255.255.0 → 0.0.0.255)
+
+<area-ID>: az OSPF terület azonosítója, általában 0 az alapértelmezett backbone area
+
+Példa:
+
+network 192.168.1.0 0.0.0.255 area 0
+network 10.0.0.0 0.0.0.255 area 0
+
+Ellenőrző parancsok OSPF-hez:
+
+show ip ospf neighbor      # OSPF szomszédok ellenőrzése
+show ip route ospf         # OSPF által tanult útvonalak
+show ip ospf interface     # OSPF interfész státusz</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module-item" id="module-4">
+                        <div class="module-header" onclick="toggleModule(4)">
+                            <div class="module-number">4</div>
+                            <div class="module-title">VLAN</div>
+                            <div class="module-arrow">▼</div>
+                        </div>
+                        <div class="module-content">
+                            <div class="module-content-inner">
+                                <p class="placeholder">Hálózati Parancs Segédlet
+1. VLAN-ok létrehozása és kezelése (switch)
+    • vlan <ID>
+Új VLAN létrehozása.
+    • name <név>
+VLAN elnevezése.
+2. Access portok beállítása (PC-k felé)
+    • interface fastethernet0/x
+Port kiválasztása konfiguráláshoz.
+    • switchport mode access
+A port access módban működjön.
+    • switchport access vlan <ID>
+Port hozzárendelése egy VLAN-hoz.
+3. Trunk portok beállítása
+    • switchport mode trunk
+A port trunk módban vigye több VLAN forgalmát.
+    • switchport trunk allowed vlan <lista>
+Engedélyezett VLAN-ok megadása trunkon.
+4. Router-on-a-stick – alinterfészek
+    • interface gigabitethernet0/x
+Fizikai interfész kiválasztása.
+    • no shutdown
+Interfész engedélyezése.
+    • interface gigabitethernet0/x.<VLAN>
+Alinterfész létrehozása VLAN-hoz.
+    • encapsulation dot1Q <ID>
+802.1Q VLAN tag megadása.
+    • ip address <IP> <MASK>
+IP-cím beállítása alinterfészen.
+5. Interfész a DHCP szerver felé
+    • interface gigabitethernet0/x
+Másik hálózathoz csatlakozó interfész.
+    • ip address <IP> <MASK>
+IP beállítása DHCP kapcsolat számára.
+    • no shutdown
+Interfész aktiválása.
+6. DHCP relay (ip helper-address)
+    • ip helper-address <DHCP-IP>
+DHCP kérések továbbítása másik hálózat felé.
+7. DHCP szerver routeren
+    • ip dhcp excluded-address <tól> <ig>
+Kiosztásból kizárt címek.
+    • ip dhcp pool <név>
+DHCP tartomány létrehozása.
+    • network <IP> <MASK>
+Hálózat megadása DHCP-nek.
+    • default-router <IP>
+Gateway cím megadása kliensek számára.
+    • dns-server <IP>
+DNS szerver beállítása.
+    • show ip dhcp binding</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
-
-
         </div>
     </main>
 
@@ -67,22 +347,9 @@
 <script src="utils/theme.js"></script>
     <script src="sector-page.js"></script>
     <script>
-        const ciscoTopics = [
-            { id: 1, name: "Interface-ek", desc: "Router, Switch, PC konfigurálás" },
-            { id: 2, name: "IP Konfiguráció", desc: "IP címek, subnet mask, gateway" },
-            { id: 3, name: "VLAN", desc: "Virtuális LAN-ok, trunk-ek" },
-            { id: 4, name: "Routing", desc: "Statikus, dinamikus (RIP, OSPF)" },
-            { id: 5, name: "Switching", desc: "MAC tábla, VLAN routing" },
-            { id: 6, name: "ACL", desc: "Access Control Lists" },
-            { id: 7, name: "NAT", desc: "Network Address Translation" },
-            { id: 8, name: "DHCP", desc: "Dynamic Host Configuration Protocol" },
-            { id: 9, name: "DNS/HTTP", desc: "Alapvető hálózati szolgáltatások" },
-            { id: 10, name: "Gyakorlás", desc: "Mintafeladatok, vizsgakérdések" }
-        ];
-
-        function renderTopics() {
-            const grid = document.getElementById('topicsGrid');
-            grid.innerHTML = ciscoTopics.map(t => `<div class="topic-card" onclick="alert('📖 ${t.name}: ${t.desc}\n\nHamarosan!')"><h3>${t.name}</h3><p>${t.desc}</p></div>`).join('');
+        function toggleModule(id) {
+            const item = document.getElementById('module-' + id);
+            item.classList.toggle('active');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -90,7 +357,6 @@
 
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) return;
-                renderTopics();
                 window.sectorPage = new SectorPageManager('cisco');
             });
         });
