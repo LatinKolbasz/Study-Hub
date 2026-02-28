@@ -69,13 +69,6 @@ class GradeTracker {
     init() {
         console.log('🏆 GradeTracker inicializálása...');
         
-        // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            // Login átirányítás kikapcsolva
-            // window.location.href = '../login.html';
-            return;
-        }
-
         // Felhasználó prefix beállítása
         this.setUserPrefix();
 
@@ -87,6 +80,24 @@ class GradeTracker {
         // Telemetria
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('grade-tracker');
+        }
+    }
+
+    /**
+     * Újrainicializálás auth változás után
+     */
+    reinit() {
+        console.log('🔄 GradeTracker újrainicializálás (auth ready)...');
+        const oldPrefix = this.userPrefix;
+        this.setUserPrefix();
+        
+        // Csak ha változott a prefix, töltsük újra
+        if (oldPrefix !== this.userPrefix) {
+            console.log('🔄 Prefix változott:', oldPrefix, '->', this.userPrefix);
+            this.loadData();
+            this.checkStreak();
+            this.renderAll();
+            this.populateSubjectsList();
         }
     }
 

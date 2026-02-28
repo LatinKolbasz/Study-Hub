@@ -267,6 +267,11 @@
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) return;
 
+                // GradeTracker újrainicializálása auth kész állapottal
+                if (window.gradeTracker) {
+                    window.gradeTracker.reinit();
+                }
+
                 const user = window.authManager.getUser();
                 if (user) {
                     const playerName = document.getElementById('playerName');
