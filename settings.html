@@ -400,6 +400,8 @@
             measurementId: "G-PGVQL7C70N"
         };
         firebase.initializeApp(firebaseConfig);
+        // Firestore beállítások
+        firebase.firestore().settings({ experimentalForceLongPolling: false, merge: true });
     </script>
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
