@@ -510,6 +510,8 @@ class ScheduleManager {
             this.data.schedule = template;
             this.saveData();
             this.renderSchedule();
+            // Sablon modal bezárása
+            document.getElementById('templateModal').classList.remove('active');
             this.showNotification(`✅ ${templateNames[templateType]} sablon betöltve!`);
         }
     }
@@ -536,9 +538,27 @@ class ScheduleManager {
         const db = this.getFirestoreDb();
         const uid = this.getFirebaseUserId();
         if (!db || !uid) {
-            console.warn('⚠️ Firestore sync kihagyva - nincs auth');
+            // Ha még nincs auth, próbáljuk újra 1 mp múlva
+            console.log('⏳ Firestore sync várakozás auth-ra...');
+            const self = this;
+            setTimeout(() => {
+                const retryUid = self.getFirebaseUserId();
+                if (retryUid) {
+                    self._doFirestoreSync();
+                } else {
+                    console.warn('⚠️ Firestore sync kihagyva - nincs auth');
+                }
+            }, 2000);
             return;
         }
+
+        this._doFirestoreSync();
+    }
+
+    _doFirestoreSync() {
+        const db = this.getFirestoreDb();
+        const uid = this.getFirebaseUserId();
+        if (!db || !uid) return;
 
         db.collection('schedules').doc(uid).set({
             schedule: this.data.schedule,
