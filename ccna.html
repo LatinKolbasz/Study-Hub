@@ -8,27 +8,106 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sector-page.css">
     <style>
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .topic-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .topic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .topic-card h3 { margin-bottom: 0.5rem; }
-        .topic-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; }
         .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+        .modules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .module-item {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .module-item:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .module-item.active {
+            border-color: rgba(255,255,255,0.25);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .module-number {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .module-item.active .module-number {
+            background: var(--primary, #6c5ce7);
+        }
+
+        .module-title {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .module-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .module-item.active .module-arrow {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .module-item.active .module-content {
+            max-height: 2000px;
+        }
+
+        .module-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.2rem;
+            margin-top: 0;
+            white-space: pre-line;
+        }
+
+        .module-content-inner p {
+            margin-bottom: 0.8rem;
+        }
+
+        .module-content-inner .placeholder {
+            opacity: 0.5;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -56,46 +135,16 @@
         </section>
 
         <div class="sector-page-content">
-            <!-- TOPICS -->
             <section class="topics-section">
-                <h2 class="section-title">📚 Témakörök</h2>
-                <div class="topics-grid" id="topicsGrid"></div>
-            </section>
-
-            <!-- UPLOAD -->
-            <section class="upload-section">
-                <h2>📤 Saját Anyag Feltöltése</h2>
-                <div class="file-upload">
-                    <input type="file" id="file-input" class="file-input" accept=".pdf,.doc,.docx,.txt,.zip">
-                    <label for="file-input" class="upload-label">
-                        <span class="upload-icon">📎</span>
-                        <span class="upload-text">Kattints vagy húzd ide a fájlt</span>
-                        <span class="upload-hint">PDF, DOC, DOCX, TXT vagy ZIP (max 10MB)</span>
-                    </label>
-                </div>
-            </section>
-
-            <!-- MATERIALS -->
-            <section class="materials-section">
-                <h2>📁 Feltöltött Anyagok</h2>
-                <div id="material-list" class="materials-list">
-                    <div class="empty-message"><p>📭 Még nincs feltöltött anyag</p></div>
-                </div>
+                <h2 class="section-title">📚 Modulok</h2>
+                <div class="modules-list" id="modulesList"></div>
             </section>
         </div>
     </main>
 
     <footer><p>&copy; 2026 Study Hub</p></footer>
 
-    <div id="preview-modal" class="preview-modal" style="display: none;">
-        <div class="preview-content">
-            <div class="preview-header">
-                <h3 id="preview-title">Fájl Előnézete</h3>
-                <button class="close-btn" onclick="closePreview()">×</button>
-            </div>
-            <div class="preview-body" id="preview-body"></div>
-        </div>
-    </div>
+
 
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
@@ -115,23 +164,41 @@
 <script src="utils/theme.js"></script>
     <script src="sector-page.js"></script>
     <script>
-        const ccnaTopics = [
-            { id: 1, name: "Hálózati Alapok", desc: "IP címek, alhálók, OSI modell" },
-            { id: 2, name: "Ethernet & LAN", desc: "Helyi hálózatok, switch-ek, VLAN-ok" },
-            { id: 3, name: "TCP/IP", desc: "Protocolok, portok, encapsulation" },
-            { id: 4, name: "Routing Alapok", desc: "Statikus routing, dinamikus routing" },
-            { id: 5, name: "Biztonság", desc: "Tűzfalak, VPN, ACL-ek" },
-            { id: 6, name: "IPv6", desc: "IPv6 címek, protokollok" },
-            { id: 7, name: "Wireless", desc: "WiFi hálózatok" },
-            { id: 8, name: "Hálózatkezelés", desc: "SNMP, monitoring" }
+        const ccnaModules = [
+            { id: 1, name: "Modul 1", content: "test" },
+            { id: 2, name: "Modul 2", content: "" },
+            { id: 3, name: "Modul 3", content: "" },
+            { id: 4, name: "Modul 4", content: "" },
+            { id: 5, name: "Modul 5", content: "" },
+            { id: 6, name: "Modul 6", content: "" },
+            { id: 7, name: "Modul 7", content: "" },
+            { id: 8, name: "Modul 8", content: "" },
+            { id: 9, name: "Modul 9", content: "" },
+            { id: 10, name: "Modul 10", content: "" },
+            { id: 11, name: "Modul 11", content: "" },
+            { id: 12, name: "Modul 12", content: "" },
+            { id: 13, name: "Modul 13", content: "" }
         ];
 
-        function renderTopics() {
-            const grid = document.getElementById('topicsGrid');
-            grid.innerHTML = ccnaTopics.map(t => `
-                <div class="topic-card" onclick="alert('📖 ${t.name}: ${t.desc}\n\nHamarosan!')">
-                    <h3>${t.name}</h3>
-                    <p>${t.desc}</p>
+        function toggleModule(id) {
+            const item = document.getElementById('module-' + id);
+            item.classList.toggle('active');
+        }
+
+        function renderModules() {
+            const list = document.getElementById('modulesList');
+            list.innerHTML = ccnaModules.map(m => `
+                <div class="module-item" id="module-${m.id}">
+                    <div class="module-header" onclick="toggleModule(${m.id})">
+                        <div class="module-number">${m.id}</div>
+                        <div class="module-title">${m.name}</div>
+                        <div class="module-arrow">▼</div>
+                    </div>
+                    <div class="module-content">
+                        <div class="module-content-inner">
+                            ${m.content ? m.content : '<p class="placeholder">Tananyag hamarosan...</p>'}
+                        </div>
+                    </div>
                 </div>
             `).join('');
         }
@@ -141,7 +208,7 @@
 
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) return;
-                renderTopics();
+                renderModules();
                 window.sectorPage = new SectorPageManager('ccna');
             });
         });

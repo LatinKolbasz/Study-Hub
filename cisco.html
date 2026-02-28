@@ -41,35 +41,13 @@
                 <div class="topics-grid" id="topicsGrid"></div>
             </section>
 
-            <section class="upload-section">
-                <h2>📤 Saját Anyag Feltöltése</h2>
-                <div class="file-upload">
-                    <input type="file" id="file-input" class="file-input" accept=".pdf,.doc,.docx,.txt,.zip,.pkt">
-                    <label for="file-input" class="upload-label">
-                        <span class="upload-icon">📎</span>
-                        <span class="upload-text">Kattints vagy húzd ide a fájlt</span>
-                        <span class="upload-hint">PDF, DOC, DOCX, TXT, ZIP, PKT (max 10MB)</span>
-                    </label>
-                </div>
-            </section>
 
-            <section class="materials-section">
-                <h2>📁 Feltöltött Anyagok</h2>
-                <div id="material-list" class="materials-list">
-                    <div class="empty-message"><p>📭 Még nincs feltöltött anyag</p></div>
-                </div>
-            </section>
         </div>
     </main>
 
     <footer><p>&copy; 2026 Study Hub</p></footer>
 
-    <div id="preview-modal" class="preview-modal" style="display: none;">
-        <div class="preview-content">
-            <div class="preview-header"><h3 id="preview-title">Fájl Előnézete</h3><button class="close-btn" onclick="closePreview()">×</button></div>
-            <div class="preview-body" id="preview-body"></div>
-        </div>
-    </div>
+
 
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
