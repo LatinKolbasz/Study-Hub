@@ -159,6 +159,42 @@ app.get('/api/get-materials/:sector', (req, res) => {
     }
 });
 
+// API - Quiz megosztás
+app.post('/api/share-quiz', (req, res) => {
+    const { quiz, shareCode } = req.body;
+    const sharedDir = path.join(__dirname, 'data', 'shared_quizzes');
+    
+    if (!fs.existsSync(sharedDir)) {
+        fs.mkdirSync(sharedDir, { recursive: true });
+    }
+    
+    const sharedQuiz = {
+        ...quiz,
+        shareCode: shareCode,
+        sharedAt: new Date().toISOString()
+    };
+    
+    fs.writeFileSync(
+        path.join(sharedDir, `${shareCode}.json`),
+        JSON.stringify(sharedQuiz, null, 2)
+    );
+    
+    res.json({ success: true, shareCode: shareCode });
+});
+
+// API - Megosztott quiz betöltése kód alapján
+app.get('/api/shared-quiz/:code', (req, res) => {
+    const { code } = req.params;
+    const quizFile = path.join(__dirname, 'data', 'shared_quizzes', `${code}.json`);
+    
+    if (fs.existsSync(quizFile)) {
+        const data = JSON.parse(fs.readFileSync(quizFile));
+        res.json({ success: true, quiz: data });
+    } else {
+        res.status(404).json({ success: false, message: 'Kvíz nem található!' });
+    }
+});
+
 // API - Quiz-ek mentése
 app.post('/api/save-quizzes', (req, res) => {
     const { username, quizzes } = req.body;

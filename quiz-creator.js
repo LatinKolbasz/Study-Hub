@@ -41,6 +41,9 @@ class QuizManager {
         this.loadQuizzes();
         this.renderQuizList();
 
+        // URL paraméterek ellenőrzése (megosztott kvíz importálása)
+        this.checkUrlParams();
+
         // Telemetria
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('quiz-creator');
@@ -194,6 +197,9 @@ class QuizManager {
                     <div class="quiz-item-actions">
                         <button class="btn-quiz-action play" onclick="quizManager.startQuiz(${index})">
                             ▶️ Indítás
+                        </button>
+                        <button class="btn-quiz-action share" onclick="quizManager.shareQuiz(${index})">
+                            🔗
                         </button>
                         <button class="btn-quiz-action delete" onclick="quizManager.deleteQuiz(${index})">
                             🗑️
@@ -571,6 +577,279 @@ class QuizManager {
         }
         
         this.showNotification(message);
+    }
+
+    // ============================================
+    // MEGOSZTÁS / SHARING
+    // ============================================
+
+    /**
+     * Rövid megosztási kód generálása
+     */
+    generateShareCode() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+            code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return code;
+    }
+
+    /**
+     * Kvíz megosztása
+     */
+    async shareQuiz(index) {
+        const quiz = this.quizzes[index];
+        if (!quiz) {
+            this.showNotification('❌ Kvíz nem található!');
+            return;
+        }
+
+        const shareCode = this.generateShareCode();
+        
+        // Megosztandó kvíz adat (helyes válaszok nélkül a biztonság kedvéért - de megtartjuk, mert kiértékeléshez kell)
+        const sharedQuiz = {
+            title: quiz.title,
+            description: quiz.description || '',
+            questions: quiz.questions,
+            sharedAt: new Date().toISOString(),
+            shareCode: shareCode
+        };
+
+        let shared = false;
+
+        // 1. Próba: Firestore
+        try {
+            if (typeof firebase !== 'undefined' && firebase.firestore) {
+                const db = firebase.firestore();
+                await db.collection('shared_quizzes').doc(shareCode).set(sharedQuiz);
+                shared = true;
+                console.log('☁️ Kvíz megosztva Firestore-on:', shareCode);
+            }
+        } catch (e) {
+            console.warn('⚠️ Firestore share hiba:', e.message);
+        }
+
+        // 2. Próba: Szerver API
+        if (!shared) {
+            try {
+                const response = await fetch('/api/share-quiz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ quiz: sharedQuiz, shareCode: shareCode })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    shared = true;
+                    console.log('🖥️ Kvíz megosztva szerveren:', shareCode);
+                }
+            } catch (e) {
+                console.warn('⚠️ Server share hiba:', e.message);
+            }
+        }
+
+        if (shared) {
+            this.showShareModal(shareCode);
+        } else {
+            // Utolsó mentsvár: Base64 kódolás linkbe
+            this.showShareModal(shareCode, sharedQuiz);
+        }
+    }
+
+    /**
+     * Megosztás modal megjelenítése
+     */
+    showShareModal(shareCode, fallbackQuiz = null) {
+        const overlay = document.getElementById('shareModalOverlay');
+        const codeEl = document.getElementById('shareCodeValue');
+        const linkInput = document.getElementById('shareLinkInput');
+
+        codeEl.textContent = shareCode;
+
+        // Link generálása
+        const baseUrl = window.location.origin + window.location.pathname;
+        if (fallbackQuiz) {
+            // Ha sem Firestore sem szerver nem működik, base64 kódolás a linkbe
+            const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(fallbackQuiz))));
+            linkInput.value = `${baseUrl}?import=${encoded}`;
+        } else {
+            linkInput.value = `${baseUrl}?code=${shareCode}`;
+        }
+
+        overlay.style.display = 'flex';
+    }
+
+    /**
+     * Megosztás modal bezárása
+     */
+    closeShareModal() {
+        document.getElementById('shareModalOverlay').style.display = 'none';
+    }
+
+    /**
+     * Link másolása vágólapra
+     */
+    async copyShareLink() {
+        const linkInput = document.getElementById('shareLinkInput');
+        try {
+            await navigator.clipboard.writeText(linkInput.value);
+            this.showNotification('✅ Link másolva a vágólapra!');
+        } catch (e) {
+            // Fallback
+            linkInput.select();
+            document.execCommand('copy');
+            this.showNotification('✅ Link másolva!');
+        }
+    }
+
+    /**
+     * Import modal megjelenítése
+     */
+    showImportModal() {
+        document.getElementById('importModalOverlay').style.display = 'flex';
+        document.getElementById('importCodeInput').value = '';
+        document.getElementById('importStatus').textContent = '';
+    }
+
+    /**
+     * Import modal bezárása
+     */
+    closeImportModal() {
+        document.getElementById('importModalOverlay').style.display = 'none';
+    }
+
+    /**
+     * Kvíz importálása kód vagy link alapján
+     */
+    async importQuiz() {
+        const input = document.getElementById('importCodeInput').value.trim();
+        const statusEl = document.getElementById('importStatus');
+        
+        if (!input) {
+            statusEl.textContent = '❌ Adj meg egy kódot vagy linket!';
+            statusEl.className = 'import-status error';
+            return;
+        }
+
+        statusEl.textContent = '⏳ Betöltés...';
+        statusEl.className = 'import-status loading';
+
+        let shareCode = input;
+        let importedQuiz = null;
+
+        // Ha link, kiolvassuk a kódot vagy a base64 adatot
+        if (input.includes('?code=')) {
+            const url = new URL(input);
+            shareCode = url.searchParams.get('code');
+        } else if (input.includes('?import=')) {
+            try {
+                const url = new URL(input);
+                const encoded = url.searchParams.get('import');
+                importedQuiz = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+            } catch (e) {
+                statusEl.textContent = '❌ Érvénytelen link!';
+                statusEl.className = 'import-status error';
+                return;
+            }
+        }
+
+        // Ha nincs base64-ből betöltött kvíz, próbáljuk Firestore-ból vagy szerverről
+        if (!importedQuiz && shareCode) {
+            // 1. Próba: Firestore
+            try {
+                if (typeof firebase !== 'undefined' && firebase.firestore) {
+                    const db = firebase.firestore();
+                    const doc = await db.collection('shared_quizzes').doc(shareCode).get();
+                    if (doc.exists) {
+                        importedQuiz = doc.data();
+                        console.log('☁️ Kvíz betöltve Firestore-ból:', shareCode);
+                    }
+                }
+            } catch (e) {
+                console.warn('⚠️ Firestore import hiba:', e.message);
+            }
+
+            // 2. Próba: Szerver API
+            if (!importedQuiz) {
+                try {
+                    const response = await fetch(`/api/shared-quiz/${shareCode}`);
+                    if (response.ok) {
+                        const result = await response.json();
+                        if (result.success && result.quiz) {
+                            importedQuiz = result.quiz;
+                            console.log('🖥️ Kvíz betöltve szerverről:', shareCode);
+                        }
+                    }
+                } catch (e) {
+                    console.warn('⚠️ Server import hiba:', e.message);
+                }
+            }
+        }
+
+        if (!importedQuiz) {
+            statusEl.textContent = '❌ Kvíz nem található ezzel a kóddal!';
+            statusEl.className = 'import-status error';
+            return;
+        }
+
+        // Ellenőrizzük, hogy nem duplikátum-e
+        const isDuplicate = this.quizzes.some(q => 
+            q.title === importedQuiz.title && 
+            q.questions.length === importedQuiz.questions.length
+        );
+
+        if (isDuplicate) {
+            statusEl.textContent = '⚠️ Ez a kvíz már megvan a listádban!';
+            statusEl.className = 'import-status error';
+            return;
+        }
+
+        // Kvíz hozzáadása
+        const newQuiz = {
+            id: Date.now(),
+            title: importedQuiz.title,
+            description: importedQuiz.description || '',
+            questions: importedQuiz.questions,
+            createdAt: new Date().toISOString(),
+            importedFrom: shareCode || 'link'
+        };
+
+        this.quizzes.push(newQuiz);
+        this.saveQuizzes();
+        this.renderQuizList();
+
+        statusEl.textContent = '✅ Kvíz sikeresen importálva!';
+        statusEl.className = 'import-status success';
+
+        this.showNotification(`✅ "${newQuiz.title}" kvíz importálva!`);
+
+        // 1 mp múlva bezárjuk a modalt
+        setTimeout(() => {
+            this.closeImportModal();
+        }, 1200);
+    }
+
+    /**
+     * URL paraméterek ellenőrzése (automatikus import)
+     */
+    checkUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        
+        if (params.has('code')) {
+            const code = params.get('code');
+            document.getElementById('importCodeInput').value = code;
+            this.showImportModal();
+            // Automatikusan indítjuk az importot
+            setTimeout(() => this.importQuiz(), 500);
+            // Töröljük az URL paramétert
+            window.history.replaceState({}, '', window.location.pathname);
+        } else if (params.has('import')) {
+            const importData = params.get('import');
+            document.getElementById('importCodeInput').value = window.location.href;
+            this.showImportModal();
+            setTimeout(() => this.importQuiz(), 500);
+            window.history.replaceState({}, '', window.location.pathname);
+        }
     }
 
     /**

@@ -37,9 +37,14 @@
             <section class="quiz-list-section" id="quizListSection">
                 <div class="section-header">
                     <h2>📋 Elmentett Kvízek</h2>
-                    <button class="btn-create" onclick="quizManager.showCreateSection()">
-                        <span>➕</span> Új Kvíz
-                    </button>
+                    <div class="header-buttons">
+                        <button class="btn-import" onclick="quizManager.showImportModal()">
+                            <span>📥</span> Importálás
+                        </button>
+                        <button class="btn-create" onclick="quizManager.showCreateSection()">
+                            <span>➕</span> Új Kvíz
+                        </button>
+                    </div>
                 </div>
                 <div id="quizList" class="quiz-list">
                     <div class="empty-message">
@@ -157,6 +162,50 @@
             <p class="footer-copyright">&copy; 2026 Study Hub - Minden jog fenntartva</p>
         </div>
     </footer>
+
+    <!-- Share Modal -->
+    <div class="share-modal-overlay" id="shareModalOverlay" style="display: none;">
+        <div class="share-modal">
+            <div class="share-modal-header">
+                <h3>🔗 Kvíz Megosztása</h3>
+                <button class="share-modal-close" onclick="quizManager.closeShareModal()">×</button>
+            </div>
+            <div class="share-modal-body">
+                <p class="share-info">Oszd meg ezt a kódot másokkal, hogy ők is megoldhassák a kvízt!</p>
+                <div class="share-code-box">
+                    <span class="share-code-label">Megosztási kód:</span>
+                    <div class="share-code-value" id="shareCodeValue">---</div>
+                </div>
+                <div class="share-link-box">
+                    <input type="text" id="shareLinkInput" class="share-link-input" readonly>
+                    <button class="btn-copy" onclick="quizManager.copyShareLink()">
+                        📋 Másolás
+                    </button>
+                </div>
+                <p class="share-hint">💡 A link vagy a kód bármelyikével importálható a kvíz.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="share-modal-overlay" id="importModalOverlay" style="display: none;">
+        <div class="share-modal">
+            <div class="share-modal-header">
+                <h3>📥 Kvíz Importálása</h3>
+                <button class="share-modal-close" onclick="quizManager.closeImportModal()">×</button>
+            </div>
+            <div class="share-modal-body">
+                <p class="share-info">Illeszd be a megosztási kódot vagy linket a kvíz importálásához!</p>
+                <div class="import-input-box">
+                    <input type="text" id="importCodeInput" class="import-code-input" placeholder="pl: ABC123 vagy link">
+                    <button class="btn-import-action" onclick="quizManager.importQuiz()">
+                        📥 Importálás
+                    </button>
+                </div>
+                <p id="importStatus" class="import-status"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Auth és Quiz script -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>

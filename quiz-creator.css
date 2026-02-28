@@ -1103,3 +1103,317 @@
     background: rgba(99, 102, 241, 0.08) !important;
     color: #c7d2fe !important;
 }
+
+/* ============================================
+   MEGOSZTÁS / SHARING STYLES
+   ============================================ */
+
+/* Header buttons row */
+.header-buttons {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* Import button */
+.btn-import {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btn-import:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Share button in quiz item */
+.btn-quiz-action.share {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+}
+
+.btn-quiz-action.share:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Share/Import Modal Overlay */
+.share-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Share Modal */
+.share-modal {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 520px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1));
+    border-bottom: 1px solid var(--input-border);
+}
+
+.share-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--card-text);
+}
+
+.share-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--muted-text);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.share-modal-close:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+}
+
+.share-modal-body {
+    padding: 1.5rem;
+}
+
+.share-info {
+    color: var(--muted-text);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Share Code Display */
+.share-code-box {
+    text-align: center;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(99, 102, 241, 0.08));
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+    border: 2px dashed rgba(139, 92, 246, 0.2);
+}
+
+.share-code-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    margin-bottom: 0.5rem;
+}
+
+.share-code-value {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: #8b5cf6;
+    font-family: 'Courier New', monospace;
+}
+
+/* Share Link Box */
+.share-link-box {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.share-link-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--input-text);
+    background: var(--input-bg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-copy {
+    padding: 0.7rem 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), #5558e3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-copy:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.share-hint {
+    font-size: 0.8rem;
+    color: var(--muted-text);
+    text-align: center;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Import Input */
+.import-input-box {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.import-code-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--input-text);
+    background: var(--input-bg);
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.import-code-input:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.btn-import-action {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-import-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Import Status */
+.import-status {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    min-height: 1.5em;
+}
+
+.import-status.error {
+    color: var(--error-color);
+}
+
+.import-status.success {
+    color: var(--success-color);
+}
+
+.import-status.loading {
+    color: var(--muted-text);
+}
+
+/* Dark mode for sharing */
+[data-theme="dark"] .share-modal {
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .share-code-box {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="dark"] .share-code-value {
+    color: #a78bfa;
+}
+
+[data-theme="dark"] .btn-import {
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+}
+
+[data-theme="dark"] .btn-quiz-action.share {
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6) !important;
+}
+
+/* Mobile responsive for sharing */
+@media (max-width: 768px) {
+    .header-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .header-buttons .btn-import,
+    .header-buttons .btn-create {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .share-modal {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .share-link-box,
+    .import-input-box {
+        flex-direction: column;
+    }
+
+    .share-code-value {
+        font-size: 1.5rem;
+    }
+}
