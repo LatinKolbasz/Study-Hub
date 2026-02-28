@@ -60,12 +60,72 @@ class AssignmentManager {
     }
 
     /**
-     * Beadandók betöltése
+     * Beadandók betöltése (localStorage + Firestore)
      */
     async loadAssignments() {
-        // Konzisztens kulcsnév: userPrefix már tartalmazza az 'assignments'-t
+        // Először localStorage-ból
         const saved = localStorage.getItem(this.userPrefix);
         this.assignments = saved ? JSON.parse(saved) : [];
+
+        // Majd Firestore-ból felülírjuk ha van
+        await this.loadFromFirestore();
+    }
+
+    // ==================== FIRESTORE AUTO-SYNC ====================
+
+    getFirestoreDb() {
+        if (typeof firebase !== 'undefined' && firebase.firestore) {
+            return firebase.firestore();
+        }
+        return null;
+    }
+
+    getFirebaseUserId() {
+        try {
+            const user = firebase.auth().currentUser;
+            return user ? user.uid : null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    syncToFirestore() {
+        const db = this.getFirestoreDb();
+        const uid = this.getFirebaseUserId();
+        if (!db || !uid) return;
+
+        db.collection('assignments').doc(uid).set({
+            assignments: this.assignments,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            userEmail: firebase.auth().currentUser.email || ''
+        }).then(() => {
+            console.log('☁️ Beadandók szinkronizálva a felhőbe');
+        }).catch(error => {
+            console.warn('⚠️ Firestore sync hiba:', error.message);
+        });
+    }
+
+    async loadFromFirestore() {
+        const db = this.getFirestoreDb();
+        const uid = this.getFirebaseUserId();
+        if (!db || !uid) return;
+
+        try {
+            const doc = await db.collection('assignments').doc(uid).get();
+            if (!doc.exists) {
+                console.log('📭 Nincs mentett beadandó a felhőben');
+                return;
+            }
+
+            const cloudData = doc.data();
+            if (!cloudData.assignments || !Array.isArray(cloudData.assignments)) return;
+
+            this.assignments = cloudData.assignments;
+            localStorage.setItem(this.userPrefix, JSON.stringify(this.assignments));
+            console.log('☁️ Beadandók betöltve a felhőből');
+        } catch (error) {
+            console.warn('⚠️ Firestore betöltés hiba:', error.message);
+        }
     }
 
     setupEventListeners() {
@@ -271,23 +331,8 @@ class AssignmentManager {
         localStorage.setItem(this.userPrefix, JSON.stringify(this.assignments));
         console.log('✅ LocalStorage mentve:', this.userPrefix);
 
-        // Szerver mentés (ha elérhető)
-        try {
-            const response = await fetch('/api/save-assignments', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    assignments: this.assignments,
-                    username: window.authManager?.currentUser?.username
-                })
-            });
-
-            if (response.ok) {
-                console.log('✅ Szerver mentve');
-            }
-        } catch (error) {
-            console.warn('⚠️ Szerver nem érhető el, csak localStorage');
-        }
+        // Automatikus Firestore sync
+        this.syncToFirestore();
     }
 }
 

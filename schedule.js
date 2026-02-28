@@ -43,6 +43,7 @@ class ScheduleManager {
 
         this.setUserPrefix();
         this.loadData();
+        this.loadFromFirestore(); // Automatikus felhő betöltés
         this.renderSchedule();
         
         // Telemetria
@@ -82,6 +83,7 @@ class ScheduleManager {
 
     saveData() {
         localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
+        this.syncToFirestore(); // Automatikus felhő mentés
     }
 
     getCellKey(day, hour) {
@@ -493,7 +495,7 @@ class ScheduleManager {
         }
     }
 
-    // ==================== FIRESTORE SYNC ====================
+    // ==================== FIRESTORE AUTO-SYNC ====================
 
     getFirestoreDb() {
         if (typeof firebase !== 'undefined' && firebase.firestore) {
@@ -503,86 +505,52 @@ class ScheduleManager {
     }
 
     getFirebaseUserId() {
-        const user = firebase.auth().currentUser;
-        return user ? user.uid : null;
+        try {
+            const user = firebase.auth().currentUser;
+            return user ? user.uid : null;
+        } catch (e) {
+            return null;
+        }
     }
 
-    async saveToFirestore() {
+    syncToFirestore() {
         const db = this.getFirestoreDb();
         const uid = this.getFirebaseUserId();
+        if (!db || !uid) return;
 
-        if (!db || !uid) {
-            this.showNotification('❌ Nincs bejelentkezve vagy a Firestore nem elérhető!');
-            return;
-        }
-
-        const btn = document.getElementById('cloudSaveBtn');
-        const originalText = btn.textContent;
-        btn.textContent = '⏳ Mentés...';
-        btn.disabled = true;
-
-        try {
-            await db.collection('schedules').doc(uid).set({
-                schedule: this.data.schedule,
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                userEmail: firebase.auth().currentUser.email || ''
-            });
-
-            this.showNotification('✅ Órarend sikeresen mentve a felhőbe!');
-        } catch (error) {
-            console.error('❌ Firestore mentés hiba:', error);
-            this.showNotification('❌ Hiba a mentés során: ' + error.message);
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
+        db.collection('schedules').doc(uid).set({
+            schedule: this.data.schedule,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            userEmail: firebase.auth().currentUser.email || ''
+        }).then(() => {
+            console.log('☁️ Órarend szinkronizálva a felhőbe');
+        }).catch(error => {
+            console.warn('⚠️ Firestore sync hiba:', error.message);
+        });
     }
 
     async loadFromFirestore() {
         const db = this.getFirestoreDb();
         const uid = this.getFirebaseUserId();
-
-        if (!db || !uid) {
-            this.showNotification('❌ Nincs bejelentkezve vagy a Firestore nem elérhető!');
-            return;
-        }
-
-        const btn = document.getElementById('cloudLoadBtn');
-        const originalText = btn.textContent;
-        btn.textContent = '⏳ Betöltés...';
-        btn.disabled = true;
+        if (!db || !uid) return;
 
         try {
             const doc = await db.collection('schedules').doc(uid).get();
-
             if (!doc.exists) {
-                this.showNotification('📭 Nincs mentett órarend a felhőben!');
+                console.log('📭 Nincs mentett órarend a felhőben');
                 return;
             }
 
             const cloudData = doc.data();
+            if (!cloudData.schedule || typeof cloudData.schedule !== 'object') return;
 
-            if (!cloudData.schedule || typeof cloudData.schedule !== 'object') {
-                this.showNotification('❌ Érvénytelen adat a felhőben!');
-                return;
-            }
-
-            const updatedAt = cloudData.updatedAt 
-                ? cloudData.updatedAt.toDate().toLocaleString('hu-HU') 
-                : 'ismeretlen';
-
-            if (confirm(`Betöltöd a felhőben mentett órarendet?\nUtolsó mentés: ${updatedAt}\n\nEz felülírja a jelenlegi órarendet!`)) {
-                this.data.schedule = cloudData.schedule;
-                this.saveData(); // localStorage-ba is mentjük
-                this.renderSchedule();
-                this.showNotification('✅ Órarend betöltve a felhőből!');
-            }
+            // Felhő adat felülírja a helyit
+            this.data.schedule = cloudData.schedule;
+            localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
+            this.renderSchedule();
+            console.log('☁️ Órarend betöltve a felhőből');
         } catch (error) {
-            console.error('❌ Firestore betöltés hiba:', error);
-            this.showNotification('❌ Hiba a betöltés során: ' + error.message);
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
+            console.warn('⚠️ Firestore betöltés hiba:', error.message);
         }
     }
 

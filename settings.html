@@ -388,6 +388,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
@@ -468,9 +469,71 @@
             return Math.abs(hash).toString(36);
         }
 
-        function loadSettings() {
+        // ==================== FIRESTORE AUTO-SYNC ====================
+
+        function getFirestoreDb() {
+            if (typeof firebase !== 'undefined' && firebase.firestore) {
+                return firebase.firestore();
+            }
+            return null;
+        }
+
+        function getFirebaseUserId() {
+            try {
+                const user = firebase.auth().currentUser;
+                return user ? user.uid : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function syncSettingsToFirestore(settings) {
+            const db = getFirestoreDb();
+            const uid = getFirebaseUserId();
+            if (!db || !uid) return;
+
+            db.collection('settings').doc(uid).set({
+                settings: settings,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                userEmail: firebase.auth().currentUser.email || ''
+            }).then(() => {
+                console.log('☁️ Beállítások szinkronizálva a felhőbe');
+            }).catch(error => {
+                console.warn('⚠️ Firestore sync hiba:', error.message);
+            });
+        }
+
+        async function loadSettingsFromFirestore(prefix) {
+            const db = getFirestoreDb();
+            const uid = getFirebaseUserId();
+            if (!db || !uid) return null;
+
+            try {
+                const doc = await db.collection('settings').doc(uid).get();
+                if (!doc.exists) {
+                    console.log('📭 Nincs mentett beállítás a felhőben');
+                    return null;
+                }
+
+                const cloudData = doc.data();
+                if (!cloudData.settings || typeof cloudData.settings !== 'object') return null;
+
+                // Mentés localStorage-ba is
+                localStorage.setItem(prefix + 'settings', JSON.stringify(cloudData.settings));
+                console.log('☁️ Beállítások betöltve a felhőből');
+                return cloudData.settings;
+            } catch (error) {
+                console.warn('⚠️ Firestore betöltés hiba:', error.message);
+                return null;
+            }
+        }
+
+        async function loadSettings() {
             const prefix = getUserPrefix();
             console.log('📁 Betöltés prefix:', prefix);
+
+            // Először megpróbáljuk a felhőből betölteni
+            const cloudSettings = await loadSettingsFromFirestore(prefix);
             
             // Debug: list all keys in localStorage
             console.log('🔍 LocalStorage keys:');
@@ -481,7 +544,7 @@
                 }
             }
             
-            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            const settings = cloudSettings || JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
             console.log('⚙️ Betöltött beállítások:', settings);
             
             // Profil - Firebase user adatok
@@ -542,6 +605,11 @@
             console.log('✅ Beállítások betöltve');
         }
 
+        function saveAndSync(prefix, settings) {
+            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            syncSettingsToFirestore(settings);
+        }
+
         function saveProfile() {
             const prefix = getUserPrefix();
             const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
@@ -559,7 +627,7 @@
                 window.authManager.currentUser.avatarColor = settings.avatarColor;
             }
             
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             console.log('💾 Profil mentve:', settings);
             alert('✅ Profil mentve! Oldal frissítése...');
             
@@ -575,7 +643,7 @@
             settings.enableAnimations = document.getElementById('enableAnimations').checked;
             settings.enableBgEffects = document.getElementById('enableBgEffects').checked;
             settings.enableSound = document.getElementById('enableSound').checked;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             console.log('💾 Megjelenés mentve:', settings);
             
             // Téma azonnali alkalmazása
@@ -641,7 +709,7 @@
             settings.enableEmail = document.getElementById('enableEmail').checked;
             settings.quietStart = document.getElementById('quietStart').value;
             settings.quietEnd = document.getElementById('quietEnd').value;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             console.log('💾 Értesítések mentve:', settings);
             alert('✅ Értesítések mentve!');
         }
@@ -656,7 +724,7 @@
             settings.cookieMarketing = document.getElementById('cookieMarketing').checked;
             settings.telemetryEnabled = document.getElementById('telemetryEnabled').checked;
             settings.errorReporting = document.getElementById('errorReporting').checked;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             console.log('💾 Adatvédelem mentve:', settings);
             alert('✅ Adatvédelem mentve!');
         }
@@ -672,7 +740,7 @@
             settings.autoStartBreak = document.getElementById('autoStartBreak').checked;
             settings.autoStartWork = document.getElementById('autoStartWork').checked;
             settings.desktopNotification = document.getElementById('desktopNotification').checked;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             
             // Timer beállítások mentése a timerManager-nek is
             if (window.timerManager) {
@@ -695,7 +763,7 @@
             settings.xp5 = parseInt(document.getElementById('xp5').value);
             settings.achievementSound = document.getElementById('achievementSound').checked;
             settings.achievementAnim = document.getElementById('achievementAnim').checked;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             console.log('💾 Jegy beállítások mentve:', settings);
             alert('✅ Jegy beállítások mentve!');
         }
@@ -708,7 +776,7 @@
             settings.devApi = document.getElementById('devApi').checked;
             settings.telemetryData = document.getElementById('telemetryData').checked;
             settings.perfData = document.getElementById('perfData').checked;
-            localStorage.setItem(prefix + 'settings', JSON.stringify(settings));
+            saveAndSync(prefix, settings);
             
             // Fejlesztői beállítások alkalmazása
             if (settings.devConsole) {
