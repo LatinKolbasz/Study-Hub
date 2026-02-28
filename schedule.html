@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="schedule.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -17,7 +19,8 @@
                     <span class="logo-text">Study Hub</span>
                 </div>
                 <div style="display: flex; gap: 1rem; align-items: center;">
-                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma"
+                        style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
                         🎨
                     </button>
                     <a href="index.html" class="back-btn">← Vissza</a>
@@ -36,16 +39,10 @@
             <!-- Toolbar -->
             <div class="schedule-toolbar">
                 <div class="schedule-actions">
-                    <button class="schedule-btn schedule-btn-primary" onclick="document.getElementById('templateModal').classList.add('active')">
+                    <button class="schedule-btn schedule-btn-primary"
+                        onclick="document.getElementById('templateModal').classList.add('active')">
                         📋 Sablon betöltése
                     </button>
-                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.openImportExportModal()">
-                        📥 Import/Export
-                    </button>
-                    <button class="schedule-btn schedule-btn-secondary" onclick="document.getElementById('fileInput').click()">
-                        📁 JSON Betöltés
-                    </button>
-                    <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="scheduleManager.handleFileUpload(event)">
                 </div>
                 <div class="schedule-actions">
                     <button class="schedule-btn schedule-btn-danger" onclick="scheduleManager.resetAll()">
@@ -82,7 +79,8 @@
             <div class="schedule-modal-body">
                 <div class="schedule-form-group">
                     <label for="subjectInput">Tantárgy</label>
-                    <input type="text" id="subjectInput" class="schedule-form-input" placeholder="pl: Matematika" list="subjectsList">
+                    <input type="text" id="subjectInput" class="schedule-form-input" placeholder="pl: Matematika"
+                        list="subjectsList">
                     <datalist id="subjectsList"></datalist>
                 </div>
 
@@ -123,9 +121,11 @@
                 <div class="schedule-form-group">
                     <label>Export (másolás)</label>
                     <div class="import-export-area">
-                        <textarea id="exportData" readonly placeholder="Itt jelenik meg az órarend JSON formátumban..."></textarea>
+                        <textarea id="exportData" readonly
+                            placeholder="Itt jelenik meg az órarend JSON formátumban..."></textarea>
                     </div>
-                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.exportData()" style="margin-top: 0.5rem; width: 100%;">
+                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.exportData()"
+                        style="margin-top: 0.5rem; width: 100%;">
                         📋 Másolás
                     </button>
                 </div>
@@ -135,7 +135,8 @@
                     <div class="import-export-area">
                         <textarea id="importData" placeholder="Illeszd be a JSON adatokat..."></textarea>
                     </div>
-                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.importData()" style="margin-top: 0.5rem; width: 100%;">
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.importData()"
+                        style="margin-top: 0.5rem; width: 100%;">
                         📥 Importálás
                     </button>
                 </div>
@@ -148,29 +149,35 @@
         <div class="schedule-modal-content">
             <div class="schedule-modal-header">
                 <h2>📋 Sablon betöltése</h2>
-                <button class="schedule-modal-close" onclick="document.getElementById('templateModal').classList.remove('active')">×</button>
+                <button class="schedule-modal-close"
+                    onclick="document.getElementById('templateModal').classList.remove('active')">×</button>
             </div>
             <div class="schedule-modal-body">
                 <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">Válassz egy sablont az órarendhez:</p>
-                
+
                 <div class="schedule-form-group">
-                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.loadTemplate('empty')" style="width: 100%; justify-content: center; padding: 1rem;">
+                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.loadTemplate('empty')"
+                        style="width: 100%; justify-content: center; padding: 1rem;">
                         📄 Üres órarend
                     </button>
                 </div>
-                
+
                 <div class="schedule-form-group">
-                    <button class="schedule-btn schedule-btn-primary" onclick="scheduleManager.loadTemplate('gimnazium')" style="width: 100%; justify-content: center; padding: 1rem;">
+                    <button class="schedule-btn schedule-btn-primary"
+                        onclick="scheduleManager.loadTemplate('gimnazium')"
+                        style="width: 100%; justify-content: center; padding: 1rem;">
                         🎓 Gimnázium
                     </button>
                 </div>
-                
+
                 <div class="schedule-form-group">
-                    <button class="schedule-btn schedule-btn-secondary" onclick="scheduleManager.loadTemplate('szakgimnazium')" style="width: 100%; justify-content: center; padding: 1rem; background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                    <button class="schedule-btn schedule-btn-secondary"
+                        onclick="scheduleManager.loadTemplate('szakgimnazium')"
+                        style="width: 100%; justify-content: center; padding: 1rem; background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
                         💼 Szakgimnázium
                     </button>
                 </div>
-                
+
                 <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1rem;">
                     💡 A sablon betöltése után szerkesztheted a tantárgyakat!
                 </p>
@@ -230,5 +237,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>
