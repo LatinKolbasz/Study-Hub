@@ -44,7 +44,7 @@ Minden téma animált háttér-effektekkel rendelkezik, amelyek az összes oldal
 | **Cukorka** | Rózsaszín/magenta gradiens |
 | **Cyberpunk** | Neon csillagok, lila/cián akcentusok |
 | **Pasztell** | Világos, halvány rózsaszín (egyetlen light téma) |
-| **Sötét Űr 🌑** | Void effekt — köd, digitális eső, részecskék, horizont vonal |
+| **Sötét Űr ** | Void effekt — köd, digitális eső, részecskék, horizont vonal |
 
 ---
 
@@ -153,7 +153,7 @@ Telefonról is elérhető ugyanazon a Wi-Fi hálózaton.
 
 ## 🤝 Közreműködés
 
-Hozzájárulások szívesen fogadva! Nyiss egy issue-t vagy küldj pull request-et.
+Hozzájárulások szívesen fogadva! Nyiss egy issue-t vagy küldj pull request-et. Előre is köszönöm!
 
 ## 📄 Licensz
 
