@@ -14,15 +14,15 @@ class ThemeManager {
                 accent: '#f59e0b'
             },
             'ocean': {
-                name: 'Óceán',
-                background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)',
+                name: 'Óceán 🌊',
+                background: 'linear-gradient(180deg, #020b1a 0%, #051937 20%, #0a2a4a 40%, #0d3b5e 60%, #0f4c75 80%, #061a2e 100%)',
                 primary: '#0ea5e9',
                 secondary: '#06b6d4',
                 accent: '#14b8a6'
             },
             'sunset': {
-                name: 'Naplemente',
-                background: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%)',
+                name: 'Naplemente 🌅',
+                background: 'linear-gradient(180deg, #0a0015 0%, #1a0533 15%, #4c1080 35%, #c2185b 60%, #e64a19 80%, #ffca28 100%)',
                 primary: '#f59e0b',
                 secondary: '#ef4444',
                 accent: '#ec4899'
@@ -382,6 +382,20 @@ setTheme(themeName, primaryColor = null) {
         if (themeName === 'cyberpunk') {
             setTimeout(() => {
                 this.activateCyberpunkStars();
+            }, 200);
+        }
+        
+        // Ocean effektek frissítése témaváltáskor
+        if (themeName === 'ocean') {
+            setTimeout(() => {
+                this.activateOceanEffects();
+            }, 200);
+        }
+        
+        // Sunset effektek frissítése témaváltáskor
+        if (themeName === 'sunset') {
+            setTimeout(() => {
+                this.activateSunsetEffects();
             }, 200);
         }
         
@@ -1059,11 +1073,12 @@ showToast(message) {
         }, 2000);
     }
 
-// Cyberpunk csillag effekt kezelése
+// Animated background effects kezelése
     handleCyberpunkStars() {
-        // Várunk egy kicsit, hogy a DOM betöltődjön
         setTimeout(() => {
             this.activateCyberpunkStars();
+            this.activateOceanEffects();
+            this.activateSunsetEffects();
         }, 100);
     }
     
@@ -1170,6 +1185,233 @@ showToast(message) {
         document.body.insertBefore(container, document.body.firstChild);
         
         console.log('✨ Cyberpunk stars effect activated!');
+    }
+
+    activateOceanEffects() {
+        // Meglévő ocean container eltávolítása
+        const existingContainer = document.querySelector('.ocean-container');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        // Csak ocean témánál jelenik meg
+        if (this.currentTheme !== 'ocean') {
+            console.log('Not ocean theme, skipping ocean effects');
+            return;
+        }
+
+        console.log('🌊 Activating ocean effects!');
+
+        const container = document.createElement('div');
+        container.className = 'ocean-container';
+        container.id = 'oceanEffects';
+
+        // --- Water surface shimmer ---
+        const surface = document.createElement('div');
+        surface.className = 'ocean-surface';
+
+        // --- Light Rays ---
+        const lightRays = document.createElement('div');
+        lightRays.className = 'ocean-light-rays';
+        for (let i = 0; i < 8; i++) {
+            const ray = document.createElement('div');
+            ray.className = 'ocean-light-ray';
+            lightRays.appendChild(ray);
+        }
+
+        // --- Bubbles ---
+        const bubbles = document.createElement('div');
+        bubbles.className = 'ocean-bubbles';
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'ocean-bubble';
+            bubbles.appendChild(bubble);
+        }
+
+        // --- Particles (plankton) ---
+        const particles = document.createElement('div');
+        particles.className = 'ocean-particles';
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'ocean-particle';
+            particles.appendChild(particle);
+        }
+
+        // --- Bioluminescence ---
+        const biolum = document.createElement('div');
+        biolum.className = 'ocean-bioluminescence';
+        for (let i = 0; i < 4; i++) {
+            const glow = document.createElement('div');
+            glow.className = 'ocean-glow';
+            biolum.appendChild(glow);
+        }
+
+        // --- Fish Silhouettes ---
+        const fishContainer = document.createElement('div');
+        fishContainer.className = 'ocean-fish-container';
+        const fishSvg = `<svg viewBox="0 0 50 25" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5,12.5 Q15,3 30,10 Q35,11 40,12.5 Q35,14 30,15 Q15,22 5,12.5 Z" fill="rgba(14,165,233,0.2)" stroke="rgba(14,165,233,0.1)" stroke-width="0.5"/>
+            <circle cx="32" cy="12" r="1.2" fill="rgba(255,255,255,0.3)"/>
+            <path d="M2,12.5 L8,8 L8,17 Z" fill="rgba(14,165,233,0.15)"/>
+        </svg>`;
+        for (let i = 0; i < 5; i++) {
+            const fish = document.createElement('div');
+            fish.className = 'ocean-fish';
+            fish.innerHTML = fishSvg;
+            fishContainer.appendChild(fish);
+        }
+
+        // --- Wave Layers ---
+        const waves = document.createElement('div');
+        waves.className = 'ocean-waves';
+        const waveSvgTemplate = (color, opacity) => `
+            <svg viewBox="0 0 1440 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,60 C240,120 480,20 720,80 C960,140 1200,40 1440,100 L1440,200 L0,200 Z"
+                      fill="${color}" opacity="${opacity}"/>
+            </svg>`;
+        
+        const waveConfigs = [
+            { color: 'rgba(14,165,233,0.3)', opacity: '1', className: 'ocean-wave ocean-wave-1' },
+            { color: 'rgba(6,182,212,0.25)', opacity: '1', className: 'ocean-wave ocean-wave-2' },
+            { color: 'rgba(20,184,166,0.2)', opacity: '1', className: 'ocean-wave ocean-wave-3' }
+        ];
+
+        waveConfigs.forEach(cfg => {
+            const wave = document.createElement('div');
+            wave.className = cfg.className;
+            wave.innerHTML = waveSvgTemplate(cfg.color, cfg.opacity);
+            waves.appendChild(wave);
+        });
+
+        // --- Caustics ---
+        const caustics = document.createElement('div');
+        caustics.className = 'ocean-caustics';
+
+        // --- Coral / Seaweed ---
+        const coral = document.createElement('div');
+        coral.className = 'ocean-coral';
+        for (let i = 0; i < 12; i++) {
+            const seaweed = document.createElement('div');
+            seaweed.className = 'ocean-seaweed';
+            coral.appendChild(seaweed);
+        }
+
+        // Összeállítás
+        container.appendChild(surface);
+        container.appendChild(lightRays);
+        container.appendChild(biolum);
+        container.appendChild(particles);
+        container.appendChild(fishContainer);
+        container.appendChild(bubbles);
+        container.appendChild(caustics);
+        container.appendChild(waves);
+        container.appendChild(coral);
+
+        // Beszúrás a body elejére
+        document.body.insertBefore(container, document.body.firstChild);
+
+        console.log('🌊 Ocean underwater effect activated!');
+    }
+
+    activateSunsetEffects() {
+        // Meglévő sunset container eltávolítása
+        const existingContainer = document.querySelector('.sunset-container');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        // Csak sunset témánál jelenik meg
+        if (this.currentTheme !== 'sunset') {
+            console.log('Not sunset theme, skipping sunset effects');
+            return;
+        }
+
+        console.log('🌅 Activating sunset cyberwaves!');
+
+        const container = document.createElement('div');
+        container.className = 'sunset-container';
+        container.id = 'sunsetEffects';
+
+        // --- Stars in upper sky ---
+        const stars = document.createElement('div');
+        stars.className = 'sunset-stars';
+
+        // --- Atmospheric Haze ---
+        const haze = document.createElement('div');
+        haze.className = 'sunset-haze';
+        for (let i = 0; i < 3; i++) {
+            const hazeLayer = document.createElement('div');
+            hazeLayer.className = 'sunset-haze-layer';
+            haze.appendChild(hazeLayer);
+        }
+
+        // --- Sun ---
+        const sun = document.createElement('div');
+        sun.className = 'sunset-sun';
+
+        // --- Horizon Glow ---
+        const horizonGlow = document.createElement('div');
+        horizonGlow.className = 'sunset-horizon-glow';
+
+        // --- Chromatic Flare ---
+        const flare = document.createElement('div');
+        flare.className = 'sunset-flare';
+
+        // --- Mountains Silhouette ---
+        const mountains = document.createElement('div');
+        mountains.className = 'sunset-mountains';
+        const mountainEl = document.createElement('div');
+        mountainEl.className = 'sunset-mountain';
+        mountainEl.innerHTML = `<svg viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,300 L0,200 L100,140 L180,180 L260,100 L340,160 L420,80 L500,150 L560,60 L640,130 L720,50 L800,120 L880,70 L960,140 L1040,90 L1120,150 L1200,110 L1280,170 L1360,130 L1440,180 L1440,300 Z"
+                  fill="rgba(10,0,21,0.95)" />
+            <path d="M0,300 L0,230 L120,190 L220,220 L320,160 L400,200 L480,140 L560,190 L660,120 L740,180 L840,130 L920,190 L1000,150 L1100,200 L1200,160 L1300,210 L1440,170 L1440,300 Z"
+                  fill="rgba(10,0,21,1)" />
+        </svg>`;
+        mountains.appendChild(mountainEl);
+
+        // --- Retro Grid ---
+        const grid = document.createElement('div');
+        grid.className = 'sunset-grid';
+
+        // --- Neon Cyberwave Lines ---
+        const waves = document.createElement('div');
+        waves.className = 'sunset-waves';
+        for (let i = 0; i < 6; i++) {
+            const waveLine = document.createElement('div');
+            waveLine.className = 'sunset-wave-line';
+            waves.appendChild(waveLine);
+        }
+
+        // --- Neon Particles ---
+        const particles = document.createElement('div');
+        particles.className = 'sunset-particles';
+        for (let i = 0; i < 10; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'sunset-particle';
+            particles.appendChild(particle);
+        }
+
+        // --- Sun Reflection ---
+        const sunReflection = document.createElement('div');
+        sunReflection.className = 'sunset-sun-reflection';
+
+        // Összeállítás - rétegek sorrendje fontos!
+        container.appendChild(stars);
+        container.appendChild(haze);
+        container.appendChild(sun);
+        container.appendChild(horizonGlow);
+        container.appendChild(flare);
+        container.appendChild(mountains);
+        container.appendChild(grid);
+        container.appendChild(waves);
+        container.appendChild(particles);
+        container.appendChild(sunReflection);
+
+        // Beszúrás a body elejére
+        document.body.insertBefore(container, document.body.firstChild);
+
+        console.log('🌅 Sunset cyberwaves effect activated!');
     }
 }
 
