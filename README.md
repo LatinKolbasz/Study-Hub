@@ -153,7 +153,7 @@ Telefonról is elérhető ugyanazon a Wi-Fi hálózaton.
 
 ## 🤝 Közreműködés
 
-Hozzájárulások szívesen fogadva! Nyiss egy issue-t vagy küldj pull request-et.
+Hozzájárulások szívesen fogadva! Nyiss egy issue-t vagy küldj pull request-et. Előre is köszönöm!
 
 ## 📄 Licensz
 
