@@ -91,6 +91,35 @@
     background: rgba(239, 68, 68, 0.3);
 }
 
+/* Cloud buttons */
+.schedule-btn-cloud-save {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.schedule-btn-cloud-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.schedule-btn-cloud-save:disabled,
+.schedule-btn-cloud-load:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.schedule-btn-cloud-load {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.schedule-btn-cloud-load:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
 /* Schedule Grid */
 .schedule-grid {
     display: grid;

@@ -45,6 +45,12 @@
                     </button>
                 </div>
                 <div class="schedule-actions">
+                    <button class="schedule-btn schedule-btn-cloud-save" id="cloudSaveBtn" onclick="scheduleManager.saveToFirestore()">
+                        ☁️ Mentés felhőbe
+                    </button>
+                    <button class="schedule-btn schedule-btn-cloud-load" id="cloudLoadBtn" onclick="scheduleManager.loadFromFirestore()">
+                        📥 Betöltés felhőből
+                    </button>
                     <button class="schedule-btn schedule-btn-danger" onclick="scheduleManager.resetAll()">
                         🔄 Reset
                     </button>
@@ -204,6 +210,7 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
