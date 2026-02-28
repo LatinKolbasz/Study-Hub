@@ -11,26 +11,38 @@ class AssignmentManager {
     async init() {
         console.log('📥 Beadandók betöltése...');
         
-        // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
+        // Event listenereket mindenképp beállítjuk
+        this.setupEventListeners();
+
+        // Ha az authManager még nincs kész, várunk rá
+        if (!window.authManager) {
+            console.warn('⚠️ AuthManager nem elérhető');
             return;
         }
 
-        // Felhasználó prefix beállítása
-        this.setUserPrefix();
-        
-        await this.loadAssignments();
-        console.log(`✅ ${this.assignments.length} beadandó betöltve`);
-        this.setupEventListeners();
-        this.renderAssignments();
+        // Megvárjuk, hogy az auth state kész legyen
+        window.authManager.whenAuthReady(() => {
+            if (!window.authManager.isLoggedIn()) {
+                console.log('❌ Nincs bejelentkezve, beadandók nem tölthetők be');
+                return;
+            }
 
-        // Firestore betöltés csak ha az auth teljesen kész
-        this.waitForAuthAndLoadCloud();
+            // Felhasználó prefix beállítása
+            this.setUserPrefix();
+            
+            this.loadAssignments().then(() => {
+                console.log(`✅ ${this.assignments.length} beadandó betöltve`);
+                this.renderAssignments();
+            });
 
-        // Telemetria
-        if (window.authManager && window.authManager.logPageView) {
-            window.authManager.logPageView('assignments');
-        }
+            // Firestore betöltés
+            this.waitForAuthAndLoadCloud();
+
+            // Telemetria
+            if (window.authManager.logPageView) {
+                window.authManager.logPageView('assignments');
+            }
+        });
     }
 
     waitForAuthAndLoadCloud() {
@@ -169,6 +181,17 @@ class AssignmentManager {
     }
 
     addAssignment() {
+        // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+        if (!window.authManager || !window.authManager.isLoggedIn()) {
+            alert('❌ Jelentkezz be a beadandók mentéséhez!');
+            return;
+        }
+
+        // Ha a prefix még nincs beállítva, beállítjuk
+        if (this.userPrefix === 'assignments') {
+            this.setUserPrefix();
+        }
+
         const name = document.getElementById('task-name')?.value.trim();
         const description = document.getElementById('task-description')?.value.trim();
         const dueDate = document.getElementById('due-date')?.value;

@@ -596,7 +596,7 @@
 
 .improve-subject-name {
     font-weight: 600;
-    color: var(--card-text);
+    color: black;
 }
 
 .improve-subject-avg {

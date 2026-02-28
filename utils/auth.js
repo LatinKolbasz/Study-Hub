@@ -77,6 +77,11 @@ class AuthManager {
             self.authInitialized = true;
             
             // Ha van függőben lévő check, hívjuk meg
+            if (self._pendingCallbacks && self._pendingCallbacks.length > 0) {
+                self._pendingCallbacks.forEach(cb => cb());
+                self._pendingCallbacks = [];
+            }
+            // Legacy support
             if (self.pendingCheck) {
                 self.pendingCheck();
                 self.pendingCheck = null;
@@ -89,14 +94,18 @@ class AuthManager {
         if (this.authStateReady) {
             callback();
         } else {
-            this.pendingCheck = callback;
+            if (!this._pendingCallbacks) this._pendingCallbacks = [];
+            this._pendingCallbacks.push(callback);
             // Timeout - 3 másodperc múlva meghívjuk ha nem jött state change
-            setTimeout(() => {
-                if (this.pendingCheck) {
-                    this.pendingCheck();
-                    this.pendingCheck = null;
-                }
-            }, 3000);
+            if (!this._pendingTimeout) {
+                this._pendingTimeout = setTimeout(() => {
+                    if (this._pendingCallbacks && this._pendingCallbacks.length > 0) {
+                        this._pendingCallbacks.forEach(cb => cb());
+                        this._pendingCallbacks = [];
+                    }
+                    this._pendingTimeout = null;
+                }, 3000);
+            }
         }
     }
 

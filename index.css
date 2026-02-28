@@ -3459,7 +3459,6 @@ footer,
     background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    -webkit-text-fill-color: transparent;
 }
 
 [data-theme="dark"] .btn-primary,
@@ -3541,5 +3540,302 @@ footer,
 
     .dark-scanlines {
         display: none;
+    }
+}
+
+/* ============================================================
+   TERMS OF SERVICE MODAL
+   ============================================================ */
+
+.tos-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.tos-overlay.tos-visible {
+    opacity: 1;
+}
+
+.tos-overlay.tos-closing {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tos-modal {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(99, 102, 241, 0.08);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.tos-visible .tos-modal {
+    transform: translateY(0) scale(1);
+}
+
+.tos-closing .tos-modal {
+    transform: translateY(-20px) scale(0.95);
+}
+
+/* Header */
+.tos-header {
+    text-align: center;
+    padding: 28px 30px 20px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    flex-shrink: 0;
+}
+
+.tos-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.tos-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #818cf8, #6366f1, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 6px;
+}
+
+.tos-subtitle {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Scrollable content */
+.tos-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 30px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+}
+
+.tos-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tos-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tos-content::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 3px;
+}
+
+.tos-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+}
+
+/* Sections */
+.tos-section {
+    margin-bottom: 20px;
+}
+
+.tos-section:last-child {
+    margin-bottom: 0;
+}
+
+.tos-section h3 {
+    color: #c7d2fe;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+.tos-section p {
+    color: #a5b4c8;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Footer */
+.tos-footer {
+    padding: 20px 30px 24px;
+    border-top: 1px solid rgba(99, 102, 241, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+/* Checkbox */
+.tos-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    user-select: none;
+}
+
+.tos-checkbox {
+    display: none;
+}
+
+.tos-checkmark {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid rgba(99, 102, 241, 0.4);
+    border-radius: 6px;
+    background: rgba(15, 15, 30, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.tos-checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+}
+
+.tos-checkbox:checked + .tos-checkmark {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: #6366f1;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+.tos-checkbox:checked + .tos-checkmark::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Accept button */
+.tos-accept-btn {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #4338ca, #6366f1);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.tos-accept-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.tos-accept-btn:not(:disabled):hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
+    transform: translateY(-2px);
+}
+
+.tos-accept-btn:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* ===== THEME OVERRIDES ===== */
+
+[data-theme="ocean"] .tos-modal {
+    background: linear-gradient(135deg, #0c1929, #0f2942);
+    border-color: rgba(14, 165, 233, 0.2);
+}
+
+[data-theme="ocean"] .tos-title {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9, #7dd3fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+[data-theme="ocean"] .tos-accept-btn {
+    background: linear-gradient(135deg, #0369a1, #0ea5e9);
+}
+
+[data-theme="sunset"] .tos-modal {
+    background: linear-gradient(135deg, #0a0015, #1a0533);
+    border-color: rgba(245, 158, 11, 0.15);
+}
+
+[data-theme="sunset"] .tos-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+[data-theme="sunset"] .tos-accept-btn {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+}
+
+[data-theme="sunset"] .tos-section h3 {
+    color: #fcd34d;
+}
+
+[data-theme="dark"] .tos-modal {
+    background: linear-gradient(135deg, #0a0a0f, #0f0f18);
+    border-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .tos-overlay {
+        padding: 12px;
+        align-items: flex-end;
+    }
+
+    .tos-modal {
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .tos-header {
+        padding: 20px 20px 16px;
+    }
+
+    .tos-content {
+        padding: 16px 20px;
+    }
+
+    .tos-footer {
+        padding: 16px 20px 20px;
+    }
+
+    .tos-title {
+        font-size: 1.3rem;
     }
 }
