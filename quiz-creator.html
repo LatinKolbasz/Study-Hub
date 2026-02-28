@@ -236,6 +236,11 @@
             window.authManager.whenAuthReady(() => {
                 if (!window.authManager.isLoggedIn()) return;
 
+                // QuizManager újrainicializálása auth kész állapottal
+                if (window.quizManager) {
+                    window.quizManager.reinit();
+                }
+
                 if (window.authManager.logPageView) {
                     window.authManager.logPageView('quiz-creator');
                 }

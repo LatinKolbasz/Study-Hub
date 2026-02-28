@@ -28,13 +28,6 @@ class QuizManager {
     init() {
         console.log('📝 QuizManager inicializálása...');
         
-        // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
-            // Login átirányítás kikapcsolva
-            // window.location.href = '../login.html';
-            return;
-        }
-
         // Felhasználó prefix beállítása
         this.setUserPrefix();
         
@@ -48,6 +41,18 @@ class QuizManager {
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('quiz-creator');
         }
+
+        this.initialized = true;
+    }
+
+    /**
+     * Újrainicializálás auth változás után
+     */
+    reinit() {
+        console.log('🔄 QuizManager újrainicializálás (auth ready)...');
+        this.setUserPrefix();
+        this.loadQuizzes();
+        this.renderQuizList();
     }
 
     /**
