@@ -39,16 +39,14 @@ class ScheduleManager {
         const self = this;
         this._initialized = false;
 
-        // Ha már be van jelentkezve (ritka, de lehetséges)
-        if (window.authManager && window.authManager.isLoggedIn()) {
-            this._doFullInit();
-            return;
-        }
+        // Üres rácsot renderelünk azonnal, hogy ne legyen üres az oldal
+        this.renderSchedule();
 
-        // Firebase auth state listener - megvárjuk, amíg az auth kész
+        // Firebase auth state listener - ez MINDIG meghívja a callbacket az aktuális állapottal
         if (typeof firebase !== 'undefined' && firebase.auth) {
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user && !self._initialized) {
+                    console.log('🔑 Firebase auth kész, órarend betöltés...');
                     self._doFullInit(user);
                 }
             });
@@ -59,15 +57,15 @@ class ScheduleManager {
         if (this._initialized) return;
         this._initialized = true;
 
-        // User prefix beállítása
-        if (window.authManager && window.authManager.currentUser) {
-            this.setUserPrefix();
-        } else if (firebaseUser) {
-            // Ha authManager még nem processzálta a user-t, közvetlenül a Firebase user-ből állítjuk
+        // User prefix beállítása - mindig a Firebase user-ből számoljuk
+        // mert az authManager.currentUser lehet hogy még nincs kész
+        if (firebaseUser) {
             const username = firebaseUser.displayName || firebaseUser.email.split('@')[0];
             const hash = this.simpleHash(username);
             this.userPrefix = `studyhub_${hash}_schedule`;
-            console.log('📁 Felhasználói prefix (Firebase-ből):', this.userPrefix);
+            console.log('📁 Felhasználói prefix:', this.userPrefix);
+        } else if (window.authManager && window.authManager.currentUser) {
+            this.setUserPrefix();
         }
 
         this.loadData();
@@ -112,6 +110,11 @@ class ScheduleManager {
     }
 
     saveData() {
+        // Ne mentsünk ha a prefix még az alapértelmezett - ez rossz kulcsra mentene
+        if (!this._initialized || this.userPrefix === 'schedule') {
+            console.warn('⚠️ Mentés kihagyva - nincs beállítva a felhasználói prefix');
+            return;
+        }
         localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
         this.syncToFirestore(); // Automatikus felhő mentés
     }
