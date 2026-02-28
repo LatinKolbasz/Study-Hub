@@ -19,5 +19,5 @@
 - [x] Added global mobile styles in theme.js
 
 ## 4. Testing
-- [ ] Test on mobile viewport
+- [x] Test on mobile viewport
 
