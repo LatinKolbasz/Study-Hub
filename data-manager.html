@@ -110,6 +110,22 @@
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.firestore().settings({ experimentalForceLongPolling: false, merge: true });
+    </script>
     <script src="utils/auth.js"></script>
     <script>
         // NEM要求的 bejelentkezes - mindenki elerheti az export/import-ot
@@ -334,6 +350,10 @@
                     if (data.isMigration) {
                         msg += '\n\nℹ️ Ezek migrált régi adatok.';
                     }
+                    
+                    // Automatikusan feltöltés Firebase-be
+                    syncImportedDataToFirebase(data);
+                    
                     msg += '\nKérlek, töltsd újra az oldalt.';
                     
                     alert(msg);
@@ -434,6 +454,10 @@
                 if (data.isMigration) {
                     msg += '\n\nℹ️ Ezek migralt regi adatok.';
                 }
+                
+                // Automatikusan feltöltés Firebase-be
+                syncImportedDataToFirebase(data);
+                
                 msg += '\nKérlek, toltsd ujra az oldalt.';
                 
                 alert(msg);
@@ -474,6 +498,94 @@
             });
             
             alert('✅ Osszes adat torolve! Kerlek, toltsd ujra az oldalt.');
+        }
+
+        /**
+         * Importált adatok automatikus feltöltése Firebase-be
+         */
+        function syncImportedDataToFirebase(data) {
+            try {
+                if (typeof firebase === 'undefined' || !firebase.firestore) {
+                    console.warn('⚠️ Firebase nem elérhető, nem tudunk szinkronizálni');
+                    return;
+                }
+
+                // Várjunk az auth-ra
+                const checkAndSync = () => {
+                    const user = firebase.auth().currentUser;
+                    if (!user) {
+                        console.warn('⚠️ Nincs bejelentkezett felhasználó, Firebase sync kimarad');
+                        return;
+                    }
+
+                    const db = firebase.firestore();
+                    const uid = user.uid;
+                    const promises = [];
+
+                    // Jegyek feltöltése
+                    if (data.gradeTracker) {
+                        console.log('☁️ Jegyek feltöltése Firebase-be...', data.gradeTracker.grades?.length || 0, 'jegy');
+                        promises.push(
+                            db.collection('grades').doc(uid).set({
+                                data: data.gradeTracker,
+                                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                userEmail: user.email || ''
+                            })
+                        );
+                    }
+
+                    // Beadandók feltöltése
+                    if (data.assignments) {
+                        console.log('☁️ Beadandók feltöltése Firebase-be...');
+                        promises.push(
+                            db.collection('assignments').doc(uid).set({
+                                assignments: data.assignments,
+                                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                userEmail: user.email || ''
+                            })
+                        );
+                    }
+
+                    // Kvízek feltöltése
+                    if (data.quizzes) {
+                        console.log('☁️ Kvízek feltöltése Firebase-be...');
+                        promises.push(
+                            db.collection('quizzes').doc(uid).set({
+                                quizzes: data.quizzes,
+                                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                userEmail: user.email || ''
+                            })
+                        );
+                    }
+
+                    Promise.all(promises)
+                        .then(() => {
+                            console.log('✅ Minden adat sikeresen feltöltve Firebase-be!');
+                        })
+                        .catch(error => {
+                            console.warn('⚠️ Firebase sync hiba:', error.message);
+                        });
+                };
+
+                // Ha már van user, azonnal szinkronizálunk
+                if (firebase.auth().currentUser) {
+                    checkAndSync();
+                } else {
+                    // Különben várjuk meg az auth-ot
+                    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+                        if (user) {
+                            checkAndSync();
+                            unsubscribe();
+                        }
+                    });
+                    // Timeout: 10 mp
+                    setTimeout(() => {
+                        unsubscribe();
+                    }, 10000);
+                }
+            } catch (e) {
+                console.warn('⚠️ Firebase sync hiba:', e.message);
+            }
         }
     </script>
 </body>

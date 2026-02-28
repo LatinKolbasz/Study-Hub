@@ -99,6 +99,12 @@ class GradeTracker {
             this.renderAll();
             this.populateSubjectsList();
         }
+
+        // Ha van helyi adat, azonnal szinkronizáljuk Firebase-be
+        if (this.data.grades && this.data.grades.length > 0) {
+            console.log('☁️ Automatikus feltöltés Firebase-be:', this.data.grades.length, 'jegy');
+            this.syncGradesToFirestore();
+        }
     }
 
     /**
