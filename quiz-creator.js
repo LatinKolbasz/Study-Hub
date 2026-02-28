@@ -75,18 +75,101 @@ class QuizManager {
     }
 
     /**
-     * Kvízek betöltése localStorage-ból
+     * Kvízek betöltése localStorage-ból + Firestore-ból
      */
     loadQuizzes() {
         const saved = localStorage.getItem(this.userPrefix);
         this.quizzes = saved ? JSON.parse(saved) : [];
+        
+        // Firestore-ból is betöltés (aszinkron)
+        this.loadQuizzesFromFirestore();
     }
 
     /**
-     * Kvízek mentése localStorage-ba
+     * Kvízek mentése localStorage-ba + Firestore-ba
      */
     saveQuizzes() {
         localStorage.setItem(this.userPrefix, JSON.stringify(this.quizzes));
+        this.syncQuizzesToFirestore();
+    }
+
+    /**
+     * Kvízek szinkronizálása Firestore-ba
+     */
+    syncQuizzesToFirestore() {
+        try {
+            if (typeof firebase === 'undefined' || !firebase.firestore) return;
+            const user = firebase.auth().currentUser;
+            if (!user) return;
+
+            const db = firebase.firestore();
+            db.collection('quizzes').doc(user.uid).set({
+                quizzes: this.quizzes,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                userEmail: user.email || ''
+            }).then(() => {
+                console.log('☁️ Kvízek szinkronizálva a felhőbe');
+            }).catch(error => {
+                console.warn('⚠️ Firestore quiz sync hiba:', error.message);
+            });
+        } catch (e) {
+            console.warn('⚠️ Quiz sync hiba:', e.message);
+        }
+    }
+
+    /**
+     * Kvízek betöltése Firestore-ból
+     */
+    async loadQuizzesFromFirestore() {
+        try {
+            if (typeof firebase === 'undefined' || !firebase.firestore) return;
+            
+            // Várjuk meg a Firebase user-t
+            const checkUser = () => {
+                return new Promise((resolve) => {
+                    const check = setInterval(() => {
+                        const user = firebase.auth().currentUser;
+                        if (user) {
+                            clearInterval(check);
+                            resolve(user);
+                        }
+                    }, 500);
+                    setTimeout(() => { clearInterval(check); resolve(null); }, 10000);
+                });
+            };
+
+            const user = firebase.auth().currentUser || await checkUser();
+            if (!user) return;
+
+            const db = firebase.firestore();
+            const doc = await db.collection('quizzes').doc(user.uid).get();
+            
+            if (!doc.exists) {
+                console.log('📭 Nincs mentett kvíz a felhőben');
+                // Ha van helyi adat, töltsük fel
+                if (this.quizzes.length > 0) {
+                    this.syncQuizzesToFirestore();
+                }
+                return;
+            }
+
+            const cloudData = doc.data();
+            if (!cloudData.quizzes || !Array.isArray(cloudData.quizzes)) return;
+
+            // Ha a felhőben több kvíz van, használjuk azt
+            if (cloudData.quizzes.length > this.quizzes.length || 
+                (cloudData.quizzes.length > 0 && this.quizzes.length === 0)) {
+                this.quizzes = cloudData.quizzes;
+                localStorage.setItem(this.userPrefix, JSON.stringify(this.quizzes));
+                this.renderQuizList();
+                console.log('☁️ Kvízek betöltve a felhőből:', this.quizzes.length, 'db');
+            } else if (this.quizzes.length > cloudData.quizzes.length) {
+                // Ha helyi több van, szinkronizáljuk fel
+                this.syncQuizzesToFirestore();
+            }
+        } catch (error) {
+            console.warn('⚠️ Firestore quiz betöltés hiba:', error.message);
+        }
     }
 
     /**

@@ -128,6 +128,9 @@ class GradeTracker {
         } else {
             console.log('📭 Nincs mentett adat, új felhasználó');
         }
+        
+        // Firestore-ból is betöltés (aszinkron)
+        this.loadGradesFromFirestore();
     }
 
     /**
@@ -135,6 +138,91 @@ class GradeTracker {
      */
     saveData() {
         localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
+        this.syncGradesToFirestore();
+    }
+
+    /**
+     * Jegyek szinkronizálása Firestore-ba
+     */
+    syncGradesToFirestore() {
+        try {
+            if (typeof firebase === 'undefined' || !firebase.firestore) return;
+            const user = firebase.auth().currentUser;
+            if (!user) return;
+
+            const db = firebase.firestore();
+            db.collection('grades').doc(user.uid).set({
+                data: this.data,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                userEmail: user.email || ''
+            }).then(() => {
+                console.log('☁️ Jegyek szinkronizálva a felhőbe');
+            }).catch(error => {
+                console.warn('⚠️ Firestore grade sync hiba:', error.message);
+            });
+        } catch (e) {
+            console.warn('⚠️ Grade sync hiba:', e.message);
+        }
+    }
+
+    /**
+     * Jegyek betöltése Firestore-ból
+     */
+    async loadGradesFromFirestore() {
+        try {
+            if (typeof firebase === 'undefined' || !firebase.firestore) return;
+            
+            // Várjuk meg a Firebase user-t
+            const checkUser = () => {
+                return new Promise((resolve) => {
+                    const check = setInterval(() => {
+                        const user = firebase.auth().currentUser;
+                        if (user) {
+                            clearInterval(check);
+                            resolve(user);
+                        }
+                    }, 500);
+                    setTimeout(() => { clearInterval(check); resolve(null); }, 10000);
+                });
+            };
+
+            const user = firebase.auth().currentUser || await checkUser();
+            if (!user) return;
+
+            const db = firebase.firestore();
+            const doc = await db.collection('grades').doc(user.uid).get();
+            
+            if (!doc.exists) {
+                console.log('📭 Nincs mentett jegy a felhőben');
+                // Ha van helyi adat, töltsük fel
+                if (this.data.grades.length > 0) {
+                    this.syncGradesToFirestore();
+                }
+                return;
+            }
+
+            const cloudData = doc.data();
+            if (!cloudData.data || typeof cloudData.data !== 'object') return;
+
+            const cloudGrades = cloudData.data.grades || [];
+            const localGrades = this.data.grades || [];
+
+            // Ha a felhőben több jegy van, vagy nincs helyi adat, használjuk a felhőt
+            if (cloudGrades.length > localGrades.length || 
+                (cloudGrades.length > 0 && localGrades.length === 0)) {
+                this.data = { ...this.data, ...cloudData.data };
+                localStorage.setItem(this.userPrefix, JSON.stringify(this.data));
+                this.calculateLevel();
+                this.renderAll();
+                this.populateSubjectsList();
+                console.log('☁️ Jegyek betöltve a felhőből:', cloudGrades.length, 'db');
+            } else if (localGrades.length > cloudGrades.length) {
+                // Ha helyi több van, szinkronizáljuk fel
+                this.syncGradesToFirestore();
+            }
+        } catch (error) {
+            console.warn('⚠️ Firestore grade betöltés hiba:', error.message);
+        }
     }
 
     /**
