@@ -43,13 +43,32 @@ class ScheduleManager {
 
         this.setUserPrefix();
         this.loadData();
-        this.loadFromFirestore(); // Automatikus felhő betöltés
         this.renderSchedule();
+        
+        // Firestore betöltés csak ha az auth teljesen kész
+        this.waitForAuthAndLoadCloud();
         
         // Telemetria
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('schedule');
         }
+    }
+
+    waitForAuthAndLoadCloud() {
+        const self = this;
+        // Várjuk meg, amíg a Firebase auth teljesen kész
+        const checkAuth = setInterval(() => {
+            try {
+                const user = firebase.auth().currentUser;
+                if (user) {
+                    clearInterval(checkAuth);
+                    console.log('🔑 Firebase user kész, felhő betöltés...');
+                    self.loadFromFirestore();
+                }
+            } catch(e) {}
+        }, 500);
+        // Timeout 10 másodperc után
+        setTimeout(() => clearInterval(checkAuth), 10000);
     }
 
     setUserPrefix() {
@@ -516,7 +535,10 @@ class ScheduleManager {
     syncToFirestore() {
         const db = this.getFirestoreDb();
         const uid = this.getFirebaseUserId();
-        if (!db || !uid) return;
+        if (!db || !uid) {
+            console.warn('⚠️ Firestore sync kihagyva - nincs auth');
+            return;
+        }
 
         db.collection('schedules').doc(uid).set({
             schedule: this.data.schedule,

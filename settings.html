@@ -532,20 +532,33 @@
             const prefix = getUserPrefix();
             console.log('📁 Betöltés prefix:', prefix);
 
-            // Először megpróbáljuk a felhőből betölteni
-            const cloudSettings = await loadSettingsFromFirestore(prefix);
+            // Először localStorage-ból töltünk
+            const settings = JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
+            applySettingsToUI(settings);
             
-            // Debug: list all keys in localStorage
-            console.log('🔍 LocalStorage keys:');
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key && key.includes('studyhub')) {
-                    console.log('  -', key);
-                }
-            }
-            
-            const settings = cloudSettings || JSON.parse(localStorage.getItem(prefix + 'settings') || '{}');
-            console.log('⚙️ Betöltött beállítások:', settings);
+            // Felhőből polling: várjuk meg hogy a Firebase user kész legyen
+            waitForFirebaseUserAndLoadSettings(prefix);
+        }
+
+        function waitForFirebaseUserAndLoadSettings(prefix) {
+            const checkAuth = setInterval(async () => {
+                try {
+                    const user = firebase.auth().currentUser;
+                    if (user) {
+                        clearInterval(checkAuth);
+                        console.log('🔑 Firebase user kész, beállítások betöltése felhőből...');
+                        const cloudSettings = await loadSettingsFromFirestore(prefix);
+                        if (cloudSettings) {
+                            applySettingsToUI(cloudSettings);
+                        }
+                    }
+                } catch(e) {}
+            }, 500);
+            setTimeout(() => clearInterval(checkAuth), 10000);
+        }
+
+        function applySettingsToUI(settings) {
+            console.log('⚙️ Beállítások alkalmazása:', settings);
             
             // Profil - Firebase user adatok
             const user = window.authManager?.getUser();

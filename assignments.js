@@ -13,8 +13,6 @@ class AssignmentManager {
         
         // Bejelentkezés ellenőrzése
         if (!window.authManager || !window.authManager.isLoggedIn()) {
-            // Login átirányítás kikapcsolva
-            // window.location.href = '../login.html';
             return;
         }
 
@@ -26,10 +24,30 @@ class AssignmentManager {
         this.setupEventListeners();
         this.renderAssignments();
 
+        // Firestore betöltés csak ha az auth teljesen kész
+        this.waitForAuthAndLoadCloud();
+
         // Telemetria
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('assignments');
         }
+    }
+
+    waitForAuthAndLoadCloud() {
+        const self = this;
+        const checkAuth = setInterval(() => {
+            try {
+                const user = firebase.auth().currentUser;
+                if (user) {
+                    clearInterval(checkAuth);
+                    console.log('🔑 Firebase user kész, felhő betöltés...');
+                    self.loadFromFirestore().then(() => {
+                        self.renderAssignments();
+                    });
+                }
+            } catch(e) {}
+        }, 500);
+        setTimeout(() => clearInterval(checkAuth), 10000);
     }
 
     /**
@@ -60,15 +78,11 @@ class AssignmentManager {
     }
 
     /**
-     * Beadandók betöltése (localStorage + Firestore)
+     * Beadandók betöltése (localStorage)
      */
     async loadAssignments() {
-        // Először localStorage-ból
         const saved = localStorage.getItem(this.userPrefix);
         this.assignments = saved ? JSON.parse(saved) : [];
-
-        // Majd Firestore-ból felülírjuk ha van
-        await this.loadFromFirestore();
     }
 
     // ==================== FIRESTORE AUTO-SYNC ====================
