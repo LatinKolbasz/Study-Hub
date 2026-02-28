@@ -36,39 +36,50 @@ class ScheduleManager {
     init() {
         console.log('📅 Schedule Manager inicializálása...');
         
-        // Bejelentkezés ellenőrzése
-        if (!window.authManager || !window.authManager.isLoggedIn()) {
+        const self = this;
+        this._initialized = false;
+
+        // Ha már be van jelentkezve (ritka, de lehetséges)
+        if (window.authManager && window.authManager.isLoggedIn()) {
+            this._doFullInit();
             return;
         }
 
-        this.setUserPrefix();
+        // Firebase auth state listener - megvárjuk, amíg az auth kész
+        if (typeof firebase !== 'undefined' && firebase.auth) {
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user && !self._initialized) {
+                    self._doFullInit(user);
+                }
+            });
+        }
+    }
+
+    _doFullInit(firebaseUser) {
+        if (this._initialized) return;
+        this._initialized = true;
+
+        // User prefix beállítása
+        if (window.authManager && window.authManager.currentUser) {
+            this.setUserPrefix();
+        } else if (firebaseUser) {
+            // Ha authManager még nem processzálta a user-t, közvetlenül a Firebase user-ből állítjuk
+            const username = firebaseUser.displayName || firebaseUser.email.split('@')[0];
+            const hash = this.simpleHash(username);
+            this.userPrefix = `studyhub_${hash}_schedule`;
+            console.log('📁 Felhasználói prefix (Firebase-ből):', this.userPrefix);
+        }
+
         this.loadData();
         this.renderSchedule();
-        
-        // Firestore betöltés csak ha az auth teljesen kész
-        this.waitForAuthAndLoadCloud();
-        
+
+        // Firestore betöltés - auth már biztosan kész
+        this.loadFromFirestore();
+
         // Telemetria
         if (window.authManager && window.authManager.logPageView) {
             window.authManager.logPageView('schedule');
         }
-    }
-
-    waitForAuthAndLoadCloud() {
-        const self = this;
-        // Várjuk meg, amíg a Firebase auth teljesen kész
-        const checkAuth = setInterval(() => {
-            try {
-                const user = firebase.auth().currentUser;
-                if (user) {
-                    clearInterval(checkAuth);
-                    console.log('🔑 Firebase user kész, felhő betöltés...');
-                    self.loadFromFirestore();
-                }
-            } catch(e) {}
-        }, 500);
-        // Timeout 10 másodperc után
-        setTimeout(() => clearInterval(checkAuth), 10000);
     }
 
     setUserPrefix() {
