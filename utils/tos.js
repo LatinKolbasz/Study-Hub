@@ -109,14 +109,6 @@ class TOSManager {
                             esetén újra elfogadást kérünk.
                         </p>
                     </div>
-                    <div class="tos-section">
-                        <h3>6. Módosítások</h3>
-                        <p>
-                            <!-- IDE ÍRD A SAJÁT SZÖVEGED -->
-                            Fenntartjuk a jogot a feltételek módosítására. Jelentős változás 
-                            esetén újra elfogadást kérünk.
-                        </p>
-                    </div>
                 </div>
 
                 <div class="tos-footer">

@@ -5,24 +5,9 @@
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Analytics - Study Hub</title>
-    <link rel="stylesheet" href="grade-tracker.css">
     <link rel="stylesheet" href="analytics.css">
-    <style>
-        .dev-notice {
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-    </style>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <header>
@@ -33,8 +18,13 @@
                     <span class="logo-icon">📊</span>
                     <span class="logo-text">Study Analytics</span>
                 </div>
-                <div style="display: flex; gap: 1rem; align-items: center;">
-                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma" style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                <div class="nav-actions">
+                    <div class="time-range-selector">
+                        <button class="range-btn active" data-range="week">Hét</button>
+                        <button class="range-btn" data-range="month">Hónap</button>
+                        <button class="range-btn" data-range="semester">Félév</button>
+                    </div>
+                    <button class="theme-toggle-btn" onclick="window.themeManager && window.themeManager.showThemeSelector()" title="🎨 Téma">
                         🎨
                     </button>
                 </div>
@@ -43,10 +33,23 @@
     </header>
 
     <main class="analytics-main">
-        <!-- Fejlesztés alatt figyelmeztetés -->
-        <div class="dev-notice">
-            🚧 FEJLESZTÉS ALATT - Az oldal hamarosan elérhető lesz! 🚧
-        </div>
+        <!-- Hero Section -->
+        <section class="analytics-hero">
+            <div class="hero-left">
+                <h1 class="page-title">📈 Tanulási Áttekintés</h1>
+                <p class="page-subtitle">Részletes statisztikák és elemzések a fejlődésedről</p>
+            </div>
+            <div class="hero-right">
+                <div class="hero-stat">
+                    <span class="hero-stat-value" id="heroProductivity">0%</span>
+                    <span class="hero-stat-label">Produktivitás</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value" id="heroTrend">↑</span>
+                    <span class="hero-stat-label">Trend</span>
+                </div>
+            </div>
+        </section>
 
         <!-- Összesítő kártyák -->
         <section class="summary-cards">
@@ -54,16 +57,18 @@
                 <div class="summary-icon">⏱️</div>
                 <div class="summary-content">
                     <span class="summary-value" id="totalStudyTime">0</span>
-                    <span class="summary-label">Összes tanulási idő (perc)</span>
+                    <span class="summary-label">Összes tanulási idő</span>
                 </div>
+                <div class="summary-trend up" id="studyTimeTrend">+12%</div>
             </div>
             
             <div class="summary-card sessions">
                 <div class="summary-icon">🍅</div>
                 <div class="summary-content">
                     <span class="summary-value" id="totalSessions">0</span>
-                    <span class="summary-label">Pomodoro Sessions</span>
+                    <span class="summary-label">Pomodoro sessions</span>
                 </div>
+                <div class="summary-trend up" id="sessionsTrend">+5</div>
             </div>
             
             <div class="summary-card xp">
@@ -72,6 +77,7 @@
                     <span class="summary-value" id="totalXp">0</span>
                     <span class="summary-label">Összes XP</span>
                 </div>
+                <div class="summary-trend up" id="xpTrend">+150</div>
             </div>
             
             <div class="summary-card level">
@@ -80,6 +86,7 @@
                     <span class="summary-value" id="currentLevel">1</span>
                     <span class="summary-label">Szint</span>
                 </div>
+                <div class="summary-trend neutral">-</div>
             </div>
             
             <div class="summary-card streak">
@@ -88,6 +95,7 @@
                     <span class="summary-value" id="currentStreak">0</span>
                     <span class="summary-label">Streak nap</span>
                 </div>
+                <div class="summary-trend up" id="streakTrend">Aktív</div>
             </div>
             
             <div class="summary-card grades">
@@ -96,6 +104,7 @@
                     <span class="summary-value" id="avgGrade">0</span>
                     <span class="summary-label">Átlag jegy</span>
                 </div>
+                <div class="summary-trend up" id="gradeTrend">+0.2</div>
             </div>
             
             <div class="summary-card quizzes">
@@ -104,6 +113,7 @@
                     <span class="summary-value" id="totalQuizzes">0</span>
                     <span class="summary-label">Kvízek száma</span>
                 </div>
+                <div class="summary-trend up" id="quizCountTrend">+3</div>
             </div>
             
             <div class="summary-card quiz-avg">
@@ -112,22 +122,160 @@
                     <span class="summary-value" id="quizAvg">0%</span>
                     <span class="summary-label">Kvíz átlag</span>
                 </div>
+                <div class="summary-trend up" id="quizAvgTrend">+8%</div>
             </div>
         </section>
 
-        <!-- Coming Soon üzenet -->
-        <div style="text-align: center; padding: 4rem 2rem; background: rgba(255,255,255,0.1); border-radius: 16px; margin: 2rem 0;">
-            <h2 style="font-size: 2rem; margin-bottom: 1rem;">📈 Analytics</h2>
-            <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 2rem;">
-                Részletes statisztikák a tanulásodról<br>
-                Diagramok, heatmap-ek és még sok más!
-            </p>
-            <div style="font-size: 4rem;">🚧</div>
-            <p style="margin-top: 1rem; opacity: 0.6;">Hamarosan...</p>
-            <a href="index.html" style="display: inline-block; margin-top: 2rem; padding: 1rem 2rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
-                ← Vissza a főoldalra
-            </a>
-        </div>
+        <!-- Fő diagramok sor -->
+        <section class="charts-row two-cols">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📅 Napi tanulási idő</h3>
+                    <span class="chart-subtitle">Az elmúlt hetek aktivitása</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="studyTimeChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>⚡ XP fejlődés</h3>
+                    <span class="chart-subtitle">Kumulatív XP az idő függvényében</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="xpProgressChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jegy diagramok sor -->
+        <section class="charts-row two-cols">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📊 Jegy eloszlás</h3>
+                    <span class="chart-subtitle">Jegyek megoszlása 1-5 skálán</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="gradeDistributionChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📚 Tantárgyi átlagok</h3>
+                    <span class="chart-subtitle">Tantárgyankénti teljesítmény</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="subjectAvgChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kvíz és timer sor -->
+        <section class="charts-row three-cols">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>🎯 Kvíz teljesítmény</h3>
+                    <span class="chart-subtitle">Utolsó kvíz eredmények</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="quizPerformanceChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>⏱️ Munka / Szünet</h3>
+                    <span class="chart-subtitle">Pomodoro idő eloszlás</span>
+                </div>
+                <div class="chart-container small">
+                    <canvas id="modeDistributionChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>✅ Feladatok</h3>
+                    <span class="chart-subtitle">Beadandók állapota</span>
+                </div>
+                <div class="chart-container small">
+                    <canvas id="assignmentsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heti összehasonlítás és óránkénti aktivitás -->
+        <section class="charts-row two-cols">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📆 Heti összehasonlítás</h3>
+                    <span class="chart-subtitle">Ez a hét vs. előző hét</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="weeklyComparisonChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>🕐 Napszak szerinti aktivitás</h3>
+                    <span class="chart-subtitle">Mikor tanulsz a legtöbbet?</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="hourlyActivityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tantárgyi radar és jegy trend -->
+        <section class="charts-row two-cols">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>🎯 Tantárgyi készségek</h3>
+                    <span class="chart-subtitle">Teljesítmény radar diagram</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="skillRadarChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>📈 Jegy trend</h3>
+                    <span class="chart-subtitle">Átlag jegy alakulása időben</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="gradeTrendChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity Heatmap -->
+        <section class="chart-card full-width">
+            <div class="chart-header">
+                <h3>🟩 Aktivitási hőtérkép</h3>
+                <span class="chart-subtitle">Utolsó 12 hét napi aktivitása</span>
+            </div>
+            <div class="heatmap-wrapper">
+                <div class="heatmap-day-labels">
+                    <span>H</span><span>K</span><span>Sze</span><span>Cs</span><span>P</span><span>Szo</span><span>V</span>
+                </div>
+                <div id="activityHeatmap" class="heatmap-container"></div>
+            </div>
+            <div class="heatmap-legend">
+                <span>Kevesebb</span>
+                <div class="heatmap-legend-item" style="background: var(--border);"></div>
+                <div class="heatmap-legend-item" style="background: #c7d2fe;"></div>
+                <div class="heatmap-legend-item" style="background: #a5b4fc;"></div>
+                <div class="heatmap-legend-item" style="background: #818cf8;"></div>
+                <div class="heatmap-legend-item" style="background: #6366f1;"></div>
+                <div class="heatmap-legend-item" style="background: #4f46e5;"></div>
+                <span>Több</span>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section class="insights-section">
+            <h3>💡 Személyre szabott megállapítások</h3>
+            <div class="insights-grid" id="insightsGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -146,7 +294,7 @@
         </div>
     </footer>
 
-    <!-- Auth script -->
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
     <script>
@@ -165,37 +313,6 @@
     <script src="utils/theme.js"></script>
     <script src="utils/debug.js"></script>
     <script src="utils/tos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            window.authManager.checkAuthAndRedirect('login.html');
-
-            window.authManager.whenAuthReady(() => {
-                if (!window.authManager.isLoggedIn()) return;
-
-                const user = window.authManager.getUser();
-                if (!user) return;
-
-                const username = user.username || user.email.split('@')[0];
-                let hash = 0;
-                for (let i = 0; i < username.length; i++) {
-                    hash = ((hash << 5) - hash) + username.charCodeAt(i);
-                    hash = hash & hash;
-                }
-                const prefix = 'studyhub_' + Math.abs(hash).toString(36) + '_';
-
-                const gradeData = JSON.parse(localStorage.getItem(prefix + 'gradeTracker') || '{"totalXp":0,"level":1}');
-                document.getElementById('totalXp').textContent = gradeData.totalXp || 0;
-                document.getElementById('currentLevel').textContent = gradeData.level || 1;
-
-                const timerData = JSON.parse(localStorage.getItem(prefix + 'stats') || '{"totalMinutes":0,"completedSessions":0,"streak":0}');
-                document.getElementById('totalStudyTime').textContent = timerData.totalMinutes ? `${Math.floor(timerData.totalMinutes/60)}ó ${timerData.totalMinutes%60}p` : '0 perc';
-                document.getElementById('totalSessions').textContent = timerData.completedSessions || 0;
-                document.getElementById('currentStreak').textContent = timerData.streak || 0;
-
-                console.log('✅ Analytics összesítő betöltve');
-            });
-        });
-    </script>
+    <script src="analytics.js"></script>
 </body>
 </html>
-
