@@ -579,3 +579,123 @@ body {
         flex: 1;
     }
 }
+
+/* ========== OCEAN TÉMA ========== */
+
+[data-theme="ocean"] .sector-hero {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(6, 182, 212, 0.08)) !important;
+    border: 1px solid rgba(14, 165, 233, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="ocean"] .sector-hero .page-title {
+    background: linear-gradient(135deg, #22d3ee, #0ea5e9, #06b6d4) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="ocean"] .material-card {
+    background: rgba(14, 165, 233, 0.06) !important;
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="ocean"] .material-card:hover {
+    border-color: rgba(14, 165, 233, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 20, 50, 0.3), 0 0 15px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="ocean"] .btn-download {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+
+[data-theme="ocean"] .btn-download:hover {
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5) !important;
+}
+
+[data-theme="ocean"] .btn-delete {
+    background: rgba(14, 165, 233, 0.1) !important;
+    border-color: rgba(14, 165, 233, 0.2) !important;
+    color: #bae6fd !important;
+}
+
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .sector-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .sector-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .material-card {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="sunset"] .material-card:hover {
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.2), 0 0 15px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="sunset"] .btn-download {
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="sunset"] .btn-download:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), 0 0 20px rgba(236, 72, 153, 0.3) !important;
+}
+
+[data-theme="sunset"] .btn-delete {
+    background: rgba(245, 158, 11, 0.1) !important;
+    border-color: rgba(245, 158, 11, 0.2) !important;
+    color: #fcd34d !important;
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .sector-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .sector-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .material-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .material-card:hover {
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .btn-download {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .btn-download:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35) !important;
+}
+
+[data-theme="dark"] .btn-delete {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: rgba(99, 102, 241, 0.12) !important;
+    color: #c7d2fe !important;
+}

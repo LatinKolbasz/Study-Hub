@@ -557,3 +557,111 @@
     border-color: #0ea5e9 !important;
     box-shadow: 0 0 10px rgba(14, 165, 233, 0.2);
 }
+
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .assignments-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .assignments-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .assignment-form {
+    background: rgba(194, 24, 91, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .assignment-form input,
+[data-theme="sunset"] .assignment-form select,
+[data-theme="sunset"] .assignment-form textarea {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border-color: rgba(245, 158, 11, 0.15) !important;
+    color: #fef3c7 !important;
+}
+
+[data-theme="sunset"] .assignment-form input:focus,
+[data-theme="sunset"] .assignment-form select:focus,
+[data-theme="sunset"] .assignment-form textarea:focus {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+}
+
+[data-theme="sunset"] .assignment-item {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    transition: all 0.3s ease;
+}
+
+[data-theme="sunset"] .assignment-item:hover {
+    background: rgba(245, 158, 11, 0.12) !important;
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.2), 0 0 15px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="sunset"] .btn-submit {
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="sunset"] .btn-submit:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), 0 0 20px rgba(236, 72, 153, 0.3) !important;
+}
+
+[data-theme="sunset"] .filter-btn.active {
+    background: rgba(245, 158, 11, 0.3) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2), 0 0 20px rgba(236, 72, 153, 0.1);
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .assignments-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .assignments-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .assignment-form {
+    background: rgba(10, 10, 20, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .assignment-item {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+}
+
+[data-theme="dark"] .assignment-item:hover {
+    background: rgba(20, 20, 35, 0.8) !important;
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .btn-submit {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .btn-submit:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35) !important;
+}
+
+[data-theme="dark"] .filter-btn.active {
+    background: rgba(99, 102, 241, 0.2) !important;
+    border-color: rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.1);
+}

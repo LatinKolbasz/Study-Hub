@@ -639,3 +639,133 @@
     color: #e0f2fe !important;
     text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
 }
+
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .timer-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .timer-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .timer-circle {
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.15), 0 0 60px rgba(236, 72, 153, 0.1);
+}
+
+[data-theme="sunset"] .timer-circle svg circle {
+    stroke: rgba(245, 158, 11, 0.15) !important;
+}
+
+[data-theme="sunset"] .timer-circle svg circle:last-child {
+    stroke: #f59e0b !important;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+}
+
+[data-theme="sunset"] .timer-time {
+    color: #fef3c7 !important;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="sunset"] .timer-btn.start {
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="sunset"] .timer-btn.start:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), 0 0 20px rgba(236, 72, 153, 0.3) !important;
+}
+
+[data-theme="sunset"] .timer-btn.reset,
+[data-theme="sunset"] .timer-btn.skip {
+    background: rgba(245, 158, 11, 0.1) !important;
+    border-color: rgba(245, 158, 11, 0.2) !important;
+    color: #fcd34d !important;
+}
+
+[data-theme="sunset"] .timer-btn.reset:hover {
+    border-color: #f59e0b !important;
+    color: #f59e0b !important;
+}
+
+[data-theme="sunset"] .stat-card {
+    background: rgba(245, 158, 11, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="sunset"] .stat-card:hover {
+    background: rgba(245, 158, 11, 0.14) !important;
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.2), 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .timer-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .timer-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .timer-circle {
+    border-color: rgba(99, 102, 241, 0.15) !important;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.08), 0 0 60px rgba(139, 92, 246, 0.04);
+}
+
+[data-theme="dark"] .timer-circle svg circle {
+    stroke: rgba(99, 102, 241, 0.1) !important;
+}
+
+[data-theme="dark"] .timer-circle svg circle:last-child {
+    stroke: #6366f1 !important;
+    filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.4));
+}
+
+[data-theme="dark"] .timer-time {
+    color: #e2e8f0 !important;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="dark"] .timer-btn.start {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .timer-btn.start:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35) !important;
+}
+
+[data-theme="dark"] .timer-btn.reset,
+[data-theme="dark"] .timer-btn.skip {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: rgba(99, 102, 241, 0.12) !important;
+    color: #c7d2fe !important;
+}
+
+[data-theme="dark"] .timer-btn.reset:hover {
+    border-color: rgba(99, 102, 241, 0.25) !important;
+    color: #818cf8 !important;
+}
+
+[data-theme="dark"] .stat-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .stat-card:hover {
+    background: rgba(20, 20, 35, 0.8) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(99, 102, 241, 0.05);
+}

@@ -2132,37 +2132,7 @@ footer,
 
 /* --- Top Surface Shimmer (water surface from below) --- */
 .ocean-surface {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(180deg,
-        rgba(14, 165, 233, 0.15) 0%,
-        rgba(6, 182, 212, 0.08) 40%,
-        transparent 100%
-    );
-    overflow: hidden;
-}
-
-.ocean-surface::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 200%;
-    height: 100%;
-    background: repeating-linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.04) 3%,
-        transparent 6%
-    );
-    animation: surfaceShimmer 4s linear infinite;
-}
-
-@keyframes surfaceShimmer {
-    from { transform: translateX(0); }
-    to { transform: translateX(50%); }
+    display: none;
 }
 
 /* --- Underwater Particles (plankton) --- */
@@ -2677,23 +2647,23 @@ footer,
 .sunset-grid {
     position: absolute;
     bottom: 0;
-    left: -50%;
-    width: 200%;
-    height: 45%;
+    left: -80%;
+    width: 260%;
+    height: 65%;
     background-image:
-        linear-gradient(rgba(194, 24, 91, 0.4) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(194, 24, 91, 0.4) 1px, transparent 1px);
-    background-size: 60px 40px;
-    transform: perspective(400px) rotateX(65deg);
+        linear-gradient(rgba(194, 24, 91, 0.5) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(194, 24, 91, 0.5) 1.5px, transparent 1.5px);
+    background-size: 40px 25px;
+    transform: perspective(300px) rotateX(70deg);
     transform-origin: bottom center;
-    animation: gridScroll 8s linear infinite;
-    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 100%);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 100%);
+    animation: gridScroll 6s linear infinite;
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 15%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 15%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.8) 55%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
 }
 
 @keyframes gridScroll {
-    0% { transform: perspective(400px) rotateX(65deg) translateY(0); }
-    100% { transform: perspective(400px) rotateX(65deg) translateY(40px); }
+    0% { transform: perspective(300px) rotateX(70deg) translateY(0); }
+    100% { transform: perspective(300px) rotateX(70deg) translateY(25px); }
 }
 
 /* --- Neon Cyberwave Lines --- */
@@ -3228,6 +3198,348 @@ footer,
     }
 
     .sunset-haze-layer {
+        display: none;
+    }
+}
+
+/* ============================================================
+   DARK VOID TÉMA - Sötét Anyag / Űr Effektek
+   ============================================================ */
+
+.dark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 50%, #0a0a0f 0%, #050508 40%, #000000 100%);
+}
+
+/* --- Subtle Nebula Glow --- */
+.dark-nebula {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.dark-nebula-cloud {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: nebulaFloat 20s ease-in-out infinite;
+}
+
+.dark-nebula-cloud:nth-child(1) {
+    width: 500px;
+    height: 300px;
+    top: 10%;
+    left: -5%;
+    background: radial-gradient(ellipse, rgba(99, 102, 241, 0.12), transparent 70%);
+    animation-duration: 25s;
+}
+
+.dark-nebula-cloud:nth-child(2) {
+    width: 400px;
+    height: 250px;
+    top: 60%;
+    right: -5%;
+    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.1), transparent 70%);
+    animation-duration: 30s;
+    animation-delay: -8s;
+}
+
+.dark-nebula-cloud:nth-child(3) {
+    width: 350px;
+    height: 200px;
+    bottom: 20%;
+    left: 30%;
+    background: radial-gradient(ellipse, rgba(59, 130, 246, 0.08), transparent 70%);
+    animation-duration: 22s;
+    animation-delay: -15s;
+}
+
+@keyframes nebulaFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    25% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
+    50% { transform: translate(-20px, 15px) scale(0.95); opacity: 0.35; }
+    75% { transform: translate(15px, 25px) scale(1.05); opacity: 0.45; }
+}
+
+/* --- Floating Void Particles --- */
+.dark-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.dark-particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: darkParticleFloat linear infinite;
+}
+
+.dark-particle:nth-child(1) { width: 2px; height: 2px; left: 8%; top: 15%; background: rgba(148, 163, 184, 0.6); animation-duration: 18s; animation-delay: 0s; }
+.dark-particle:nth-child(2) { width: 3px; height: 3px; left: 22%; top: 45%; background: rgba(99, 102, 241, 0.5); animation-duration: 22s; animation-delay: -3s; }
+.dark-particle:nth-child(3) { width: 1.5px; height: 1.5px; left: 35%; top: 70%; background: rgba(148, 163, 184, 0.4); animation-duration: 20s; animation-delay: -7s; }
+.dark-particle:nth-child(4) { width: 2.5px; height: 2.5px; left: 50%; top: 25%; background: rgba(139, 92, 246, 0.4); animation-duration: 24s; animation-delay: -2s; }
+.dark-particle:nth-child(5) { width: 2px; height: 2px; left: 65%; top: 55%; background: rgba(148, 163, 184, 0.5); animation-duration: 19s; animation-delay: -10s; }
+.dark-particle:nth-child(6) { width: 1px; height: 1px; left: 78%; top: 35%; background: rgba(99, 102, 241, 0.6); animation-duration: 25s; animation-delay: -5s; }
+.dark-particle:nth-child(7) { width: 3px; height: 3px; left: 42%; top: 85%; background: rgba(148, 163, 184, 0.3); animation-duration: 21s; animation-delay: -12s; }
+.dark-particle:nth-child(8) { width: 2px; height: 2px; left: 88%; top: 60%; background: rgba(139, 92, 246, 0.35); animation-duration: 23s; animation-delay: -8s; }
+.dark-particle:nth-child(9) { width: 1.5px; height: 1.5px; left: 15%; top: 90%; background: rgba(59, 130, 246, 0.4); animation-duration: 17s; animation-delay: -4s; }
+.dark-particle:nth-child(10) { width: 2px; height: 2px; left: 55%; top: 10%; background: rgba(148, 163, 184, 0.5); animation-duration: 26s; animation-delay: -14s; }
+.dark-particle:nth-child(11) { width: 1px; height: 1px; left: 72%; top: 78%; background: rgba(99, 102, 241, 0.45); animation-duration: 20s; animation-delay: -6s; }
+.dark-particle:nth-child(12) { width: 2.5px; height: 2.5px; left: 30%; top: 30%; background: rgba(148, 163, 184, 0.35); animation-duration: 28s; animation-delay: -16s; }
+
+@keyframes darkParticleFloat {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    50% { transform: translateY(-100px) translateX(30px) scale(1.3); }
+    90% { opacity: 1; }
+    100% { transform: translateY(-200px) translateX(-20px) scale(0.8); opacity: 0; }
+}
+
+/* --- Digital Rain Columns --- */
+.dark-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dark-rain-column {
+    position: absolute;
+    top: -20%;
+    width: 1px;
+    height: 120%;
+    opacity: 0;
+    animation: digitalRainFall linear infinite;
+}
+
+.dark-rain-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    border-radius: 0 0 1px 1px;
+}
+
+.dark-rain-column:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+.dark-rain-column:nth-child(1)::before { background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.2), transparent); height: 60px; }
+.dark-rain-column:nth-child(2) { left: 15%; animation-duration: 11s; animation-delay: -3s; }
+.dark-rain-column:nth-child(2)::before { background: linear-gradient(180deg, transparent, rgba(148, 163, 184, 0.15), transparent); height: 90px; }
+.dark-rain-column:nth-child(3) { left: 28%; animation-duration: 9s; animation-delay: -6s; }
+.dark-rain-column:nth-child(3)::before { background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.15), transparent); height: 70px; }
+.dark-rain-column:nth-child(4) { left: 40%; animation-duration: 12s; animation-delay: -1s; }
+.dark-rain-column:nth-child(4)::before { background: linear-gradient(180deg, transparent, rgba(148, 163, 184, 0.1), transparent); height: 100px; }
+.dark-rain-column:nth-child(5) { left: 55%; animation-duration: 10s; animation-delay: -5s; }
+.dark-rain-column:nth-child(5)::before { background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.15), transparent); height: 75px; }
+.dark-rain-column:nth-child(6) { left: 68%; animation-duration: 13s; animation-delay: -8s; }
+.dark-rain-column:nth-child(6)::before { background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.12), transparent); height: 85px; }
+.dark-rain-column:nth-child(7) { left: 80%; animation-duration: 9s; animation-delay: -2s; }
+.dark-rain-column:nth-child(7)::before { background: linear-gradient(180deg, transparent, rgba(148, 163, 184, 0.15), transparent); height: 65px; }
+.dark-rain-column:nth-child(8) { left: 92%; animation-duration: 11s; animation-delay: -7s; }
+.dark-rain-column:nth-child(8)::before { background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.1), transparent); height: 95px; }
+
+@keyframes digitalRainFall {
+    0% { transform: translateY(-20%); opacity: 0; }
+    5% { opacity: 0.6; }
+    85% { opacity: 0.6; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* --- Pulse Grid (subtle background grid) --- */
+.dark-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: darkGridPulse 8s ease-in-out infinite;
+}
+
+@keyframes darkGridPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* --- Horizon Line --- */
+.dark-horizon {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(99, 102, 241, 0.15) 20%,
+        rgba(139, 92, 246, 0.25) 50%,
+        rgba(99, 102, 241, 0.15) 80%,
+        transparent 100%
+    );
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), 0 0 60px rgba(139, 92, 246, 0.05);
+    animation: horizonPulse 6s ease-in-out infinite;
+}
+
+.dark-horizon::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(99, 102, 241, 0.03) 40%,
+        rgba(139, 92, 246, 0.05) 50%,
+        rgba(99, 102, 241, 0.03) 60%,
+        transparent 100%
+    );
+}
+
+@keyframes horizonPulse {
+    0%, 100% { opacity: 0.5; transform: scaleX(1); }
+    50% { opacity: 0.8; transform: scaleX(1.02); }
+}
+
+/* --- Vignette (dark edges) --- */
+.dark-vignette {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 50% 50%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.4) 80%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+}
+
+/* --- Scanning Lines (CRT effect, very subtle) --- */
+.dark-scanlines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+}
+
+/* ===== DARK VOID UI FELÜLÍRÁSOK ===== */
+
+[data-theme="dark"] .card,
+[data-theme="dark"] .feature {
+    background: rgba(15, 15, 25, 0.8) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .card:hover,
+[data-theme="dark"] .feature:hover {
+    border-color: rgba(99, 102, 241, 0.18);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.05);
+    transform: translateY(-3px);
+}
+
+[data-theme="dark"] .page-title,
+[data-theme="dark"] h1,
+[data-theme="dark"] .hero h1 {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] button[type="submit"] {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] button[type="submit"]:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35), 0 0 20px rgba(139, 92, 246, 0.15) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+    background: rgba(10, 10, 20, 0.6) !important;
+    border-color: rgba(99, 102, 241, 0.1) !important;
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+    border-color: rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(5, 5, 12, 0.95) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .logo-text {
+    background: linear-gradient(135deg, #818cf8, #6366f1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .footer {
+    background: rgba(5, 5, 12, 0.95) !important;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+/* Dark scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4338ca, #312e81);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6366f1, #4338ca);
+}
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #050508;
+}
+
+/* Dark selection */
+[data-theme="dark"] ::selection {
+    background: rgba(99, 102, 241, 0.35);
+    color: #e2e8f0;
+}
+
+/* Responsive dark */
+@media (max-width: 768px) {
+    .dark-container {
+        transform: scale(0.8);
+    }
+
+    .dark-nebula-cloud {
+        filter: blur(50px);
+    }
+
+    .dark-rain-column:nth-child(6),
+    .dark-rain-column:nth-child(7),
+    .dark-rain-column:nth-child(8) {
+        display: none;
+    }
+
+    .dark-scanlines {
         display: none;
     }
 }

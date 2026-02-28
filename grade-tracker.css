@@ -1242,3 +1242,166 @@
     background: rgba(14, 165, 233, 0.08) !important;
     border: 1px solid rgba(14, 165, 233, 0.1);
 }
+
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .grade-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .grade-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .player-card {
+    background: rgba(194, 24, 91, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .player-card:hover {
+    border-color: rgba(245, 158, 11, 0.25);
+    box-shadow: 0 8px 30px rgba(194, 24, 91, 0.2), 0 0 20px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="sunset"] .xp-bar-fill {
+    background: linear-gradient(90deg, #f59e0b, #ec4899, #ef4444) !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+[data-theme="sunset"] .level-badge {
+    background: linear-gradient(135deg, #f59e0b, #ec4899) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5) !important;
+}
+
+[data-theme="sunset"] .add-grade-section,
+[data-theme="sunset"] .subjects-section,
+[data-theme="sunset"] .analytics-section,
+[data-theme="sunset"] .recent-section,
+[data-theme="sunset"] .achievements-section {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="sunset"] .achievement-card {
+    background: rgba(245, 158, 11, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+}
+
+[data-theme="sunset"] .achievement-card:hover {
+    border-color: rgba(236, 72, 153, 0.3);
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.3), 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+[data-theme="sunset"] .stat-card {
+    background: rgba(245, 158, 11, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="sunset"] .stat-card:hover {
+    background: rgba(245, 158, 11, 0.14) !important;
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.2);
+}
+
+[data-theme="sunset"] .grade-input,
+[data-theme="sunset"] .grade-select {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border-color: rgba(245, 158, 11, 0.15) !important;
+    color: #fef3c7 !important;
+}
+
+[data-theme="sunset"] .grade-input:focus,
+[data-theme="sunset"] .grade-select:focus {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+}
+
+[data-theme="sunset"] .btn-add-grade {
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="sunset"] .btn-add-grade:hover {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), 0 0 20px rgba(236, 72, 153, 0.3) !important;
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .grade-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .grade-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .player-card {
+    background: rgba(10, 10, 20, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .player-card:hover {
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .xp-bar-fill {
+    background: linear-gradient(90deg, #4338ca, #6366f1, #818cf8) !important;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .level-badge {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+}
+
+[data-theme="dark"] .add-grade-section,
+[data-theme="dark"] .subjects-section,
+[data-theme="dark"] .analytics-section,
+[data-theme="dark"] .recent-section,
+[data-theme="dark"] .achievements-section {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .achievement-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+}
+
+[data-theme="dark"] .achievement-card:hover {
+    border-color: rgba(99, 102, 241, 0.18);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .stat-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+}
+
+[data-theme="dark"] .stat-card:hover {
+    background: rgba(20, 20, 35, 0.8) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .btn-add-grade {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .btn-add-grade:hover {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35) !important;
+}

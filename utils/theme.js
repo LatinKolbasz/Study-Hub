@@ -56,11 +56,11 @@ class ThemeManager {
                 accent: '#67e8f9'
             },
             'dark': {
-                name: 'Sötét',
-                background: '#000000',
-                primary: '#374151',
-                secondary: '#4b5563',
-                accent: '#6b7280'
+                name: 'Sötét Űr 🌑',
+                background: 'radial-gradient(ellipse at 50% 50%, #0a0a0f 0%, #050508 40%, #000000 100%)',
+                primary: '#6366f1',
+                secondary: '#818cf8',
+                accent: '#a78bfa'
             }
         };
         
@@ -396,6 +396,13 @@ setTheme(themeName, primaryColor = null) {
         if (themeName === 'sunset') {
             setTimeout(() => {
                 this.activateSunsetEffects();
+            }, 200);
+        }
+        
+        // Dark effektek frissítése témaváltáskor
+        if (themeName === 'dark') {
+            setTimeout(() => {
+                this.activateDarkEffects();
             }, 200);
         }
         
@@ -1079,6 +1086,7 @@ showToast(message) {
             this.activateCyberpunkStars();
             this.activateOceanEffects();
             this.activateSunsetEffects();
+            this.activateDarkEffects();
         }, 100);
     }
     
@@ -1363,9 +1371,9 @@ showToast(message) {
         const mountainEl = document.createElement('div');
         mountainEl.className = 'sunset-mountain';
         mountainEl.innerHTML = `<svg viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,300 L0,200 L100,140 L180,180 L260,100 L340,160 L420,80 L500,150 L560,60 L640,130 L720,50 L800,120 L880,70 L960,140 L1040,90 L1120,150 L1200,110 L1280,170 L1360,130 L1440,180 L1440,300 Z"
-                  fill="rgba(10,0,21,0.95)" />
-            <path d="M0,300 L0,230 L120,190 L220,220 L320,160 L400,200 L480,140 L560,190 L660,120 L740,180 L840,130 L920,190 L1000,150 L1100,200 L1200,160 L1300,210 L1440,170 L1440,300 Z"
+            <path d="M0,300 L0,210 L35,205 L60,195 L85,198 L110,165 L128,172 L145,150 L160,155 L190,120 L205,128 L225,95 L240,105 L255,88 L275,110 L300,135 L315,128 L340,155 L355,148 L380,170 L395,162 L420,130 L435,138 L460,105 L478,115 L500,80 L515,92 L530,75 L548,85 L570,110 L585,102 L610,135 L625,128 L650,158 L668,148 L690,120 L708,128 L735,95 L750,108 L768,72 L785,88 L800,65 L815,78 L840,105 L855,95 L880,125 L895,118 L920,150 L935,142 L960,115 L978,125 L1000,92 L1018,102 L1040,130 L1055,122 L1080,148 L1095,140 L1120,165 L1138,155 L1160,128 L1175,138 L1200,110 L1218,120 L1245,145 L1260,138 L1280,165 L1298,155 L1320,178 L1340,168 L1365,185 L1385,175 L1410,192 L1440,185 L1440,300 Z"
+                  fill="rgba(10,0,21,0.9)" />
+            <path d="M0,300 L0,240 L30,238 L55,232 L80,235 L105,218 L125,225 L150,205 L168,212 L195,195 L215,202 L240,178 L258,188 L280,168 L295,175 L320,195 L338,188 L360,210 L378,202 L400,188 L420,195 L445,172 L465,180 L490,158 L508,168 L530,145 L548,155 L575,175 L592,168 L615,190 L635,182 L660,165 L678,172 L700,155 L718,162 L740,148 L758,155 L785,170 L800,162 L825,180 L842,172 L868,155 L885,162 L910,178 L928,170 L955,188 L975,180 L1000,165 L1018,172 L1045,158 L1062,168 L1090,185 L1108,178 L1135,195 L1155,188 L1180,205 L1198,198 L1225,212 L1248,205 L1275,218 L1295,212 L1320,228 L1345,220 L1370,232 L1395,225 L1420,235 L1440,230 L1440,300 Z"
                   fill="rgba(10,0,21,1)" />
         </svg>`;
         mountains.appendChild(mountainEl);
@@ -1412,6 +1420,83 @@ showToast(message) {
         document.body.insertBefore(container, document.body.firstChild);
 
         console.log('🌅 Sunset cyberwaves effect activated!');
+    }
+
+    activateDarkEffects() {
+        // Meglévő dark container eltávolítása
+        const existingContainer = document.querySelector('.dark-container');
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        // Csak dark témánál jelenik meg
+        if (this.currentTheme !== 'dark') {
+            console.log('Not dark theme, skipping dark effects');
+            return;
+        }
+
+        console.log('🌑 Activating dark void effects!');
+
+        const container = document.createElement('div');
+        container.className = 'dark-container';
+        container.id = 'darkEffects';
+
+        // --- Dot Grid ---
+        const grid = document.createElement('div');
+        grid.className = 'dark-grid';
+
+        // --- Nebula Clouds ---
+        const nebula = document.createElement('div');
+        nebula.className = 'dark-nebula';
+        for (let i = 0; i < 3; i++) {
+            const cloud = document.createElement('div');
+            cloud.className = 'dark-nebula-cloud';
+            nebula.appendChild(cloud);
+        }
+
+        // --- Digital Rain ---
+        const rain = document.createElement('div');
+        rain.className = 'dark-rain';
+        for (let i = 0; i < 8; i++) {
+            const column = document.createElement('div');
+            column.className = 'dark-rain-column';
+            rain.appendChild(column);
+        }
+
+        // --- Floating Particles ---
+        const particles = document.createElement('div');
+        particles.className = 'dark-particles';
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'dark-particle';
+            particles.appendChild(particle);
+        }
+
+        // --- Horizon Line ---
+        const horizon = document.createElement('div');
+        horizon.className = 'dark-horizon';
+
+        // --- Vignette ---
+        const vignette = document.createElement('div');
+        vignette.className = 'dark-vignette';
+
+        // --- Scanlines ---
+        const scanlines = document.createElement('div');
+        scanlines.className = 'dark-scanlines';
+
+        // Összeállítás
+        container.appendChild(grid);
+        container.appendChild(nebula);
+        container.appendChild(rain);
+        container.appendChild(particles);
+        container.appendChild(horizon);
+        container.appendChild(vignette);
+        container.appendChild(scanlines);
+
+        // Beszúrás a body elejére
+        document.body.insertBefore(container, document.body.firstChild);
+
+        console.log('🌑 Dark void effect activated!');
     }
 }
 

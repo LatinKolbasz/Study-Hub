@@ -167,7 +167,7 @@
                         <div class="theme-preview" id="themePreview">
                             <div class="theme-option selected" data-theme="default"><div class="preview" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"></div><span>Alapértelmezett</span></div>
                             <div class="theme-option" data-theme="ocean"><div class="preview" style="background: linear-gradient(135deg, #0f172a, #1e3a5f);"></div><span>Óceán</span></div>
-                            <div class="theme-option" data-theme="sunset"><div class="preview" style="background: linear-gradient(135deg, #1e1b4b, #4c1d95);"></div><span>Naplemente</span></div>
+                            <div class="theme-option" data-theme="sunset"><div class="preview" style="background: linear-gradient(135deg, #1e1b4b, #4c1d95);"></div><span>cyberwawe</span></div>
                             <div class="theme-option" data-theme="forest"><div class="preview" style="background: linear-gradient(135deg, #052e16, #14532d);"></div><span>Erdő</span></div>
                             <div class="theme-option" data-theme="candy"><div class="preview" style="background: linear-gradient(135deg, #831843, #be185d);"></div><span>Cukorka</span></div>
                             <div class="theme-option" data-theme="cyberpunk"><div class="preview" style="background: linear-gradient(135deg, #0a0a0a, #1a1a2e);"></div><span>Cyberpunk</span></div>
@@ -353,7 +353,7 @@
                     <div class="settings-card">
                         <h4>🔧 Fejlesztői opciók</h4>
                         <div class="toggle-group"><div class="toggle-label"><span>Console logok</span><span>Részletes naplózás</span></div><label class="toggle-switch"><input type="checkbox" id="devConsole"><span class="toggle-slider"></span></label></div>
-                        <div class="toggle-group"><div class="toggle-label"><span>Debug mód</span><span>Fejlesztői információk</span></div><label class="toggle-switch"><input type="checkbox" id="devDebug"><span class="toggle-slider"></span></label></div>
+                        <div class="toggle-group"><div class="toggle-label"><span>Debug mód</span><span>Debug panel: Storage viewer, Console, Hálózat, Performance</span></div><label class="toggle-switch"><input type="checkbox" id="devDebug"><span class="toggle-slider"></span></label></div>
                         <div class="toggle-group"><div class="toggle-label"><span>API tesztelés</span><span>Teszt endpointok</span></div><label class="toggle-switch"><input type="checkbox" id="devApi"><span class="toggle-slider"></span></label></div>
                     </div>
                     <div class="settings-card">
@@ -405,6 +405,7 @@
     </script>
     <script src="utils/auth.js"></script>
     <script src="utils/theme.js"></script>
+    <script src="utils/debug.js"></script>
     <script>
         // Bejelentkezés ellenőrzése
         document.addEventListener('DOMContentLoaded', () => {
@@ -797,8 +798,17 @@
             if (settings.devConsole) {
                 console.log('🔧 Fejlesztői mód: Console naplózás bekapcsolva');
             }
+            // Debug panel aktiválás/deaktiválás
             if (settings.devDebug) {
-                console.log('🔧 Fejlesztői mód: Debug információk');
+                if (window.debugPanel) {
+                    window.debugPanel.enable();
+                }
+                console.log('🔧 Fejlesztői mód: Debug panel bekapcsolva');
+            } else {
+                if (window.debugPanel) {
+                    window.debugPanel.disable();
+                }
+                console.log('🔧 Fejlesztői mód: Debug panel kikapcsolva');
             }
             
             console.log('💾 Fejlesztői beállítások mentve:', settings);

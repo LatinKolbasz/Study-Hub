@@ -621,3 +621,100 @@ footer:hover {
     -webkit-background-clip: text !important;
     background-clip: text !important;
 }
+
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .analytics-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .analytics-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .summary-card {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="sunset"] .summary-card:hover {
+    border-color: rgba(236, 72, 153, 0.25);
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.2), 0 0 15px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="sunset"] .summary-card.study-time .summary-icon { background: linear-gradient(135deg, #f59e0b, #ef4444) !important; }
+[data-theme="sunset"] .summary-card.sessions .summary-icon { background: linear-gradient(135deg, #ec4899, #c2185b) !important; }
+[data-theme="sunset"] .summary-card.xp .summary-icon { background: linear-gradient(135deg, #fbbf24, #f59e0b) !important; }
+[data-theme="sunset"] .summary-card.streak .summary-icon { background: linear-gradient(135deg, #ef4444, #ec4899) !important; }
+
+[data-theme="sunset"] .chart-card {
+    background: rgba(245, 158, 11, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="sunset"] .chart-card h3 {
+    color: #fcd34d !important;
+}
+
+[data-theme="sunset"] .summary-value {
+    color: #fef3c7 !important;
+}
+
+[data-theme="sunset"] .navbar {
+    background: rgba(25, 5, 15, 0.95) !important;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+    box-shadow: 0 4px 20px rgba(194, 24, 91, 0.3);
+}
+
+[data-theme="sunset"] .logo-text {
+    background: linear-gradient(135deg, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .analytics-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .analytics-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .summary-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .summary-card:hover {
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.05);
+}
+
+[data-theme="dark"] .summary-card .summary-icon { background: linear-gradient(135deg, #4338ca, #6366f1) !important; }
+
+[data-theme="dark"] .chart-card {
+    background: rgba(15, 15, 25, 0.7) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .chart-card h3 {
+    color: #c7d2fe !important;
+}
+
+[data-theme="dark"] .summary-value {
+    color: #e2e8f0 !important;
+}

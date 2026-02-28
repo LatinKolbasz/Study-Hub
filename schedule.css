@@ -613,3 +613,129 @@
     background-clip: text !important;
 }
 
+/* ========== SUNSET CYBERWAVES TÉMA ========== */
+
+[data-theme="sunset"] .schedule-hero {
+    background: linear-gradient(135deg, rgba(194, 24, 91, 0.15), rgba(245, 158, 11, 0.1)) !important;
+    border: 1px solid rgba(245, 158, 11, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="sunset"] .schedule-hero .page-title {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #ec4899) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="sunset"] .schedule-grid {
+    background: rgba(194, 24, 91, 0.06) !important;
+    border: 1px solid rgba(245, 158, 11, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="sunset"] .schedule-header-cell {
+    background: rgba(245, 158, 11, 0.1) !important;
+    color: #fcd34d !important;
+    border-color: rgba(245, 158, 11, 0.12) !important;
+}
+
+[data-theme="sunset"] .schedule-time-cell {
+    color: #fbbf24 !important;
+    background: rgba(245, 158, 11, 0.05) !important;
+}
+
+[data-theme="sunset"] .schedule-cell {
+    border-color: rgba(245, 158, 11, 0.08) !important;
+}
+
+[data-theme="sunset"] .schedule-cell:hover {
+    background: rgba(245, 158, 11, 0.08) !important;
+}
+
+[data-theme="sunset"] .schedule-cell.has-subject {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(236, 72, 153, 0.15)) !important;
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+[data-theme="sunset"] .schedule-btn-primary {
+    background: linear-gradient(135deg, #f59e0b, #ef4444) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+[data-theme="sunset"] .schedule-btn-secondary {
+    background: rgba(245, 158, 11, 0.1) !important;
+    border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+[data-theme="sunset"] .schedule-btn-secondary:hover {
+    background: rgba(245, 158, 11, 0.2) !important;
+}
+
+[data-theme="sunset"] .schedule-notification {
+    background: linear-gradient(135deg, #f59e0b, #ec4899) !important;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* ========== SÖTÉT ŰR TÉMA ========== */
+
+[data-theme="dark"] .schedule-hero {
+    background: rgba(15, 15, 25, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .schedule-hero .page-title {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+[data-theme="dark"] .schedule-grid {
+    background: rgba(10, 10, 20, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .schedule-header-cell {
+    background: rgba(99, 102, 241, 0.06) !important;
+    color: #c7d2fe !important;
+    border-color: rgba(99, 102, 241, 0.08) !important;
+}
+
+[data-theme="dark"] .schedule-time-cell {
+    color: #a5b4fc !important;
+    background: rgba(99, 102, 241, 0.03) !important;
+}
+
+[data-theme="dark"] .schedule-cell {
+    border-color: rgba(99, 102, 241, 0.05) !important;
+}
+
+[data-theme="dark"] .schedule-cell:hover {
+    background: rgba(99, 102, 241, 0.06) !important;
+}
+
+[data-theme="dark"] .schedule-cell.has-subject {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.08)) !important;
+    border-color: rgba(99, 102, 241, 0.12);
+}
+
+[data-theme="dark"] .schedule-btn-primary {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="dark"] .schedule-btn-secondary {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: rgba(99, 102, 241, 0.12) !important;
+}
+
+[data-theme="dark"] .schedule-btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.12) !important;
+}
+
+[data-theme="dark"] .schedule-notification {
+    background: linear-gradient(135deg, #4338ca, #6366f1) !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
