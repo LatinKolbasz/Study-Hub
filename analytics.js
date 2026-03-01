@@ -878,8 +878,6 @@ class StudyAnalytics {
 
         const labels = Object.keys(stats);
         const avgs = labels.map(s => +(stats[s].sum / stats[s].totalW).toFixed(2));
-        // Normalize quiz performance per subject (demo: random-ish)
-        const quizScore = labels.map(() => +(2.5 + Math.random() * 2.5).toFixed(1));
 
         this.charts.skillRadar = new Chart(ctx, {
             type: 'radar',
@@ -893,15 +891,6 @@ class StudyAnalytics {
                         backgroundColor: 'rgba(99, 102, 241, 0.2)',
                         borderWidth: 2,
                         pointBackgroundColor: '#6366f1',
-                        pointRadius: 4
-                    },
-                    {
-                        label: 'Kvíz teljesítmény',
-                        data: quizScore,
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#10b981',
                         pointRadius: 4
                     }
                 ]

@@ -386,6 +386,10 @@ body {
     height: 220px;
 }
 
+.chart-container.radar-large {
+    height: 400px;
+}
+
 /* ======= Heatmap ======= */
 .heatmap-wrapper {
     display: flex;
