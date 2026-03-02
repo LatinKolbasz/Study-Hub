@@ -184,7 +184,7 @@
 
 .timer-btn.reset {
     background: white;
-    color: var(--text-dark);
+    color: black;
     border: 2px solid #e2e8f0;
 }
 

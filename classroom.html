@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osztály - Study Hub</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="classroom.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNdafBY_6jaIDiaHJ6afm1yvFlFZsdspc",
+            authDomain: "study-hub-4debf.firebaseapp.com",
+            projectId: "study-hub-4debf",
+            storageBucket: "study-hub-4debf.firebasestorage.app",
+            messagingSenderId: "681045719671",
+            appId: "1:681045719671:web:8d9c665212610578f96472",
+            measurementId: "G-PGVQL7C70N"
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.firestore().settings({ experimentalForceLongPolling: false, merge: true });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">Study Hub</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="theme-toggle-btn" onclick="window.themeManager.showThemeSelector()" title="🎨 Téma"
+                        style="background: rgba(255,255,255,0.15); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;">
+                        🎨
+                    </button>
+                    <a href="index.html" class="back-btn"
+                        style="color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 8px;">←
+                        Vissza</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="classroom-main">
+        <!-- No class view -->
+        <section class="classroom-hero" id="noClassView">
+            <h1 class="page-title">🏫 Osztály</h1>
+            <p class="page-subtitle">Lépj be egy osztályba vagy hozz létre újat!</p>
+
+            <div class="classroom-join-container">
+                <div class="join-card">
+                    <div class="join-card-icon">🚪</div>
+                    <h2>Belépés osztályba</h2>
+                    <p>Add meg az osztálykódot, amit a tanárod/osztálytársad adott</p>
+                    <div class="join-form">
+                        <input type="text" id="joinClassCode" class="classroom-input" placeholder="Pl: ABC123"
+                            maxlength="8">
+                        <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.joinClass()">
+                            🚪 Belépés
+                        </button>
+                    </div>
+                </div>
+
+                <div class="join-divider">
+                    <span>vagy</span>
+                </div>
+
+                <div class="join-card">
+                    <div class="join-card-icon">✨</div>
+                    <h2>Új osztály létrehozása</h2>
+                    <p>Hozz létre saját osztályt és hívd meg az osztálytársaidat</p>
+                    <div class="join-form">
+                        <input type="text" id="newClassName" class="classroom-input" placeholder="Osztály neve (pl: 10.A)"
+                            maxlength="30">
+                        <button class="classroom-btn classroom-btn-success" onclick="classroomManager.createClass()">
+                            ✨ Létrehozás
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active class view -->
+        <section class="classroom-active" id="activeClassView" style="display: none;">
+            <div class="classroom-header-bar">
+                <div class="classroom-header-info">
+                    <h1 class="page-title" id="classNameTitle">🏫 Osztály neve</h1>
+                    <div class="class-code-display">
+                        <span>Kód:</span>
+                        <code id="classCodeDisplay">ABC123</code>
+                        <button class="copy-btn" onclick="classroomManager.copyClassCode()" title="Másolás">📋</button>
+                    </div>
+                </div>
+                <div class="classroom-header-actions">
+                    <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.leaveClass()">
+                        🚪 Kilépés
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="classroom-tabs">
+                <button class="classroom-tab active" onclick="classroomManager.switchTab('overview', this)">📊
+                    Áttekintés</button>
+                <button class="classroom-tab" onclick="classroomManager.switchTab('schedule', this)">📅
+                    Órarend</button>
+                <button class="classroom-tab" onclick="classroomManager.switchTab('quizzes', this)">📝
+                    Kvízek</button>
+                <button class="classroom-tab" onclick="classroomManager.switchTab('homework', this)">📚 Házi
+                    feladat</button>
+                <button class="classroom-tab" onclick="classroomManager.switchTab('members', this)">👥
+                    Tagok</button>
+            </div>
+
+            <!-- Tab contents -->
+            <div class="classroom-content">
+
+                <!-- ÁTTEKINTÉS -->
+                <div id="tab-overview" class="classroom-tab-content active">
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <div class="overview-card-icon">👥</div>
+                            <div class="overview-card-info">
+                                <h3 id="memberCount">0</h3>
+                                <p>Tag</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-card-icon">📊</div>
+                            <div class="overview-card-info">
+                                <h3 id="classAverage">-</h3>
+                                <p>Osztályátlag</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-card-icon">📝</div>
+                            <div class="overview-card-info">
+                                <h3 id="quizCount">0</h3>
+                                <p>Közös kvíz</p>
+                            </div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-card-icon">📚</div>
+                            <div class="overview-card-info">
+                                <h3 id="homeworkCount">0</h3>
+                                <p>Házi feladat</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h2>🔔 Legutóbbi tevékenységek</h2>
+                        <div class="activity-list" id="activityList">
+                            <div class="activity-empty">Még nincs tevékenység az osztályban.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÓRAREND -->
+                <div id="tab-schedule" class="classroom-tab-content">
+                    <div class="tab-header">
+                        <h2>📅 Osztály órarend</h2>
+                        <button class="classroom-btn classroom-btn-primary"
+                            onclick="classroomManager.openScheduleEditor()">
+                            ✏️ Szerkesztés
+                        </button>
+                    </div>
+                    <div class="class-schedule-grid" id="classScheduleGrid">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- KVÍZEK -->
+                <div id="tab-quizzes" class="classroom-tab-content">
+                    <div class="tab-header">
+                        <h2>📝 Közös kvízek</h2>
+                        <button class="classroom-btn classroom-btn-primary"
+                            onclick="classroomManager.openQuizCreator()">
+                            ➕ Új kvíz
+                        </button>
+                    </div>
+                    <div class="quiz-list" id="classQuizList">
+                        <div class="quiz-empty">Még nincs közös kvíz. Hozz létre egyet!</div>
+                    </div>
+                </div>
+
+                <!-- HÁZI FELADAT -->
+                <div id="tab-homework" class="classroom-tab-content">
+                    <div class="tab-header">
+                        <h2>📚 Házi feladat</h2>
+                        <button class="classroom-btn classroom-btn-primary"
+                            onclick="classroomManager.openHomeworkForm()">
+                            ➕ Új feladat
+                        </button>
+                    </div>
+                    <div class="homework-list" id="homeworkList">
+                        <div class="homework-empty">Nincs házi feladat. Adj hozzá egyet!</div>
+                    </div>
+                </div>
+
+                <!-- TAGOK -->
+                <div id="tab-members" class="classroom-tab-content">
+                    <div class="tab-header">
+                        <h2>👥 Osztály tagjai</h2>
+                        <div class="member-count-badge" id="memberCountBadge">0 tag</div>
+                    </div>
+                    <div class="members-grid" id="membersGrid">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODÁLOK -->
+
+    <!-- Órarend szerkesztő modal -->
+    <div class="classroom-modal" id="scheduleEditorModal">
+        <div class="classroom-modal-content large">
+            <div class="classroom-modal-header">
+                <h2>📅 Órarend szerkesztése</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('scheduleEditorModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="schedule-editor-grid" id="scheduleEditorGrid">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.saveClassSchedule()">💾
+                    Mentés</button>
+                <button class="classroom-btn classroom-btn-secondary"
+                    onclick="classroomManager.closeModal('scheduleEditorModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kvíz létrehozó modal -->
+    <div class="classroom-modal" id="quizCreatorModal">
+        <div class="classroom-modal-content large">
+            <div class="classroom-modal-header">
+                <h2>📝 Új közös kvíz</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('quizCreatorModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="form-group">
+                    <label>Kvíz neve</label>
+                    <input type="text" id="quizTitle" class="classroom-input" placeholder="Pl: Matek dolgozat gyakorló">
+                </div>
+                <div class="form-group">
+                    <label>Tantárgy</label>
+                    <input type="text" id="quizSubject" class="classroom-input" placeholder="Pl: Matematika">
+                </div>
+                <div id="quizQuestionsContainer">
+                    <!-- Questions added dynamically -->
+                </div>
+                <button class="classroom-btn classroom-btn-secondary" onclick="classroomManager.addQuizQuestion()"
+                    style="margin-top: 1rem;">
+                    ➕ Kérdés hozzáadása
+                </button>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.saveQuiz()">💾
+                    Kvíz mentése</button>
+                <button class="classroom-btn classroom-btn-secondary"
+                    onclick="classroomManager.closeModal('quizCreatorModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kvíz megoldó modal -->
+    <div class="classroom-modal" id="quizSolverModal">
+        <div class="classroom-modal-content large">
+            <div class="classroom-modal-header">
+                <h2 id="solverQuizTitle">📝 Kvíz megoldása</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('quizSolverModal')">×</button>
+            </div>
+            <div class="classroom-modal-body" id="quizSolverBody">
+                <!-- Questions rendered by JS -->
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.submitQuiz()">✅
+                    Beküldés</button>
+                <button class="classroom-btn classroom-btn-secondary"
+                    onclick="classroomManager.closeModal('quizSolverModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Házi feladat modal -->
+    <div class="classroom-modal" id="homeworkModal">
+        <div class="classroom-modal-content">
+            <div class="classroom-modal-header">
+                <h2>📚 Új házi feladat</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('homeworkModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="form-group">
+                    <label>Tantárgy</label>
+                    <input type="text" id="hwSubject" class="classroom-input" placeholder="Pl: Matematika">
+                </div>
+                <div class="form-group">
+                    <label>Feladat leírása</label>
+                    <textarea id="hwDescription" class="classroom-textarea" rows="4"
+                        placeholder="Írd le a házi feladatot..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Határidő</label>
+                    <input type="date" id="hwDeadline" class="classroom-input">
+                </div>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.saveHomework()">💾
+                    Mentés</button>
+                <button class="classroom-btn classroom-btn-secondary"
+                    onclick="classroomManager.closeModal('homeworkModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Megoldás modal -->
+    <div class="classroom-modal" id="solutionModal">
+        <div class="classroom-modal-content">
+            <div class="classroom-modal-header">
+                <h2>💡 Megoldás beküldése</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('solutionModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="form-group">
+                    <label>Megoldás</label>
+                    <textarea id="solutionText" class="classroom-textarea" rows="6"
+                        placeholder="Írd le a megoldást..."></textarea>
+                </div>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.submitSolution()">💾
+                    Beküldés</button>
+                <button class="classroom-btn classroom-btn-secondary"
+                    onclick="classroomManager.closeModal('solutionModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profil megtekintő modal -->
+    <div class="classroom-modal" id="profileModal">
+        <div class="classroom-modal-content">
+            <div class="classroom-modal-header">
+                <h2>👤 Profil</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('profileModal')">×</button>
+            </div>
+            <div class="classroom-modal-body" id="profileModalBody">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="utils/auth.js"></script>
+    <script src="utils/theme.js"></script>
+    <script src="utils/debug.js"></script>
+    <script src="utils/tos.js"></script>
+    <script src="classroom.js"></script>
+    <script>
+        // Auth check
+        document.addEventListener('DOMContentLoaded', () => {
+            window.authManager.checkAuthAndRedirect('login.html');
+        });
+
+        // Firebase auth state
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                window.location.replace('login.html');
+            }
+        });
+    </script>
+</body>
+
+</html>

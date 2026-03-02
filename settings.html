@@ -157,6 +157,18 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" onclick="saveProfile()">💾 Mentés</button>
                     </div>
+
+                    <div class="settings-card" style="margin-top: 1.5rem;">
+                        <h4>🏫 Osztály</h4>
+                        <p style="color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Lépj be egy osztályba vagy hozz létre újat, ahol közös órarendet, kvízeket és házi feladatokat oszthattok meg.</p>
+                        <div id="classInfoSettings" style="margin-bottom: 1rem; padding: 0.75rem; background: rgba(99,102,241,0.15); border-radius: 8px; display: none;">
+                            <span style="color: rgba(255,255,255,0.7);">Jelenlegi osztály: </span>
+                            <strong id="classNameSettings" style="color: #6366f1;">-</strong>
+                        </div>
+                        <div class="btn-group">
+                            <a href="classroom.html" class="btn btn-primary" style="text-decoration: none;">🏫 Osztály megnyitása</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- MEGJELENÉS -->
@@ -929,6 +941,27 @@
         });
 
         console.log('⚙️ Settings betöltve');
+
+        // Osztály info betöltése a profil szekcióba
+        function loadClassInfoInSettings() {
+            const db = typeof firebase !== 'undefined' && firebase.firestore ? firebase.firestore() : null;
+            const uid = firebase.auth().currentUser?.uid;
+            if (!db || !uid) return;
+
+            db.collection('users').doc(uid).get().then(doc => {
+                if (doc.exists && doc.data().className) {
+                    document.getElementById('classInfoSettings').style.display = 'block';
+                    document.getElementById('classNameSettings').textContent = doc.data().className;
+                }
+            }).catch(e => console.warn('Osztály info betöltés hiba:', e.message));
+        }
+
+        // Várjuk meg a Firebase auth-ot
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                loadClassInfoInSettings();
+            }
+        });
     </script>
 </body>
 </html>
