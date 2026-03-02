@@ -247,12 +247,16 @@ class ClassroomManager {
             this.currentClass = doc.data();
             this.members = this.currentClass.members || {};
 
-            // Load sub-collections
+            // Load sub-collections + member grades from grade tracker
             await Promise.all([
                 this.loadQuizzes(),
                 this.loadHomework(),
-                this.loadActivities()
+                this.loadActivities(),
+                this.loadMemberGradesFromTracker()
             ]);
+
+            // Sync own grades into class
+            await this.syncOwnGradesToClass();
 
             this.showActiveClassView();
             this.renderAll();
@@ -335,6 +339,21 @@ class ClassroomManager {
         let totalGrades = 0;
         let gradeCount = 0;
 
+        // 1) Jegy Tracker-ből betöltött jegyek (memberGradesData)
+        if (this.memberGradesData) {
+            Object.values(this.memberGradesData).forEach(memberData => {
+                if (memberData && memberData.grades && Array.isArray(memberData.grades)) {
+                    memberData.grades.forEach(g => {
+                        if (g.grade && typeof g.grade === 'number') {
+                            totalGrades += g.grade;
+                            gradeCount++;
+                        }
+                    });
+                }
+            });
+        }
+
+        // 2) Osztályon belüli kvíz jegyek (members.*.grades)
         Object.values(this.members).forEach(member => {
             if (member.grades) {
                 Object.values(member.grades).forEach(subjectGrades => {
@@ -350,6 +369,75 @@ class ClassroomManager {
 
         const avg = gradeCount > 0 ? (totalGrades / gradeCount).toFixed(2) : '-';
         document.getElementById('classAverage').textContent = avg;
+    }
+
+    /**
+     * Betölti az összes tag jegyeit a Firestore 'grades' kollekcióból
+     */
+    async loadMemberGradesFromTracker() {
+        const db = this.getDb();
+        if (!db || !this.members) return;
+
+        this.memberGradesData = {};
+
+        const memberUids = Object.keys(this.members);
+        if (memberUids.length === 0) return;
+
+        try {
+            // Egyenként töltjük be a tagok jegyeit
+            const promises = memberUids.map(async (uid) => {
+                try {
+                    const doc = await db.collection('grades').doc(uid).get();
+                    if (doc.exists && doc.data().data) {
+                        this.memberGradesData[uid] = doc.data().data;
+                    }
+                } catch (e) {
+                    // Lehet hogy nincs joga olvasni - nem baj
+                    console.warn(`⚠️ Nem sikerült betölteni ${uid} jegyeit:`, e.message);
+                }
+            });
+
+            await Promise.all(promises);
+            console.log('📊 Tagok jegyei betöltve:', Object.keys(this.memberGradesData).length, 'tagé');
+        } catch (error) {
+            console.warn('⚠️ Tag jegyek betöltés hiba:', error.message);
+        }
+    }
+
+    /**
+     * Szinkronizálja a saját Jegy Tracker jegyeket az osztályba
+     */
+    async syncOwnGradesToClass() {
+        const db = this.getDb();
+        if (!db || !this.classId || !this.uid) return;
+
+        try {
+            const doc = await db.collection('grades').doc(this.uid).get();
+            if (!doc.exists || !doc.data().data) return;
+
+            const gradeData = doc.data().data;
+            if (!gradeData.grades || !Array.isArray(gradeData.grades)) return;
+
+            // Tantárgyanként csoportosítjuk a jegyeket
+            const gradesBySubject = {};
+            gradeData.grades.forEach(g => {
+                if (g.subject && g.grade) {
+                    if (!gradesBySubject[g.subject]) gradesBySubject[g.subject] = [];
+                    gradesBySubject[g.subject].push(g.grade);
+                }
+            });
+
+            // Ha van legalább 1 jegy, frissítjük az osztályban is
+            if (Object.keys(gradesBySubject).length > 0) {
+                const key = `members.${this.uid}.grades`;
+                await db.collection('classes').doc(this.classId).update({
+                    [key]: gradesBySubject
+                });
+                console.log('☁️ Saját jegyek szinkronizálva az osztályba');
+            }
+        } catch (error) {
+            console.warn('⚠️ Saját jegy szinkron hiba:', error.message);
+        }
     }
 
     renderClassSchedule() {
@@ -962,19 +1050,37 @@ class ClassroomManager {
         const initial = (member.name || 'U').charAt(0).toUpperCase();
         const isAdmin = member.role === 'admin';
 
-        // Calculate member stats
-        let gradeCount = 0;
-        let gradeTotal = 0;
+        // Jegy Tracker adatok (grades kollekcióból)
+        const trackerData = this.memberGradesData ? this.memberGradesData[uid] : null;
+        const trackerGrades = trackerData && Array.isArray(trackerData.grades) ? trackerData.grades : [];
+
+        // Tantárgyankénti jegyek összegyűjtése (tracker + osztály kvíz jegyek)
+        const allGradesBySubject = {};
+
+        // Jegy Tracker jegyek
+        trackerGrades.forEach(g => {
+            if (g.subject && g.grade) {
+                if (!allGradesBySubject[g.subject]) allGradesBySubject[g.subject] = [];
+                allGradesBySubject[g.subject].push(g.grade);
+            }
+        });
+
+        // Osztályon belüli kvíz jegyek
         if (member.grades) {
-            Object.values(member.grades).forEach(subjectGrades => {
-                if (Array.isArray(subjectGrades)) {
-                    subjectGrades.forEach(g => {
-                        gradeTotal += g;
-                        gradeCount++;
-                    });
+            Object.entries(member.grades).forEach(([subject, grades]) => {
+                if (Array.isArray(grades)) {
+                    if (!allGradesBySubject[subject]) allGradesBySubject[subject] = [];
+                    grades.forEach(g => allGradesBySubject[subject].push(g));
                 }
             });
         }
+
+        // Összesített átlag
+        let gradeCount = 0;
+        let gradeTotal = 0;
+        Object.values(allGradesBySubject).forEach(grades => {
+            grades.forEach(g => { gradeTotal += g; gradeCount++; });
+        });
         const avgGrade = gradeCount > 0 ? (gradeTotal / gradeCount).toFixed(2) : '-';
 
         // Count quizzes by this member
@@ -982,6 +1088,8 @@ class ClassroomManager {
         const solutionsCount = this.homework.reduce((count, hw) => {
             return count + (hw.solutions ? hw.solutions.filter(s => s.authorId === uid).length : 0);
         }, 0);
+
+        const hasGrades = Object.keys(allGradesBySubject).length > 0;
 
         const body = document.getElementById('profileModalBody');
         body.innerHTML = `
@@ -1006,10 +1114,10 @@ class ClassroomManager {
                         <p>Megoldás</p>
                     </div>
                 </div>
-                ${member.grades && Object.keys(member.grades).length > 0 ? `
+                ${hasGrades ? `
                     <div style="margin-top: 1.5rem; text-align: left;">
                         <h4 style="color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; font-size: 0.9rem;">📊 Jegyek tantárgyanként</h4>
-                        ${Object.entries(member.grades).map(([subject, grades]) => {
+                        ${Object.entries(allGradesBySubject).map(([subject, grades]) => {
                             const subAvg = grades.length > 0 ? (grades.reduce((a, b) => a + b, 0) / grades.length).toFixed(2) : '-';
                             return `
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.3rem;">
@@ -1019,7 +1127,7 @@ class ClassroomManager {
                             `;
                         }).join('')}
                     </div>
-                ` : ''}
+                ` : '<p style="color: rgba(255,255,255,0.4); margin-top: 1rem;">Még nincsenek jegyek.</p>'}
                 <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 1rem;">
                     📅 Csatlakozott: ${this.formatDate(member.joinedAt)}
                 </p>
