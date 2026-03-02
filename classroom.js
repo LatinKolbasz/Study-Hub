@@ -19,6 +19,7 @@ class ClassroomManager {
         this.quizzes = [];
         this.homework = [];
         this.activities = [];
+        this.questions = [];
         this.currentSolvingQuiz = null;
         this.currentHomeworkId = null;
         this.quizQuestionCount = 0;
@@ -252,6 +253,7 @@ class ClassroomManager {
                 this.loadQuizzes(),
                 this.loadHomework(),
                 this.loadActivities(),
+                this.loadQuestions(),
                 this.loadMemberGradesFromTracker()
             ]);
 
@@ -312,12 +314,23 @@ class ClassroomManager {
         this.renderHomeworkList();
         this.renderMembers();
         this.renderActivityList();
+        this.renderQuestionsList();
+    }
+
+    isCurrentUserAdmin() {
+        return this.members[this.uid] && this.members[this.uid].role === 'admin';
     }
 
     renderHeader() {
         if (!this.currentClass) return;
         document.getElementById('classNameTitle').textContent = `🏫 ${this.currentClass.name}`;
         document.getElementById('classCodeDisplay').textContent = this.currentClass.code;
+
+        // Show/hide admin button
+        const adminBtn = document.getElementById('adminSettingsBtn');
+        if (adminBtn) {
+            adminBtn.style.display = this.isCurrentUserAdmin() ? '' : 'none';
+        }
     }
 
     renderOverview() {
@@ -335,40 +348,44 @@ class ClassroomManager {
         document.getElementById('homeworkCount').textContent = this.homework.length;
     }
 
-    calculateClassAverage() {
-        let totalGrades = 0;
-        let gradeCount = 0;
+    /**
+     * Egy tag súlyozott átlagát számítja ki (megegyezik a grade-tracker logikájával)
+     */
+    calculateMemberWeightedAverage(uid) {
+        const trackerData = this.memberGradesData ? this.memberGradesData[uid] : null;
+        const trackerGrades = trackerData && Array.isArray(trackerData.grades) ? trackerData.grades : [];
 
-        // 1) Jegy Tracker-ből betöltött jegyek (memberGradesData)
-        if (this.memberGradesData) {
-            Object.values(this.memberGradesData).forEach(memberData => {
-                if (memberData && memberData.grades && Array.isArray(memberData.grades)) {
-                    memberData.grades.forEach(g => {
-                        if (g.grade && typeof g.grade === 'number') {
-                            totalGrades += g.grade;
-                            gradeCount++;
-                        }
-                    });
-                }
-            });
-        }
+        if (trackerGrades.length === 0) return null;
 
-        // 2) Osztályon belüli kvíz jegyek (members.*.grades)
-        Object.values(this.members).forEach(member => {
-            if (member.grades) {
-                Object.values(member.grades).forEach(subjectGrades => {
-                    if (Array.isArray(subjectGrades)) {
-                        subjectGrades.forEach(g => {
-                            totalGrades += g;
-                            gradeCount++;
-                        });
-                    }
-                });
+        let totalWeight = 0;
+        let weightedSum = 0;
+
+        trackerGrades.forEach(g => {
+            if (g.grade && typeof g.grade === 'number') {
+                const weight = g.weight || 100;
+                weightedSum += g.grade * weight;
+                totalWeight += weight;
             }
         });
 
-        const avg = gradeCount > 0 ? (totalGrades / gradeCount).toFixed(2) : '-';
-        document.getElementById('classAverage').textContent = avg;
+        return totalWeight > 0 ? weightedSum / totalWeight : null;
+    }
+
+    calculateClassAverage() {
+        // Osztályátlag = tagok egyéni (súlyozott) átlagainak átlaga
+        let memberAvgSum = 0;
+        let memberAvgCount = 0;
+
+        Object.keys(this.members).forEach(uid => {
+            const avg = this.calculateMemberWeightedAverage(uid);
+            if (avg !== null) {
+                memberAvgSum += avg;
+                memberAvgCount++;
+            }
+        });
+
+        const classAvg = memberAvgCount > 0 ? (memberAvgSum / memberAvgCount).toFixed(2) : '-';
+        document.getElementById('classAverage').textContent = classAvg;
     }
 
     /**
@@ -489,7 +506,7 @@ class ClassroomManager {
                     <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.startQuiz('${quiz.id}')">
                         ▶️ Megoldás
                     </button>
-                    ${quiz.createdBy === this.uid ? `
+                    ${quiz.createdBy === this.uid || this.isCurrentUserAdmin() ? `
                         <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.deleteQuiz('${quiz.id}')">
                             🗑️ Törlés
                         </button>
@@ -532,7 +549,7 @@ class ClassroomManager {
                         <button class="classroom-btn classroom-btn-success" onclick="classroomManager.openSolutionForm('${hw.id}')">
                             💡 Megoldás beküldése
                         </button>
-                        ${hw.createdBy === this.uid ? `
+                        ${hw.createdBy === this.uid || this.isCurrentUserAdmin() ? `
                             <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.deleteHomework('${hw.id}')">
                                 🗑️ Törlés
                             </button>
@@ -561,18 +578,32 @@ class ClassroomManager {
 
         const memberCount = Object.keys(this.members).length;
         document.getElementById('memberCountBadge').textContent = `${memberCount} tag`;
+        const amAdmin = this.isCurrentUserAdmin();
 
         grid.innerHTML = Object.entries(this.members).map(([uid, member]) => {
             const initial = (member.name || 'U').charAt(0).toUpperCase();
             const isAdmin = member.role === 'admin';
+            const isMe = uid === this.uid;
 
             return `
-                <div class="member-card" onclick="classroomManager.showMemberProfile('${uid}')">
-                    <div class="member-avatar">${initial}</div>
-                    <div class="member-info">
-                        <div class="member-name">${this.escapeHtml(member.name)}</div>
-                        <div class="member-role ${isAdmin ? 'admin' : ''}">${isAdmin ? '⭐ Admin' : '👤 Tag'}</div>
+                <div class="member-card">
+                    <div class="member-card-top" onclick="classroomManager.showMemberProfile('${uid}')">
+                        <div class="member-avatar">${initial}</div>
+                        <div class="member-info">
+                            <div class="member-name">${this.escapeHtml(member.name)}</div>
+                            <div class="member-role ${isAdmin ? 'admin' : ''}">${isAdmin ? '⭐ Admin' : '👤 Tag'}</div>
+                        </div>
                     </div>
+                    ${amAdmin && !isMe ? `
+                        <div class="member-admin-actions">
+                            <button class="member-action-btn promote" onclick="classroomManager.toggleMemberRole('${uid}')" title="${isAdmin ? 'Admin jog elvétele' : 'Admin jog adása'}">
+                                ${isAdmin ? '👤 Lefokozás' : '⭐ Admin'}
+                            </button>
+                            <button class="member-action-btn kick" onclick="classroomManager.kickMember('${uid}')" title="Kirúgás">
+                                🚫 Kirúgás
+                            </button>
+                        </div>
+                    ` : ''}
                 </div>
             `;
         }).join('');
@@ -596,7 +627,9 @@ class ClassroomManager {
                 'homework': '📚',
                 'solution': '💡',
                 'schedule': '📅',
-                'grade': '🏆'
+                'grade': '🏆',
+                'settings': '⚙️',
+                'question': '❓'
             };
 
             return `
@@ -1041,6 +1074,450 @@ class ClassroomManager {
         }
     }
 
+    // ==================== ADMIN FUNCTIONS ====================
+
+    openAdminPanel() {
+        if (!this.isCurrentUserAdmin()) {
+            this.showNotification('❌ Nincs admin jogod!', 'error');
+            return;
+        }
+
+        const body = document.getElementById('adminPanelBody');
+        const memberCount = Object.keys(this.members).length;
+
+        body.innerHTML = `
+            <div class="admin-section">
+                <h3 style="color: white; margin-bottom: 1rem;">🏫 Osztály beállítások</h3>
+
+                <div class="form-group">
+                    <label>Osztály neve</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="adminClassName" class="classroom-input" value="${this.escapeHtml(this.currentClass.name)}" placeholder="Osztály neve">
+                        <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.renameClass()">💾 Mentés</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Osztálykód</label>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <code style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 8px; color: white; font-size: 1.1rem;">${this.currentClass.code}</code>
+                        <button class="classroom-btn classroom-btn-secondary" onclick="classroomManager.regenerateClassCode()">🔄 Új kód</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-section" style="margin-top: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">👥 Tagok kezelése (${memberCount})</h3>
+                <div class="admin-members-list">
+                    ${Object.entries(this.members).map(([uid, member]) => {
+                        const isAdmin = member.role === 'admin';
+                        const isMe = uid === this.uid;
+                        const initial = (member.name || 'U').charAt(0).toUpperCase();
+                        return `
+                            <div class="admin-member-row">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div class="member-avatar" style="width: 36px; height: 36px; font-size: 0.9rem;">${initial}</div>
+                                    <div>
+                                        <div style="color: white; font-weight: 500;">${this.escapeHtml(member.name)} ${isMe ? '(Te)' : ''}</div>
+                                        <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">${this.escapeHtml(member.email || '')}</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <span style="padding: 0.2rem 0.6rem; background: ${isAdmin ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.1)'}; border-radius: 12px; font-size: 0.8rem; color: ${isAdmin ? '#f59e0b' : 'rgba(255,255,255,0.6)'};">
+                                        ${isAdmin ? '⭐ Admin' : '👤 Tag'}
+                                    </span>
+                                    ${!isMe ? `
+                                        <button class="member-action-btn promote" onclick="classroomManager.toggleMemberRole('${uid}')" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">
+                                            ${isAdmin ? '👤 Lefokoz' : '⭐ Admin'}
+                                        </button>
+                                        <button class="member-action-btn kick" onclick="classroomManager.kickMember('${uid}')" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">
+                                            🚫 Kirúg
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+
+            <div class="admin-section" style="margin-top: 2rem;">
+                <h3 style="color: #ef4444; margin-bottom: 1rem;">⚠️ Veszélyes zóna</h3>
+                <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.deleteClass()" style="width: 100%;">
+                    🗑️ Osztály törlése
+                </button>
+            </div>
+        `;
+
+        document.getElementById('adminPanelModal').classList.add('active');
+    }
+
+    async renameClass() {
+        if (!this.isCurrentUserAdmin()) return;
+
+        const newName = document.getElementById('adminClassName').value.trim();
+        if (!newName) {
+            this.showNotification('❌ Add meg az osztály nevét!', 'error');
+            return;
+        }
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            await db.collection('classes').doc(this.classId).update({
+                name: newName
+            });
+
+            // Update all member user docs
+            const promises = Object.keys(this.members).map(uid =>
+                db.collection('users').doc(uid).set({ className: newName }, { merge: true })
+            );
+            await Promise.all(promises);
+
+            this.currentClass.name = newName;
+            this.renderHeader();
+            await this.addActivity('settings', `${this.userName} átnevezte az osztályt: ${newName}`);
+            this.showNotification('✅ Osztály átnevezve!', 'success');
+        } catch (error) {
+            console.error('❌ Átnevezés hiba:', error);
+            this.showNotification('❌ Hiba az átnevezéskor!', 'error');
+        }
+    }
+
+    async regenerateClassCode() {
+        if (!this.isCurrentUserAdmin()) return;
+        if (!confirm('Biztosan új kódot generálsz? A régi kód többé nem fog működni.')) return;
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            const newCode = this.generateClassCode();
+            await db.collection('classes').doc(this.classId).update({ code: newCode });
+
+            this.currentClass.code = newCode;
+            this.renderHeader();
+            this.openAdminPanel(); // Refresh panel
+            await this.addActivity('settings', `${this.userName} új osztálykódot generált`);
+            this.showNotification(`✅ Új kód: ${newCode}`, 'success');
+        } catch (error) {
+            console.error('❌ Kód generálás hiba:', error);
+            this.showNotification('❌ Hiba a kód generálásakor!', 'error');
+        }
+    }
+
+    async kickMember(uid) {
+        if (!this.isCurrentUserAdmin()) return;
+
+        const member = this.members[uid];
+        if (!member) return;
+
+        if (!confirm(`Biztosan kirúgod ${member.name} tagot?`)) return;
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            const updateData = {};
+            updateData[`members.${uid}`] = firebase.firestore.FieldValue.delete();
+            await db.collection('classes').doc(this.classId).update(updateData);
+
+            // Remove class from kicked user's profile
+            await db.collection('users').doc(uid).update({
+                classId: firebase.firestore.FieldValue.delete(),
+                className: firebase.firestore.FieldValue.delete()
+            });
+
+            delete this.members[uid];
+            await this.addActivity('leave', `${this.userName} kirúgta ${member.name} tagot`);
+            this.showNotification(`✅ ${member.name} eltávolítva!`, 'success');
+
+            this.renderMembers();
+            this.renderOverview();
+            this.openAdminPanel(); // Refresh panel
+        } catch (error) {
+            console.error('❌ Kirúgás hiba:', error);
+            this.showNotification('❌ Hiba a kirúgáskor!', 'error');
+        }
+    }
+
+    async toggleMemberRole(uid) {
+        if (!this.isCurrentUserAdmin()) return;
+
+        const member = this.members[uid];
+        if (!member) return;
+
+        const newRole = member.role === 'admin' ? 'member' : 'admin';
+        const roleText = newRole === 'admin' ? 'admin' : 'tag';
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            await db.collection('classes').doc(this.classId).update({
+                [`members.${uid}.role`]: newRole
+            });
+
+            this.members[uid].role = newRole;
+            await this.addActivity('settings', `${this.userName} ${newRole === 'admin' ? 'adminná tette' : 'lefokozta'} ${member.name} tagot`);
+            this.showNotification(`✅ ${member.name} most ${roleText}!`, 'success');
+
+            this.renderMembers();
+            this.openAdminPanel(); // Refresh
+        } catch (error) {
+            console.error('❌ Jogosultság módosítás hiba:', error);
+            this.showNotification('❌ Hiba a jogosultság módosításakor!', 'error');
+        }
+    }
+
+    async deleteClass() {
+        if (!this.isCurrentUserAdmin()) return;
+
+        if (!confirm('⚠️ FIGYELEM: Ez törli az EGÉSZ osztályt, minden adatával együtt! Biztosan folytatod?')) return;
+        if (!confirm('Ez a művelet NEM vonható vissza. Tényleg törlöd?')) return;
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            // Remove class reference from all members
+            const promises = Object.keys(this.members).map(uid =>
+                db.collection('users').doc(uid).update({
+                    classId: firebase.firestore.FieldValue.delete(),
+                    className: firebase.firestore.FieldValue.delete()
+                }).catch(() => {})
+            );
+            await Promise.all(promises);
+
+            // Delete sub-collections
+            const subCollections = ['quizzes', 'homework', 'activities', 'questions'];
+            for (const col of subCollections) {
+                const snap = await db.collection('classes').doc(this.classId).collection(col).get();
+                const batch = db.batch();
+                snap.docs.forEach(d => batch.delete(d.ref));
+                await batch.commit();
+            }
+
+            // Delete the class document
+            await db.collection('classes').doc(this.classId).delete();
+
+            this.currentClass = null;
+            this.classId = null;
+            this.closeModal('adminPanelModal');
+            this.showNotification('✅ Osztály törölve!', 'success');
+            this.showNoClassView();
+        } catch (error) {
+            console.error('❌ Osztály törlés hiba:', error);
+            this.showNotification('❌ Hiba az osztály törlésekor!', 'error');
+        }
+    }
+
+    // ==================== QUESTIONS & ANSWERS ====================
+
+    async loadQuestions() {
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            const snapshot = await db.collection('classes').doc(this.classId)
+                .collection('questions').orderBy('createdAt', 'desc').get();
+
+            this.questions = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+        } catch (error) {
+            console.warn('⚠️ Kérdések betöltés hiba:', error.message);
+        }
+    }
+
+    openQuestionForm() {
+        document.getElementById('questionTitle').value = '';
+        document.getElementById('questionBody').value = '';
+        document.getElementById('questionSubject').value = '';
+        document.getElementById('questionModal').classList.add('active');
+    }
+
+    async saveQuestion() {
+        const title = document.getElementById('questionTitle').value.trim();
+        const body = document.getElementById('questionBody').value.trim();
+        const subject = document.getElementById('questionSubject').value.trim();
+
+        if (!title) {
+            this.showNotification('❌ Add meg a kérdés címét!', 'error');
+            return;
+        }
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            await db.collection('classes').doc(this.classId)
+                .collection('questions').add({
+                    title: title,
+                    body: body,
+                    subject: subject || null,
+                    authorId: this.uid,
+                    authorName: this.userName,
+                    createdAt: new Date().toISOString(),
+                    answers: [],
+                    resolved: false
+                });
+
+            await this.loadQuestions();
+            this.renderQuestionsList();
+            this.closeModal('questionModal');
+            await this.addActivity('question', `${this.userName} új kérdést tett fel: ${title}`);
+            this.showNotification('✅ Kérdés feltéve!', 'success');
+        } catch (error) {
+            console.error('❌ Kérdés mentés hiba:', error);
+            this.showNotification('❌ Hiba a kérdés mentésekor!', 'error');
+        }
+    }
+
+    renderQuestionsList() {
+        const container = document.getElementById('questionsList');
+        if (!container) return;
+
+        if (this.questions.length === 0) {
+            container.innerHTML = '<div class="questions-empty">Még nincs kérdés. Tegyél fel egyet!</div>';
+            return;
+        }
+
+        container.innerHTML = this.questions.map(q => {
+            const answers = q.answers || [];
+            const isOwner = q.authorId === this.uid;
+            const canDelete = isOwner || this.isCurrentUserAdmin();
+
+            return `
+                <div class="question-card ${q.resolved ? 'resolved' : ''}">
+                    <div class="question-card-header">
+                        <div>
+                            <h3>${q.resolved ? '✅' : '❓'} ${this.escapeHtml(q.title)}</h3>
+                            ${q.subject ? `<span class="question-subject-badge">${this.escapeHtml(q.subject)}</span>` : ''}
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            ${isOwner && !q.resolved && answers.length > 0 ? `
+                                <button class="classroom-btn classroom-btn-success" onclick="classroomManager.markQuestionResolved('${q.id}')" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">
+                                    ✅ Megoldva
+                                </button>
+                            ` : ''}
+                            ${canDelete ? `
+                                <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.deleteQuestion('${q.id}')" style="font-size: 0.8rem; padding: 0.3rem 0.6rem;">
+                                    🗑️
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                    ${q.body ? `<div class="question-body">${this.escapeHtml(q.body)}</div>` : ''}
+                    <div class="question-meta">
+                        <span>👤 ${this.escapeHtml(q.authorName)}</span>
+                        <span>📅 ${this.formatDate(q.createdAt)}</span>
+                        <span>💬 ${answers.length} válasz</span>
+                    </div>
+
+                    ${answers.length > 0 ? `
+                        <div class="answers-section">
+                            ${answers.map(a => `
+                                <div class="answer-item">
+                                    <div class="answer-author">👤 ${this.escapeHtml(a.authorName)}</div>
+                                    <div class="answer-text">${this.escapeHtml(a.text)}</div>
+                                    <div class="answer-time">${this.formatDate(a.createdAt)}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+
+                    ${!q.resolved ? `
+                        <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.openAnswerForm('${q.id}')" style="margin-top: 0.75rem; width: 100%;">
+                            💬 Válaszolás
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+        }).join('');
+    }
+
+    openAnswerForm(questionId) {
+        this.currentQuestionId = questionId;
+        document.getElementById('answerText').value = '';
+        document.getElementById('answerModal').classList.add('active');
+    }
+
+    async submitAnswer() {
+        const text = document.getElementById('answerText').value.trim();
+        if (!text) {
+            this.showNotification('❌ Írd le a választ!', 'error');
+            return;
+        }
+
+        const db = this.getDb();
+        if (!db || !this.classId || !this.currentQuestionId) return;
+
+        try {
+            const qRef = db.collection('classes').doc(this.classId)
+                .collection('questions').doc(this.currentQuestionId);
+
+            const answer = {
+                authorId: this.uid,
+                authorName: this.userName,
+                text: text,
+                createdAt: new Date().toISOString()
+            };
+
+            await qRef.update({
+                answers: firebase.firestore.FieldValue.arrayUnion(answer)
+            });
+
+            await this.loadQuestions();
+            this.renderQuestionsList();
+            this.closeModal('answerModal');
+            await this.addActivity('question', `${this.userName} válaszolt egy kérdésre`);
+            this.showNotification('✅ Válasz elküldve!', 'success');
+        } catch (error) {
+            console.error('❌ Válasz küldés hiba:', error);
+            this.showNotification('❌ Hiba a válasz küldésekor!', 'error');
+        }
+    }
+
+    async markQuestionResolved(questionId) {
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            await db.collection('classes').doc(this.classId)
+                .collection('questions').doc(questionId).update({
+                    resolved: true
+                });
+
+            await this.loadQuestions();
+            this.renderQuestionsList();
+            this.showNotification('✅ Kérdés megoldottnak jelölve!', 'success');
+        } catch (error) {
+            console.error('❌ Kérdés megoldva jelölés hiba:', error);
+        }
+    }
+
+    async deleteQuestion(questionId) {
+        if (!confirm('Biztosan törlöd ezt a kérdést?')) return;
+
+        const db = this.getDb();
+        if (!db || !this.classId) return;
+
+        try {
+            await db.collection('classes').doc(this.classId)
+                .collection('questions').doc(questionId).delete();
+
+            await this.loadQuestions();
+            this.renderQuestionsList();
+            this.showNotification('✅ Kérdés törölve!', 'success');
+        } catch (error) {
+            console.error('❌ Kérdés törlés hiba:', error);
+            this.showNotification('❌ Hiba a kérdés törlésekor!', 'error');
+        }
+    }
+
     // ==================== MEMBER PROFILES ====================
 
     showMemberProfile(uid) {
@@ -1050,38 +1527,28 @@ class ClassroomManager {
         const initial = (member.name || 'U').charAt(0).toUpperCase();
         const isAdmin = member.role === 'admin';
 
-        // Jegy Tracker adatok (grades kollekcióból)
+        // Súlyozott átlag (megegyezik a grade-tracker logikájával)
+        const memberAvg = this.calculateMemberWeightedAverage(uid);
+        const avgGrade = memberAvg !== null ? memberAvg.toFixed(2) : '-';
+
+        // Tantárgyankénti átlagok (csak trackerből, súlyozva)
         const trackerData = this.memberGradesData ? this.memberGradesData[uid] : null;
         const trackerGrades = trackerData && Array.isArray(trackerData.grades) ? trackerData.grades : [];
 
-        // Tantárgyankénti jegyek összegyűjtése (tracker + osztály kvíz jegyek)
-        const allGradesBySubject = {};
-
-        // Jegy Tracker jegyek
+        const subjectStats = {};
         trackerGrades.forEach(g => {
             if (g.subject && g.grade) {
-                if (!allGradesBySubject[g.subject]) allGradesBySubject[g.subject] = [];
-                allGradesBySubject[g.subject].push(g.grade);
+                if (!subjectStats[g.subject]) subjectStats[g.subject] = { weightedSum: 0, totalWeight: 0 };
+                const w = g.weight || 100;
+                subjectStats[g.subject].weightedSum += g.grade * w;
+                subjectStats[g.subject].totalWeight += w;
             }
         });
 
-        // Osztályon belüli kvíz jegyek
-        if (member.grades) {
-            Object.entries(member.grades).forEach(([subject, grades]) => {
-                if (Array.isArray(grades)) {
-                    if (!allGradesBySubject[subject]) allGradesBySubject[subject] = [];
-                    grades.forEach(g => allGradesBySubject[subject].push(g));
-                }
-            });
-        }
-
-        // Összesített átlag
-        let gradeCount = 0;
-        let gradeTotal = 0;
-        Object.values(allGradesBySubject).forEach(grades => {
-            grades.forEach(g => { gradeTotal += g; gradeCount++; });
+        const allGradesBySubject = {};
+        Object.entries(subjectStats).forEach(([sub, s]) => {
+            allGradesBySubject[sub] = s.totalWeight > 0 ? (s.weightedSum / s.totalWeight).toFixed(2) : '-';
         });
-        const avgGrade = gradeCount > 0 ? (gradeTotal / gradeCount).toFixed(2) : '-';
 
         // Count quizzes by this member
         const quizzesCreated = this.quizzes.filter(q => q.createdBy === uid).length;
@@ -1116,13 +1583,12 @@ class ClassroomManager {
                 </div>
                 ${hasGrades ? `
                     <div style="margin-top: 1.5rem; text-align: left;">
-                        <h4 style="color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; font-size: 0.9rem;">📊 Jegyek tantárgyanként</h4>
-                        ${Object.entries(allGradesBySubject).map(([subject, grades]) => {
-                            const subAvg = grades.length > 0 ? (grades.reduce((a, b) => a + b, 0) / grades.length).toFixed(2) : '-';
+                        <h4 style="color: rgba(255,255,255,0.6); margin-bottom: 0.75rem; font-size: 0.9rem;">📊 Átlagok tantárgyanként</h4>
+                        ${Object.entries(allGradesBySubject).map(([subject, subAvg]) => {
                             return `
                                 <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.3rem;">
                                     <span style="color: white; font-size: 0.9rem;">${this.escapeHtml(subject)}</span>
-                                    <span style="color: var(--primary-color, #6366f1); font-weight: 600;">${grades.join(', ')} (átl: ${subAvg})</span>
+                                    <span style="color: var(--primary-color, #6366f1); font-weight: 600;">${subAvg}</span>
                                 </div>
                             `;
                         }).join('')}

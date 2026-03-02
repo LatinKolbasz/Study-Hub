@@ -866,24 +866,6 @@
     gap: 1rem;
 }
 
-.member-card {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-    padding: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.member-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
 .member-avatar {
     width: 55px;
     height: 55px;
@@ -1162,6 +1144,210 @@
         opacity: 0;
         transform: translateY(20px);
     }
+}
+
+/* ==================== MEMBER CARD (updated) ==================== */
+
+.member-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.member-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.member-card-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.member-admin-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.member-action-btn {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.member-action-btn.promote {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.member-action-btn.promote:hover {
+    background: rgba(245, 158, 11, 0.3);
+}
+
+.member-action-btn.kick {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.member-action-btn.kick:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+/* ==================== ADMIN PANEL ==================== */
+
+.admin-section {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+}
+
+.admin-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-member-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.admin-member-row:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==================== QUESTIONS & ANSWERS ==================== */
+
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.questions-empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.question-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.question-card.resolved {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.question-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.question-card-header h3 {
+    color: white;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.question-subject-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary-color, #6366f1);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+.question-body {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    white-space: pre-wrap;
+}
+
+.question-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.5rem;
+}
+
+.answers-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.answer-item {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-color, #6366f1);
+}
+
+.answer-author {
+    font-size: 0.85rem;
+    color: var(--primary-color, #6366f1);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.answer-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.answer-time {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.4rem;
 }
 
 /* ==================== RESPONSIVE ==================== */

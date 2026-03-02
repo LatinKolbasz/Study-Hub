@@ -100,6 +100,9 @@
                     </div>
                 </div>
                 <div class="classroom-header-actions">
+                    <button class="classroom-btn classroom-btn-primary admin-only-btn" id="adminSettingsBtn" style="display:none;" onclick="classroomManager.openAdminPanel()">
+                        ⚙️ Beállítások
+                    </button>
                     <button class="classroom-btn classroom-btn-danger" onclick="classroomManager.leaveClass()">
                         🚪 Kilépés
                     </button>
@@ -118,6 +121,8 @@
                     feladat</button>
                 <button class="classroom-tab" onclick="classroomManager.switchTab('members', this)">👥
                     Tagok</button>
+                <button class="classroom-tab" onclick="classroomManager.switchTab('questions', this)">❓
+                    Kérdések</button>
             </div>
 
             <!-- Tab contents -->
@@ -215,6 +220,19 @@
                     </div>
                     <div class="members-grid" id="membersGrid">
                         <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- KÉRDÉSEK -->
+                <div id="tab-questions" class="classroom-tab-content">
+                    <div class="tab-header">
+                        <h2>❓ Kérdések és válaszok</h2>
+                        <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.openQuestionForm()">
+                            ➕ Új kérdés
+                        </button>
+                    </div>
+                    <div class="questions-list" id="questionsList">
+                        <div class="questions-empty">Még nincs kérdés. Tegyél fel egyet!</div>
                     </div>
                 </div>
             </div>
@@ -359,6 +377,67 @@
             </div>
             <div class="classroom-modal-body" id="profileModalBody">
                 <!-- Rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin panel modal -->
+    <div class="classroom-modal" id="adminPanelModal">
+        <div class="classroom-modal-content large">
+            <div class="classroom-modal-header">
+                <h2>⚙️ Admin beállítások</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('adminPanelModal')">×</button>
+            </div>
+            <div class="classroom-modal-body" id="adminPanelBody">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Kérdés form modal -->
+    <div class="classroom-modal" id="questionModal">
+        <div class="classroom-modal-content">
+            <div class="classroom-modal-header">
+                <h2>❓ Új kérdés</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('questionModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="form-group">
+                    <label>Kérdés címe</label>
+                    <input type="text" id="questionTitle" class="classroom-input" placeholder="Pl: Hogyan kell megoldani...">
+                </div>
+                <div class="form-group">
+                    <label>Leírás / részletek</label>
+                    <textarea id="questionBody" class="classroom-textarea" rows="5" placeholder="Írd le részletesen a kérdést..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tantárgy (opcionális)</label>
+                    <input type="text" id="questionSubject" class="classroom-input" placeholder="Pl: Matematika">
+                </div>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.saveQuestion()">💬 Kérdés feltétele</button>
+                <button class="classroom-btn classroom-btn-secondary" onclick="classroomManager.closeModal('questionModal')">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Válasz modal -->
+    <div class="classroom-modal" id="answerModal">
+        <div class="classroom-modal-content">
+            <div class="classroom-modal-header">
+                <h2>💬 Válasz</h2>
+                <button class="classroom-modal-close" onclick="classroomManager.closeModal('answerModal')">×</button>
+            </div>
+            <div class="classroom-modal-body">
+                <div class="form-group">
+                    <label>Válaszod</label>
+                    <textarea id="answerText" class="classroom-textarea" rows="5" placeholder="Írd le a választ..."></textarea>
+                </div>
+            </div>
+            <div class="classroom-modal-footer">
+                <button class="classroom-btn classroom-btn-primary" onclick="classroomManager.submitAnswer()">💬 Válasz küldése</button>
+                <button class="classroom-btn classroom-btn-secondary" onclick="classroomManager.closeModal('answerModal')">Mégse</button>
             </div>
         </div>
     </div>
