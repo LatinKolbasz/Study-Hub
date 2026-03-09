@@ -27,9 +27,11 @@ class SectorPageManager {
      */
     init() {
         const fileInput = document.getElementById('file-input');
-        fileInput.addEventListener('change', (event) => {
-            this.handleFileUpload(event.target.files);
-        });
+        if (fileInput) {
+            fileInput.addEventListener('change', (event) => {
+                this.handleFileUpload(event.target.files);
+            });
+        }
 
         this.renderMaterials();
     }
@@ -89,7 +91,10 @@ class SectorPageManager {
                 this.saveMaterials();
                 this.renderMaterials();
 
-                document.getElementById('file-input').value = '';
+                const fileInputReset = document.getElementById('file-input');
+                if (fileInputReset) {
+                    fileInputReset.value = '';
+                }
                 this.showNotification('✅ Fájl sikeresen feltöltve!');
             };
 
