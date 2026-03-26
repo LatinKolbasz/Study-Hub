@@ -6,11 +6,12 @@
     <link rel="icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCNA - Study Hub</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sector-page.css">
     <style>
-        
+
     </style>
 </head>
 
@@ -38,641 +39,910 @@
             <h1 class="page-title">🌐 Cisco CCNA</h1>
             <p class="page-subtitle">Hálózati alapismeretek - Cisco Certified Network Associate</p>
         </section>
-    
-       
-        <div class="sector-page-content row">
-            <section class="topics-section">
-                <h2 class="section-title">📚 Modulok</h2>
-                <div class="modules-list" id="modulesList">
+        <div class="container">
+            <div class="row">
+                <div class="sector-page-content row">
+                    <section class="topics-section">
+                        <h2 class="section-title">📚 Modulok</h2>
+                        <div class="modules-list" id="modulesList">
 
-                    <div class="module-item" id="module-1">
-                        <div class="module-header" onclick="toggleModule(1)">
-                            <div class="module-number">1</div>
-                            <div class="module-title">Modul 1</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Tananyag hamarosan...</p>
+                            <div class="module-item" id="module-1">
+                                <div class="module-header" onclick="toggleModule(1)">
+                                    <div class="module-number">1</div>
+                                    <div class="module-title">Modul 1</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Tananyag hamarosan...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-2">
+                                <div class="module-header" onclick="toggleModule(2)">
+                                    <div class="module-number">2</div>
+                                    <div class="module-title">Modul 2</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="placeholder">Tananyag hamarosan...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-3">
+                                <div class="module-header" onclick="toggleModule(3)">
+                                    <div class="module-number">3</div>
+                                    <div class="module-title">Modul 3</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Tananyag hamarosan...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-4">
+                                <div class="module-header" onclick="toggleModule(4)">
+                                    <div class="module-number">4</div>
+                                    <div class="module-title">Modul 4</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A fizikai réteg az OSI modell legalsó, első rétege. Feladata a
+                                            bitek tényleges továbbítása a fizikai közegen keresztül egyik eszköztől a
+                                            másikig.
+                                            Meghatározza, hogy a 0 és 1 értékek milyen fizikai formában jelennek meg, és
+                                            hogyan
+                                            jutnak el a két végpont között. Nem foglalkozik címzéssel, hibajavítással
+                                            vagy a
+                                            csomagok értelmezésével, kizárólag a nyers bitfolyam átviteléért felel.
+
+                                            A fizikai réteg gondoskodik a bitek ábrázolásáról, amely történhet
+                                            elektromos
+                                            jelként rézkábelen, fényimpulzusként optikai szálon, vagy rádióhullámként
+                                            vezeték
+                                            nélküli kapcsolat esetén. Meghatározza az adatátviteli sebességet, amelyet
+                                            bit per
+                                            second (bps) mértékegységben adunk meg. Szabályozza a jelirányt is: simplex
+                                            esetén
+                                            az adatátvitel egyirányú, half-duplex esetén mindkét irányba lehetséges, de
+                                            nem
+                                            egyszerre, míg full-duplex esetén egy időben történhet a kétirányú
+                                            kommunikáció. Ide
+                                            tartozik a fizikai topológia meghatározása is, például busz, csillag (star),
+                                            gyűrű
+                                            (ring) vagy hálós (mesh) elrendezés.
+
+                                            A réteg működéséhez konkrét fizikai komponensek szükségesek. Ide tartoznak a
+                                            hálózati eszközök, például a hálózati kártya (NIC), a switch, a router
+                                            fizikai
+                                            portjai, valamint a vezeték nélküli hozzáférési pontok. Szintén a fizikai
+                                            réteghez
+                                            kapcsolódnak a csatlakozók és interfészek, mint az RJ-45 csatlakozó, az SFP
+                                            vagy
+                                            GBIC modulok, illetve például az USB konzolkapcsolat.
+
+                                            Az adatátvitel különböző közegeken történhet. Réz alapú kábelek esetén
+                                            jellemző az
+                                            UTP és STP kábel, valamint a Cat5e, Cat6 vagy Cat6a kategóriák. Előnyük,
+                                            hogy olcsók
+                                            és könnyen szerelhetők, hátrányuk viszont az elektromágneses zavarokra való
+                                            érzékenység (EMI), valamint a körülbelül 100 méteres maximális
+                                            szegmenshossz. Az
+                                            optikai szál lehet single-mode vagy multi-mode. Előnye a nagy sebesség, a
+                                            hosszú
+                                            távolság áthidalása és az EMI-mentesség, míg hátránya a magasabb költség és
+                                            a
+                                            bonyolultabb szerelhetőség. A vezeték nélküli média, például a Wi-Fi (802.11
+                                            szabványok alapján), rádióhullámokat használ. Fő előnye a mobilitás,
+                                            hátránya az
+                                            interferencia és a biztonsági kockázatok lehetősége.
+
+                                            A fizikai réteghez tartoznak a jelátviteli jellemzők is. A sávszélesség az
+                                            elméleti
+                                            maximális adatátviteli kapacitást jelenti, míg az átbocsátóképesség
+                                            (throughput) a
+                                            ténylegesen elért adatsebesség. A késleltetés (latency) több részből állhat:
+                                            feldolgozási, átviteli és terjedési késleltetésből. A jel minőségét
+                                            befolyásolhatja
+                                            a zaj, például elektromágneses interferencia (EMI), rádiófrekvenciás
+                                            interferencia
+                                            (RFI) vagy áthallás (crosstalk).
+
+                                            A bitek fizikai jelekké alakítását kódolásnak és modulációnak nevezzük.
+                                            Ilyen
+                                            például a Manchester kódolás vagy az NRZ (Non-Return-to-Zero) eljárás. A cél
+                                            a
+                                            megbízható jelátvitel és a megfelelő szinkronizáció biztosítása a
+                                            kommunikáló
+                                            eszközök között.
+
+                                            A fizikai réteg működését különböző szabványok határozzák meg. Az IEEE 802.3
+                                            az
+                                            Ethernet hálózatokra, az IEEE 802.11 a vezeték nélküli LAN-hálózatokra
+                                            vonatkozik,
+                                            míg a TIA/EIA szabványok a strukturált kábelezés követelményeit rögzítik.
+
+                                            A fizikai réteg alapvető fontosságú, mert ha ezen a szinten hiba lép fel, a
+                                            felsőbb
+                                            rétegek sem tudnak működni. Tipikus problémák lehetnek a hibás vagy nem
+                                            megfelelő
+                                            kábel, rossz csatlakozás, sérült port vagy nem megfelelő szabvány
+                                            alkalmazása.
+                                            Összességében a fizikai réteg biztosítja azt az alapot, amelyre a teljes
+                                            hálózati
+                                            kommunikáció épül.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-5">
+                                <div class="module-header" onclick="toggleModule(5)">
+                                    <div class="module-number">5</div>
+                                    <div class="module-title">Modul 5</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A számrendszerek a hálózatok működésének alapját adják, mert
+                                            minden hálózati eszköz binárisan, azaz 0 és 1 értékekkel dolgozik. Az
+                                            IP-címek,
+                                            alhálózati maszkok és hozzáférés-vezérlési listák (ACL-ek) mögött mind
+                                            bináris
+                                            reprezentáció áll. A decimális vagy hexadecimális forma valójában csak az
+                                            ember
+                                            számára olvasható „fordítás”, hogy ne 32 darab 0 és 1 között kelljen élni az
+                                            életet.
+
+                                            A bináris számrendszer kettes alapú (Base-2), és kizárólag a 0 és 1
+                                            számjegyeket
+                                            használja. A helyiértékek a kettő hatványai: 2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8,
+                                            2⁴ = 16
+                                            és így tovább. Egy bináris szám értékét úgy kapjuk meg, hogy összeadjuk
+                                            azokat a
+                                            helyiértékeket, ahol 1 szerepel. Például a 10101010₂ decimálisan 170₁₀, mert
+                                            128 +
+                                            32 + 8 + 2 = 170.
+
+                                            A decimális számrendszer tízes alapú (Base-10), a 0–9 számjegyeket
+                                            használja, és a
+                                            helyiértékei a 10 hatványai. A hálózatokban az IPv4-címek olvasható formája
+                                            decimális, például 192.168.1.1. A háttérben ez továbbra is bináris, csak
+                                            négy darab,
+                                            egyenként 8 bites csoportként jelenik meg.
+
+                                            A hexadecimális számrendszer tizenhatos alapú (Base-16). A 0–9 mellett az
+                                            A–F
+                                            betűket használja, ahol A=10, B=11, C=12, D=13, E=14, F=15. A helyiértékek a
+                                            16
+                                            hatványai. Hálózatban gyakran találkozunk vele MAC-címeknél és
+                                            IPv6-címeknél, mert
+                                            tömörebb, mégis könnyen visszafordítható binárisra.
+
+                                            Az átváltások vizsgán különösen fontosak. Binárisból decimálisba súlyozott
+                                            összeadással váltunk. Például a 11000000₂ értéke 128 + 64 = 192.
+                                            Decimálisból
+                                            binárisba átválthatunk ismételt 2-vel osztással és a maradékok leírásával,
+                                            vagy
+                                            helyiértékes módszerrel. Például 10₁₀ binárisan 1010₂. Bináris és
+                                            hexadecimális
+                                            között az átváltás egyszerűbb: 4 bit pontosan 1 hex számjegynek felel meg. A
+                                            1100
+                                            1010₂ például CA₁₆, mert 1100 = C és 1010 = A. Érdemes fejben tudni néhány
+                                            alap
+                                            megfeleltetést, például 0 = 0000, 8 = 1000, A = 1010, F = 1111.
+
+                                            A bit a legkisebb információegység, amely 0 vagy 1 lehet. Négy bitet
+                                            nibble-nek
+                                            nevezünk, nyolc bit pedig egy byte. Egy byte decimálisan 0 és 255 közötti
+                                            értéket
+                                            tud felvenni, mivel 2⁸ = 256 különböző kombináció létezik.
+
+                                            A bináris számolásnál túlcsordulás történik, amikor minden bit 1, és
+                                            hozzáadunk még
+                                            egyet. Például 0111 + 1 = 1000. Ez az elv kulcsfontosságú IP-címzésnél és
+                                            alhálózat-számításnál, ahol a bitek határozzák meg a hálózati és hosztrészt.
+
+                                            Az IP-címek közvetlenül a számrendszerekre épülnek. Az IPv4-cím 32 bitből
+                                            áll, négy
+                                            darab 8 bites oktett formájában. A 192.168.1.1 cím binárisan így néz ki:
+                                            11000000.10101000.00000001.00000001. A decimális pontozott forma csak egy
+                                            kényelmes
+                                            reprezentáció.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-6">
+                                <div class="module-header" onclick="toggleModule(6)">
+                                    <div class="module-number">6</div>
+                                    <div class="module-title">Modul 6</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Az adatkapcsolati réteg az OSI modell második rétege, közvetlenül
+                                            a fizikai réteg felett helyezkedik el. Míg az első réteg biteket továbbít, a
+                                            második
+                                            réteg már értelmezett egységekkel dolgozik. Feladata a megbízható
+                                            adatátvitel
+                                            biztosítása két közvetlenül kapcsolt eszköz között ugyanazon a hálózati
+                                            szegmensen.
+
+                                            Az adatkapcsolati réteg egyik legfontosabb feladata a keretezés (framing). A
+                                            fizikai
+                                            rétegtől érkező nyers bitfolyamot keretekbe, azaz frame-ekbe szervezi. Ezek
+                                            a
+                                            keretek tartalmazzák a szükséges vezérlőinformációkat is. A réteg végzi a
+                                            fizikai
+                                            címzést MAC-címek segítségével, valamint hibadetektálást alkalmaz, tipikusan
+                                            FCS
+                                            (Frame Check Sequence) mezővel. Emellett szabályozza a közeghez való
+                                            hozzáférést is,
+                                            vagyis meghatározza, hogy mikor küldhet egy eszköz adatot.
+
+                                            Az adatkapcsolati réteg két alrétegre oszlik. Az LLC (Logical Link Control),
+                                            amelyet
+                                            az IEEE 802.2 szabvány ír le, kapcsolatot biztosít a hálózati réteg (3.
+                                            réteg) felé.
+                                            Feladata többek között a felsőbb rétegbeli protokoll azonosítása és bizonyos
+                                            szintű
+                                            forgalomszabályozás. A MAC (Media Access Control) alréteg – amely az IEEE
+                                            802.x
+                                            szabványcsaládhoz tartozik – felel a MAC-címzésért, a keretezés konkrét
+                                            megvalósításáért és a közeg-hozzáférés szabályozásáért.
+
+                                            A MAC-cím 48 bites, azaz 6 byte hosszú, és hexadecimális formában jelenik
+                                            meg,
+                                            például 00:1A:2B:3C:4D:5E. Az első 24 bit az OUI (Organizationally Unique
+                                            Identifier), amely a gyártót azonosítja, a második 24 bit pedig az adott
+                                            eszköz
+                                            egyedi azonosítója. A MAC-cím lehet unicast (egy eszköznek szól), broadcast
+                                            (FF:FF:FF:FF:FF:FF, minden eszköznek szól a helyi hálózaton) vagy multicast
+                                            (egy
+                                            csoportnak szól).
+
+                                            Az adatkapcsolati réteg adat egysége a frame. Egy tipikus Ethernet keret
+                                            tartalmaz
+                                            preamble mezőt a szinkronizációhoz, cél MAC-címet, forrás MAC-címet, Type
+                                            vagy
+                                            Length mezőt a felsőbb réteg azonosítására, adatmezőt, valamint FCS mezőt,
+                                            amely
+                                            CRC-alapú hibadetektálást valósít meg.
+
+                                            A hibadetektálás CRC (Cyclic Redundancy Check) algoritmussal történik. A
+                                            számított
+                                            érték bekerül az FCS mezőbe, és a fogadó eszköz újraszámolja. Ha az érték
+                                            eltér, a
+                                            keret hibásnak minősül és eldobásra kerül. Fontos, hogy ez a mechanizmus
+                                            csak hibát
+                                            jelez, nem javít.
+
+                                            A közeg-hozzáférési módszerek meghatározzák, hogyan osztoznak az eszközök a
+                                            kommunikációs csatornán. A CSMA/CD (Carrier Sense Multiple Access with
+                                            Collision
+                                            Detection) a régi, half-duplex Ethernet hálózatokra volt jellemző. Az eszköz
+                                            figyelte a közeget, és ütközés esetén véletlenszerű várakozás után
+                                            próbálkozott
+                                            újra. Modern, kapcsolt (switch-elt) full-duplex hálózatokban gyakorlatilag
+                                            nincs
+                                            ütközés. A vezeték nélküli hálózatok CSMA/CA (Collision Avoidance) módszert
+                                            alkalmaznak, amely ütközésmegelőzést valósít meg, például RTS/CTS
+                                            mechanizmussal.
+
+                                            Az adatkapcsolati réteghez több protokoll tartozik, például az Ethernet
+                                            (IEEE
+                                            802.3), a Wireless LAN (IEEE 802.11), a PPP (Point-to-Point Protocol) és a
+                                            HDLC
+                                            (High-Level Data Link Control).
+
+                                            A switch tipikusan 2. rétegbeli eszköz. MAC-cím táblát (CAM table) használ,
+                                            amelybe
+                                            tanulás (learning) során eltárolja, melyik MAC-cím melyik porton érhető el.
+                                            A
+                                            beérkező frame-eket továbbítja (forwarding) a megfelelő port felé, vagy
+                                            eldobja
+                                            (filtering), ha nem szükséges továbbítani. Broadcast keret esetén minden
+                                            porton
+                                            kiküldi, kivéve azt, amelyiken érkezett.
+
+                                            Az adatkapcsolati réteg szorosan együttműködik a hálózati réteggel. A 3.
+                                            réteg
+                                            IP-címmel azonosítja a célállomást, de a helyi hálózaton a tényleges
+                                            továbbítás
+                                            MAC-cím alapján történik. IPv4 esetén az ARP (Address Resolution Protocol)
+                                            végzi az
+                                            IP → MAC címfeloldást a helyi hálózaton.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-7">
+                                <div class="module-header" onclick="toggleModule(7)">
+                                    <div class="module-number">7</div>
+                                    <div class="module-title">Modul 7</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A 7. modul az Ethernet működését, keretstruktúráját és
+                                            technológiáit ismerteti. Az Ethernet a legelterjedtebb helyi hálózati (LAN)
+                                            technológia, amelyet az IEEE 802.3 szabvány definiál. Az OSI modell első
+                                            (fizikai)
+                                            és második (adatkapcsolati) rétegén működik. Meghatározza a keret
+                                            formátumát, a
+                                            címzési módszert (MAC cím), a hozzáférési eljárást és a fizikai médium
+                                            jellemzőit.
+                                            Az Ethernet kommunikáció keretek formájában történik. Egy Ethernet keret
+                                            több
+                                            mezőből áll. A preamble (7 byte) szinkronizációra szolgál, ezt követi az SFD
+                                            (Start
+                                            Frame Delimiter, 1 byte), amely jelzi a keret kezdetét. A cél MAC cím 6 byte
+                                            hosszú,
+                                            és a címzett eszközt azonosítja. A forrás MAC cím szintén 6 byte. A
+                                            Type/Length mező
+                                            2 byte, amely vagy a felsőbb rétegbeli protokoll típusát (például IPv4,
+                                            IPv6), vagy
+                                            az adat hosszát jelzi. A Data mező 46 és 1500 byte közötti lehet. A keret
+                                            végén
+                                            található az FCS (Frame Check Sequence, 4 byte), amely hibadetektálásra
+                                            szolgál CRC
+                                            algoritmus segítségével. A minimális Ethernet keretméret 64 byte, a
+                                            maximális 1518
+                                            byte (a szabványos keret esetén).
+                                            A MAC cím 48 bites (6 byte), hexadecimális formában jelenik meg. Két részből
+                                            áll: az
+                                            első 24 bit az OUI (Organizationally Unique Identifier), amely a gyártót
+                                            azonosítja,
+                                            a második 24 bit az eszköz egyedi azonosítója. A MAC cím lehet unicast (egy
+                                            eszköznek szól), multicast (eszközcsoportnak), vagy broadcast (minden
+                                            eszköznek a
+                                            hálózaton). A broadcast cím: FF:FF:FF:FF:FF:FF.
+                                            A korai Ethernet hálózatok hubokat használtak, és half duplex módban
+                                            működtek.
+                                            Ilyenkor alkalmazták a CSMA/CD (Carrier Sense Multiple Access with Collision
+                                            Detection) eljárást. Az eszköz először figyelte a médiumot, és csak akkor
+                                            kezdett
+                                            adásba, ha az szabad volt. Ütközés esetén az eszköz megszakította az adást,
+                                            majd
+                                            véletlenszerű idő elteltével újra próbálkozott. Modern hálózatokban
+                                            switcheket
+                                            használnak, amelyek full duplex módban működnek, így nincs ütközés, ezért a
+                                            CSMA/CD
+                                            nem szükséges.
+                                            Half duplex módban az adatforgalom egyszerre csak egy irányban történhet.
+                                            Full
+                                            duplex esetén az adatforgalom egyidejűleg mindkét irányban lehetséges, ami
+                                            nagyobb
+                                            teljesítményt és hatékonyságot biztosít.
+                                            Az Ethernet különböző sebességeken működhet. A 10BASE-T 10 Mbps sebességet
+                                            biztosít.
+                                            A 100BASE-T (Fast Ethernet) 100 Mbps sebességet nyújt. Az 1000BASE-T
+                                            (Gigabit
+                                            Ethernet) 1 Gbps sebességű, míg a 10GBASE-T 10 Gbps adatátvitelt tesz
+                                            lehetővé.
+                                            A fizikai közeg lehet réz alapú (például UTP vagy STP kábel), amely
+                                            általában
+                                            legfeljebb 100 méteres távolságig használható, vagy optikai szál, amely
+                                            nagyobb
+                                            távolságot és nagyobb sávszélességet biztosít, valamint ellenáll az
+                                            elektromágneses
+                                            zavaroknak.
+                                            A modern Ethernet eszközök támogatják az autonegotiation funkciót, amely
+                                            automatikusan beállítja a sebességet és a duplex módot a két végpont között.
+                                            Ha a
+                                            beállítások nem egyeznek (duplex mismatch), teljesítménycsökkenés és hibák
+                                            jelentkezhetnek.
+                                            A switch működésének alapja a MAC address table. A switch megtanulja a
+                                            bejövő
+                                            keretek forrás MAC címeit, és eltárolja azokat a megfelelő porttal együtt.
+                                            Amikor
+                                            egy keret érkezik, a switch a cél MAC cím alapján dönti el, melyik portra
+                                            továbbítsa. Ha a célcímet nem ismeri, a keretet minden porton kiküldi
+                                            (flood),
+                                            kivéve azt, amelyiken érkezett.
+                                            Az Ethernet hibadetektálást az FCS mező végzi CRC algoritmussal. Ha a
+                                            számított
+                                            érték nem egyezik a keretben található értékkel, a keret eldobásra kerül. Az
+                                            Ethernet csak hibadetektálást végez, hibajavítást nem.
+                                            Vizsgaszempontból fontos ismerni a keret minimális és maximális méretét (64
+                                            és 1518
+                                            byte), a broadcast MAC címet, a full duplex és half duplex közötti
+                                            különbséget, a
+                                            CSMA/CD működését, valamint azt, hogy az Ethernet szabványa az IEEE 802.3.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-8">
+                                <div class="module-header" onclick="toggleModule(8)">
+                                    <div class="module-number">8</div>
+                                    <div class="module-title">Modul 8</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A hálózati réteg az OSI modell harmadik rétege. Fő feladata az
+                                            adatok továbbítása különböző hálózatok között. Míg az adatkapcsolati réteg
+                                            (2.
+                                            réteg) azonos hálózaton belüli kommunikációt biztosít, a hálózati réteg
+                                            gondoskodik
+                                            arról, hogy az adat egyik hálózatból a másikba eljusson. A hálózati réteg
+                                            legfontosabb protokollja az IP (Internet Protocol).
+                                            A hálózati réteg alapvető funkciói közé tartozik a logikai címzés, az
+                                            útvonalválasztás (routing) és a csomagok továbbítása. A logikai címzés
+                                            IP-címek
+                                            segítségével történik. Az IP-cím nem az eszközt, hanem annak hálózati
+                                            interfészét
+                                            azonosítja. Az útvonalválasztás során a router kiválasztja a legjobb
+                                            útvonalat a
+                                            célhálózat eléréséhez. A továbbítás (forwarding) az a folyamat, amikor a
+                                            router a
+                                            beérkező csomagot a megfelelő kimeneti interfészen továbbítja.
+                                            Az IPv4 cím 32 bites, és négy oktettből áll, pontokkal elválasztva, például
+                                            192.168.1.1. Az IP-cím két részből áll: hálózati rész és hoszt rész. A
+                                            hálózati rész
+                                            azonosítja a hálózatot, a hoszt rész pedig az adott eszközt a hálózaton
+                                            belül. A
+                                            hálózati és hoszt rész arányát az alhálózati maszk határozza meg, például
+                                            255.255.255.0 vagy prefix formában /24.
+                                            Az IPv4 címek különböző típusúak lehetnek. Unicast cím egyetlen eszközt
+                                            azonosít.
+                                            Broadcast cím a hálózat minden eszközének szól (például 192.168.1.255 egy
+                                            /24
+                                            hálózatban). Multicast cím egy eszközcsoportnak szól. Léteznek privát IP-cím
+                                            tartományok is, amelyeket belső hálózatokban használnak: 10.0.0.0/8,
+                                            172.16.0.0/12
+                                            és 192.168.0.0/16.
+                                            Az IPv4 csomag fejlécének több fontos mezője van. A Version mező jelzi az IP
+                                            verziót
+                                            (IPv4 esetén 4). Az IHL a fejléc hosszát adja meg. A Total Length a teljes
+                                            csomag
+                                            méretét mutatja. A TTL (Time To Live) mező az élettartamot határozza meg;
+                                            minden
+                                            router egyel csökkenti, és ha eléri a nullát, a csomag eldobásra kerül. A
+                                            Protocol
+                                            mező jelzi a felsőbb rétegbeli protokollt (például TCP = 6, UDP = 17). A
+                                            Source
+                                            Address és Destination Address mezők a forrás és cél IP-címet tartalmazzák.
+                                            A fejléc
+                                            tartalmaz egy Header Checksum mezőt is, amely hibadetektálásra szolgál a
+                                            fejlécben.
+                                            Az IPv4 kapcsolat nélküli (connectionless) és nem megbízható protokoll. Nem
+                                            garantálja a csomagok kézbesítését, sorrendjét vagy hibamentességét. Ezeket
+                                            a
+                                            feladatokat a felsőbb rétegek, például a TCP látják el.
+                                            A router a hálózati réteg eszköze. Több hálózatot kapcsol össze, és döntést
+                                            hoz
+                                            arról, merre továbbítsa a csomagokat. A router egy útválasztó táblát
+                                            (routing table)
+                                            használ, amely tartalmazza az ismert hálózatokat és az azokhoz vezető
+                                            útvonalakat.
+                                            Az útvonal lehet közvetlenül csatlakoztatott hálózat, statikus útvonal vagy
+                                            dinamikusan tanult útvonal.
+                                            Ha a forrás eszköz más hálózatba küld adatot, akkor a csomagot az
+                                            alapértelmezett
+                                            átjárónak (default gateway) küldi. Ez általában a helyi router interfészének
+                                            IP-címe. A router ezután továbbítja a csomagot a célhálózat felé.
+                                            Az IPv6 a címkimerülés problémájának megoldására jött létre. Az IPv6 cím 128
+                                            bites,
+                                            hexadecimális formában íródik, kettőspontokkal elválasztva. Az IPv6 nagyon
+                                            nagy
+                                            címtartományt biztosít. Nem használ broadcastot; helyette multicast és
+                                            anycast
+                                            címeket alkalmaz. Az IPv6 fejléc egyszerűbb felépítésű, és nem tartalmaz
+                                            fejléc-ellenőrző összeget.
+                                            A hálózati réteg fontos szerepet játszik az internet működésében. Feladata a
+                                            csomagok logikai címzése és hálózatok közötti továbbítása, míg a fizikai és
+                                            adatkapcsolati réteg a helyi továbbításért felel.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-9">
+                                <div class="module-header" onclick="toggleModule(9)">
+                                    <div class="module-number">9</div>
+                                    <div class="module-title">Modul 9</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A címfeloldás a hálózati kommunikáció egyik alapvető folyamata. A
+                                            célja az, hogy egy ismert IP-címhez meghatározza a hozzá tartozó MAC-címet,
+                                            mivel a
+                                            helyi hálózaton belüli adatátvitel az adatkapcsolati rétegben MAC-címek
+                                            alapján
+                                            történik. IPv4 esetén ezt a feladatot az ARP (Address Resolution Protocol)
+                                            végzi.
+                                            Amikor egy eszköz adatot szeretne küldeni egy másik eszköznek ugyanazon a
+                                            hálózaton,
+                                            először ellenőrzi, hogy ismeri-e a cél IP-címhez tartozó MAC-címet. Ha nem,
+                                            akkor
+                                            ARP-kérést (ARP Request) küld ki broadcast üzenetként a hálózatra. A
+                                            broadcast
+                                            MAC-cím FF:FF:FF:FF:FF:FF, ami azt jelenti, hogy minden eszköz megkapja az
+                                            üzenetet
+                                            a helyi hálózaton.
+                                            Az ARP-kérés tartalmazza a keresett IP-címet. Az a hálózati eszköz, amelynek
+                                            az
+                                            IP-címe megegyezik a kérésben szereplő címmel, ARP-választ (ARP Reply) küld
+                                            vissza
+                                            unicast formában a kérdezőnek. Az ARP-válasz tartalmazza a válaszadó
+                                            MAC-címét. A
+                                            küldő eszköz ezután eltárolja az IP–MAC párosítást az ARP-táblájában (ARP
+                                            cache),
+                                            így a későbbi kommunikáció során már nem kell újra broadcast kérést
+                                            küldenie.
+                                            Ha az adat nem a helyi hálózaton belüli eszköznek szól, hanem egy másik
+                                            hálózatra,
+                                            akkor a forrás eszköz az alapértelmezett átjáró (default gateway) IP-címéhez
+                                            tartozó
+                                            MAC-címet kéri le ARP segítségével. Ilyenkor nem a végső cél IP-címéhez
+                                            tartozó
+                                            MAC-címre van szükség, hanem a router interfészének MAC-címére. A keret cél
+                                            MAC-címe
+                                            tehát mindig a következő ugrás (next hop) eszköz MAC-címe lesz.
+                                            Az ARP-tábla dinamikus bejegyzéseket tartalmaz, amelyek meghatározott idő
+                                            után
+                                            lejárnak. Lehetőség van statikus ARP-bejegyzések létrehozására is, de ez
+                                            ritkán
+                                            használt megoldás. Az ARP-tábla megtekinthető például a „arp -a” paranccsal
+                                            végberendezéseken.
+                                            Az ARP működése biztonsági kockázatot is jelenthet, mivel nem tartalmaz
+                                            hitelesítési
+                                            mechanizmust. Ez lehetővé teszi az ARP spoofing vagy ARP poisoning
+                                            támadásokat,
+                                            amikor egy támadó hamis ARP-válaszokat küld, és így eltéríti a forgalmat.
+                                            IPv6 esetén az ARP nem használatos. Helyette a Neighbor Discovery Protocol
+                                            (NDP)
+                                            végzi a címfeloldást, amely az ICMPv6 protokollra épül. Az NDP nem
+                                            broadcastot,
+                                            hanem multicast üzeneteket használ, ami hatékonyabb működést tesz lehetővé.
+                                            Az IPv6
+                                            címfeloldási folyamat része a szomszédfelderítés, az útválasztófelderítés és
+                                            az
+                                            automatikus címkonfiguráció támogatása is.
+                                            Összefoglalva, a címfeloldás biztosítja a kapcsolatot a hálózati réteg
+                                            IP-címei és
+                                            az adatkapcsolati réteg MAC-címei között. IPv4 esetén ezt az ARP, IPv6
+                                            esetén az NDP
+                                            végzi. Vizsgaszempontból fontos megérteni az ARP-kérés és ARP-válasz
+                                            működését, a
+                                            broadcast szerepét, az ARP-tábla funkcióját, valamint azt, hogy más
+                                            hálózatba
+                                            történő kommunikáció esetén mindig az alapértelmezett átjáró MAC-címe kerül
+                                            felhasználásra.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-10">
+                                <div class="module-header" onclick="toggleModule(10)">
+                                    <div class="module-number">10</div>
+                                    <div class="module-title">Modul 10</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">A router a hálózatok közötti forgalomirányításért felelős eszköz.
+                                            Feladata különálló hálózatok összekapcsolása, IP-csomagok továbbítása és a
+                                            legjobb
+                                            útvonal kiválasztása a routing tábla alapján. Emellett szétválasztja a
+                                            broadcast
+                                            tartományokat, és default gateway-ként működik a végpontok számára. A
+                                            default
+                                            gateway a kliens alapértelmezett átjárója, amely jellemzően a router LAN
+                                            interfészének IP-címe. Ha a cél nem a helyi hálózaton található, a forgalom
+                                            ide
+                                            kerül továbbításra.
+
+                                            A router hardveresen többféle porttal rendelkezhet, például GigabitEthernet
+                                            vagy
+                                            FastEthernet interfésszel, soros (Serial) csatlakozóval, valamint Console és
+                                            AUX
+                                            porttal. A konzolkapcsolat out-of-band menedzsmentre szolgál, vagyis
+                                            hálózati elérés
+                                            nélkül is lehetővé teszi a konfigurálást. Tipikus beállításai: 9600 baud, 8
+                                            adatbit,
+                                            nincs paritás, 1 stop bit, flow control nélkül. A kapcsolat létrehozásához
+                                            gyakran
+                                            használt program például a PuTTY vagy a TeraTerm.
+
+                                            A Cisco routereken az operációs rendszer neve Cisco IOS (Internetwork
+                                            Operating
+                                            System). Ez a flash memóriában található, és a készülék indításakor töltődik
+                                            be. A
+                                            konfiguráció parancssori felületen (CLI) történik, amely több módra
+                                            tagolódik. A
+                                            User EXEC mód (Router>) alap parancsokra szolgál, a Privileged EXEC mód
+                                            (Router#)
+                                            már adminisztratív műveleteket is enged. A Global Configuration mód
+                                            (Router(config)#) a globális beállítások helye, míg az Interface és Line
+                                            konfigurációs módok egy-egy interfész vagy vonal paraméterezésére
+                                            szolgálnak. A
+                                            beépített súgórendszer a ? paranccsal érhető el, a Tab billentyű automatikus
+                                            kiegészítést biztosít, a nyilakkal pedig a parancselőzmények érhetők el.
+
+                                            Az alapkonfiguráció során első lépés a hostnév beállítása, például hostname
+                                            R1. Az
+                                            emelt szintű hozzáférés védelmére az enable secret parancs használható,
+                                            amely
+                                            titkosított formában tárolja a jelszót. A konzol- és VTY-vonalakhoz külön
+                                            jelszó
+                                            adható meg, majd a login paranccsal aktiválható a hitelesítés. A service
+                                            password-encryption gondoskodik arról, hogy a jelszavak ne olvasható
+                                            szövegként
+                                            jelenjenek meg a konfigurációban. A MOTD banner figyelmeztető üzenetet
+                                            jelenít meg
+                                            belépéskor.
+
+                                            Az interfész konfiguráció során IP-címet és alhálózati maszkot kell
+                                            beállítani az
+                                            adott porton, majd a no shutdown paranccsal aktiválni, mivel alapértelmezés
+                                            szerint
+                                            shutdown állapotban van. Opcionálisan leírás is adható az interfészhez a
+                                            dokumentáció érdekében.
+
+                                            A konfiguráció két fő fájlban jelenik meg. A running-config a RAM-ban
+                                            található, ez
+                                            az aktív konfiguráció, amely újraindításkor elveszik. A startup-config az
+                                            NVRAM-ban
+                                            tárolódik, és induláskor töltődik be. A mentéshez a copy running-config
+                                            startup-config vagy a write memory parancs használható.
+
+                                            Az ellenőrzéshez több show parancs áll rendelkezésre. A show ip interface
+                                            brief
+                                            gyors áttekintést ad az interfészek állapotáról és IP-címeiről, a show
+                                            running-config az aktuális konfigurációt jeleníti meg, a show ip route a
+                                            routing
+                                            táblát mutatja. A ping és a traceroute a hálózati elérhetőség tesztelésére
+                                            szolgál.
+
+                                            A routing táblában különböző jelölések szerepelnek: C a közvetlenül
+                                            csatlakoztatott
+                                            hálózat, S a statikus útvonal, R a RIP, O az OSPF protokoll által tanult
+                                            bejegyzés.
+                                            Default útvonal létrehozható például az ip route 0.0.0.0 0.0.0.0 <következő
+                                                ugrás IP> paranccsal, amely a gateway of last resort szerepét tölti be.
+
+                                                Az interfész állapotai fontos hibakeresési információt adnak. Az
+                                                administratively down azt jelenti, hogy shutdown parancs miatt le van
+                                                tiltva. A
+                                                down fizikai hibára utal. Az up/down adatkapcsolati problémát jelez, míg
+                                                az
+                                                up/up megfelelő működést jelent.
+
+                                                A Cisco Discovery Protocol (CDP) segítségével a szomszédos Cisco
+                                                eszközök
+                                                információi kérdezhetők le, például a show cdp neighbors paranccsal.
+
+                                                A router indítási folyamata meghatározott lépésekből áll: először a POST
+                                                (Power-On Self Test) ellenőrzi a hardvert, majd a ROM-ban lévő bootstrap
+                                                program
+                                                elindul, ezt követi az IOS betöltése a flash memóriából, végül a
+                                                startup-config
+                                                betöltése az NVRAM-ból. Ha nincs konfiguráció, a router Setup módba lép.
+
+                                                A konfiguráció törléséhez az erase startup-config parancs használható,
+                                                majd
+                                                reload szükséges az újraindításhoz.
+
+                                                IPv6 esetén először engedélyezni kell az ipv6 unicast-routing funkciót,
+                                                majd az
+                                                interfészen megadható az IPv6-cím, például ipv6 address 2001:db8::1/64,
+                                                végül az
+                                                interfészt aktiválni kell no shutdown paranccsal.
+
+                                                Ezek az alaplépések adják egy működőképes router minimális
+                                                konfigurációját,
+                                                amelyre később dinamikus routing, biztonsági beállítások és további
+                                                szolgáltatások építhetők</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-11">
+                                <div class="module-header" onclick="toggleModule(11)">
+                                    <div class="module-number">11</div>
+                                    <div class="module-title">Modul 11</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Az IPv4-címzés a hálózati kommunikáció alapja, mivel az eszközök
+                                            IP-címek alapján azonosítják egymást. Egy IPv4-cím 32 bites bináris szám,
+                                            amely négy
+                                            oktettre (8–8–8–8 bit) tagolódik, és általában pontozott decimális formában
+                                            jelenik
+                                            meg, például 192.168.1.1. Az egyes oktettek értéke 0 és 255 között lehet.
+                                            Minden
+                                            IPv4-cím két részből áll: a hálózati rész (network portion) azonosítja a
+                                            hálózatot,
+                                            míg a hoszt rész (host portion) az adott hálózaton belüli eszközt. Az
+                                            alhálózati
+                                            maszk határozza meg a határt a két rész között.
+
+                                            Az IPv4 címek binárisan értelmezhetők. A kettes számrendszerben a
+                                            helyiértékek 128,
+                                            64, 32, 16, 8, 4, 2, 1. Az átváltás decimális és bináris között történhet
+                                            összegzés
+                                            vagy helyiértékes módszer segítségével. Egy bit 0 vagy 1 lehet, és 8 bit
+                                            alkot egy
+                                            oktettet.
+
+                                            Az IPv4-címek típusai a következők. Az unicast cím egyetlen küldőtől
+                                            egyetlen
+                                            fogadóhoz irányul. A broadcast cím egy küldőtől mindenkihez a hálózatban,
+                                            például a
+                                            255.255.255.255 a korlátozott broadcast, vagy a directed broadcast, amikor
+                                            egy adott
+                                            hálózat utolsó címe a cél. A multicast címek egy csoporthoz szólnak,
+                                            tartományuk
+                                            224.0.0.0 és 239.255.255.255 között van.
+
+                                            Az alhálózati maszk 32 bites szám, ahol az 1-esek jelzik a hálózati részt, a
+                                            0-k
+                                            pedig a hoszt részt. Például a 255.255.255.0 maszk /24 prefixnek felel meg.
+                                            A
+                                            hálózati cím a hoszt rész minden bitjének 0-ra állításával jön létre, míg a
+                                            broadcast címnél minden bit 1. A használt hosztcímek száma 2^n – 2 képlettel
+                                            számítható, ahol n a hoszt bitek száma.
+
+                                            Az IPv4-címek lehetnek privátak vagy publikusak. A privát tartományok
+                                            (10.0.0.0/8,
+                                            172.16.0.0/12, 192.168.0.0/16) nem routolhatók az interneten, míg a publikus
+                                            címek
+                                            egyediek és az ISP biztosítja őket. Speciális címek is léteznek: a loopback
+                                            (127.0.0.1) a saját gép tesztelésére szolgál, az APIPA (169.254.0.0/16)
+                                            automatikus
+                                            cím DHCP hiányában, a 0.0.0.0 pedig ismeretlen cím jelölésére, illetve
+                                            default
+                                            route-ra használható.
+
+                                            Régebben az IPv4 címeket osztály alapú rendszerben kezelték. Az A osztály
+                                            1–126
+                                            címtartományt, B 128–191-et, C 192–223-at, D 224–239-et (multicast) és E
+                                            240–255-öt
+                                            (kísérleti) fedett le. Ma már a CIDR (Classless Inter-Domain Routing) prefix
+                                            alapú
+                                            címzést alkalmaz, amely rugalmas alhálózat-képzést tesz lehetővé, például
+                                            192.168.1.0/26.
+
+                                            Az alhálózatképzés célja a hálózat kisebb részekre bontása, a broadcast
+                                            tartomány
+                                            csökkentése és hatékony IP-cím kihasználás. A számítás lépései: a szükséges
+                                            hosztok
+                                            meghatározása, az alhálózatok száma, a prefix módosítása, majd a hálózati
+                                            lépésköz
+                                            (block size) kiszámítása, ami 256 – az adott oktett értékével adódik. VLSM
+                                            (Variable
+                                            Length Subnet Mask) lehetővé teszi különböző méretű alhálózatok használatát,
+                                            optimalizálva az IP-kihasználást.
+
+                                            Az IPv4 kommunikáció folyamata során, ha a cél a saját hálózaton van, az
+                                            adat
+                                            közvetlenül továbbítható. Más hálózat esetén a forgalom a default gateway
+                                            felé megy,
+                                            és az ARP (Address Resolution Protocol) leképezi az IP-címet a MAC-címre.
+
+                                            Hálózattervezésnél fontos figyelembe venni a jelenlegi hosztigényt, a
+                                            jövőbeni
+                                            bővítési lehetőségeket, a hierarchikus címzést és a dokumentációt, hogy a
+                                            hálózat
+                                            fenntartható és skálázható legyen.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-12">
+                                <div class="module-header" onclick="toggleModule(12)">
+                                    <div class="module-number">12</div>
+                                    <div class="module-title">Modul 12</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Az IPv6-címzés a modern hálózatok alapját képezi, mivel a 128
+                                            bites címek lehetővé teszik a sokkal nagyobb címkészletet az IPv4-hez
+                                            képest. Egy
+                                            IPv6-cím nyolc darab 16 bites blokkra (hextetre) tagolódik, amelyeket
+                                            kettőspont
+                                            választ el, például: 2001:0db8:0000:0000:0000:ff00:0042:8329. Az IPv6
+                                            bevezetésének
+                                            fő oka az IPv4 címkimerülés, emellett egyszerűbb fejlécet, beépített
+                                            biztonsági
+                                            lehetőségeket (IPsec) és hatékonyabb routingot biztosít.
+
+                                            Az IPv6-címek hexadecimális formátumúak, ahol minden hex számjegy 4 bitet,
+                                            egy
+                                            hextet pedig 16 bitet képvisel. A címek rövidítése lehetséges a vezető
+                                            nullák
+                                            elhagyásával, valamint egymást követő nulla blokkok :: jellel történő
+                                            egyszeri
+                                            rövidítésével, például 2001:db8:0:0:0:0:0:1 → 2001:db8::1.
+
+                                            Az IPv6-címek típusai a következők. Az unicast címek egyetlen eszköznek
+                                            szólnak,
+                                            például a Global Unicast címek az interneten routolhatók (2000::/3), a
+                                            Link-Local
+                                            címek automatikusan generáltak és csak a helyi linken érvényesek
+                                            (fe80::/10), a
+                                            Unique Local címek privát használatúak (fc00::/7), a loopback cím ::1, az
+                                            unspecified cím ::. A multicast címek egy küldőtől több eszközhöz mennek
+                                            (ff00::/8),
+                                            IPv6-ban nincs broadcast, míg az anycast címek egy több eszközön is
+                                            léteznek, és a
+                                            legközelebbi válaszol.
+
+                                            A Global Unicast címek felépítése három részből áll: global routing prefix,
+                                            subnet
+                                            ID és interface ID. Az interface ID 64 bites, gyakran az EUI-64 módszerrel
+                                            generált,
+                                            ami a MAC-cím alapján történik: a MAC-cím kettéosztása, FF:FE beszúrása,
+                                            majd a 7.
+                                            bit invertálása.
+
+                                            Routeren az IPv6 engedélyezése az ipv6 unicast-routing paranccsal történik.
+                                            Az
+                                            interfészen az IPv6-cím beállítható, például ipv6 address 2001:db8:1:1::1/64
+                                            és
+                                            aktiválni kell no shutdown paranccsal. Manuálisan link-local cím is adható:
+                                            ipv6
+                                            address fe80::1 link-local.
+
+                                            Az IPv6 címkiosztás történhet SLAAC (Stateless Address Autoconfiguration)
+                                            segítségével, amely router advertisement üzenetekből generál címet
+                                            automatikusan,
+                                            DHCPv6-val (stateful), vagy stateless DHCPv6 segítségével, ahol a cím
+                                            SLAAC-ból
+                                            származik, de egyéb információkat DHCP szolgáltat.
+
+                                            Az NDP (Neighbor Discovery Protocol) az IPv6 megfelelője az IPv4 ARP-jának.
+                                            Feladata
+                                            a szomszédfelderítés, címfeloldás, router felfedezés és a Duplicate Address
+                                            Detection (DAD), ICMPv6 üzeneteket használva.
+
+                                            Az IPv4 és IPv6 összehasonlítása során látható, hogy az IPv4 32 bites,
+                                            broadcastot
+                                            használ és ARP alapú, míg az IPv6 128 bites, broadcast nincs, multicastot
+                                            alkalmaz,
+                                            és az NDP biztosítja a címfeloldást. A dual stack technológia lehetővé teszi
+                                            mindkét
+                                            protokoll párhuzamos használatát, a tunneling IPv6 csomagok IPv4 hálózaton
+                                            történő
+                                            átvitelét teszi lehetővé, míg a NAT64 IPv6–IPv4 kommunikációt biztosít.
+
+                                            Ellenőrzéshez a routeren használható parancsok: show ipv6 interface brief,
+                                            show ipv6
+                                            route, ping ipv6, traceroute ipv6.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-item col-lg-10 col-md-12" id="module-13">
+                                <div class="module-header" onclick="toggleModule(13)">
+                                    <div class="module-number">13</div>
+                                    <div class="module-title">Modul 13</div>
+                                    <div class="module-arrow">▼</div>
+                                </div>
+                                <div class="module-content">
+                                    <div class="module-content-inner">
+                                        <p class="">Tananyag hamarosan...</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-2">
-                        <div class="module-header" onclick="toggleModule(2)">
-                            <div class="module-number">2</div>
-                            <div class="module-title">Modul 2</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Tananyag hamarosan...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-3">
-                        <div class="module-header" onclick="toggleModule(3)">
-                            <div class="module-number">3</div>
-                            <div class="module-title">Modul 3</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Tananyag hamarosan...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-4">
-                        <div class="module-header" onclick="toggleModule(4)">
-                            <div class="module-number">4</div>
-                            <div class="module-title">Modul 4</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A fizikai réteg az OSI modell legalsó, első rétege. Feladata a
-                                    bitek tényleges továbbítása a fizikai közegen keresztül egyik eszköztől a másikig.
-                                    Meghatározza, hogy a 0 és 1 értékek milyen fizikai formában jelennek meg, és hogyan
-                                    jutnak el a két végpont között. Nem foglalkozik címzéssel, hibajavítással vagy a
-                                    csomagok értelmezésével, kizárólag a nyers bitfolyam átviteléért felel.
-
-                                    A fizikai réteg gondoskodik a bitek ábrázolásáról, amely történhet elektromos
-                                    jelként rézkábelen, fényimpulzusként optikai szálon, vagy rádióhullámként vezeték
-                                    nélküli kapcsolat esetén. Meghatározza az adatátviteli sebességet, amelyet bit per
-                                    second (bps) mértékegységben adunk meg. Szabályozza a jelirányt is: simplex esetén
-                                    az adatátvitel egyirányú, half-duplex esetén mindkét irányba lehetséges, de nem
-                                    egyszerre, míg full-duplex esetén egy időben történhet a kétirányú kommunikáció. Ide
-                                    tartozik a fizikai topológia meghatározása is, például busz, csillag (star), gyűrű
-                                    (ring) vagy hálós (mesh) elrendezés.
-
-                                    A réteg működéséhez konkrét fizikai komponensek szükségesek. Ide tartoznak a
-                                    hálózati eszközök, például a hálózati kártya (NIC), a switch, a router fizikai
-                                    portjai, valamint a vezeték nélküli hozzáférési pontok. Szintén a fizikai réteghez
-                                    kapcsolódnak a csatlakozók és interfészek, mint az RJ-45 csatlakozó, az SFP vagy
-                                    GBIC modulok, illetve például az USB konzolkapcsolat.
-
-                                    Az adatátvitel különböző közegeken történhet. Réz alapú kábelek esetén jellemző az
-                                    UTP és STP kábel, valamint a Cat5e, Cat6 vagy Cat6a kategóriák. Előnyük, hogy olcsók
-                                    és könnyen szerelhetők, hátrányuk viszont az elektromágneses zavarokra való
-                                    érzékenység (EMI), valamint a körülbelül 100 méteres maximális szegmenshossz. Az
-                                    optikai szál lehet single-mode vagy multi-mode. Előnye a nagy sebesség, a hosszú
-                                    távolság áthidalása és az EMI-mentesség, míg hátránya a magasabb költség és a
-                                    bonyolultabb szerelhetőség. A vezeték nélküli média, például a Wi-Fi (802.11
-                                    szabványok alapján), rádióhullámokat használ. Fő előnye a mobilitás, hátránya az
-                                    interferencia és a biztonsági kockázatok lehetősége.
-
-                                    A fizikai réteghez tartoznak a jelátviteli jellemzők is. A sávszélesség az elméleti
-                                    maximális adatátviteli kapacitást jelenti, míg az átbocsátóképesség (throughput) a
-                                    ténylegesen elért adatsebesség. A késleltetés (latency) több részből állhat:
-                                    feldolgozási, átviteli és terjedési késleltetésből. A jel minőségét befolyásolhatja
-                                    a zaj, például elektromágneses interferencia (EMI), rádiófrekvenciás interferencia
-                                    (RFI) vagy áthallás (crosstalk).
-
-                                    A bitek fizikai jelekké alakítását kódolásnak és modulációnak nevezzük. Ilyen
-                                    például a Manchester kódolás vagy az NRZ (Non-Return-to-Zero) eljárás. A cél a
-                                    megbízható jelátvitel és a megfelelő szinkronizáció biztosítása a kommunikáló
-                                    eszközök között.
-
-                                    A fizikai réteg működését különböző szabványok határozzák meg. Az IEEE 802.3 az
-                                    Ethernet hálózatokra, az IEEE 802.11 a vezeték nélküli LAN-hálózatokra vonatkozik,
-                                    míg a TIA/EIA szabványok a strukturált kábelezés követelményeit rögzítik.
-
-                                    A fizikai réteg alapvető fontosságú, mert ha ezen a szinten hiba lép fel, a felsőbb
-                                    rétegek sem tudnak működni. Tipikus problémák lehetnek a hibás vagy nem megfelelő
-                                    kábel, rossz csatlakozás, sérült port vagy nem megfelelő szabvány alkalmazása.
-                                    Összességében a fizikai réteg biztosítja azt az alapot, amelyre a teljes hálózati
-                                    kommunikáció épül.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-5">
-                        <div class="module-header" onclick="toggleModule(5)">
-                            <div class="module-number">5</div>
-                            <div class="module-title">Modul 5</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A számrendszerek a hálózatok működésének alapját adják, mert
-                                    minden hálózati eszköz binárisan, azaz 0 és 1 értékekkel dolgozik. Az IP-címek,
-                                    alhálózati maszkok és hozzáférés-vezérlési listák (ACL-ek) mögött mind bináris
-                                    reprezentáció áll. A decimális vagy hexadecimális forma valójában csak az ember
-                                    számára olvasható „fordítás”, hogy ne 32 darab 0 és 1 között kelljen élni az életet.
-
-                                    A bináris számrendszer kettes alapú (Base-2), és kizárólag a 0 és 1 számjegyeket
-                                    használja. A helyiértékek a kettő hatványai: 2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16
-                                    és így tovább. Egy bináris szám értékét úgy kapjuk meg, hogy összeadjuk azokat a
-                                    helyiértékeket, ahol 1 szerepel. Például a 10101010₂ decimálisan 170₁₀, mert 128 +
-                                    32 + 8 + 2 = 170.
-
-                                    A decimális számrendszer tízes alapú (Base-10), a 0–9 számjegyeket használja, és a
-                                    helyiértékei a 10 hatványai. A hálózatokban az IPv4-címek olvasható formája
-                                    decimális, például 192.168.1.1. A háttérben ez továbbra is bináris, csak négy darab,
-                                    egyenként 8 bites csoportként jelenik meg.
-
-                                    A hexadecimális számrendszer tizenhatos alapú (Base-16). A 0–9 mellett az A–F
-                                    betűket használja, ahol A=10, B=11, C=12, D=13, E=14, F=15. A helyiértékek a 16
-                                    hatványai. Hálózatban gyakran találkozunk vele MAC-címeknél és IPv6-címeknél, mert
-                                    tömörebb, mégis könnyen visszafordítható binárisra.
-
-                                    Az átváltások vizsgán különösen fontosak. Binárisból decimálisba súlyozott
-                                    összeadással váltunk. Például a 11000000₂ értéke 128 + 64 = 192. Decimálisból
-                                    binárisba átválthatunk ismételt 2-vel osztással és a maradékok leírásával, vagy
-                                    helyiértékes módszerrel. Például 10₁₀ binárisan 1010₂. Bináris és hexadecimális
-                                    között az átváltás egyszerűbb: 4 bit pontosan 1 hex számjegynek felel meg. A 1100
-                                    1010₂ például CA₁₆, mert 1100 = C és 1010 = A. Érdemes fejben tudni néhány alap
-                                    megfeleltetést, például 0 = 0000, 8 = 1000, A = 1010, F = 1111.
-
-                                    A bit a legkisebb információegység, amely 0 vagy 1 lehet. Négy bitet nibble-nek
-                                    nevezünk, nyolc bit pedig egy byte. Egy byte decimálisan 0 és 255 közötti értéket
-                                    tud felvenni, mivel 2⁸ = 256 különböző kombináció létezik.
-
-                                    A bináris számolásnál túlcsordulás történik, amikor minden bit 1, és hozzáadunk még
-                                    egyet. Például 0111 + 1 = 1000. Ez az elv kulcsfontosságú IP-címzésnél és
-                                    alhálózat-számításnál, ahol a bitek határozzák meg a hálózati és hosztrészt.
-
-                                    Az IP-címek közvetlenül a számrendszerekre épülnek. Az IPv4-cím 32 bitből áll, négy
-                                    darab 8 bites oktett formájában. A 192.168.1.1 cím binárisan így néz ki:
-                                    11000000.10101000.00000001.00000001. A decimális pontozott forma csak egy kényelmes
-                                    reprezentáció.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-6">
-                        <div class="module-header" onclick="toggleModule(6)">
-                            <div class="module-number">6</div>
-                            <div class="module-title">Modul 6</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Az adatkapcsolati réteg az OSI modell második rétege, közvetlenül
-                                    a fizikai réteg felett helyezkedik el. Míg az első réteg biteket továbbít, a második
-                                    réteg már értelmezett egységekkel dolgozik. Feladata a megbízható adatátvitel
-                                    biztosítása két közvetlenül kapcsolt eszköz között ugyanazon a hálózati szegmensen.
-
-                                    Az adatkapcsolati réteg egyik legfontosabb feladata a keretezés (framing). A fizikai
-                                    rétegtől érkező nyers bitfolyamot keretekbe, azaz frame-ekbe szervezi. Ezek a
-                                    keretek tartalmazzák a szükséges vezérlőinformációkat is. A réteg végzi a fizikai
-                                    címzést MAC-címek segítségével, valamint hibadetektálást alkalmaz, tipikusan FCS
-                                    (Frame Check Sequence) mezővel. Emellett szabályozza a közeghez való hozzáférést is,
-                                    vagyis meghatározza, hogy mikor küldhet egy eszköz adatot.
-
-                                    Az adatkapcsolati réteg két alrétegre oszlik. Az LLC (Logical Link Control), amelyet
-                                    az IEEE 802.2 szabvány ír le, kapcsolatot biztosít a hálózati réteg (3. réteg) felé.
-                                    Feladata többek között a felsőbb rétegbeli protokoll azonosítása és bizonyos szintű
-                                    forgalomszabályozás. A MAC (Media Access Control) alréteg – amely az IEEE 802.x
-                                    szabványcsaládhoz tartozik – felel a MAC-címzésért, a keretezés konkrét
-                                    megvalósításáért és a közeg-hozzáférés szabályozásáért.
-
-                                    A MAC-cím 48 bites, azaz 6 byte hosszú, és hexadecimális formában jelenik meg,
-                                    például 00:1A:2B:3C:4D:5E. Az első 24 bit az OUI (Organizationally Unique
-                                    Identifier), amely a gyártót azonosítja, a második 24 bit pedig az adott eszköz
-                                    egyedi azonosítója. A MAC-cím lehet unicast (egy eszköznek szól), broadcast
-                                    (FF:FF:FF:FF:FF:FF, minden eszköznek szól a helyi hálózaton) vagy multicast (egy
-                                    csoportnak szól).
-
-                                    Az adatkapcsolati réteg adat egysége a frame. Egy tipikus Ethernet keret tartalmaz
-                                    preamble mezőt a szinkronizációhoz, cél MAC-címet, forrás MAC-címet, Type vagy
-                                    Length mezőt a felsőbb réteg azonosítására, adatmezőt, valamint FCS mezőt, amely
-                                    CRC-alapú hibadetektálást valósít meg.
-
-                                    A hibadetektálás CRC (Cyclic Redundancy Check) algoritmussal történik. A számított
-                                    érték bekerül az FCS mezőbe, és a fogadó eszköz újraszámolja. Ha az érték eltér, a
-                                    keret hibásnak minősül és eldobásra kerül. Fontos, hogy ez a mechanizmus csak hibát
-                                    jelez, nem javít.
-
-                                    A közeg-hozzáférési módszerek meghatározzák, hogyan osztoznak az eszközök a
-                                    kommunikációs csatornán. A CSMA/CD (Carrier Sense Multiple Access with Collision
-                                    Detection) a régi, half-duplex Ethernet hálózatokra volt jellemző. Az eszköz
-                                    figyelte a közeget, és ütközés esetén véletlenszerű várakozás után próbálkozott
-                                    újra. Modern, kapcsolt (switch-elt) full-duplex hálózatokban gyakorlatilag nincs
-                                    ütközés. A vezeték nélküli hálózatok CSMA/CA (Collision Avoidance) módszert
-                                    alkalmaznak, amely ütközésmegelőzést valósít meg, például RTS/CTS mechanizmussal.
-
-                                    Az adatkapcsolati réteghez több protokoll tartozik, például az Ethernet (IEEE
-                                    802.3), a Wireless LAN (IEEE 802.11), a PPP (Point-to-Point Protocol) és a HDLC
-                                    (High-Level Data Link Control).
-
-                                    A switch tipikusan 2. rétegbeli eszköz. MAC-cím táblát (CAM table) használ, amelybe
-                                    tanulás (learning) során eltárolja, melyik MAC-cím melyik porton érhető el. A
-                                    beérkező frame-eket továbbítja (forwarding) a megfelelő port felé, vagy eldobja
-                                    (filtering), ha nem szükséges továbbítani. Broadcast keret esetén minden porton
-                                    kiküldi, kivéve azt, amelyiken érkezett.
-
-                                    Az adatkapcsolati réteg szorosan együttműködik a hálózati réteggel. A 3. réteg
-                                    IP-címmel azonosítja a célállomást, de a helyi hálózaton a tényleges továbbítás
-                                    MAC-cím alapján történik. IPv4 esetén az ARP (Address Resolution Protocol) végzi az
-                                    IP → MAC címfeloldást a helyi hálózaton.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-7">
-                        <div class="module-header" onclick="toggleModule(7)">
-                            <div class="module-number">7</div>
-                            <div class="module-title">Modul 7</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A 7. modul az Ethernet működését, keretstruktúráját és
-                                    technológiáit ismerteti. Az Ethernet a legelterjedtebb helyi hálózati (LAN)
-                                    technológia, amelyet az IEEE 802.3 szabvány definiál. Az OSI modell első (fizikai)
-                                    és második (adatkapcsolati) rétegén működik. Meghatározza a keret formátumát, a
-                                    címzési módszert (MAC cím), a hozzáférési eljárást és a fizikai médium jellemzőit.
-                                    Az Ethernet kommunikáció keretek formájában történik. Egy Ethernet keret több
-                                    mezőből áll. A preamble (7 byte) szinkronizációra szolgál, ezt követi az SFD (Start
-                                    Frame Delimiter, 1 byte), amely jelzi a keret kezdetét. A cél MAC cím 6 byte hosszú,
-                                    és a címzett eszközt azonosítja. A forrás MAC cím szintén 6 byte. A Type/Length mező
-                                    2 byte, amely vagy a felsőbb rétegbeli protokoll típusát (például IPv4, IPv6), vagy
-                                    az adat hosszát jelzi. A Data mező 46 és 1500 byte közötti lehet. A keret végén
-                                    található az FCS (Frame Check Sequence, 4 byte), amely hibadetektálásra szolgál CRC
-                                    algoritmus segítségével. A minimális Ethernet keretméret 64 byte, a maximális 1518
-                                    byte (a szabványos keret esetén).
-                                    A MAC cím 48 bites (6 byte), hexadecimális formában jelenik meg. Két részből áll: az
-                                    első 24 bit az OUI (Organizationally Unique Identifier), amely a gyártót azonosítja,
-                                    a második 24 bit az eszköz egyedi azonosítója. A MAC cím lehet unicast (egy
-                                    eszköznek szól), multicast (eszközcsoportnak), vagy broadcast (minden eszköznek a
-                                    hálózaton). A broadcast cím: FF:FF:FF:FF:FF:FF.
-                                    A korai Ethernet hálózatok hubokat használtak, és half duplex módban működtek.
-                                    Ilyenkor alkalmazták a CSMA/CD (Carrier Sense Multiple Access with Collision
-                                    Detection) eljárást. Az eszköz először figyelte a médiumot, és csak akkor kezdett
-                                    adásba, ha az szabad volt. Ütközés esetén az eszköz megszakította az adást, majd
-                                    véletlenszerű idő elteltével újra próbálkozott. Modern hálózatokban switcheket
-                                    használnak, amelyek full duplex módban működnek, így nincs ütközés, ezért a CSMA/CD
-                                    nem szükséges.
-                                    Half duplex módban az adatforgalom egyszerre csak egy irányban történhet. Full
-                                    duplex esetén az adatforgalom egyidejűleg mindkét irányban lehetséges, ami nagyobb
-                                    teljesítményt és hatékonyságot biztosít.
-                                    Az Ethernet különböző sebességeken működhet. A 10BASE-T 10 Mbps sebességet biztosít.
-                                    A 100BASE-T (Fast Ethernet) 100 Mbps sebességet nyújt. Az 1000BASE-T (Gigabit
-                                    Ethernet) 1 Gbps sebességű, míg a 10GBASE-T 10 Gbps adatátvitelt tesz lehetővé.
-                                    A fizikai közeg lehet réz alapú (például UTP vagy STP kábel), amely általában
-                                    legfeljebb 100 méteres távolságig használható, vagy optikai szál, amely nagyobb
-                                    távolságot és nagyobb sávszélességet biztosít, valamint ellenáll az elektromágneses
-                                    zavaroknak.
-                                    A modern Ethernet eszközök támogatják az autonegotiation funkciót, amely
-                                    automatikusan beállítja a sebességet és a duplex módot a két végpont között. Ha a
-                                    beállítások nem egyeznek (duplex mismatch), teljesítménycsökkenés és hibák
-                                    jelentkezhetnek.
-                                    A switch működésének alapja a MAC address table. A switch megtanulja a bejövő
-                                    keretek forrás MAC címeit, és eltárolja azokat a megfelelő porttal együtt. Amikor
-                                    egy keret érkezik, a switch a cél MAC cím alapján dönti el, melyik portra
-                                    továbbítsa. Ha a célcímet nem ismeri, a keretet minden porton kiküldi (flood),
-                                    kivéve azt, amelyiken érkezett.
-                                    Az Ethernet hibadetektálást az FCS mező végzi CRC algoritmussal. Ha a számított
-                                    érték nem egyezik a keretben található értékkel, a keret eldobásra kerül. Az
-                                    Ethernet csak hibadetektálást végez, hibajavítást nem.
-                                    Vizsgaszempontból fontos ismerni a keret minimális és maximális méretét (64 és 1518
-                                    byte), a broadcast MAC címet, a full duplex és half duplex közötti különbséget, a
-                                    CSMA/CD működését, valamint azt, hogy az Ethernet szabványa az IEEE 802.3.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-8">
-                        <div class="module-header" onclick="toggleModule(8)">
-                            <div class="module-number">8</div>
-                            <div class="module-title">Modul 8</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A hálózati réteg az OSI modell harmadik rétege. Fő feladata az
-                                    adatok továbbítása különböző hálózatok között. Míg az adatkapcsolati réteg (2.
-                                    réteg) azonos hálózaton belüli kommunikációt biztosít, a hálózati réteg gondoskodik
-                                    arról, hogy az adat egyik hálózatból a másikba eljusson. A hálózati réteg
-                                    legfontosabb protokollja az IP (Internet Protocol).
-                                    A hálózati réteg alapvető funkciói közé tartozik a logikai címzés, az
-                                    útvonalválasztás (routing) és a csomagok továbbítása. A logikai címzés IP-címek
-                                    segítségével történik. Az IP-cím nem az eszközt, hanem annak hálózati interfészét
-                                    azonosítja. Az útvonalválasztás során a router kiválasztja a legjobb útvonalat a
-                                    célhálózat eléréséhez. A továbbítás (forwarding) az a folyamat, amikor a router a
-                                    beérkező csomagot a megfelelő kimeneti interfészen továbbítja.
-                                    Az IPv4 cím 32 bites, és négy oktettből áll, pontokkal elválasztva, például
-                                    192.168.1.1. Az IP-cím két részből áll: hálózati rész és hoszt rész. A hálózati rész
-                                    azonosítja a hálózatot, a hoszt rész pedig az adott eszközt a hálózaton belül. A
-                                    hálózati és hoszt rész arányát az alhálózati maszk határozza meg, például
-                                    255.255.255.0 vagy prefix formában /24.
-                                    Az IPv4 címek különböző típusúak lehetnek. Unicast cím egyetlen eszközt azonosít.
-                                    Broadcast cím a hálózat minden eszközének szól (például 192.168.1.255 egy /24
-                                    hálózatban). Multicast cím egy eszközcsoportnak szól. Léteznek privát IP-cím
-                                    tartományok is, amelyeket belső hálózatokban használnak: 10.0.0.0/8, 172.16.0.0/12
-                                    és 192.168.0.0/16.
-                                    Az IPv4 csomag fejlécének több fontos mezője van. A Version mező jelzi az IP verziót
-                                    (IPv4 esetén 4). Az IHL a fejléc hosszát adja meg. A Total Length a teljes csomag
-                                    méretét mutatja. A TTL (Time To Live) mező az élettartamot határozza meg; minden
-                                    router egyel csökkenti, és ha eléri a nullát, a csomag eldobásra kerül. A Protocol
-                                    mező jelzi a felsőbb rétegbeli protokollt (például TCP = 6, UDP = 17). A Source
-                                    Address és Destination Address mezők a forrás és cél IP-címet tartalmazzák. A fejléc
-                                    tartalmaz egy Header Checksum mezőt is, amely hibadetektálásra szolgál a fejlécben.
-                                    Az IPv4 kapcsolat nélküli (connectionless) és nem megbízható protokoll. Nem
-                                    garantálja a csomagok kézbesítését, sorrendjét vagy hibamentességét. Ezeket a
-                                    feladatokat a felsőbb rétegek, például a TCP látják el.
-                                    A router a hálózati réteg eszköze. Több hálózatot kapcsol össze, és döntést hoz
-                                    arról, merre továbbítsa a csomagokat. A router egy útválasztó táblát (routing table)
-                                    használ, amely tartalmazza az ismert hálózatokat és az azokhoz vezető útvonalakat.
-                                    Az útvonal lehet közvetlenül csatlakoztatott hálózat, statikus útvonal vagy
-                                    dinamikusan tanult útvonal.
-                                    Ha a forrás eszköz más hálózatba küld adatot, akkor a csomagot az alapértelmezett
-                                    átjárónak (default gateway) küldi. Ez általában a helyi router interfészének
-                                    IP-címe. A router ezután továbbítja a csomagot a célhálózat felé.
-                                    Az IPv6 a címkimerülés problémájának megoldására jött létre. Az IPv6 cím 128 bites,
-                                    hexadecimális formában íródik, kettőspontokkal elválasztva. Az IPv6 nagyon nagy
-                                    címtartományt biztosít. Nem használ broadcastot; helyette multicast és anycast
-                                    címeket alkalmaz. Az IPv6 fejléc egyszerűbb felépítésű, és nem tartalmaz
-                                    fejléc-ellenőrző összeget.
-                                    A hálózati réteg fontos szerepet játszik az internet működésében. Feladata a
-                                    csomagok logikai címzése és hálózatok közötti továbbítása, míg a fizikai és
-                                    adatkapcsolati réteg a helyi továbbításért felel.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-9">
-                        <div class="module-header" onclick="toggleModule(9)">
-                            <div class="module-number">9</div>
-                            <div class="module-title">Modul 9</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A címfeloldás a hálózati kommunikáció egyik alapvető folyamata. A
-                                    célja az, hogy egy ismert IP-címhez meghatározza a hozzá tartozó MAC-címet, mivel a
-                                    helyi hálózaton belüli adatátvitel az adatkapcsolati rétegben MAC-címek alapján
-                                    történik. IPv4 esetén ezt a feladatot az ARP (Address Resolution Protocol) végzi.
-                                    Amikor egy eszköz adatot szeretne küldeni egy másik eszköznek ugyanazon a hálózaton,
-                                    először ellenőrzi, hogy ismeri-e a cél IP-címhez tartozó MAC-címet. Ha nem, akkor
-                                    ARP-kérést (ARP Request) küld ki broadcast üzenetként a hálózatra. A broadcast
-                                    MAC-cím FF:FF:FF:FF:FF:FF, ami azt jelenti, hogy minden eszköz megkapja az üzenetet
-                                    a helyi hálózaton.
-                                    Az ARP-kérés tartalmazza a keresett IP-címet. Az a hálózati eszköz, amelynek az
-                                    IP-címe megegyezik a kérésben szereplő címmel, ARP-választ (ARP Reply) küld vissza
-                                    unicast formában a kérdezőnek. Az ARP-válasz tartalmazza a válaszadó MAC-címét. A
-                                    küldő eszköz ezután eltárolja az IP–MAC párosítást az ARP-táblájában (ARP cache),
-                                    így a későbbi kommunikáció során már nem kell újra broadcast kérést küldenie.
-                                    Ha az adat nem a helyi hálózaton belüli eszköznek szól, hanem egy másik hálózatra,
-                                    akkor a forrás eszköz az alapértelmezett átjáró (default gateway) IP-címéhez tartozó
-                                    MAC-címet kéri le ARP segítségével. Ilyenkor nem a végső cél IP-címéhez tartozó
-                                    MAC-címre van szükség, hanem a router interfészének MAC-címére. A keret cél MAC-címe
-                                    tehát mindig a következő ugrás (next hop) eszköz MAC-címe lesz.
-                                    Az ARP-tábla dinamikus bejegyzéseket tartalmaz, amelyek meghatározott idő után
-                                    lejárnak. Lehetőség van statikus ARP-bejegyzések létrehozására is, de ez ritkán
-                                    használt megoldás. Az ARP-tábla megtekinthető például a „arp -a” paranccsal
-                                    végberendezéseken.
-                                    Az ARP működése biztonsági kockázatot is jelenthet, mivel nem tartalmaz hitelesítési
-                                    mechanizmust. Ez lehetővé teszi az ARP spoofing vagy ARP poisoning támadásokat,
-                                    amikor egy támadó hamis ARP-válaszokat küld, és így eltéríti a forgalmat.
-                                    IPv6 esetén az ARP nem használatos. Helyette a Neighbor Discovery Protocol (NDP)
-                                    végzi a címfeloldást, amely az ICMPv6 protokollra épül. Az NDP nem broadcastot,
-                                    hanem multicast üzeneteket használ, ami hatékonyabb működést tesz lehetővé. Az IPv6
-                                    címfeloldási folyamat része a szomszédfelderítés, az útválasztófelderítés és az
-                                    automatikus címkonfiguráció támogatása is.
-                                    Összefoglalva, a címfeloldás biztosítja a kapcsolatot a hálózati réteg IP-címei és
-                                    az adatkapcsolati réteg MAC-címei között. IPv4 esetén ezt az ARP, IPv6 esetén az NDP
-                                    végzi. Vizsgaszempontból fontos megérteni az ARP-kérés és ARP-válasz működését, a
-                                    broadcast szerepét, az ARP-tábla funkcióját, valamint azt, hogy más hálózatba
-                                    történő kommunikáció esetén mindig az alapértelmezett átjáró MAC-címe kerül
-                                    felhasználásra.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-10">
-                        <div class="module-header" onclick="toggleModule(10)">
-                            <div class="module-number">10</div>
-                            <div class="module-title">Modul 10</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">A router a hálózatok közötti forgalomirányításért felelős eszköz.
-                                    Feladata különálló hálózatok összekapcsolása, IP-csomagok továbbítása és a legjobb
-                                    útvonal kiválasztása a routing tábla alapján. Emellett szétválasztja a broadcast
-                                    tartományokat, és default gateway-ként működik a végpontok számára. A default
-                                    gateway a kliens alapértelmezett átjárója, amely jellemzően a router LAN
-                                    interfészének IP-címe. Ha a cél nem a helyi hálózaton található, a forgalom ide
-                                    kerül továbbításra.
-
-                                    A router hardveresen többféle porttal rendelkezhet, például GigabitEthernet vagy
-                                    FastEthernet interfésszel, soros (Serial) csatlakozóval, valamint Console és AUX
-                                    porttal. A konzolkapcsolat out-of-band menedzsmentre szolgál, vagyis hálózati elérés
-                                    nélkül is lehetővé teszi a konfigurálást. Tipikus beállításai: 9600 baud, 8 adatbit,
-                                    nincs paritás, 1 stop bit, flow control nélkül. A kapcsolat létrehozásához gyakran
-                                    használt program például a PuTTY vagy a TeraTerm.
-
-                                    A Cisco routereken az operációs rendszer neve Cisco IOS (Internetwork Operating
-                                    System). Ez a flash memóriában található, és a készülék indításakor töltődik be. A
-                                    konfiguráció parancssori felületen (CLI) történik, amely több módra tagolódik. A
-                                    User EXEC mód (Router>) alap parancsokra szolgál, a Privileged EXEC mód (Router#)
-                                    már adminisztratív műveleteket is enged. A Global Configuration mód
-                                    (Router(config)#) a globális beállítások helye, míg az Interface és Line
-                                    konfigurációs módok egy-egy interfész vagy vonal paraméterezésére szolgálnak. A
-                                    beépített súgórendszer a ? paranccsal érhető el, a Tab billentyű automatikus
-                                    kiegészítést biztosít, a nyilakkal pedig a parancselőzmények érhetők el.
-
-                                    Az alapkonfiguráció során első lépés a hostnév beállítása, például hostname R1. Az
-                                    emelt szintű hozzáférés védelmére az enable secret parancs használható, amely
-                                    titkosított formában tárolja a jelszót. A konzol- és VTY-vonalakhoz külön jelszó
-                                    adható meg, majd a login paranccsal aktiválható a hitelesítés. A service
-                                    password-encryption gondoskodik arról, hogy a jelszavak ne olvasható szövegként
-                                    jelenjenek meg a konfigurációban. A MOTD banner figyelmeztető üzenetet jelenít meg
-                                    belépéskor.
-
-                                    Az interfész konfiguráció során IP-címet és alhálózati maszkot kell beállítani az
-                                    adott porton, majd a no shutdown paranccsal aktiválni, mivel alapértelmezés szerint
-                                    shutdown állapotban van. Opcionálisan leírás is adható az interfészhez a
-                                    dokumentáció érdekében.
-
-                                    A konfiguráció két fő fájlban jelenik meg. A running-config a RAM-ban található, ez
-                                    az aktív konfiguráció, amely újraindításkor elveszik. A startup-config az NVRAM-ban
-                                    tárolódik, és induláskor töltődik be. A mentéshez a copy running-config
-                                    startup-config vagy a write memory parancs használható.
-
-                                    Az ellenőrzéshez több show parancs áll rendelkezésre. A show ip interface brief
-                                    gyors áttekintést ad az interfészek állapotáról és IP-címeiről, a show
-                                    running-config az aktuális konfigurációt jeleníti meg, a show ip route a routing
-                                    táblát mutatja. A ping és a traceroute a hálózati elérhetőség tesztelésére szolgál.
-
-                                    A routing táblában különböző jelölések szerepelnek: C a közvetlenül csatlakoztatott
-                                    hálózat, S a statikus útvonal, R a RIP, O az OSPF protokoll által tanult bejegyzés.
-                                    Default útvonal létrehozható például az ip route 0.0.0.0 0.0.0.0 <következő ugrás
-                                        IP> paranccsal, amely a gateway of last resort szerepét tölti be.
-
-                                        Az interfész állapotai fontos hibakeresési információt adnak. Az
-                                        administratively down azt jelenti, hogy shutdown parancs miatt le van tiltva. A
-                                        down fizikai hibára utal. Az up/down adatkapcsolati problémát jelez, míg az
-                                        up/up megfelelő működést jelent.
-
-                                        A Cisco Discovery Protocol (CDP) segítségével a szomszédos Cisco eszközök
-                                        információi kérdezhetők le, például a show cdp neighbors paranccsal.
-
-                                        A router indítási folyamata meghatározott lépésekből áll: először a POST
-                                        (Power-On Self Test) ellenőrzi a hardvert, majd a ROM-ban lévő bootstrap program
-                                        elindul, ezt követi az IOS betöltése a flash memóriából, végül a startup-config
-                                        betöltése az NVRAM-ból. Ha nincs konfiguráció, a router Setup módba lép.
-
-                                        A konfiguráció törléséhez az erase startup-config parancs használható, majd
-                                        reload szükséges az újraindításhoz.
-
-                                        IPv6 esetén először engedélyezni kell az ipv6 unicast-routing funkciót, majd az
-                                        interfészen megadható az IPv6-cím, például ipv6 address 2001:db8::1/64, végül az
-                                        interfészt aktiválni kell no shutdown paranccsal.
-
-                                        Ezek az alaplépések adják egy működőképes router minimális konfigurációját,
-                                        amelyre később dinamikus routing, biztonsági beállítások és további
-                                        szolgáltatások építhetők</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-11">
-                        <div class="module-header" onclick="toggleModule(11)">
-                            <div class="module-number">11</div>
-                            <div class="module-title">Modul 11</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Az IPv4-címzés a hálózati kommunikáció alapja, mivel az eszközök
-                                    IP-címek alapján azonosítják egymást. Egy IPv4-cím 32 bites bináris szám, amely négy
-                                    oktettre (8–8–8–8 bit) tagolódik, és általában pontozott decimális formában jelenik
-                                    meg, például 192.168.1.1. Az egyes oktettek értéke 0 és 255 között lehet. Minden
-                                    IPv4-cím két részből áll: a hálózati rész (network portion) azonosítja a hálózatot,
-                                    míg a hoszt rész (host portion) az adott hálózaton belüli eszközt. Az alhálózati
-                                    maszk határozza meg a határt a két rész között.
-
-                                    Az IPv4 címek binárisan értelmezhetők. A kettes számrendszerben a helyiértékek 128,
-                                    64, 32, 16, 8, 4, 2, 1. Az átváltás decimális és bináris között történhet összegzés
-                                    vagy helyiértékes módszer segítségével. Egy bit 0 vagy 1 lehet, és 8 bit alkot egy
-                                    oktettet.
-
-                                    Az IPv4-címek típusai a következők. Az unicast cím egyetlen küldőtől egyetlen
-                                    fogadóhoz irányul. A broadcast cím egy küldőtől mindenkihez a hálózatban, például a
-                                    255.255.255.255 a korlátozott broadcast, vagy a directed broadcast, amikor egy adott
-                                    hálózat utolsó címe a cél. A multicast címek egy csoporthoz szólnak, tartományuk
-                                    224.0.0.0 és 239.255.255.255 között van.
-
-                                    Az alhálózati maszk 32 bites szám, ahol az 1-esek jelzik a hálózati részt, a 0-k
-                                    pedig a hoszt részt. Például a 255.255.255.0 maszk /24 prefixnek felel meg. A
-                                    hálózati cím a hoszt rész minden bitjének 0-ra állításával jön létre, míg a
-                                    broadcast címnél minden bit 1. A használt hosztcímek száma 2^n – 2 képlettel
-                                    számítható, ahol n a hoszt bitek száma.
-
-                                    Az IPv4-címek lehetnek privátak vagy publikusak. A privát tartományok (10.0.0.0/8,
-                                    172.16.0.0/12, 192.168.0.0/16) nem routolhatók az interneten, míg a publikus címek
-                                    egyediek és az ISP biztosítja őket. Speciális címek is léteznek: a loopback
-                                    (127.0.0.1) a saját gép tesztelésére szolgál, az APIPA (169.254.0.0/16) automatikus
-                                    cím DHCP hiányában, a 0.0.0.0 pedig ismeretlen cím jelölésére, illetve default
-                                    route-ra használható.
-
-                                    Régebben az IPv4 címeket osztály alapú rendszerben kezelték. Az A osztály 1–126
-                                    címtartományt, B 128–191-et, C 192–223-at, D 224–239-et (multicast) és E 240–255-öt
-                                    (kísérleti) fedett le. Ma már a CIDR (Classless Inter-Domain Routing) prefix alapú
-                                    címzést alkalmaz, amely rugalmas alhálózat-képzést tesz lehetővé, például
-                                    192.168.1.0/26.
-
-                                    Az alhálózatképzés célja a hálózat kisebb részekre bontása, a broadcast tartomány
-                                    csökkentése és hatékony IP-cím kihasználás. A számítás lépései: a szükséges hosztok
-                                    meghatározása, az alhálózatok száma, a prefix módosítása, majd a hálózati lépésköz
-                                    (block size) kiszámítása, ami 256 – az adott oktett értékével adódik. VLSM (Variable
-                                    Length Subnet Mask) lehetővé teszi különböző méretű alhálózatok használatát,
-                                    optimalizálva az IP-kihasználást.
-
-                                    Az IPv4 kommunikáció folyamata során, ha a cél a saját hálózaton van, az adat
-                                    közvetlenül továbbítható. Más hálózat esetén a forgalom a default gateway felé megy,
-                                    és az ARP (Address Resolution Protocol) leképezi az IP-címet a MAC-címre.
-
-                                    Hálózattervezésnél fontos figyelembe venni a jelenlegi hosztigényt, a jövőbeni
-                                    bővítési lehetőségeket, a hierarchikus címzést és a dokumentációt, hogy a hálózat
-                                    fenntartható és skálázható legyen.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-12">
-                        <div class="module-header" onclick="toggleModule(12)">
-                            <div class="module-number">12</div>
-                            <div class="module-title">Modul 12</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Az IPv6-címzés a modern hálózatok alapját képezi, mivel a 128
-                                    bites címek lehetővé teszik a sokkal nagyobb címkészletet az IPv4-hez képest. Egy
-                                    IPv6-cím nyolc darab 16 bites blokkra (hextetre) tagolódik, amelyeket kettőspont
-                                    választ el, például: 2001:0db8:0000:0000:0000:ff00:0042:8329. Az IPv6 bevezetésének
-                                    fő oka az IPv4 címkimerülés, emellett egyszerűbb fejlécet, beépített biztonsági
-                                    lehetőségeket (IPsec) és hatékonyabb routingot biztosít.
-
-                                    Az IPv6-címek hexadecimális formátumúak, ahol minden hex számjegy 4 bitet, egy
-                                    hextet pedig 16 bitet képvisel. A címek rövidítése lehetséges a vezető nullák
-                                    elhagyásával, valamint egymást követő nulla blokkok :: jellel történő egyszeri
-                                    rövidítésével, például 2001:db8:0:0:0:0:0:1 → 2001:db8::1.
-
-                                    Az IPv6-címek típusai a következők. Az unicast címek egyetlen eszköznek szólnak,
-                                    például a Global Unicast címek az interneten routolhatók (2000::/3), a Link-Local
-                                    címek automatikusan generáltak és csak a helyi linken érvényesek (fe80::/10), a
-                                    Unique Local címek privát használatúak (fc00::/7), a loopback cím ::1, az
-                                    unspecified cím ::. A multicast címek egy küldőtől több eszközhöz mennek (ff00::/8),
-                                    IPv6-ban nincs broadcast, míg az anycast címek egy több eszközön is léteznek, és a
-                                    legközelebbi válaszol.
-
-                                    A Global Unicast címek felépítése három részből áll: global routing prefix, subnet
-                                    ID és interface ID. Az interface ID 64 bites, gyakran az EUI-64 módszerrel generált,
-                                    ami a MAC-cím alapján történik: a MAC-cím kettéosztása, FF:FE beszúrása, majd a 7.
-                                    bit invertálása.
-
-                                    Routeren az IPv6 engedélyezése az ipv6 unicast-routing paranccsal történik. Az
-                                    interfészen az IPv6-cím beállítható, például ipv6 address 2001:db8:1:1::1/64 és
-                                    aktiválni kell no shutdown paranccsal. Manuálisan link-local cím is adható: ipv6
-                                    address fe80::1 link-local.
-
-                                    Az IPv6 címkiosztás történhet SLAAC (Stateless Address Autoconfiguration)
-                                    segítségével, amely router advertisement üzenetekből generál címet automatikusan,
-                                    DHCPv6-val (stateful), vagy stateless DHCPv6 segítségével, ahol a cím SLAAC-ból
-                                    származik, de egyéb információkat DHCP szolgáltat.
-
-                                    Az NDP (Neighbor Discovery Protocol) az IPv6 megfelelője az IPv4 ARP-jának. Feladata
-                                    a szomszédfelderítés, címfeloldás, router felfedezés és a Duplicate Address
-                                    Detection (DAD), ICMPv6 üzeneteket használva.
-
-                                    Az IPv4 és IPv6 összehasonlítása során látható, hogy az IPv4 32 bites, broadcastot
-                                    használ és ARP alapú, míg az IPv6 128 bites, broadcast nincs, multicastot alkalmaz,
-                                    és az NDP biztosítja a címfeloldást. A dual stack technológia lehetővé teszi mindkét
-                                    protokoll párhuzamos használatát, a tunneling IPv6 csomagok IPv4 hálózaton történő
-                                    átvitelét teszi lehetővé, míg a NAT64 IPv6–IPv4 kommunikációt biztosít.
-
-                                    Ellenőrzéshez a routeren használható parancsok: show ipv6 interface brief, show ipv6
-                                    route, ping ipv6, traceroute ipv6.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="module-item col-lg-10 col-md-12" id="module-13">
-                        <div class="module-header" onclick="toggleModule(13)">
-                            <div class="module-number">13</div>
-                            <div class="module-title">Modul 13</div>
-                            <div class="module-arrow">▼</div>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-content-inner">
-                                <p class="placeholder">Tananyag hamarosan...</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
-        
+                </section>
+            </div>
         </div>
-   
+
     </main>
 
     <footer>
